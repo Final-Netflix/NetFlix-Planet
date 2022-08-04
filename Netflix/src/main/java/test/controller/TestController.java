@@ -17,7 +17,7 @@ public class TestController {
 	@ResponseBody
 	public String test() {
 		String test = testService.getTest();
-		System.out.println(test);
+//		System.out.println(test);
 		return "Hello, World!";
 	}
 }
