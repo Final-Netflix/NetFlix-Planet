@@ -49,3 +49,43 @@
     content: "";
     display: table;
 }
+
+.global-header .inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.btn, .select {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 15px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: Netflix Sans,Helvetica,Arial,sans-serif;
+    height: 48px;
+    letter-spacing: .01em;
+    min-width: 96px;
+    padding: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color .15s ease,background-color .15s ease;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}

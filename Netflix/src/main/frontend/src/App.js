@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import "./reset.css"
 import Main from "./components/main/Main";
 import Detail from "./components/detail/Detail";
+import ServiceCenter from './components/service_center/ServiceCenter';
 
 function App() {
   const [hello, setHello] = useState('')
@@ -29,13 +30,16 @@ function App() {
             <Link to="">마이페이지</Link>
           </button>
           <button className="border-[1px] p-5 m-4 bg-white">
-            <Link to="">go객센터</Link>
+            <Link to="/service_center">go객센터</Link>
           </button>
           <Routes>
             <Route path="/main" element={ <Main/> }></Route>
             <Route path="/detail" element={ <Detail/> }></Route>
+            <Route path="/service_center" element={ <ServiceCenter/> }></Route>
           </Routes>  
         </BrowserRouter>
+
+        
     </div>
   );
 }
