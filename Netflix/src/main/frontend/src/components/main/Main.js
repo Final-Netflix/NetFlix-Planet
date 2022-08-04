@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 const Main = () => {
     return (
         <>
-            <div id="header" className=''></div>
+            <Header/>
             
             <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
                 <Link to="/detail">Detail</Link>

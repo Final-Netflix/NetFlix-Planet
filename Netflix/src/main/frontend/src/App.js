@@ -18,9 +18,7 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-[#141414] text-white">
-        백엔드에서 가져온 데이터입니다 : { hello }
-        <br></br> 
+    <div>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={ <Main/> }></Route>
@@ -29,6 +27,8 @@ function App() {
             <Route path="/service" element={ <ServiceCenter/> }></Route>
           </Routes>  
         </BrowserRouter>
+        <br/>
+        백엔드에서 가져온 데이터입니다 : { hello }
     </div>
   );
 }
