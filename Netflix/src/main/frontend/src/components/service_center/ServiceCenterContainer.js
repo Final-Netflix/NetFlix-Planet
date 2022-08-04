@@ -17,7 +17,7 @@ const ConsumerCenterContainer = () => {
                                     <a>내 계정에 새로운 로그인이 발생했다는 이메일을 수신했습니다.</a>
                                 </li>
                                 <li className="top-article">
-                                    <a>멤버십 변경 방법</a>
+                                    <a>멤버십 변경 방법</a> 
                                 </li>
                             </ol>
                         </div>
