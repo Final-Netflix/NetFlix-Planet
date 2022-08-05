@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/serviceCenter.css';
+import '../../css/serviceCenter.css';
 
 
 const ConsumerCenterContainer = () => {
