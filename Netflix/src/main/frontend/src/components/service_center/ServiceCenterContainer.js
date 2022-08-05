@@ -1,94 +1,98 @@
 import React from 'react';
-import '../../css/serviceCenter.css';
+
+import '../../css/serviceCenter/serviceCenter.css';
+
+import { Link } from 'react-router-dom';
+
 
 
 const ConsumerCenterContainer = () => {
     return (
-        <div className="container">
-            <section className='top-articles'>
-                <div className='categories'>
-                    <div className="category">
-                        <div className="category-wrapper">
-                            <h2 className="category-title">내 계정 관리</h2>
-                            <ol className="articles">
-                                <li className="top-article">
-                                    <a>멤버십 및 요금</a>
+        <div className="k1container">
+            <section className='k1top-articles'>
+                <div className='k1categories'>
+                    <div className="k1category">
+                        <div className="k1category-wrapper">
+                            <h2 className="k1category-title">내 계정 관리</h2>
+                            <ol className="k1articles">
+                                <li className="k1top-article">
+                                    <Link to='/serviceCenterDetail/memberShip'>멤버십 및 요금</Link>
                                 </li>
-                                <li className="top-article">
-                                    <a>내 계정에 새로운 로그인이 발생했다는 이메일을 수신했습니다.</a>
+                                <li className="k1top-article">
+                                    <Link to=''>내 계정에 새로운 로그인이 발생했다는 이메일을 수신했습니다.</Link>
                                 </li>
-                                <li className="top-article">
-                                    <a>멤버십 변경 방법</a> 
+                                <li className="k1top-article">
+                                    <Link to='/serviceCenterDetail/memberShipUpdate'>멤버십 변경 방법</Link> 
                                 </li>
                             </ol>
                         </div>
 
                     </div>
-                    <div className="category">
-                        <div className="category-wrapper">
-                            <h2 className="category-title">시청불가</h2>
-                            <ol className="articles">
-                                <li className="top-article">
-                                    <a>넷플릭스 비밀번호를 변경하는 방법</a>
+                    <div className="k1category">
+                        <div className="k1category-wrapper">
+                            <h2 className="k1category-title">시청불가</h2>
+                            <ol className="k1articles">
+                                <li className="k1top-article">
+                                    <Link to=''>넷플릭스 비밀번호를 변경하는 방법</Link>
                                 </li>
-                                <li className="top-article">
-                                    <a>넷플릭스에 로그인하려는데 가입하라는 메세지가 표시됨</a>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                    <div className="category">
-                        <div className="category-wrapper">
-                            <h2 className="category-title">결제문의</h2>
-                            <ol className="articles">
-                                <li className="top-article">
-                                    <a>넷플릭스 요금을 결제하는 방법</a>
-                                </li>
-                                <li className="top-article">
-                                    <a>청구 및 결제</a>
+                                <li className="k1top-article">
+                                    <Link to=''>넷플릭스에 로그인하려는데 가입하라는 메세지가 표시됨</Link>
                                 </li>
                             </ol>
                         </div>
                     </div>
-                    <div className="category">
-                        <div className="category-wrapper">
-                            <h2 className="category-title">넷플릭스 시청</h2>
-                            <ol className="articles">
-                                <li className="top-article">
-                                    <a>프로필 생성 및 수정 방법</a>
+                    <div className="k1category">
+                        <div className="k1category-wrapper">
+                            <h2 className="k1category-title">결제문의</h2>
+                            <ol className="k1articles">
+                                <li className="k1top-article">
+                                    <Link to=''>넷플릭스 요금을 결제하는 방법</Link>
                                 </li>
-                                <li className="top-article">
-                                    <a>TV에서 넷플릭스를 시청하는 방법</a>
+                                <li className="k1top-article">
+                                    <Link to=''>청구 및 결제</Link>
                                 </li>
-                                <li className="top-article">
-                                    <a>콘텐츠를 저장하여 오프라인에서 시청하는 방법</a>
+                            </ol>
+                        </div>
+                    </div>
+                    <div className="k1category">
+                        <div className="k1category-wrapper">
+                            <h2 className="k1category-title">넷플릭스 시청</h2>
+                            <ol className="k1articles">
+                                <li className="k1top-article">
+                                    <Link to=''>프로필 생성 및 수정 방법</Link>
+                                </li>
+                                <li className="k1top-article">
+                                    <Link to=''>TV에서 넷플릭스를 시청하는 방법</Link>
+                                </li>
+                                <li className="k1top-article">
+                                    <Link to=''>콘텐츠를 저장하여 오프라인에서 시청하는 방법</Link>
                                 </li>
                             </ol>
                         </div>
                     </div>
 
                 </div>
-                <div className="category">
-                    <div className="category-wrapper">
-                        <h2 className="category-title">빠른링크</h2>
-                        <ul className="quick-links">
-                            <li className="top-article">
-                                <a>TV 프로그램 및 영화 요청하기</a>
+                <div className="k1category">
+                    <div className="k1category-wrapper">
+                        <h2 className="k1category-title">빠른링크</h2>
+                        <ul className="k1quick-links">
+                            <li className="k1top-article">
+                                <Link to=''>TV 프로그램 및 영화 요청하기</Link>
                             </li>
-                            <li className="top-article">
-                                <a>이메일 업데이트</a>
+                            <li className="k1top-article">
+                                <Link to=''>이메일 업데이트</Link>
                             </li>
-                            <li className="top-article">
-                                <a>비밀번호 업데이트</a>
+                            <li className="k1top-article">
+                                <Link to=''>비밀번호 업데이트</Link>
                             </li>
-                            <li className="top-article">
-                                <a>결제 수단 업데이트</a>
+                            <li className="k1top-article">
+                                <Link to=''>결제 수단 업데이트</Link>
                             </li>
-                            <li className="top-article">
-                                <a>멤버십 해지</a>
+                            <li className="k1top-article">
+                                <Link to=''>멤버십 해지</Link>
                             </li>
-                            <li className="top-article">
-                                <a>결제 내역 검토</a>
+                            <li className="k1top-article">
+                                <Link to=''>결제 내역 검토</Link>
                             </li>
                         </ul>
                     </div>

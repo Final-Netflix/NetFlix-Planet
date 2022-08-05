@@ -7,15 +7,21 @@ const Main = () => {
         <>
             <Header/>
             
-            <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-                <Link to="/detail">Detail</Link>
-            </button>
-            <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-                <Link to="/my">마이페이지</Link>
-            </button>
-            <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-                <Link to="/service">go객센터</Link>
-            </button>
+            <Link to="/detail">
+    	        <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
+        	        Detail
+	            </button>
+            </Link>
+            <Link to="/my">
+            	<button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
+					마이페이지
+            	</button>
+            </Link>
+            <Link to="/service">
+	            <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
+    	            go객센터
+    	        </button>
+            </Link>
             <Link to="/container">
                 <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
                     마이페이지안쪽
