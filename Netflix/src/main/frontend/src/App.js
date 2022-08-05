@@ -27,9 +27,9 @@ function App() {
 
             <Route path="/detail" element={ <Detail/> }></Route>
             <Route path="/my" element={ <MyPage/> }></Route>
-            <Route path="/service" element={ <ServiceCenter/> }></Route>
             <Route path="/container" element={ <MypageContainer/> }></Route>
-
+            <Route path="/service" element={ <ServiceCenter/> }></Route>
+            
             <Route path="/serviceCenterDetail" element={<ServiceCenterDetail/>}></Route>
             <Route path="/serviceCenterDetail/:category" element={<ServiceCenterDetail/>}></Route>
 
