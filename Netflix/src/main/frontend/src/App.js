@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./reset.css"
 import Main from "./components/main/Main";
 import Detail from "./components/detail/Detail";
+import MyPage from "./components/my_page/MyPage";
+import ServiceCenter from "./components/service_center/ServiceCenter";
 
 function App() {
   const [hello, setHello] = useState('')
@@ -16,26 +18,17 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-slate-400">
-        백엔드에서 가져온 데이터입니다 : { hello }
-        <br></br> 
-
+    <div>
         <BrowserRouter>
-          
-          <button className="border-[1px] p-5 m-4 bg-white">
-            <Link to="/detail">Detail</Link>
-          </button>
-          <button className="border-[1px] p-5 m-4 bg-white">
-            <Link to="">마이페이지</Link>
-          </button>
-          <button className="border-[1px] p-5 m-4 bg-white">
-            <Link to="">go객센터</Link>
-          </button>
           <Routes>
-            <Route path="/main" element={ <Main/> }></Route>
+            <Route path="/" element={ <Main/> }></Route>
             <Route path="/detail" element={ <Detail/> }></Route>
+            <Route path="/my" element={ <MyPage/> }></Route>
+            <Route path="/service" element={ <ServiceCenter/> }></Route>
           </Routes>  
         </BrowserRouter>
+        <br/>
+        백엔드에서 가져온 데이터입니다 : { hello }
     </div>
   );
 }
