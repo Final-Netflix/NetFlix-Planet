@@ -174,3 +174,8 @@
     margin-bottom: -256px;
     min-height: 100%;
 }
+.k1-page-article .k1-has-related-articles .k1-pane-wrapper:after{
+    clear: both;
+    content: "";
+    display: table;
+}

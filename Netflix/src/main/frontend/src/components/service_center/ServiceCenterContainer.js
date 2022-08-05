@@ -16,13 +16,13 @@ const ConsumerCenterContainer = () => {
                             <h2 className="k1-category-title">내 계정 관리</h2>
                             <ol className="k1-articles">
                                 <li className="k1-top-article">
-                                    <Link to='/service/serviceCenterDetail/memberShip'>멤버십 및 요금</Link>
+                                    <Link to='/service/detail/memberShip'>멤버십 및 요금</Link>
                                 </li>
                                 <li className="k1-top-article">
                                     <Link to=''>내 계정에 새로운 로그인이 발생했다는 이메일을 수신했습니다.</Link>
                                 </li>
                                 <li className="k1-top-article">
-                                    <Link to='/service/serviceCenterDetail/memberShipUpdate'>멤버십 변경 방법</Link> 
+                                    <Link to='/service/detail/memberShipUpdate'>멤버십 변경 방법</Link> 
                                 </li>
                             </ol>
                         </div>

@@ -10,14 +10,14 @@ import ServiceCenterDetail from './ServiceCenterDetail';
 
 const ServiceCenter = () => {
 
-    const{serviceCenterDetail} = useParams()
+    const{detail} = useParams()
 
-    console.log(serviceCenterDetail);
+   /*  console.log(detail); */
     return (
 
         <div className='k1-global-container bg-white text-[#141414]'>
             {
-                serviceCenterDetail === undefined &&
+                detail === undefined &&
                 [<ServiceCenterHeader />,
                 <ServiceCenterContainer />]||
                 <ServiceCenterDetail/>

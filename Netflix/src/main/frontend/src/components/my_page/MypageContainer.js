@@ -1,5 +1,5 @@
 import React from 'react';
-import my1_guard from 'image/guard.JPG'
+import my1_guard from '../../image/guard.JPG'
 const MypageContainer = () => {
     return (
         <div className='my1_bd md:w-[500px] mt-5 mx-[30px] mb-0 p-0 tracking-normal font-sans bg-[#333] text-[16px] cursor-default  break-[keep-all]' style={{wordBreak : 'keep-all' , direction : 'ltr'}}>

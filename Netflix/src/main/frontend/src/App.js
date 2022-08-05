@@ -6,7 +6,7 @@ import Main from "./components/main/Main";
 import Detail from "./components/detail/Detail";
 import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
-import MypageContainer from "components/my_page/MypageContainer";
+import MypageContainer from "./components/my_page/MypageContainer";
 import ServiceCenterDetail from "./components/service_center/ServiceCenterDetail";
 
 function App() {
@@ -33,8 +33,8 @@ function App() {
 
             <Route path="/container" element={ <MypageContainer/> }></Route>
 
-            <Route path="/service/:serviceCenterDetail" element={<ServiceCenter/>}></Route>
-            <Route path="/service/:serviceCenterDetail/:category" element={<ServiceCenter/>}></Route>
+            <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
+            <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
           
           </Routes>  
         </BrowserRouter>
