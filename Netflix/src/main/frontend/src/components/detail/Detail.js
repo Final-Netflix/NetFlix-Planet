@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Detail = () => {
-    return (
+    return(
       <div className='c2_focus_trap_wrapper'>
         <div className='c2_dialog'>
           <div className='c2_previewModal'>
