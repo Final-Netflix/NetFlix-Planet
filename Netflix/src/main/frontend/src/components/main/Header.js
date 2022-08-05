@@ -6,16 +6,20 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <div className='c1-header bg-gradient-to-b from-[#141414] to-transparent h-[68px] text-[12px] text-white'>
-            <div className='c1-header-container flex pl-[37px] items-center z-[2]'>
-                <div className='h-[68px] '><img className='w-24 mt-[20px]' src={ logo }/></div>
-                <ul className='m-0 p-0 flex items-center tracking-normal'>
-                    <li className='ml-[18px]'><Link to="">홈</Link></li>
-                    <li className='ml-[18px]'><Link to="">시리즈</Link></li>
-                    <li className='ml-[18px]'><Link to="">영화</Link></li>
-                    <li className='ml-[18px]'><Link to="">NEW! 요즘 대세 콘텐츠</Link></li>
-                    <li className='ml-[18px]'><Link to="">내가 찜한 콘텐츠</Link></li>
-                </ul>
-                <div class="secondary-navigation">
+            <div className='c1-header-container flex pl-[37px] pr-[37px] justify-between items-center z-[2]'>
+                <div>
+                    <div className='flex'>
+                        <div className='h-[68px] '><img className='w-24 mt-[20px]' src={ logo }/></div>
+                        <ul className='m-0 p-0 flex items-center tracking-normal'>
+                            <li className='ml-[18px]'><Link to="">홈</Link></li>
+                            <li className='ml-[18px]'><Link to="">시리즈</Link></li>
+                            <li className='ml-[18px]'><Link to="">영화</Link></li>
+                            <li className='ml-[18px]'><Link to="">NEW! 요즘 대세 콘텐츠</Link></li>
+                            <li className='ml-[18px]'><Link to="">내가 찜한 콘텐츠</Link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="secondary-navigation flex">
                     <div class="nav-element">
                         <div class="searchBox">
                             <button class="searchTab" tabindex="0" aria-label="검색" data-uia="search-box-launcher">
@@ -30,7 +34,6 @@ const Header = () => {
                             </button>
                         </div>
                     </div>
-                    <div class="nav-element show-kids"><a href="/Kids">키즈</a></div>
                     <div class="nav-element">
                         <span class="notifications">
                             <button class="notifications-menu" aria-haspopup="true" aria-expanded="false" aria-label="알림">
@@ -62,6 +65,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     );
