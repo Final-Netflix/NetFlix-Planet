@@ -6,6 +6,7 @@ import Main from "./components/main/Main";
 import Detail from "./components/detail/Detail";
 import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
+import MypageContainer from "components/my_page/MypageContainer";
 
 function App() {
   const [hello, setHello] = useState('')
@@ -25,6 +26,7 @@ function App() {
             <Route path="/detail" element={ <Detail/> }></Route>
             <Route path="/my" element={ <MyPage/> }></Route>
             <Route path="/service" element={ <ServiceCenter/> }></Route>
+            <Route path="/container" element={ <MypageContainer/> }></Route>
           </Routes>  
         </BrowserRouter>
         <br/>

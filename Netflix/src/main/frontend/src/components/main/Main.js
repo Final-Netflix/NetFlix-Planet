@@ -16,6 +16,11 @@ const Main = () => {
             <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
                 <Link to="/service">go객센터</Link>
             </button>
+            <Link to="/container">
+                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
+                    마이페이지안쪽
+                </button>
+            </Link>
 
         </>
     );
