@@ -1,10 +1,10 @@
 import React from 'react';
-import '../css/serviceCenter.css';
+
 
 const ServiceCenterHeader = () => {
     return (
         <div>
-            <div className="container">
+            <div className="container ">
                 <div className="inner-container">
                     <div className="branding">
                         <a className="logo nf-logo-link n-logo" href="">Planet
