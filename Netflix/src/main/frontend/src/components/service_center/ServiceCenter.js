@@ -5,7 +5,7 @@ import ServiceCenterHeader from './ServiceCenterHeader';
 
 const ServiceCenter = () => {
     return (
-        <div className='bg-white text-[#141414]'>
+        <div className="bg-white text-[#141414]" >
             <ServiceCenterHeader />
             <ServiceCenterContainer />
             <ServiceCenterFooter />
