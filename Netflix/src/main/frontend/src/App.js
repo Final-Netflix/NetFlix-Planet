@@ -6,6 +6,8 @@ import Main from "./components/main/Main";
 import Detail from "./components/detail/Detail";
 import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
+import MypageContainer from "components/my_page/MypageContainer";
+import ServiceCenterDetail from "./components/service_center/ServiceCenterDetail";
 
 function App() {
   const [hello, setHello] = useState('')
@@ -24,9 +26,15 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={ <Main/> }></Route>
+
             <Route path="/detail" element={ <Detail/> }></Route>
             <Route path="/my" element={ <MyPage/> }></Route>
             <Route path="/service" element={ <ServiceCenter/> }></Route>
+            <Route path="/container" element={ <MypageContainer/> }></Route>
+
+            <Route path="/serviceCenterDetail" element={<ServiceCenterDetail/>}></Route>
+            <Route path="/serviceCenterDetail/:category" element={<ServiceCenterDetail/>}></Route>
+
           </Routes>  
         </BrowserRouter>
         <br/>

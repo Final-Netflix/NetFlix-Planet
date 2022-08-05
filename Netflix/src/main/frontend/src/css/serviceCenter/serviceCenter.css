@@ -1,0 +1,60 @@
+.k1category .k1category-wrapper Link{
+    color: black;
+}
+
+.k1category .k1category-wrapper .k1top-article{
+    margin: 0 0 16px;
+}
+.k1top-articles .k1category .k1category-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 32px;
+    margin: 0 0 24px;
+    color: black;
+}
+.k1container{
+    max-width: 1248px;
+}
+.k1container {
+    margin: 0 auto;
+    max-width: 1248px;
+    padding: 0 48px;
+}
+
+.k1top-articles .k1category {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    float: left;
+    width: 21%;
+}
+
+.k1top-articles .k1categories:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.k1top-articles .k1category>.k1category-wrapper {
+    margin: 0 12px;
+}
+.k1top-articles .k1categories {
+    float: left;
+    min-height: 10px;
+    width: 79%;
+}
+
+.k1top-articles:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.container{
+    max-width: 1248px;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1248px;
+    padding: 0 48px;
+}
