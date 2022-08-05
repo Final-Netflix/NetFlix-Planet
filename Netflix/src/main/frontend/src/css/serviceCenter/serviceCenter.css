@@ -1,27 +1,28 @@
-.k1category .k1category-wrapper Link{
+.k1-category .k1-category-wrapper Link{
     color: black;
 }
 
-.k1category .k1category-wrapper .k1top-article{
+.k1-category .k1-category-wrapper .k1-top-article{
     margin: 0 0 16px;
 }
-.k1top-articles .k1category .k1category-title {
+.k1-top-articles .k1-category .k1-category-title {
     font-size: 22px;
     font-weight: 700;
     line-height: 32px;
     margin: 0 0 24px;
     color: black;
 }
-.k1container{
+.k1-container{
     max-width: 1248px;
 }
-.k1container {
+.k1-container {
     margin: 0 auto;
     max-width: 1248px;
     padding: 0 48px;
+    
 }
 
-.k1top-articles .k1category {
+.k1-top-articles .k1-category {
     font-size: 16px;
     font-weight: 300;
     line-height: 24px;
@@ -29,27 +30,30 @@
     width: 21%;
 }
 
-.k1top-articles .k1categories:after {
+.k1-top-articles .k1-categories:after {
     clear: both;
     content: "";
     display: table;
 }
 
-.k1top-articles .k1category>.k1category-wrapper {
+.k1-top-articles .k1-category>.k1-category-wrapper {
     margin: 0 12px;
 }
-.k1top-articles .k1categories {
+.k1-top-articles .k1-categories {
     float: left;
     min-height: 10px;
     width: 79%;
 }
 
-.k1top-articles:after {
+.k1-top-articles:after {
     clear: both;
     content: "";
     display: table;
 }
-
+.k1-global-container{
+    background-color: white;
+    color : black;
+}
 .container{
     max-width: 1248px;
 }
@@ -57,4 +61,116 @@
     margin: 0 auto;
     max-width: 1248px;
     padding: 0 48px;
+}
+
+.k1-global-header{
+    background-color: black;
+    position: relative;
+}
+
+.k1-global-header .k1-inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.k1-global-header .k1-branding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 0 0;
+    padding-right: 24px;
+}
+
+.k1-global-header .k1-actions {
+    float: none;
+    display: flex;
+    flex: 1 0;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0 0 16px;
+    justify-content: flex-end;
+}
+
+.k1-global-container .k1-global-content .k1-breadcrumb li {
+    display: inline-block;
+}
+
+.k1-global-container .k1-global-content .k1-breadcrumb {
+    border-bottom: 1px solid #d5d4d1;
+    margin: 0 0 24px;
+    padding-bottom: 24px;
+}
+
+.k1-global-content {
+    padding: 32px 0 16px;
+    min-height: 360px;
+}
+
+.k1-page-article .k1-global-content ul {
+    margin: 24px 0;
+}
+
+.k1-global-container h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 50px;
+    margin-bottom: 32px;
+}
+
+.k1-global-header .k1-branding .k1-helpcenter-logo {
+    margin: 0;
+    font-size: 18px;
+    line-height: 32px;
+    white-space: nowrap;
+    color: #f5f5f1;
+}
+
+.k1-global-container p {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 0 16px;
+}
+
+.k1-left-pane{
+    width: 68%;
+}
+.k1-left-pane {
+    float: left;
+}
+
+.k1-right-pane h3 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    margin-bottom: 8px;
+}
+ .k1-right-pane {
+    float: left;
+    width: 32%;
+}
+
+.k1-global-contactbar {
+    background: #f2f2f2;
+    box-sizing: border-box;
+    height: 96px;
+    padding: 24px 0;
+    text-align: right;
+}
+.k1-global-contactbar .k1-bar-title{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    font-weight: 800;
+    float: left;
+    line-height: 48px;
+    margin: 0;
+    text-align: left;
+}
+
+.k1-global-container {
+    margin-bottom: -256px;
+    min-height: 100%;
 }

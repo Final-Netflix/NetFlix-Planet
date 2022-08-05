@@ -20,7 +20,9 @@ function App() {
   }, [])
 
   return (
-    <div className="">
+
+    <div>
+
         <BrowserRouter>
           <Routes>
             <Route path="/" element={ <Main/> }></Route>
@@ -28,15 +30,14 @@ function App() {
             <Route path="/detail" element={ <Detail/> }></Route>
             <Route path="/my" element={ <MyPage/> }></Route>
             <Route path="/service" element={ <ServiceCenter/> }></Route>
+
             <Route path="/container" element={ <MypageContainer/> }></Route>
 
-            <Route path="/serviceCenterDetail" element={<ServiceCenterDetail/>}></Route>
-            <Route path="/serviceCenterDetail/:category" element={<ServiceCenterDetail/>}></Route>
-
+            <Route path="/service/:serviceCenterDetail" element={<ServiceCenter/>}></Route>
+            <Route path="/service/:serviceCenterDetail/:category" element={<ServiceCenter/>}></Route>
+          
           </Routes>  
         </BrowserRouter>
-        <br/>
-        백엔드에서 가져온 데이터입니다 : { hello }
     </div>
   );
 }
