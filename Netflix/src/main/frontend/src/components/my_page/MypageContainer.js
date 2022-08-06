@@ -1,9 +1,6 @@
 import React from 'react';
-import m1_guard from 'image/mypageContainer/guard.JPG'
-import m1_speech_icon from 'image/mypageContainer/speech-icon.JPG'
-import m1_right from 'image/mypageContainer/right.JPG'
-import m1_letter from 'image/mypageContainer/letter.JPG'
 import { Link } from 'react-router-dom';
+
 const MypageContainer = () => {
 
     return (

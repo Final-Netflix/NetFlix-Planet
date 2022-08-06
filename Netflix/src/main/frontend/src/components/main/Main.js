@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import View from './View';
 
 const Main = () => {
     return (
         <>
             <Header/>
-            
+            <View/>
+
             <Link to="/detail">
     	        <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
         	        Detail

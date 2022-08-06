@@ -13,7 +13,8 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "redux-devtools-extension": "^2.13.9",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yarn": "^1.22.19"
   },
   "proxy": "http://localhost:8080",
   "scripts": {
