@@ -19,7 +19,7 @@ const Header = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="flex mr-[4%]">
+                <div className="flex">
                     <div className="c1-nav-element mr-[10px]">
                         <div className="c1-searchBox mr-[10px]">
                             <button className="c1-searchTab" tabIndex="0" aria-label="검색" data-uia="search-box-launcher">
