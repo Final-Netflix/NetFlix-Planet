@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className='c1-header bg-gradient-to-b from-[#141414] to-transparent h-[68px] text-[12px] text-white'>
-            <div className='c1-header-container h-full flex pl-[37px] pr-[37px] justify-between items-center z-[2]'>
+        <div className='c1-header bg-gradient-to-b z-[10] from-[#141414] to-transparent absolute w-full h-[68px] text-[12px] text-white'>
+            <div className='c1-header-container h-full flex pl-[37px] pr-[37px] justify-between items-center z-[10]'>
                 <div>
                     <div className='flex'>
                         <div><img className='w-24' src={ logo }/></div>
