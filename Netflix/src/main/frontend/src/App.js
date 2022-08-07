@@ -9,6 +9,7 @@ import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypageContainer from "./components/my_page/MypageContainer";
 import ServiceCenterDetail from "./components/service_center/ServiceCenterDetail";
 
+
 function App() {
   const [hello, setHello] = useState('')
 
@@ -34,7 +35,7 @@ function App() {
 
             <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
             <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
-          
+
           </Routes>  
         </BrowserRouter>
     </div>
