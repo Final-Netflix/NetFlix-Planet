@@ -4,6 +4,8 @@ import MemberShip from './serviceCenterDetail/MemberShip';
 import MemberShipUpdate from './serviceCenterDetail/MemberShipUpdate';
 import '../../css/serviceCenter/serviceCenter.css';
 import { Link } from 'react-router-dom';
+import AccountSecurity from './serviceCenterHeader/AccountSecurity';
+import ServiceCenterFooter from './ServiceCenterFooter';
 
 const ServiceCenterDetail = () => {
     const {category} = useParams()
@@ -34,13 +36,18 @@ const ServiceCenterDetail = () => {
 
                     </div>
                     {
-                        category === 'memberShip' && <MemberShip/> ||
-                                     'MemberShipUpdate' && <MemberShipUpdate/>
+                        // category === 'memberShip' && <MemberShip/> ||
+                        //              'MemberShipUpdate' && <MemberShipUpdate/>
+
+                        (function(){ 
+                            if (category === 'memberShip') return (<MemberShip/>);
+                            if (category === 'accountSecurity') return (<AccountSecurity />);
+                        })()
                     }
                 </div>
 
             </div>
-         
+            <ServiceCenterFooter />
 
         </div>
     );
