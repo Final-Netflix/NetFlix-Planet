@@ -17,9 +17,9 @@ const ServiceCenter = () => {
 
         <div className='k1-global-container bg-white text-[#141414]'>
             {
-                detail === undefined &&
+                detail === undefined ?
                 [<ServiceCenterHeader />,
-                <ServiceCenterContainer />]||
+                <ServiceCenterContainer />]:
                 <ServiceCenterDetail/>
 
             }
