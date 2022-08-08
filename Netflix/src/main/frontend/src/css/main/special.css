@@ -1,0 +1,327 @@
+.c1-billboard-row .c1-billboard .c1-hero-image-wrapper .c1-static-image {
+    background-position: 50%;
+    background-size: cover;
+    bottom: 0;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    filter: alpha(opacity=100);
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.4s cubic-bezier(0.665, 0.235, 0.265, 0.8) 0s;
+    width: 100%;
+}
+.c1-billboard-row .c1-billboard .c1-hero-image-wrapper .c1-hero-vignette {
+    background-color: transparent;
+    background-image: linear-gradient(
+        180deg,
+        hsla(0, 0%, 8%, 0) 0,
+        hsla(0, 0%, 8%, 0.15) 15%,
+        hsla(0, 0%, 8%, 0.35) 29%,
+        hsla(0, 0%, 8%, 0.58) 44%,
+        #141414 68%,
+        #141414
+    );
+    background-position: 0 top;
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    bottom: -1px;
+    height: 14.7vw;
+    opacity: 1;
+    top: auto;
+    width: 100%;
+}
+.c1-billboard-row .c1-billboard .c1-hero-image-wrapper .c1-trailer-vignette {
+    background: linear-gradient(77deg, rgba(0, 0, 0, 0.6), transparent 85%);
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    right: 26.09%;
+    top: 0;
+    transition: opacity 0.5s;
+}
+.c1-billboard-row .c1-billboard .c1-embedded-components {
+    align-items: center;
+    bottom: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+}
+.c1-billboard-row .c1-billboard .info {
+    bottom: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    left: 4%;
+    position: absolute;
+    top: 0;
+    width: 36%;
+    z-index: 10;
+}
+.c1-billboard-row .c1-billboard .info .logo-and-text {
+    transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    width: 100%;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-title {
+    margin-bottom: 1.2vw;
+    min-height: 13.2vw;
+    position: relative;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-title .title {
+    bottom: 0;
+    font-size: 3.5vw;
+    margin-top: 4vw;
+    position: absolute;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-title .title-logo {
+    transform-origin: bottom left;
+    width: 100%;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-title .title-logo.awards {
+    height: 13.2vw;
+    max-width: 100%;
+    width: auto;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-title.isRtl .title-logo {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 0;
+    padding-top: 40%;
+}
+.c1-billboard-row .c1-billboard .info .synopsis {
+    color: #fff;
+    font-size: 1.2vw;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0.1vw;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+    width: 100%;
+}
+.c1-billboard-row .c1-billboard .info .synopsis.no-supplemental {
+    margin: 0.5vw 0 0;
+}
+.c1-c1-billboard-row .c1-billboard .info .maturity-rating .maturity-number {
+    border-width: 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 0;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-links {
+    display: flex;
+    line-height: 88%;
+    margin-top: 1.5vw;
+    white-space: nowrap;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-links > a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.c1-billboard-row .c1-billboard .info .c1-billboard-links > a,
+.c1-billboard-row .c1-billboard .info .c1-billboard-links > button {
+    flex-shrink: 0;
+}
+.c1-billboard-links button {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+.c1-billboard-links .playLink button {
+    margin-left: 0;
+}
+.bigRowItem .forward-leaning,
+.c1-billboard-links.forward-leaning {
+    margin-top: 1vw;
+}
+.c1-ActionButtons {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.35rem;
+    margin: 0 1.1vw 0 0;
+}
+.c1-ActionButtons div button {
+    margin: 0.35rem 0;
+}
+.c1-billboard-row .c1-embedded-components .c1-ActionButtons div button {
+    margin: 0;
+}
+.c1-maturity-rating {
+    display: inline-block;
+}
+.c1-maturity-rating .c1-maturity-number {
+    font-family: Netflix Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    padding: 0 0.4em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    unicode-bidi: normal /*!rtl:plaintext*/;
+    white-space: nowrap;
+}
+.c1-special-button-layout {
+    -webkit-box-align: center;
+    align-items: center;
+    appearance: none;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    opacity: 1;
+    padding: 0.8rem;
+    position: relative;
+    user-select: none;
+    will-change: background-color, color;
+    word-break: break-word;
+    white-space: nowrap;
+}
+.c1-special-button-leading {
+    line-height: 0;
+}
+.c1-special-button-blank.medium {
+    height: 2.4rem;
+    width: 2.4rem;
+}
+.c1-special-button-blank {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: flex-start;
+}
+.c1-special-button {
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+.c1-special-button-layout.color-primary {
+    background-color: white;
+    color: black;
+}
+.c1-special-button-layout.hasLabel.hasIcon {
+    padding-left: 2rem;
+    padding-right: 2.4rem;
+}
+.c1-special-button-text {
+    font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 2.4rem;
+}
+.c1-special-button-layout.color-secondary {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+}
+.c1-billboard-replay-button.round.color-supplementary {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: white;
+}
+.c1-billboard-replay-button.hasIcon {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+.c1-billboard-replay-button {
+    -webkit-box-align: center;
+    align-items: center;
+    appearance: none;
+    border: 0px;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    opacity: 1;
+    padding: 0.8rem;
+    position: relative;
+    user-select: none;
+    will-change: background-color, color;
+    word-break: break-word;
+    white-space: nowrap;
+    border-radius: 50%;
+}
+
+@media screen and (min-width: 1500px) {
+    .c1-billboard-row .c1-billboard .info {
+        left: 60px;
+    }
+}
+@media screen and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) {
+    body,
+    html {
+        font-size: 1.5vw;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) {
+    body,
+    html {
+        font-size: 1vw;
+    }
+}
+@media screen and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) {
+    body,
+    html {
+        font-size: 0.75vw;
+    }
+}
+@media screen and (min-width: 1281px) and (max-width: 1600px) and (max-aspect-ratio: 4/3) {
+    body,
+    html {
+        font-size: 0.75vw;
+    }
+}
+@media screen and (min-width: 1601px) and (max-width: 1920px) and (max-aspect-ratio: 4/3) {
+    body,
+    html {
+        font-size: 0.75vw;
+    }
+}
+@media screen and (min-width: 1921px) and (max-aspect-ratio: 4/3) {
+    body,
+    html {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 480px) and (orientation: landscape) {
+    body,
+    html {
+        font-size: 1.5vw;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) {
+    body,
+    html {
+        font-size: 1.2vw;
+    }
+}
+@media screen and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) {
+    body,
+    html {
+        font-size: 0.85vw;
+    }
+}
+@media screen and (min-width: 1281px) and (max-width: 1600px) and (orientation: landscape) {
+    body,
+    html {
+        font-size: 0.75vw;
+    }
+}
+@media screen and (min-width: 1601px) and (max-width: 1920px) and (orientation: landscape) {
+    body,
+    html {
+        font-size: 0.75vw;
+    }
+}
+@media screen and (min-width: 1921px) and (orientation: landscape) {
+    body,
+    html {
+        font-size: 14px;
+    }
+}

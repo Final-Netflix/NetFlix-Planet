@@ -12,12 +12,11 @@
     margin: 0 0 24px;
     color: black;
 }
-.k1-container{
-    max-width: 1248px;
-}
-.k1-container {
-    margin: 0 auto;
-    max-width: 1248px;
+
+.k1container {
+    margin-left: 48px;
+    margin-right: 48px;
+    max-width: 1600px;
     padding: 0 48px;
     
 }
@@ -50,18 +49,15 @@
     content: "";
     display: table;
 }
-.k1-global-container{
-    background-color: white;
-    color : black;
+
+.k1-global-header .k1-inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 16px;
 }
-.container{
-    max-width: 1248px;
-}
-.container {
-    margin: 0 auto;
-    max-width: 1248px;
-    padding: 0 48px;
-}
+
 
 .k1-global-header{
     background-color: black;
@@ -174,8 +170,345 @@
     margin-bottom: -256px;
     min-height: 100%;
 }
-.k1-page-article .k1-has-related-articles .k1-pane-wrapper:after{
+.k1-pane-wrapper:after{
     clear: both;
     content: "";
     display: table;
 }
+
+.k1-global-footer{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    background: #221f1f;
+    display: block;
+    height: 256px;
+}
+.k1-footer-push{
+    height: 256px;
+}
+.k1-right-pane>.k1-wrapper{
+    margin-left: 80px;
+}
+.k1-related-articles a{
+    position: relative;
+    color: black;
+    text-decoration: underline;
+    display: inline;
+    font-weight: 400;
+    line-height: 24px;
+
+}
+.k1-page-block ul li {
+    margin: 0 0 8px;
+    padding: 0 0 0 24px;
+    position: relative;
+    
+}
+
+.k1-page-block ol {
+    list-style: decimal;
+    padding-left: 24px;
+}
+
+
+.k1-page-block ul li:before {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    content: "";
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 24px;
+}
+.k1-page-block ul li:after {
+    background: #221f1f;
+    border-radius: 50%;
+    content: "";
+    height: 6px;
+    left: 9px;
+    position: absolute;
+    top: 9px;
+    width: 6px;
+}
+
+.k1-related-articles{
+    margin: 24px 0;
+}
+
+ .k1-warning:before {
+    background: url(https://help.nflxext.com/helpcenter/6546d9f6cb64ebb7df0045fadff9d3d5.svg) 50%;
+    background-repeat: no-repeat;
+    content: "";
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 0.2em;
+    width: 24px;
+}
+ .k1-warning {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    display: block;
+    margin: 0 0 16px;
+    padding: 0 0 0 32px;
+    position: relative;
+}
+
+.k1-page-article table {
+    border: 1px solid #d5d4d1;
+    border-collapse: collapse;
+    margin: 0 0 40px;
+    text-align: left;
+    width: 100%;
+    border-spacing: 0;
+}
+
+
+.k1-page-article table thead p,.k1-page-article table thead th {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    background: #f5f5f1;
+    margin: 0;
+}
+
+.k1-page-article table thead th {
+    border: 1px solid #d5d4d1;
+    padding: 8px;
+    vertical-align: top;
+}
+
+.k1-page-article table tbody td, .k1-page-article table tbody td p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+}
+.k1-page-article table tbody td {
+    background: #fff;
+    border: 1px solid #eaeae6;
+    border-left: 0;
+    padding: 8px 16px;
+    vertical-align: top;
+}
+.k1-note{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    border-left: 4px solid #d5d4d1;
+    color: #221f1f;
+    display: block;
+    margin: 8px 0 24px;
+    padding: 0 12px;
+    position: relative;
+
+}
+
+.k1-icon-wrap{
+    font-weight: 700;
+    margin: 0 4px 0 0;
+    text-transform: uppercase;
+ 
+}
+.k1-kb-title{
+    width: 68%;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 50px;
+    margin-bottom: 32px;
+
+}
+
+.k1-page-block a {
+    color: #e50914;
+    font-weight: 400;
+    text-decoration: none;
+}
+.k1-related-articles a{
+    position: relative;
+    color: #000;
+    text-decoration: underline;
+    display: inline;
+}
+
+.k1-page-article-ol{
+    margin: 24px 0;
+    list-style: decimal;
+    padding-left: 24px;
+    margin: 0 0 16px;
+}
+.k1-accordion .k1-tab .k1-tab-title a {
+    color: #4c4948;
+    display: block;
+    font-weight: inherit;
+    transition: color 125ms ease;
+}
+.k1-accordion .k1-tab .k1-tab-title h2 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    cursor: pointer;
+    margin: 0!important;
+    padding: 4px 4px 4px 32px;
+    position: relative;
+    word-wrap: break-word;
+}
+.k1-accordion .k1-tab {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    background: #fff;
+    border: 1px solid #eaeae6;
+    border-radius: 4px;
+    margin: 0 0 8px;
+}
+.k1-accordion .k1-tab .k1-tab-title h2:before {
+    background: url(https://help.nflxext.com/helpcenter/5810068f6a686d6a6879f635716f6c70.svg);
+    background-position: 50%;
+    color: #e50914;
+    content: "";
+    height: 24px;
+    left: 4px;
+    position: absolute;
+    top: 4px;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    transition: transform .25s ease;
+    width: 24px;
+}
+
+.k1-accordion .k1-tab .k1-tab-content {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    padding: 0 16px 0 32px;
+}
+.k1-article-content .k1-page-block h2, 
+.k1-article-content .k1-page-block h3, 
+.k1-page-article .k1-page-block h2, 
+.k1-page-article .k1-page-block h3 {
+    margin-top: 40px;
+}
+.k1-page-article h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 8px;
+}
+
+.k1-article-content img, .k1-page-article img {
+    display: inline-block;
+    height: auto;
+    margin: 0;
+    max-width: 100%;
+    padding: 0 2px;
+    vertical-align: middle;
+}
+
+
+
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+
+
+
+.k2-category .k2-category-wrapper a{
+    color: black;
+}
+
+.k2-category .k2-category-wrapper .k2-top-article{
+    margin: 0 0 16px;
+}
+.k2-top-articles .k2-category .k2-category-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 32px;
+    margin: 0 0 24px;
+    color: black;
+}
+
+.k2-container {
+    margin-left: 48px;
+    margin-right: 48px;
+    max-width: 1600px;
+    padding: 0 48px;
+}
+
+
+.k2-top-articles .k2-category {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    float: left;
+    width: 21%;
+}
+
+.k2-top-articles .k2-categories:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.k2-top-articles .k2-category>.k2-category-wrapper {
+    margin: 0 12px;
+}
+.k2-top-articles .k2-categories {
+    float: left;
+    min-height: 10px;
+    width: 79%;
+}
+
+.k2-top-articles:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.k2-arrow {
+    
+    content: "";
+    display: block;
+    margin-top: -10px;
+    height: 24px;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: rotate(180deg);
+    width: 24px;
+}
+
+.k2-global-header .k2-inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.k2-search-control {
+    background-image: url('https://help.nflxext.com/helpcenter/2597c66e2e6e352867e6b26ac4f7baa3.svg');
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    text-indent: -9999em;
+    z-index: 1;
+    box-shadow: none;
+    padding: 0;
+    appearance: none;
+    pointer-events: none;
+}
+
+.k2-title:hover {
+    text-decoration: underline;
+}
+
+.k2-btn:hover{
+    text-decoration: underline;
+}
+
+
