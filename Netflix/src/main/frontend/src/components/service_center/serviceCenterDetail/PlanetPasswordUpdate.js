@@ -5,6 +5,7 @@ const PlanetPasswordUpdate = () => {
     const[visible1,setVisible1] = useState(false)
     const[visible2,setVisible2] = useState(false)
     const[visible3,setVisible3] = useState(false)
+    
     const openTab1=()=>{
         setVisible1(!visible1)
     }

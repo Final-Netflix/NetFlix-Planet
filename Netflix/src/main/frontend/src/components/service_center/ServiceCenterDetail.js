@@ -4,7 +4,6 @@ import MemberShip from './serviceCenterDetail/MemberShip';
 import MemberShipUpdate from './serviceCenterDetail/MemberShipUpdate';
 import '../../css/serviceCenter/serviceCenter.css';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
 import MemberNewLog from './serviceCenterDetail/MemberNewLog';
 import PlanetPasswordUpdate from './serviceCenterDetail/PlanetPasswordUpdate';
 import PlanetLoginMessage from './serviceCenterDetail/PlanetLoginMessage';
@@ -69,7 +68,7 @@ const ServiceCenterDetail = () => {
 
 
             </div>
-            <ServiceCenterFooter />
+            
 
         </div>
     );
