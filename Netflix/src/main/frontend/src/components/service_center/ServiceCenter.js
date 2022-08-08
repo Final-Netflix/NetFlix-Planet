@@ -24,8 +24,11 @@ const ServiceCenter = () => {
                 
             }
 
+            <ServiceCenterFooter />
             
         </div>
+
+        
     );
 };
 
