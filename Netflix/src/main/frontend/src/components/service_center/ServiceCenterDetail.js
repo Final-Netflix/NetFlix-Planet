@@ -68,7 +68,7 @@ const ServiceCenterDetail = () => {
 
 
             </div>
-            <ServiceCenterFooter />
+            
 
         </div>
     );
