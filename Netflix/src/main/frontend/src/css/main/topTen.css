@@ -1,0 +1,379 @@
+
+.rowContainer {
+    position: relative;
+    z-index: 0;
+}
+.rowContainer .rowContent {
+    box-sizing: border-box;
+    padding: 0;
+}
+.rowContainer .rowContent .slider {
+    z-index: 2;
+}
+.rowContainer .rowContent .slider .handle {
+    background: hsla(0, 0%, 8%, 0.5);
+}
+.rowContainer .rowContent .slider:hover .handle.active:hover {
+    background: hsla(0, 0%, 8%, 0.7);
+}
+@media screen and (max-width: 499px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 50%;
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 799px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 33.333333%;
+    }
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 25%;
+    }
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 20%;
+    }
+}
+@media screen and (min-width: 1400px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 16.66666667%;
+    }
+}
+.lolomoRow,
+.rowContainer {
+    transition: transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+}
+.lolomoRow.jawBoneOpen ~ .lolomoRow,
+.rowContainer.jawBoneOpen ~ .rowContainer {
+    transform: translate3d(0, 37vw, 0);
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+    .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .rowContainer.jawBoneOpen ~ .rowContainer {
+        transform: translate3d(0, 42vw, 0);
+    }
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+    .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .rowContainer.jawBoneOpen ~ .rowContainer {
+        transform: translate3d(0, 37vw, 0);
+    }
+}
+@media screen and (min-width: 1400px) {
+    .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .rowContainer.jawBoneOpen ~ .rowContainer {
+        transform: translate3d(0, 32vw, 0);
+    }
+}
+@media screen and (max-width: 499px) {
+    .lolomoRow.bigRowOpen ~ .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .lolomoRow.jawBoneOpen ~ .lolomoRow.bigRowOpen ~ .lolomoRow {
+        transform: translate3d(0, 44vw, 0);
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 799px) {
+    .lolomoRow.bigRowOpen ~ .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .lolomoRow.jawBoneOpen ~ .lolomoRow.bigRowOpen ~ .lolomoRow {
+        transform: translate3d(0, 58vw, 0);
+    }
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+    .lolomoRow.bigRowOpen ~ .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .lolomoRow.jawBoneOpen ~ .lolomoRow.bigRowOpen ~ .lolomoRow {
+        transform: translate3d(0, 67vw, 0);
+    }
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+    .lolomoRow.bigRowOpen ~ .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .lolomoRow.jawBoneOpen ~ .lolomoRow.bigRowOpen ~ .lolomoRow {
+        transform: translate3d(0, 66vw, 0);
+    }
+}
+@media screen and (min-width: 1400px) {
+    .lolomoRow.bigRowOpen ~ .lolomoRow.jawBoneOpen ~ .lolomoRow,
+    .lolomoRow.jawBoneOpen ~ .lolomoRow.bigRowOpen ~ .lolomoRow {
+        transform: translate3d(0, 61vw, 0);
+    }
+}
+.slider {
+    margin: 0;
+    padding: 0 4%;
+    position: relative;
+    touch-action: pan-y;
+}
+.slider .sliderMask {
+    overflow-x: hidden;
+    padding-bottom: 1px;
+}
+.slider .sliderMask .sliderContent {
+    white-space: nowrap;
+}
+.slider .sliderMask .sliderContent.animating {
+    pointer-events: none;
+    transition: transform 0.75s ease 0s;
+}
+.slider .sliderMask .sliderContent .slider-item {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 0.2vw;
+    position: relative;
+    vertical-align: top;
+    white-space: normal;
+    z-index: 1;
+}
+.slider .sliderMask .sliderContent .slider-item:hover {
+    z-index: 2;
+}
+.slider .sliderMask .sliderContent .slider-item:last-child {
+    padding-right: 0;
+}
+.slider .sliderMask .sliderContent .slider-item:first-child {
+    padding-left: 0;
+}
+.slider .sliderMask.showPeek {
+    overflow-x: visible;
+}
+.slider .handle {
+    bottom: 0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 4%;
+    z-index: 20;
+}
+@media screen and (min-width: 1500px) {
+    .slider .handle {
+        width: 60px;
+    }
+}
+.slider .handle.active {
+    cursor: pointer;
+}
+.slider .handle > .indicator-icon {
+    align-self: center;
+    display: none;
+    font-size: 2.5vw;
+    height: auto;
+    transition: transform 0.1s ease-out 0s;
+}
+@media screen and (min-width: 1500px) {
+    .slider .handle > .indicator-icon {
+        font-size: 2em;
+    }
+}
+.slider .handle.handlePrev {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    left: -2px;
+}
+.slider .handle.handlePrev .indicator-icon {
+    transform-origin: 55% 50%;
+}
+.slider .handle.handleNext {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    right: 0;
+}
+.slider .handle.handleNext .indicator-icon {
+    transform-origin: 45% 50%;
+}
+.slider .sliderContent:not(.animating) .sliderItemHidden {
+    display: none;
+}
+.slider-hover-trigger-layer:hover .slider .handle.active .indicator-icon {
+    display: block;
+}
+.slider-hover-trigger-layer:hover .slider .handle.active:hover .indicator-icon {
+    color: #fff;
+    font-weight: 700;
+    transform: scale(1.25);
+}
+.slider-hover-trigger-layer .slider .handle.active:focus .indicator-icon {
+    color: #fff;
+    display: block;
+    font-weight: 700;
+    transform: scale(1.25);
+}
+.slider .handle:focus .indicator-icon {
+    color: #fff;
+    font-weight: 700;
+    transform: scale(1.25);
+}
+.lolomoRow {
+    outline: 0;
+    position: relative;
+}
+.lolomoRow.lolomoRow_title_card {
+    box-sizing: border-box;
+    margin: 3vw 0;
+    padding: 0;
+}
+.lolomoRow.lolomoRow_title_card.highlight-lolomo-row {
+    background-color: #2e2e2e;
+    padding: 2vw 0 3vw;
+}
+.lolomoRow.lolomoRow_title_card.highlight-lolomo-row-with-red-streams {
+    background-image: url(https://assets.nflxext.com/ffe/siteui/experiments/quick/cw-highlight/streams_bkd_1920.png);
+    background-repeat: round;
+    background-size: contain;
+    padding: 2vw 0 3vw;
+}
+.lolomoRow.lolomoRow_title_card:hover {
+    z-index: 3;
+}
+.lolomoRow .pagination-indicator {
+    display: none;
+    list-style-type: none;
+    margin: -24px 0 12px;
+    padding: 0;
+    position: absolute;
+    right: 4%;
+    top: 0;
+}
+@media screen and (min-width: 1500px) {
+    .lolomoRow .pagination-indicator {
+        right: 62px;
+    }
+}
+.lolomoRow .pagination-indicator li {
+    background-color: #4d4d4d;
+    display: inline-block;
+    height: 2px;
+    margin-left: 1px;
+    width: 12px;
+}
+.lolomoRow .pagination-indicator .active {
+    background-color: #aaa;
+}
+.lolomoRow .slider:hover .pagination-indicator {
+    display: block;
+}
+.lolomoRow.lolomoRow_title_card .rowTitle {
+    color: #e5e5e5;
+    display: inline-block;
+    font-size: 1.4vw;
+    font-weight: 700;
+    margin: 0 4% 0.5em;
+    min-width: 6em;
+    text-decoration: none;
+}
+@media screen and (min-width: 1500px) {
+    .lolomoRow.lolomoRow_title_card .rowTitle {
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .lolomoRow.lolomoRow_title_card .rowTitle {
+        font-size: 12px;
+    }
+}
+.lolomoRow.lolomoRow_title_card .rowTitle .row-header-title {
+    display: table-cell;
+    font-size: 1.4vw;
+    line-height: 1.25vw;
+    vertical-align: bottom;
+}
+@media screen and (max-width: 800px) {
+    .lolomoRow.lolomoRow_title_card .rowTitle .row-header-title {
+        font-size: 12px;
+    }
+}
+.lolomoRow.lolomoRow_title_card .rowTitle .rowChevron {
+    display: none;
+    font-size: 0.9vw;
+    font-weight: 700;
+    margin-left: 0.7em;
+}
+.lolomoRow.lolomoRow_title_card a.rowTitle:focus .rowChevron,
+.lolomoRow.lolomoRow_title_card:hover a.rowTitle .rowChevron {
+    display: inline-block;
+}
+.lolomoRow.lolomoRow_title_card .originals-row-title {
+    color: #e5e5e5;
+    font-size: 1.2vw;
+}
+@media screen and (max-width: 800px) {
+    .lolomoRow.lolomoRow_title_card .originals-row-title {
+        font-size: 12px;
+    }
+}
+.lolomoRow.lolomoPreview .rowTitle {
+    background-color: #1a1a1a;
+}
+.lolomoRow .rowHeader {
+    line-height: 1.3;
+    margin: 0;
+}
+.boxart-size-7x10 {
+    height: 0;
+    overflow: hidden;
+    padding: 35.714285714% 0;
+    position: relative;
+    width: 100%;
+}
+.boxart-size-7x10 .boxart-image-in-padded-container {
+    bottom: 0;
+    height: 100%;
+    left: auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+}
+.boxart-size-7x10 .top-10-rank {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: auto;
+    top: 0;
+    width: 50%;
+}
+.boxart-size-7x10 .fallback-text-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    left: auto;
+    width: 50%;
+}
+.fallback-text-container {
+    background-color: #222;
+    background-image: linear-gradient(transparent, #000);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+}
+.fallback-text {
+    bottom: 0;
+    box-sizing: border-box;
+    font-size: 1.5em;
+    font-weight: 700;
+    left: 8%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 10%;
+    position: absolute;
+    right: 8%;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.title-card-container .click-to-change-JAW-indicator {
+    bottom: 0.4vw;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    transform: translate(-50%, -10px);
+    transition: transform 0.4s, opacity 0.4s;
+    transition-delay: 0.2s;
+    z-index: 1;
+}

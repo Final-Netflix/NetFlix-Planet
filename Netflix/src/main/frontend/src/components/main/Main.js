@@ -5,7 +5,7 @@ import View from './View';
 
 const Main = () => {
     return (
-        <>
+        <div>
             <Header/>
             <View/>
 
@@ -30,7 +30,7 @@ const Main = () => {
                 </button>
             </Link>
 
-        </>
+        </div>
     );
 };
 
