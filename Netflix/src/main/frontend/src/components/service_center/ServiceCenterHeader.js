@@ -2,24 +2,6 @@ import React from 'react';
 import '../../css/serviceCenter/serviceCenter.css';
 import Recommendations from './serviceCenterComponents/Recommendations';
 
-const recommendationsData = [
-    {
-        title: '계정 보안을 유지하는 방법',
-        alt: '계정 보안을 유지하는 방법',
-        url: 'https://help.nflxext.com/helpcenter/98f280f0cce17c23059f77fa33186294.svg',
-    },
-    {
-        title: '플레닛 자녀 보호 기능',
-        alt: '플레닛 자녀 보호 기능',
-        url: 'https://help.nflxext.com/helpcenter/98f280f0cce17c23059f77fa33186294.svg',
-    },
-    {
-        title: '멤버십 변경 방법',
-        alt: '멤버십 변경 방법',
-        url: 'https://help.nflxext.com/helpcenter/98f280f0cce17c23059f77fa33186294.svg',
-    },
-]
-
 const ServiceCenterHeader = () => {
     return (
         <div className="k2-page-home bg-[#000000] text-white">
@@ -81,7 +63,7 @@ const ServiceCenterHeader = () => {
             <div id ="personalization-placeholder">
                 <div id="personalization-container" className="personalization blok pt-[32px] bg-stone-100 border-2 border-solid border-[#dedede] text-black pl-[110px] pb-6">
                     <div className="container">
-                        <h2 className="personalization-intro font-extrabold text-2xl">옥지독지 님, 안녕하세요.</h2>
+                        <h2 className="personalization-intro font-extrabold text-2xl">옥지님, 안녕하세요.</h2>
                     </div>
                     <div className="personalization-module">
                         <div className="container">
@@ -91,9 +73,7 @@ const ServiceCenterHeader = () => {
                                         <p className="recommendations-title text-[16px] mb-[16px]">도움이 될 만한 문서</p>
                                         <div className="recommendations-wrapper flex flex-wrap flex-row ">
                                             
-                                            <Recommendations
-                                                data={recommendationsData}
-                                            />
+                                            <Recommendations />
                                         </div>
                                     </div>
                                 </div>
