@@ -1,9 +1,9 @@
 import React from 'react';
+import '../../css/serviceCenter/serviceCenter.css';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MemberShip from './serviceCenterDetail/MemberShip';
 import MemberShipUpdate from './serviceCenterDetail/MemberShipUpdate';
-import '../../css/serviceCenter/serviceCenter.css';
-import { Link } from 'react-router-dom';
 import MemberNewLog from './serviceCenterDetail/MemberNewLog';
 import PlanetPasswordUpdate from './serviceCenterDetail/PlanetPasswordUpdate';
 import PlanetLoginMessage from './serviceCenterDetail/PlanetLoginMessage';
@@ -12,6 +12,8 @@ import PlanetPaymentClaim from './serviceCenterDetail/PlanetPaymentClaim';
 import ProfileProduceWay from './serviceCenterDetail/ProfileProduceWay';
 import OfflineWatchWay from './serviceCenterDetail/OfflineWatchWay';
 import PlanetOnTv from './serviceCenterDetail/PlanetOnTv';
+import AccountSecurity from './serviceCenterHeader/AccountSecurity';
+import ServiceCenterFooter from './ServiceCenterFooter';
 
 const ServiceCenterDetail = () => {
     const {category} = useParams()
@@ -55,6 +57,7 @@ const ServiceCenterDetail = () => {
                             if (category === 'profileProduceWay') return (<ProfileProduceWay/>);
                             if (category === 'planetOnTv') return (<PlanetOnTv/>);
                             if (category === 'offlineWatchWay') return (<OfflineWatchWay/>);
+                            if (category === 'accountSecurity') return (<AccountSecurity />);
                         })()
                     }
                    
@@ -65,6 +68,7 @@ const ServiceCenterDetail = () => {
 
 
             </div>
+            
 
         </div>
     );

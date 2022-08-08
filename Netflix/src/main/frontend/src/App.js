@@ -12,6 +12,7 @@ import MypageSelf_phone from "components/my_page/MypageSelf_phone";
 import MypageMailChange from "components/my_page/MypageMailChange";
 import MypagePassword from "components/my_page/MypagePassword";
 
+
 function App() {
   const [hello, setHello] = useState('')
 
@@ -37,9 +38,13 @@ function App() {
 
             <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
             <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
-          
+
           </Routes>  
         </BrowserRouter>
+       {/* <br/> */}
+        {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
+
+
     </div>
   );
 }
