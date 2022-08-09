@@ -1,0 +1,270 @@
+@media only screen and (min-width: 500px) {
+    body .bd {
+        margin: 20px 30px 0;
+    }
+}
+body .bd {
+    margin: 15px 0 0;
+    padding: 0;
+}
+* {
+    letter-spacing: 0!important;
+}
+.netflix-sans-font-loaded {
+    font-family: Netflix Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+body {
+    word-break: keep-all;
+}
+body, html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f3f3f3;
+    color: #333;
+    direction: ltr;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+}
+html {
+    cursor: default;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: sans-serif;
+}
+@media only screen and (min-width: 740px) {
+    .responsive-account-container {
+        font-size: 1em;
+        max-width: 1024px;
+        width: 95%;
+    }
+}
+.responsive-account-container {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    color: #333;
+    display: block;
+    font-size: 1em;
+    margin: 0 auto;
+    min-height: 400px;
+    min-width: 300px;
+    overflow-wrap: anywhere;
+    position: relative;
+    width: 90%;
+}
+.responsive-account-container * {
+    box-sizing: border-box;
+}
+@media screen and (min-width: 740px) {
+    h1 {
+        font-size: 2.15em;
+        margin: 0 0 .55em;
+    }
+}
+.change-password-form h1 {
+    color: #333;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0 0 .4em;
+}
+.change-password-form ul.structural {
+    margin: 0;
+    padding: 0;
+}
+.nfFormSpace:first-child {
+    margin-bottom: 4%;
+}
+.change-password-form ul.structural>li {
+    list-style: none;
+    margin-left: 0;
+}
+.change-password-form .nfInput,.change-password-form .nfInput .nfInputPlacement {
+    position: relative;
+}
+.change-password-form .nfInput {
+    max-width: 500px;
+}
+.change-password-form label {
+    cursor: default;
+}
+.nfInput .nfTextField {
+    height: 48px;
+    padding: 10px 10px 0;
+    width: 100%;
+}
+.change-password-form .nfTextField:invalid, .nfTextField:valid {
+    box-shadow: none;
+}
+.change-password-form .nfTextField {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #000;
+    display: block;
+    font-size: 16px;
+    height: 44px;
+    padding: 10px 11px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.change-password-form input {
+    line-height: normal;
+}
+.change-password-form button,.change-password-form input,
+.change-password-form optgroup,.change-password-form select,
+.change-password-form textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+@media only screen and (min-width: 740px) {
+    .change-password-form .nfInput .placeLabel {
+        font-size: 16px;
+    }
+}
+.nfInput .placeLabel {
+    color: #8c8c8c;
+    font-size: 14px;
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: font .1s ease,top .1s ease,transform .1s ease;
+}
+.nfInput .inputCaption {
+    color: #8c8c8c;
+    font-size: 13px;
+}
+.change-password-form a {
+    color: #0080ff;
+    text-decoration: none;
+}
+.change-password-form a {
+    background-color: transparent;
+}
+.ui-binary-input {
+    box-sizing: border-box;
+    font-size: 16px;
+    padding-left: 36px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.ui-binary-input input[type=checkbox]+label, .ui-binary-input input[type=radio]+label {
+    color: #333;
+    display: block;
+    line-height: 1.2;
+    padding: 6px 0;
+    position: relative;
+}
+.ui-binary-input input[type=checkbox]+label:before, .ui-binary-input input[type=radio]+label:before {
+    background-color: #fff;
+    border: 1px solid #b3b3b3;
+    content: "";
+    display: block;
+    left: -36px;
+    padding: 0;
+    position: absolute;
+    top: 2px;
+}
+.ui-binary-input input[type=checkbox]+label:before {
+    height: 25px;
+    width: 25px;
+}
+.ui-binary-input .helper {
+    color: grey;
+    font-size: 14px;
+    line-height: 1.3em;
+}
+.change-password-buttons {
+    margin-top: 2.25em;
+}
+@media only screen and (min-width: 500px) {
+    .change-password-buttons .nf-btn {
+        margin: 0 10px 0 0;
+    }
+}
+.change-password-buttons .nf-btn {
+    margin: 10px 0;
+}
+@media only screen and (min-width: 500px) {
+    .nf-btn.nf-btn-small {
+        display: inline-block;
+        font-size: 13px;
+        line-height: 1rem;
+        margin-right: .5rem;
+        min-height: 37px;
+        min-width: 98px;
+        padding: .75rem 1rem;
+        width: auto;
+    }
+}
+
+.nf-btn-retro.nf-btn-primary {
+    background-color: #0f84fa;
+    color: #fff;
+    cursor: pointer;
+    padding: 13px 2rem;
+    text-decoration: none;
+}
+.nf-btn {
+    font-size: 1rem;
+    min-height: 48px;
+    min-width: 74px;
+    padding: .75rem 1.33333333rem;
+    position: relative;
+    width: 100%;
+}
+.nf-btn {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 25%);
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: .025rem;
+    line-height: 1rem;
+    text-align: center;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+.nf-btn-retro.nf-btn-secondary {
+    background: #ccc;
+    color: #333;
+}
+.ui-binary-input input[type=checkbox], .ui-binary-input input[type=radio] {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+.nfFormSpace {
+    margin-bottom: 3.8%;
+}

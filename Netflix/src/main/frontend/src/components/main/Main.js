@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 import Header from './Header';
 import View from './View';
 
 const Main = () => {
     return (
-        <>
+        <div className='bg-[#141414]'>
             <Header/>
             <View/>
+            <Footer/>
 
             <Link to="/detail">
     	        <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
@@ -30,7 +32,7 @@ const Main = () => {
                 </button>
             </Link>
 
-        </>
+        </div>
     );
 };
 

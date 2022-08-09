@@ -13,7 +13,7 @@
     color: black;
 }
 
-.k1container {
+.k1-container {
     margin-left: 48px;
     margin-right: 48px;
     max-width: 1600px;
@@ -408,6 +408,52 @@
     vertical-align: middle;
 }
 
+.k1-global-content {
+    padding: 32px 0 16px;
+    min-height: 360px;
+}
+
+.k1-article-feedback {
+    border-top: 1px solid #d5d4d1;
+    margin-top: 24px;
+    padding: 24px 0;
+}
+
+.k1-feedback-prompt:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.k1-feedback-header {
+    float: left;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.k1-h-btn.k1-btn-link {
+    display: inline;
+    background: none;
+    border: 0;
+    padding: 0;
+    line-height: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    vertical-align: inherit;
+    position: relative;
+    color: #000;
+    text-decoration: underline;
+}
+
+.k1-article-feedback .k1-feedback-prompt .k1-prompt-buttons .k1-h-btn {
+    margin: 0 0 0 16px;
+    min-width: 0;
+    font-size: 16px;
+}
+
+
 
 
 /* ---------------------------------------------------------------------------- */
@@ -511,4 +557,258 @@
     text-decoration: underline;
 }
 
+.k2-li {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: -8px;
+    margin-left: 20px;
+    list-style: disc;
+}
 
+.k2-ul {
+    margin: 24px 0;
+}
+
+a {
+    
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.k2-accordion .k2-tab .k2-open {
+    margin-bottom: 24px;
+}
+
+.k2-accordion .k2-tab {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    background: #fff;
+    border: 1px solid #eaeae6;
+    border-radius: 4px;
+    margin: 0 0 8px;
+}
+
+.k2-accordion .k2-tab .k2-tab-title.open h2:before {
+    transform: rotate(180deg);
+}
+
+.k2-accordion .k2-tab .k2-tab-title h2:before {
+    background: url(https://help.nflxext.com/helpcenter/5810068f6a686d6a6879f635716f6c70.svg);
+    background-position: 50%;
+    color: #e50914;
+    content: "";
+    height: 24px;
+    left: 4px;
+    position: absolute;
+    top: 4px;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    transition: transform .25s ease;
+    width: 24px;
+}
+
+.k2-accordion .k2-tab .k2-tab-title h2 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    cursor: pointer;
+    margin: 0!important;
+    padding: 4px 4px 4px 32px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+
+
+.k2-page-article .k2-has-related-articles .k2-related-articles a {
+    position: relative;
+    color: #000;
+    text-decoration: underline;
+    display: inline;
+}
+
+.k2-container {
+    max-width: 1248px;
+    padding: 0 48px;
+    margin: 0 auto;
+}
+
+.k2-.global-content {
+    padding: 32px 0 16px;
+    min-height: 360px;
+}
+
+.k2-article-content 
+.k2-has-related-articles 
+.k2-container, 
+.k2-page-article 
+.k2-has-related-articles 
+.k2-container, 
+.k2-page-troubleshooting 
+.k2-has-related-articles 
+.k2-container {
+    max-width: 1248px;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 50px;
+    margin-bottom: 32px;
+}
+
+
+.k2-has-related-articles {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.k2-page-article 
+.k2-has-related-articles
+.k2-left-pane {
+    width: 68px;
+    float: left;
+}
+
+.k2-page-article {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    border-left: 4px solid #d5d4d1;
+    color: #221f1f;
+    display: block;
+    margin: 8px 0 24px;
+    padding: 0 12px;
+    position: relative;
+}
+
+.k2-note {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    border-left: 4px solid #d5d4d1;
+    color: #221f1f;
+    display: block;
+    margin: 8px 0 24px;
+    padding: 0 12px;
+    position: relative;
+}
+
+.k2-icon-wrap {
+    font-weight: 700;
+    margin: 0 4px 0 0;
+    text-transform: uppercase;
+}
+
+.k2-page-article .k2-note>div {
+    display: inline;
+}
+
+.k2-ol {
+    margin: 24px 0;
+    /* list-style: decimal; */
+    padding-left: 24px;
+}
+
+.k2-page-block k2-ol li {
+    margin: 0 0 8px;
+    padding: 0 0 0 24px;
+    position: relative;
+}
+
+::marker {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: start !important;
+}
+
+.k2-aa {
+    color: #e50914;
+    font-weight: 400;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.k2-page-block ul li:before {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    content: "";
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 24px;
+}
+
+.k2-page-block ul li {
+    margin: 0 0 8px;
+    padding: 0 0 0 24px;
+    position: relative;
+}
+
+.k2-page-article {
+    float: left;
+    width: 32%;
+}
+
+.k2-right-pane {
+    float: left;
+    width: 32%;
+}
+
+.k2-pane-wrapper:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.k2-global-header .k2-dropdown.open .k2-dropdown-menu {
+    display: block;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-menu {
+    background: #f5f5f1;
+    border-radius: 4px;
+    box-shadow: 0 0 16px rgb(0 0 0 / 14%), inset 0 0 0 1px #b6b5b2;
+    display: none;
+    margin-top: 16px;
+    padding: 16px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-menu li {
+    display: block;
+    margin: 0 0 8px;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-menu a {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #221f1f;
+    display: inline-block;
+    padding-right: 24px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-menu a:after {
+    background: url(https://help.nflxext.com/helpcenter/5177e9cd4c72a1773b001f7bfa929ffb.svg);
+    background-position: 50%;
+    content: "";
+    height: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
+    top: 2px /*!rtl:begin:ignore*/ /*!rtl:end:ignore*/;
+}

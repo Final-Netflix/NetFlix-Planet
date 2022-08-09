@@ -8,6 +8,10 @@ import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypageContainer from "./components/my_page/MypageContainer";
 import ServiceCenterDetail from "./components/service_center/ServiceCenterDetail";
+import MypageSelf_phone from "components/my_page/MypageSelf_phone";
+import MypageMailChange from "components/my_page/MypageMailChange";
+import MypagePassword from "components/my_page/MypagePassword";
+
 
 function App() {
   const [hello, setHello] = useState('')
@@ -29,12 +33,12 @@ function App() {
 
             <Route path="/detail" element={ <Detail/> }></Route>
             <Route path="/my" element={ <MyPage/> }></Route>
-            <Route path="/container" element={ <MypageContainer/> }></Route>
+            <Route path="/container" element={ <MypagePassword/> }></Route>
             <Route path="/service" element={ <ServiceCenter/> }></Route>
 
             <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
             <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
-          
+
           </Routes>  
         </BrowserRouter>
        {/* <br/> */}
