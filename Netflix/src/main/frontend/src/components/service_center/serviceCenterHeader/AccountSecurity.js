@@ -34,11 +34,11 @@ const AccountSecurity = () => {
     return (
         <>
         <h1>계정 보안을 유지하는 방법</h1>
-        <div>
-            <div>
+        <div className="k1-pane-wrapper">
+            <div className="k1-left-pane">
                 <div>
-                    <div className="k2-page-block">
-                        <div className="k2-c-wrapper">
+                    <div className="k1-page-block">
+                        <div className="k1-c-wrapper">
                             <div>
                                 <p>플래닛에서는 계정과 개인정보를 안전하게 보호하기 위해 몇 가지 사항을 권장하고 있습니다.</p>
                             </div>
@@ -52,13 +52,13 @@ const AccountSecurity = () => {
                                 </p>
                             </div>
                             <div>
-                                <div className="k2-strong text-[16px] font-bold mb-[16px]">
+                                <div className="k1-strong text-[16px] font-bold mb-[16px]">
                                     <strong>비밀번호는 다음과 같은 규칙을 따라야 합니다.</strong>
                                 </div>
                                 <div>
                                     <span datatype="RC" datatnid="112292">
-                                        <div className="k2-page-block">
-                                            <div className="k2-c-wrapper">
+                                        <div className="k1-page-block">
+                                            <div className="k1-c-wrapper">
                                                 <div>
                                                     <ul className="k2-ul">
                                                         <li className="k2-li">
@@ -96,14 +96,14 @@ const AccountSecurity = () => {
                                     <strong>기타 취해야 할 조치</strong>
                                 </h2>
                             </div>
-                            <div className="k2-accordion mt-[20px]">
-                                <div className="c-wrapper">
-                                    <div className="tab level-1 open" >
-                                        <div className="tab-title open">
+                            <div className="k1-accordion mt-[20px]">
+                                <div className="k1-c-wrapper">
+                                    <div className="k1-tab level-1 open" >
+                                        <div className="k1-tab-title open">
                                             <h2>
-                                                <a role="button" className="k2_button">
-                                                    <Link to='' role="button" onClick={()=>openTab1()}>
-                                                    <span className="c-caret"></span>
+                                                <a role="button" className="k1-button">
+                                                    <Link to='' role="k1-button" onClick={()=>openTab1()}>
+                                                    <span className="k1-c-caret"></span>
                                                     신원 도용 또는 의심스러운 활동 신고
                                                     </Link>
                                                 </a>
@@ -113,8 +113,8 @@ const AccountSecurity = () => {
 
                                         visible1 &&
 
-                                        <div className="tab-content">
-                                            <div className="c-wrapper">
+                                        <div className="k1-tab-content">
+                                            <div className="k1-c-wrapper">
                                                 <div>
                                                     <p>
                                                         넷플릭스에서는 사기 행위를 심각하게 생각합니다. 의심스럽거나 알 수 없는 청구 내역 또는 무단 계정 활동을 발견하는 경우
@@ -129,12 +129,12 @@ const AccountSecurity = () => {
 
                                     </div>
                                     
-                                    <div className="tab level-1 open" >
-                                        <div className="tab-title open">
+                                    <div className="k1-tab level-1 open" >
+                                        <div className="k1-tab-title open">
                                             <h2>
-                                                <a role="button">
+                                                <a role="k1-button">
                                                 <Link to='' role="button" onClick={()=>openTab2()}>
-                                                    <span className="c-caret"></span>
+                                                    <span className="k1-c-caret"></span>
                                                     비밀번호 복구용 전화번호 등록
                                                 </Link>    
                                                 </a>
@@ -145,8 +145,8 @@ const AccountSecurity = () => {
 
                                         visible2 &&
 
-                                        <div className="tab-content">
-                                            <div className="c-wrapper">
+                                        <div className="k1-tab-content">
+                                            <div className="k1-c-wrapper">
                                                 <div>
                                                     <p>
                                                         계정에 전화번호를 등록하여, 비밀번호를 잊은 경우 비밀번호를 복구할 수 있도록 하세요. 전화번호를 추가하거나 업데이트하려면
@@ -160,12 +160,12 @@ const AccountSecurity = () => {
                                         }
 
                                     </div>
-                                    <div className="tab level-1 open" >
-                                        <div className="tab-title open">
+                                    <div className="k1-tab level-1 open" >
+                                        <div className="k1-tab-title open">
                                             <h2>
-                                                <a role="button">
+                                                <a role="k1-button">
                                                     <Link to='' role="button" onClick={()=>openTab3()}>
-                                                    <span className="c-caret"></span>
+                                                    <span className="k1-c-caret"></span>
                                                     사용하지 않는 디바이스에서 로그아웃
                                                     </Link>
                                                 </a>
@@ -176,8 +176,8 @@ const AccountSecurity = () => {
 
                                         visible3 &&
 
-                                        <div className="tab-content">
-                                            <div className="c-wrapper">
+                                        <div className="k1-tab-content">
+                                            <div className="k1-c-wrapper">
                                                 <div>
                                                     <p>
                                                         넷플릭스를 시청하는 데 사용하던 디바이스를 처분했나요? 넷플릭스를 포함하여 해당 디바이스에서 사용했던 모든 계정 또는 서비스에서 반드시 로그아웃해야 합니다.
@@ -193,12 +193,12 @@ const AccountSecurity = () => {
                                         }
 
                                     </div>
-                                    <div className="tab level-1 open" >
-                                        <div className="tab-title open">
+                                    <div className="k1-tab level-1 open" >
+                                        <div className="k1-tab-title open">
                                             <h2>
-                                                <a role="button">
-                                                    <Link to='' role="button" onClick={()=>openTab4()}>
-                                                    <span className="c-caret"></span>
+                                                <a role="k1-button">
+                                                    <Link to='' role="k1-button" onClick={()=>openTab4()}>
+                                                    <span className="k1-c-caret"></span>
                                                     가짜 메시지 및 웹사이트(피싱)에 유의
                                                     </Link>
                                                 </a>
@@ -209,8 +209,8 @@ const AccountSecurity = () => {
 
                                         visible4 && 
 
-                                        <div className="tab-content">
-                                            <div className="c-wrapper">
+                                        <div className="k1-tab-content">
+                                            <div className="k1-c-wrapper">
                                                 <div>
                                                     <p>
                                                     피싱이란 온라인에서 신뢰할 수 있는 웹사이트나 회사로 가장하여 사용자의 개인정보를 훔치려는 시도를 가리킵니다.
@@ -230,12 +230,12 @@ const AccountSecurity = () => {
                                         }
 
                                     </div>
-                                    <div className="tab level-1 open" >
-                                        <div className="tab-title open">
+                                    <div className="k1-tab level-1 open" >
+                                        <div className="k1-tab-title open">
                                             <h2>
                                                 <a role="button">
                                                     <Link to='' role="button" onClick={()=>openTab5()}>
-                                                    <span className="c-caret"></span>
+                                                    <span className="k1-c-caret"></span>
                                                     컴퓨터를 안전하게 보호
                                                     </Link>
                                                 </a>
@@ -245,8 +245,8 @@ const AccountSecurity = () => {
 
                                         visible5 &&
 
-                                        <div className="tab-content">
-                                            <div className="k2-c-wrapper">
+                                        <div className="k1-tab-content">
+                                            <div className="k1-k2-c-wrapper">
                                                 <div>
                                                     <p>
                                                     악성 코드 및 바이러스로부터 컴퓨터를 안전하게 보호하세요. 컴퓨터가 악성 코드 또는 바이러스에 감염되면 다음과 같은 증상이 나타납니다.
@@ -326,12 +326,12 @@ const AccountSecurity = () => {
                                         }
 
                                     </div>
-                                    <div className="tab level-1 open" >
-                                        <div className="tab-title open">
+                                    <div className="k1-tab level-1 open" >
+                                        <div className="k1-tab-title open">
                                             <h2>
-                                                <a role="button">
+                                                <a role="k1-button">
                                                     <Link to='' role="button" onClick={()=>openTab6()}>
-                                                    <span className="c-caret"></span>
+                                                    <span className="k1-c-caret"></span>
                                                     보함 결함 발견 시 플래닛에 신고
                                                     </Link>
                                                 </a>
@@ -342,8 +342,8 @@ const AccountSecurity = () => {
 
                                         visible6 && 
 
-                                        <div className="tab-content">
-                                            <div className="c-wrapper">
+                                        <div className="k1-tab-content">
+                                            <div className="k1-c-wrapper">
                                                 <div>
                                                     <p>
                                                         넷플릭스 콘텐츠 또는 앱에서 보안 취약성을 발견한 경우, 가능한 빠른 시일 내에 넷플릭스의 
@@ -375,21 +375,53 @@ const AccountSecurity = () => {
                             </div>
                         </div>
                     </div>
-                    <div id="article-feedback-container">
-                        <div className="article-feedback">
-                            <div className="feedback-prompt">
-                                <div className="feedback-header">
+                    <div id="k1-article-feedback-container">
+                        <div className="k1-article-feedback">
+                            <div className="k1-feedback-prompt">
+                                <div className="k1-feedback-header">
                                     <strong>이 문서가 도움이 되었나요?</strong>
                                 </div>
-                                <div className="promt-buttons">
-                                    <button className="h-btn btn-link">예</button>
-                                    <button className="h-btn btn-link">아니요</button>
+                                <div className="k1-prompt-buttons">
+                                    <button className="k1-h-btn k1-btn-link">예</button>
+                                    <button className="k1-h-btn k1-btn-link">아니요</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+                <div className="k1-right-pane">
+                    <div className="K1-wrapper">
+                        <div className="K1-page-block">
+                            <h3>추천 문서</h3>
+                            <ul className="K1-related-articles mb-4">
+                                <li className="K1-related-article list-disc ml-5">
+                                    <a className="text-[18px] underline">프로필 생성 및 수정 방법</a>
+                                </li>
+                            </ul>
+                            <ul className="K1-related-articles mb-4">
+                                <li className="K1-related-article list-disc ml-5">
+                                    <a className="text-[18px] underline">비밀번호 복구를 위한 전화번호 설정 방법</a>
+                                </li>
+                            </ul>
+                            <ul className="K1-related-articles mb-4">
+                                <li className="K1-related-article list-disc ml-5">
+                                    <a className="text-[18px] underline">시청 기록에서 컨텐츠를 숨기는 방법</a>
+                                </li>
+                            </ul>
+                            <ul className="K1-related-articles mb-4">
+                                <li className="K1-related-article list-disc ml-5">
+                                    <a className="text-[18px] underline">플래닛에서 언어를 변경하는 방법</a>
+                                </li>
+                            </ul>
+                            <ul className="K1-related-articles mb-4">
+                                <li className="K1-related-article list-disc ml-5">
+                                    <a className="text-[18px] underline">PayPal 청구 ID 또는 결제 ID 찾기</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
         </div>
         </>
     );

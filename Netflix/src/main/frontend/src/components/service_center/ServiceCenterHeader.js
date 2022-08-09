@@ -55,23 +55,23 @@ const ServiceCenterHeader = () => {
                     </div>
                 </div>
             </div>
-            <div className="notifications">
-                <div className="notification-holder">
+            <div className="k2-notifications">
+                <div className="k2-notification-holder">
                     <div></div>
                 </div>
             </div>
-            <div id ="personalization-placeholder">
-                <div id="personalization-container" className="personalization blok pt-[32px] bg-stone-100 border-2 border-solid border-[#dedede] text-black pl-[110px] pb-6">
-                    <div className="container">
-                        <h2 className="personalization-intro font-extrabold text-2xl">옥지님, 안녕하세요.</h2>
+            <div id ="k2-personalization-placeholder">
+                <div id="k2-personalization-container" className="k2-personalization blok pt-[32px] bg-stone-100 border-2 border-solid border-[#dedede] text-black pl-[110px] pb-6">
+                    <div className="k2-container">
+                        <h2 className="k2-personalization-intro font-extrabold text-2xl">옥지님, 안녕하세요.</h2>
                     </div>
-                    <div className="personalization-module">
-                        <div className="container">
-                            <div id="device-errors-container" className="device-errors">
-                                <div id="recommendations-placeholder">
-                                    <div className="recommendations pt-6">
-                                        <p className="recommendations-title text-[16px] mb-[16px]">도움이 될 만한 문서</p>
-                                        <div className="recommendations-wrapper flex flex-wrap flex-row ">
+                    <div className="k2-personalization-module">
+                        <div className="k2-container">
+                            <div id="k2-device-errors-container" className="k2-device-errors">
+                                <div id="k2-recommendations-placeholder">
+                                    <div className="k2-recommendations pt-6">
+                                        <p className="k2-recommendations-title text-[16px] mb-[16px]">도움이 될 만한 문서</p>
+                                        <div className="k2-recommendations-wrapper flex flex-wrap flex-row ">
                                             
                                             <Recommendations />
                                         </div>

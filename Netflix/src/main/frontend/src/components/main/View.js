@@ -9,6 +9,14 @@ const View = () => {
             <Special/>
             <TopTen/>
             <Recommend/>
+            <Recommend/>
+            <Recommend/>
+            <Recommend/>
+            <Recommend/>
+            <Recommend/>
+            <Recommend/>
+            <Recommend/>
+            <Recommend/>
         </div>
     );
 };

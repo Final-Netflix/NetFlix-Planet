@@ -13,7 +13,8 @@ import ProfileProduceWay from './serviceCenterDetail/ProfileProduceWay';
 import OfflineWatchWay from './serviceCenterDetail/OfflineWatchWay';
 import PlanetOnTv from './serviceCenterDetail/PlanetOnTv';
 import AccountSecurity from './serviceCenterHeader/AccountSecurity';
-import ServiceCenterFooter from './ServiceCenterFooter';
+import ChildProtection from './serviceCenterHeader/ChildProtection';
+import ChangeMembership from './serviceCenterHeader/ChangeMembership';
 
 const ServiceCenterDetail = () => {
     const {category} = useParams()
@@ -58,6 +59,8 @@ const ServiceCenterDetail = () => {
                             if (category === 'planetOnTv') return (<PlanetOnTv/>);
                             if (category === 'offlineWatchWay') return (<OfflineWatchWay/>);
                             if (category === 'accountSecurity') return (<AccountSecurity />);
+                            if (category === 'childProtection') return (<ChildProtection />);
+                            if (category === 'changeMembership') return (<ChangeMembership />); 
                         })()
                     }
                    
