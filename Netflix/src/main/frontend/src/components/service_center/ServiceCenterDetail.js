@@ -13,7 +13,6 @@ import ProfileProduceWay from './serviceCenterDetail/ProfileProduceWay';
 import OfflineWatchWay from './serviceCenterDetail/OfflineWatchWay';
 import PlanetOnTv from './serviceCenterDetail/PlanetOnTv';
 import AccountSecurity from './serviceCenterHeader/AccountSecurity';
-import ServiceCenterFooter from './ServiceCenterFooter';
 import ChildProtection from './serviceCenterHeader/ChildProtection';
 import ChangeMembership from './serviceCenterHeader/ChangeMembership';
 
