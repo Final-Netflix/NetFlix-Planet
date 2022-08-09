@@ -3,7 +3,7 @@ import 'css/myPage/MypageContainer.css'
 const MypagePassword = () => {
     return (
         <div>
-            <div className="bd">
+            <div className="m1_bd">
                 <div className="responsive-account-container">
                     <form className="change-password-form" data-uia="change-password-form" method="post" noValidate="">
                         <h1>비밀번호 변경</h1>

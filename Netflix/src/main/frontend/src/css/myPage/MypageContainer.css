@@ -1,22 +1,6 @@
-@media only screen and (min-width: 500px) {
-    body .bd {
-        margin: 20px 30px 0;
-    }
-}
-body .bd {
+body .m1_bd {
     margin: 15px 0 0;
     padding: 0;
-}
-* {
-    letter-spacing: 0!important;
-}
-.netflix-sans-font-loaded {
-    font-family: Netflix Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
-}
-body {
-    word-break: keep-all;
-}
-body, html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #f3f3f3;
@@ -24,20 +8,25 @@ body, html {
     direction: ltr;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 16px;
-}
-html {
+    word-break: keep-all;
     cursor: default;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     font-family: sans-serif;
 }
-@media only screen and (min-width: 740px) {
-    .responsive-account-container {
-        font-size: 1em;
-        max-width: 1024px;
-        width: 95%;
+@media only screen and (min-width: 500px) {
+    body .bd {
+        margin: 20px 30px 0;
     }
 }
+
+* {
+    letter-spacing: 0!important;
+}
+.netflix-sans-font-loaded {
+    font-family: Netflix Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
 .responsive-account-container {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     color: #333;
@@ -50,20 +39,30 @@ html {
     position: relative;
     width: 90%;
 }
+
+@media only screen and (min-width: 740px) {
+    .responsive-account-container {
+        font-size: 1em;
+        max-width: 1024px;
+        width: 95%;
+    }
+}
+
 .responsive-account-container * {
     box-sizing: border-box;
 }
-@media screen and (min-width: 740px) {
-    h1 {
-        font-size: 2.15em;
-        margin: 0 0 .55em;
-    }
-}
+
 .change-password-form h1 {
     color: #333;
     font-size: 1.5em;
     font-weight: 400;
     margin: 0 0 .4em;
+}
+@media screen and (min-width: 740px) {
+    .change-password-form h1 {
+        font-size: 2.15em;
+        margin: 0 0 .55em;
+    }
 }
 .change-password-form ul.structural {
     margin: 0;
@@ -118,11 +117,7 @@ html {
     font: inherit;
     margin: 0;
 }
-@media only screen and (min-width: 740px) {
-    .change-password-form .nfInput .placeLabel {
-        font-size: 16px;
-    }
-}
+
 .nfInput .placeLabel {
     color: #8c8c8c;
     font-size: 14px;
@@ -190,25 +185,9 @@ input[type="checkbox"], input[type="radio"] {
 .change-password-buttons {
     margin-top: 2.25em;
 }
-@media only screen and (min-width: 500px) {
-    .change-password-buttons .nf-btn {
-        margin: 0 10px 0 0;
-    }
-}
+
 .change-password-buttons .nf-btn {
     margin: 10px 0;
-}
-@media only screen and (min-width: 500px) {
-    .nf-btn.nf-btn-small {
-        display: inline-block;
-        font-size: 13px;
-        line-height: 1rem;
-        margin-right: .5rem;
-        min-height: 37px;
-        min-width: 98px;
-        padding: .75rem 1rem;
-        width: auto;
-    }
 }
 
 .nf-btn-retro.nf-btn-primary {
@@ -268,3 +247,437 @@ input[type=checkbox], input[type=radio] {
 .nfFormSpace {
     margin-bottom: 3.8%;
 }
+@media only screen and (min-width: 500px) {
+    .change-password-buttons .nf-btn {
+        margin: 0 10px 0 0;
+    }
+}
+@media only screen and (min-width: 500px) {
+    .change-password-buttons .nf-btn.nf-btn-small {
+        display: inline-block;
+        font-size: 13px;
+        line-height: 1rem;
+        margin-right: .5rem;
+        min-height: 37px;
+        min-width: 98px;
+        padding: .75rem 1rem;
+        width: auto;
+    }
+}
+@media only screen and (min-width: 740px) {
+    .change-password-form .nfInput .placeLabel {
+        font-size: 16px;
+    }
+}
+
+
+
+
+/* Mypagephone */
+body .m1_bd {
+    margin: 15px 0 0;
+    padding: 0;
+}
+.m1_responsive-account-container {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    color: #333;
+    display: block;
+    font-size: 1em;
+    margin: 0 auto;
+    min-height: 400px;
+    min-width: 300px;
+    overflow-wrap: anywhere;
+    position: relative;
+    width: 90%;
+}
+
+.m1_responsive-account-container * {
+    box-sizing: border-box;
+}
+.m1_headline {
+    font-weight: 900;
+    margin: 0;
+}
+.m1_change-phone-form h1 {
+    color: #333;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0 0 .4em;
+    font-size: 2em;
+    margin: .67em 0;
+}
+.m1_secondary {
+    line-height: 22px;
+}
+.m1_simpleForm.structural.ui-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+ul.m1_structural {
+    margin: 0;
+    padding: 0;
+}
+ul.m1_structural li {
+    margin-bottom: 30px;
+}
+ul.m1_structural li.m1_country-code {
+    border: 1px solid #b3b3b3;
+    border-radius: 2px 0 0 2px;
+}
+ul.m1_structural>li {
+    list-style: none;
+    margin-left: 0;
+}
+.m1_nfFormSpace {
+    display: inline-block;
+}
+.m1_country-code {
+    box-sizing: inherit;
+    color: #999;
+    font-style: normal;
+}
+ul.m1_structural li.m1_phone-number {
+    border: 1px solid #b3b3b3;
+    border-radius: 0 2px 2px 0;
+}
+.m1_nfInput, .m1_nfInput .m1_nfInputPlacement {
+    position: relative;
+}
+.m1_nfInput {
+    max-width: 500px;
+}
+#id_phoneNumber, .m1_country-code .m1_ui-select-wrapper.country-select {
+    border: 0;
+}
+#id_password, #id_phoneNumber {
+    font-size: 18px;
+    padding: 10px;
+}
+.m1_nfInput .m1_nfTextField {
+    height: 48px;
+    padding: 10px 10px 0;
+    width: 100%;
+}
+.m1_nfTextField:invalid, .m1_nfTextField:valid {
+    box-shadow: none;
+}
+.m1_nfTextField {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #000;
+    display: block;
+    font-size: 16px;
+    height: 44px;
+    padding: 10px 11px;
+    width: 100%;
+}
+.m1_nf-btn.m1_nf-btn-small {
+    display: block;
+    line-height: 50px;
+    padding: 0;
+}
+.m1_nf-btn-retro.m1_nf-btn-primary {
+    background-color: #0f84fa;
+    color: #fff;
+    cursor: pointer;
+    padding: 13px 2rem;
+    text-decoration: none;
+}
+.m1_nf-btn-retro.m1_nf-btn-secondary {
+    background: #ccc;
+    color: #333;
+}
+.m1_nf-btn {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 25%);
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: .025rem;
+    line-height: 1rem;
+    text-align: center;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+}
+.m1_nf-btn-solid.m1_nf-btn-secondary, .m1_nf-btn-twotone.m1_nf-btn-secondary {
+    background-color: #ccc;
+    color: #000;
+}
+
+
+
+
+@media only screen and (min-width: 500px) {
+    body .m1_bd {
+        margin: 20px 30px 0;
+    }
+}
+@media only screen and (min-width: 740px) {
+    .m1_responsive-account-container {
+        font-size: 1em;
+        max-width: 1024px;
+        width: 95%;
+    }
+}
+@media screen and (min-width: 740px) {
+    .m1_change-phone-form h1 {
+        font-size: 2.15em;
+        margin: 0 0 .55em;
+    }
+}
+@media only screen and (min-width: 740px) {
+    .m1_ui-select-wrapper {
+        max-width: 600px;
+    }
+}
+@media only screen and (min-width: 500px) {
+    .m1_nf-btn.m1_nf-btn-small {
+        display: inline-block;
+        font-size: 13px;
+        line-height: 1rem;
+        margin-right: .5rem;
+        min-height: 37px;
+        min-width: 98px;
+        padding: .75rem 1rem;
+        width: auto;
+    }
+}
+
+
+/* MypageMemberShip */
+.m1_change-plan-component h1 {
+    color: #333;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0 0 .4em;
+}
+.m1_stacked-large-selection-list {
+    box-sizing: border-box;
+}
+ul.m1_structural {
+    margin: 0;
+    padding: 0;
+}
+ul.m1_structural>li {
+    list-style: none;
+    margin-left: 0;
+}
+.m1_stacked-large-selection-list-item {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    margin-bottom: .5em;
+    position: relative;
+}
+.m1_stacked-selection-header {
+    box-sizing: border-box;
+    font-size: 1em;
+    padding: .75em 1.6em;
+}
+.m1_stacked-selection-header>.item-header {
+    font-size: 1em;
+    margin: 0;
+}
+.m1_change-plan-component h2,.m1_change-plan-component h3,
+.m1_change-plan-component h4,.m1_change-plan-component h5 {
+    font-weight: 400;
+    margin: .75em 0 .25em;
+}
+.m1_selected .m1_plan-name {
+    color: #077af5;
+}
+.m1_plan-name {
+    font-weight: 700;
+}
+.m1_stacked-selection-header-right {
+    background: transparent;
+    display: none;
+}
+.m1_stacked-large-selection-list-item-disabled.selected>.m1_stacked-selection-header-right, 
+.m1_stacked-large-selection-list-item.selected>.m1_stacked-selection-header-right {
+    background: transparent;
+}
+.m1_stacked-selection-header {
+    box-sizing: border-box;
+    font-size: 1em;
+    padding: .75em 1.6em;
+}
+.m1_stacked-selection-header-right>.m1_item-header {
+    font-size: 1em;
+    margin: 0;
+}
+.m1_plan-price {
+    display: inline;
+    font-size: 1em;
+    font-weight: 700;
+}
+.m1_stacked-large-selection-list-item-disabled.selected>.m1_header-divider, 
+.m1_stacked-large-selection-list-item.selected>.m1_header-divider {
+    background: #ccc;
+    margin: 0 0 .75em;
+}
+.m1_header-divider {
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    margin: 0 1.25em .75em;
+    padding: 0;
+}
+.m1_stacked-selection-item-body {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 1em .75em 1.25em;
+}
+.m1_stacked-selection-item-body-content {
+    display: table-cell;
+    vertical-align: middle;
+}
+.m1_extra-markup:after, 
+.m1_plan-description-markup:after {
+    content: " ";
+}
+.m1_stacked-selection-item-body .m1_plan-price {
+    display: inline-block;
+}
+.m1_selected-indicator {
+    background: #077af5;
+    background-image: url(https://assets.nflxext.com/en_us/Account/sprite_icons_MyAcct_63x205_v2.png);
+    background-position: -17px -325px;
+    border-radius: 1em;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1em;
+    height: 2em;
+    left: -1em;
+    margin-top: -1em;
+    position: absolute;
+    text-indent: -999em;
+    top: 50%;
+    width: 2em;
+}
+.m1_clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+}
+.m1_terms-of-use+.m1_terms-of-use {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.m1_terms-of-use {
+    font-size: .75em;
+    margin: 0 2px;
+}
+.m1_change-plan-component a {
+    color: #0080ff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.m1_change-plan-component .m1_disclaimerPartner {
+    font-size: .75em;
+    padding: 10px 0 20px;
+}
+.m1_btn-bar.m1_btn-bar-center {
+    text-align: center;
+}
+.m1_btn-bar {
+    box-sizing: border-box;
+    padding: 1em 0;
+    width: 100%;
+    clear: both;
+}
+.m1_btn-bar-center .m1_btn {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+.m1_action-button.disabled, .m1_btn-blue.disabled, .m1_btn-submit.disabled {
+    background-color: #0080ff;
+    background-image: linear-gradient(180deg,#0080ff,#0272e2);
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%), 0 1px 0 rgb(0 0 0 / 55%);
+}
+.m1_btn.disabled {
+    background-color: #e6e6e6;
+    background-image: linear-gradient(180deg,#e6e6e6,#ddd);
+    box-shadow: 0 1px 0 rgb(0 0 0 / 20%);
+}
+.m1_btn {
+    font-size: 1em;
+    margin: .5em .5em .5em 0;
+    min-height: 50px;
+    min-width: 74px;
+    padding: 24.5px 2em;
+    position: relative;
+}
+.m1_btn {
+    background-color: #e6e6e6;
+    background-image: linear-gradient(180deg,#e6e6e6,#ddd);
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 20%);
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    letter-spacing: .1px;
+    line-height: 1em;
+    text-align: center;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+}
+.m1_btn-gray, .m1_btn-plain {
+    background-color: #e6e6e6;
+    background-image: linear-gradient(180deg,#e6e6e6,#ddd);
+    box-shadow: 0 1px 0 rgb(0 0 0 / 20%);
+    color: #000;
+}
+.m1_action-button.disabled, .m1_btn-blue.disabled, .m1_btn-submit.disabled {
+    background-color: #0080ff;
+    background-image: linear-gradient(180deg,#0080ff,#0272e2);
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 30%), 0 1px 0 rgb(0 0 0 / 55%);
+}
+
+@media screen and (min-width: 740px) {
+    .m1_change-plan-component h1 {
+        font-size: 2.15em;
+        margin: 0 0 .55em;
+        
+    }
+}
+@media only screen and (min-width: 360px) {
+    .m1_btn-bar {
+        text-align: center;
+    }
+}
+@media only screen and (min-width: 500px) {
+
+    .m1_btn.m1_btn-small {
+        display: inline-block;
+        font-size: 13px;
+        line-height: 1em;
+        margin-right: .5em;
+        min-height: 37px;
+        min-width: 98px;
+        padding: 12px 1em;
+        width: auto;
+    }
+}
+
