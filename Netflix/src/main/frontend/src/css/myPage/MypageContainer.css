@@ -59,30 +59,30 @@ html {
         margin: 0 0 .55em;
     }
 }
-h1 {
+.change-password-form h1 {
     color: #333;
     font-size: 1.5em;
     font-weight: 400;
     margin: 0 0 .4em;
 }
-ul.structural {
+.change-password-form ul.structural {
     margin: 0;
     padding: 0;
 }
 .nfFormSpace:first-child {
     margin-bottom: 4%;
 }
-ul.structural>li {
+.change-password-form ul.structural>li {
     list-style: none;
     margin-left: 0;
 }
-.nfInput, .nfInput .nfInputPlacement {
+.change-password-form .nfInput,.change-password-form .nfInput .nfInputPlacement {
     position: relative;
 }
-.nfInput {
+.change-password-form .nfInput {
     max-width: 500px;
 }
-label {
+.change-password-form label {
     cursor: default;
 }
 .nfInput .nfTextField {
@@ -90,10 +90,10 @@ label {
     padding: 10px 10px 0;
     width: 100%;
 }
-.nfTextField:invalid, .nfTextField:valid {
+.change-password-form .nfTextField:invalid, .nfTextField:valid {
     box-shadow: none;
 }
-.nfTextField {
+.change-password-form .nfTextField {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -108,16 +108,18 @@ label {
     width: 100%;
     margin-bottom: 5px;
 }
-input {
+.change-password-form input {
     line-height: normal;
 }
-button, input, optgroup, select, textarea {
+.change-password-form button,.change-password-form input,
+.change-password-form optgroup,.change-password-form select,
+.change-password-form textarea {
     color: inherit;
     font: inherit;
     margin: 0;
 }
 @media only screen and (min-width: 740px) {
-    .nfInput .placeLabel {
+    .change-password-form .nfInput .placeLabel {
         font-size: 16px;
     }
 }
@@ -134,11 +136,11 @@ button, input, optgroup, select, textarea {
     color: #8c8c8c;
     font-size: 13px;
 }
-a {
+.change-password-form a {
     color: #0080ff;
     text-decoration: none;
 }
-a {
+.change-password-form a {
     background-color: transparent;
 }
 .ui-binary-input {
