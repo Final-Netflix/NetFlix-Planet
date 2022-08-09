@@ -21,11 +21,14 @@ const ServiceCenter = () => {
                 [<ServiceCenterHeader />,
                 <ServiceCenterContainer />]:
                 <ServiceCenterDetail/>
-
+                
             }
 
             <ServiceCenterFooter />
+            
         </div>
+
+        
     );
 };
 

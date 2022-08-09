@@ -6,9 +6,9 @@ const MypageContainer = () => {
     return (
         <div className='m1_bd small:mt-5 small:mx-[30px] bg-[#f3f3f3] small:mb-0 mt-3 mx-0 mb-0 p-0 tracking-normal font-sans text-[#333] text-[16px] cursor-default  break-[keep-all]' style={{wordBreak : 'keep-all' , direction : 'ltr'}}>
             <div className='m1_responsive-account-container mid:text-[1em] mid:max-w-[1024px] mid:w-[95%] block my-0 mx-auto min-h-[400px] min-w-[300px] relative' style={{overflowWrap:'anywhere'}}>
-                <div className='m1_mfa-challenge-container mt-[50px] mx-auto mb-0 min-w-[684px] box-border text-center'>
+                <div className='m1_mfa-challenge-container mt-[50px] mx-auto mb-0 max-w-[684px] box-border text-center'>
                     <div>
-                        <svg viewBox="0 0 64 76" className="m1_icon-shield h-[100px]">
+                        <svg viewBox="0 0 64 76" className="m1_icon-shield h-[100px] mx-auto mb-[10px]">
                             <g fill="none" fillRule="nonzero">
                                 <path
                                     fill="#B3B3B3"
@@ -29,7 +29,7 @@ const MypageContainer = () => {
                         <form className='m1_select-factor-form border-2 border-solid border-[#e6e6e6] rounded-[10px] shadow-[0_0_5px_2px_#e6e6e6] my-5 mx-auto max-w-[600px] overflow-hidden' method='post'>
                             <button type='button' className='m1_select-factor-button algin-center h-[95px] bg-[#fff] box-border border-0 border-b-2 border-soild border-[#e6e6e6] flex my-auto w-[100%] cursor-pointer normal-case overflow-visible m-0 '>
                                 <div className='m1_button-icon-wrapper p-[15px] my-auto'>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chat text-[#e50914] w-[38px]">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chat  text-[#e50914] w-[38px]">
                                         <path
                                             fillRule="evenodd"
                                             clipRule="evenodd"
