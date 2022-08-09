@@ -13,11 +13,13 @@ const Recommendations = (props) => {
             title: '플레닛 자녀 보호 기능',
             alt: '플레닛 자녀 보호 기능',
             imageUrl: 'https://help.nflxext.com/helpcenter/98f280f0cce17c23059f77fa33186294.svg',
+            href: '/service/detail/childProtection'
         },
         {
             title: '멤버십 변경 방법',
             alt: '멤버십 변경 방법',
             imageUrl: 'https://help.nflxext.com/helpcenter/98f280f0cce17c23059f77fa33186294.svg',
+            href: '/service/detail/changeMembership'
         },
     ]);
     return (
