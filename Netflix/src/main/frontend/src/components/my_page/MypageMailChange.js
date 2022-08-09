@@ -40,5 +40,4 @@ const MypageMailChange = () => {
         </div>
     );
 };
-
 export default MypageMailChange;
