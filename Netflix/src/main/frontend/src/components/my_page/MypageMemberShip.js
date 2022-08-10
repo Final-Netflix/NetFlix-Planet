@@ -8,7 +8,7 @@ const MypageMemberShip = () => {
                     <h1 className="m1_account-header">스트리밍 멤버십 변경</h1>
                     <div id="changePlanPage" className="m1_change-plan-container"></div>
                     <ul className="m1_stacked-large-selection-list m1_structural" role="radiogroup" data-uia="plan-selector">
-                        <li data-uia="plan-option" data-uia-id="plan-option-4001" data-uia-selected="false" data-uia-current="false" className="m1_pointer clearfix stacked-large-selection-list-item" data-uia-is-disabled="false">
+                        <li data-uia="plan-option" data-uia-id="plan-option-4001" data-uia-selected="false" data-uia-current="false" className="m1_pointer m1_clearfix m1_stacked-large-selection-list-item" data-uia-is-disabled="false">
                             <div className="m1_stacked-selection-header">
                                 <h2 className="m1_item-header">
                                     <div>
@@ -92,7 +92,7 @@ const MypageMemberShip = () => {
                     <p id="" className="m1_terms-of-use" data-uia="change-plan-tou-stremaDisclaimer">한집에 사는 사람들만 계정을 함께 이용할 수 있습니다. 프리미엄 멤버십은 동시접속 4명, 스탠다드 멤버십은 2명, 베이식 멤버십은 1명까지 가능합니다.</p>
                     <div id="" className="m1_disclaimerPartner" data-uia="disclaimerPartner">* 실제 금액은 KT 약관에 따라 더 적을 수 있으며, KT 청구서에 표시됩니다.</div>
                     <div className="m1_btn-bar btn-bar-center" data-uia="btn-submit">
-                        <button className="m1_btn disabled m1_save-plan-button m1_btn-blue m1_btn-small" type="button" autocomplete="off" tabindex="0" data-uia="action-save-plan" disabled="">다음</button>
+                        <button className="m1_btn disabled m1_save-plan-button m1_btn-blue m1_btn-small" type="button" autocomplete="off" tabindex="0" data-uia="action-save-plan" disabled>다음</button>
                         <button className="m1_btn m1_cancel-save-button m1_btn-gray m1_btn-small" type="button" autocomplete="off" tabindex="0" data-uia="action-go-back">뒤로가기</button>
                     </div>
                 </div>
