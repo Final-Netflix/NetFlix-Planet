@@ -29,7 +29,6 @@ const TopTen = () => {
                                 <ul className="pagination-indicator">
                                     <li className="active"></li>
                                     <li className=""></li>
-                                    <li className=""></li>
                                 </ul>
                                 <TopTenList data={ data }/>
                                 <span className="handle handleNext active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>

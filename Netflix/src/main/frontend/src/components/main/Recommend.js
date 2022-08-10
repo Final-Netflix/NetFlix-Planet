@@ -21,7 +21,12 @@ const Recommend = () => {
                                 <li className="active"></li>
                                 <li className=""></li>
                                 <li className=""></li>
+                                <li className=""></li>
+                                <li className=""></li>
+                                <li className=""></li>
+                                <li className=""></li>
                             </ul>
+                            <span className="handle handlePrev active" tabIndex="0" role="button" aria-label="이전 콘텐츠 보기"><b className="indicator-icon icon-leftCaret"></b></span>
                             <div className="sliderMask showPeek">
                                 <div className="sliderContent row-with-x-columns">
                                     <div className="slider-item slider-item-0">
