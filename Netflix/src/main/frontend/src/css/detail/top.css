@@ -1,0 +1,167 @@
+.css-1w5d83q-popupBaseCss-popupCss.show {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 200ms ease 0s;
+  visibility: visible;
+}
+.css-1w5d83q-popupBaseCss-popupCss {
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+  opacity: 0;
+  padding: 0px;
+  pointer-events: none;
+  position: absolute;
+  transform: translateZ(0px);
+  transition: opacity 200ms ease 0s;
+  visibility: hidden;
+  will-change: transform, opacity, visibility;
+  z-index: 10;
+  background-color: transparent;
+}
+.css-g5m0d-toolTip-chevronBottom-toolTip {
+  position: relative;
+  padding: 0.6rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(24, 24, 24);
+  background-color: rgb(230, 230, 230);
+  border-radius: 0.3rem;
+  box-shadow: rgb(0 0 0 / 75%) 0px 3px 1rem;
+  box-sizing: border-box;
+  z-index: 1;
+  pointer-events: none;
+  margin-bottom: 1.4rem;
+}
+.css-g5m0d-toolTip-chevronBottom-toolTip::after {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-top: 1rem solid rgb(230, 230, 230);
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 95%;
+}
+/*.color_supplementary:hover {
+  background-color: rgba(42,42,42,.6);
+  border-color: hsla(0,0%,100%,.5);
+  border-width: 2px;
+  border-color: white;
+  background-color: transparent;
+  color: white;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  -webkit-box-align: center;
+  align-items: center;
+  appearance: none;
+  border: 0px;
+  cursor: pointer;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  opacity: 1;
+  padding: 0.8rem;
+  position: relative;
+  user-select: none;
+  will-change: background-color, color;
+  word-break: break-word;
+  white-space: nowrap;
+  border-radius: 50%;
+} */
+.ltr_thumbContainerCss {
+box-shadow: rgb(0 0 0 / 60%) 0px 0px 2px 0px, rgb(0 0 0 / 50%) 0px 8px 16px 0px;
+}
+.ButtonColorStatesCss:hover {
+  max-height: 42px;
+  max-width: 42px;
+  min-height: 32px;
+  min-width: 32px;
+  outline: none;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.2) !important;
+  overflow: visible;
+  -webkit-box-align: center;
+  align-items: center;
+  appearance: none;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  opacity: 1;
+  position: relative;
+  user-select: none;
+  will-change: background-color, color;
+  word-break: break-word;
+  white-space: nowrap;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  padding: 0px;
+  cursor: pointer;
+  color: rgb(169, 169, 169);
+  outline: none;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  z-index: 1;
+  min-width: inherit !important;
+  min-height: inherit !important;
+}
+.tag_item:hover {
+  text-decoration: underline;
+}
+
+//평가하기 - 좋아요
+.css-1ef3g7z.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 200ms ease 0s;
+    visibility: visible;
+}
+.css-1ef3g7z {
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    padding: 0px;
+    pointer-events: none;
+    position: absolute;
+    transform: translateZ(0px);
+    transition: opacity 200ms ease 0s;
+    visibility: hidden;
+    will-change: transform, opacity, visibility;
+    z-index: 10;
+    background-color: transparent;
+}
+.css-m6m86k {
+    position: relative;
+    overflow: hidden;
+}
+.css-1th9py {
+    position: relative;
+    padding: 0.6rem 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: rgb(24, 24, 24);
+    background-color: rgb(230, 230, 230);
+    border-radius: 0.3rem;
+    box-shadow: rgb(0 0 0 / 75%) 0px 3px 1rem;
+    box-sizing: border-box;
+    z-index: 1;
+    pointer-events: none;
+    margin-bottom: 1.4rem;
+}
+.css-1th9py::after {
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-top: 1rem solid rgb(230, 230, 230);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 95%;
+}
