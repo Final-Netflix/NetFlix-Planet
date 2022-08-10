@@ -14,14 +14,14 @@
 }
 
 .k1-container {
-    margin-left: 48px;
-    margin-right: 48px;
-    max-width: 1600px;
+    margin : 0 auto;
+    max-width: 1248px;
     padding: 0 48px;
     
 }
 
 .k1-top-articles .k1-category {
+    margin-top: 60px;
     font-size: 16px;
     font-weight: 300;
     line-height: 24px;
@@ -94,7 +94,13 @@
     display: inline-block;
 }
 
-.k1-global-container .k1-global-content .k1-breadcrumb {
+.k1-global-container .k1-global-content {
+    border-bottom: 1px solid #d5d4d1;
+    margin: 0 0 24px;
+    padding-bottom: 24px;
+}
+
+.k1-breadcrumb {
     border-bottom: 1px solid #d5d4d1;
     margin: 0 0 24px;
     padding-bottom: 24px;
@@ -211,7 +217,31 @@
     padding-left: 24px;
 }
 
+.k1-top-articles .k1-category:first-of-type .k1-category-wrapper {
+    margin-left: 0;
+}
 
+.k1-top-articles .k1-categories .k1-category {
+    width: 25%;
+}
+.k1-top-article a {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4c4948;
+    display: block;
+    padding-right: 24px;
+    position: relative;
+}
+
+.k1-top-article a:hover {
+    color: #e50914;
+    font-weight: 400;
+}
+
+.k2-noreferrer:hover {
+    color: #e50914;
+}
 .k1-page-block ul li:before {
     font-size: 16px;
     font-weight: 400;
@@ -364,6 +394,7 @@
     border: 1px solid #eaeae6;
     border-radius: 4px;
     margin: 0 0 8px;
+    margin-bottom: 24px;
 }
 .k1-accordion .k1-tab .k1-tab-title h2:before {
     background: url(https://help.nflxext.com/helpcenter/5810068f6a686d6a6879f635716f6c70.svg);
@@ -453,14 +484,67 @@
     font-size: 16px;
 }
 
+.k1-page-article img {
+    display: inline-block;
+    height: auto;
+    margin: 0;
+    max-width: 100%;
+    padding: 0 2px;
+    vertical-align: middle;
+}
 
+.k1-NF_UIREF{
+    font-weight: bold;
+}
+
+
+a {
+    color: #e50914;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.page-block h3 {
+    margin-top: 40px;
+}
+
+.k1-page-article h3 {
+    margin-top: 40px;
+}
+
+.k1-related-articles a:hover {
+    color:#4c4948;
+}
+
+.k1-aa:hover {
+    color: #e50914;
+    font-weight: 600;
+}
+
+.k1-breadcrumb a {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    display: inline-block;
+}
 
 
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
 
-
+.k2-recommendation a {
+    flex-direction: row;
+    padding: 16px;
+    text-decoration: none!important;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
 .k2-category .k2-category-wrapper a{
     color: black;
@@ -476,14 +560,6 @@
     margin: 0 0 24px;
     color: black;
 }
-
-.k2-container {
-    margin-left: 48px;
-    margin-right: 48px;
-    max-width: 1600px;
-    padding: 0 48px;
-}
-
 
 .k2-top-articles .k2-category {
     font-size: 16px;
@@ -562,7 +638,7 @@
     line-height: 24px;
     margin-bottom: -8px;
     margin-left: 20px;
-    list-style: disc;
+    /* list-style: disc; */
 }
 
 .k2-ul {
@@ -629,10 +705,20 @@ a {
     display: inline;
 }
 
-.k2-container {
+ .k2-container{
     max-width: 1248px;
     padding: 0 48px;
     margin: 0 auto;
+    padding-top: 24px;
+}
+
+.k2-global-header>.k2-container {
+    position: relative;
+    padding-top: 16px;
+}
+
+.k2-page-home .k2-global-header>.k2-container {
+    padding-top: 24px;
 }
 
 .k2-.global-content {
@@ -640,7 +726,7 @@ a {
     min-height: 360px;
 }
 
-.k2-article-content 
+/* .k2-article-content 
 .k2-has-related-articles 
 .k2-container, 
 .k2-page-article 
@@ -650,7 +736,7 @@ a {
 .k2-has-related-articles 
 .k2-container {
     max-width: 1248px;
-}
+} */
 
 h1 {
     font-size: 40px;
@@ -769,20 +855,104 @@ h1 {
     display: table;
 }
 
-.k2-global-header .k2-dropdown.open .k2-dropdown-menu {
+.k2-global-header .k2-actions {
+    float: none;
+    display: flex;
+    flex: 1 0;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0 0 16px;
+    justify-content: flex-end;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-toggle:after {
+    content: "";
     display: block;
+    margin-top: -10px;
+    height: 24px;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: rotate(180deg);
+    width: 24px;
+}
+
+header .k2-dropdown.open .k2-dropdown-toggle {
+    text-decoration: underline;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-toggle {
+    border-radius: 2px;
+    color: #f5f5f1;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+    padding-right: 32px;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    text-transform: none;
+    white-space: nowrap;
+    border: none;
+}
+
+.k2-global-header .k2-actions .k2-btn {
+    font-size: 16px;
+    line-height: 14px;
+    padding: 8px;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.k2-btn.k2-btn-med {
+    height: 32px;
+    padding: 8px;
+}
+
+.k2-btn{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 15px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: Netflix Sans,Helvetica,Arial,sans-serif;
+    height: 48px;
+    letter-spacing: .01em;
+    min-width: 96px;
+    padding: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color .15s ease,background-color .15s ease;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
 .k2-global-header .k2-dropdown .k2-dropdown-menu {
     background: #f5f5f1;
     border-radius: 4px;
-    box-shadow: 0 0 16px rgb(0 0 0 / 14%), inset 0 0 0 1px #b6b5b2;
-    display: none;
-    margin-top: 16px;
+    box-shadow: 0 0 16pxrgba(0,0,0,.14),inset 0 0 0 1px #b6b5b2;
+    margin-top: 8px;
     padding: 16px;
     position: absolute;
     right: 0;
     top: 100%;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-menu a:after {
+    background: url(https://help.nflxext.com/helpcenter/5177e9cd4c72a1773b001f7bfa929ffb.svg);
+    background-position: 50%;
+    content: "";
+    height: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
+    top: 2px /*!rtl:begin:ignore*/ /*!rtl:end:ignore*/;
 }
 
 .k2-global-header .k2-dropdown .k2-dropdown-menu li {
@@ -801,14 +971,103 @@ h1 {
     white-space: nowrap;
 }
 
-.k2-global-header .k2-dropdown .k2-dropdown-menu a:after {
-    background: url(https://help.nflxext.com/helpcenter/5177e9cd4c72a1773b001f7bfa929ffb.svg);
-    background-position: 50%;
-    content: "";
-    height: 24px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 24px;
-    top: 2px /*!rtl:begin:ignore*/ /*!rtl:end:ignore*/;
+.k2-global-container {
+    margin-bottom: -256px;
+    min-height: 100%;
+}
+
+.k2-page-home .k2-global-header {
+    background: #000;
+}
+
+.k2-global-header {
+    position: relative;
+    /* max-width: 1440px; */
+}
+  
+
+.k2-page-home .k2-container {
+    max-width: 1248px;
+}
+
+.k2-global-header .k2-inner-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.k2-page-home .k2-global-header form {
+    margin: 0 auto;
+    padding-bottom: 32px;
+}
+
+.k2-react-autosuggest__container .k2-form-control {
+    border-color: #8b8a88;
+    padding: 9px 16px 9px 56px;
+}
+
+.k2-form-control {
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #d5d4d1;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 400;
+    outline: none;
+    padding: 17px 16px;
+    width: 100%;
+}
+
+.k2-global-header .k2-branding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 0 0;
+    padding-right: 24px;
+}
+
+.k2-logo{
+    width: 132px;
+    height: 36px;
+}
+
+.k2-page-home .k2-global-header>.k2-container {
+    padding-top: 24px;
+}
+
+ol {
+    margin: 24px 0;
+}
+
+.k2-global-header .k2-dropdown .k2-dropdown-toggle {
+    border-radius: 2px;
+    color: #f5f5f1;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+    padding-right: 32px;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    text-transform: none;
+    white-space: nowrap;
+    /* border: none; */
+}
+
+.k2-noreferrer {
+    flex-direction: row;
+    padding: 16px;
+    border-radius: 4px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: start;
+    color: #e50914;
+    font-weight: 400;
 }
