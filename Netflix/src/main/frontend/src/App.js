@@ -6,12 +6,6 @@ import Main from "./components/main/Main";
 import Detail from "./components/detail/Detail";
 import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
-import MypageContainer from "./components/my_page/MypageContainer";
-import ServiceCenterDetail from "./components/service_center/ServiceCenterDetail";
-import MypageSelf_phone from "components/my_page/MypageSelf_phone";
-import MypageMailChange from "components/my_page/MypageMailChange";
-import MypagePassword from "components/my_page/MypagePassword";
-import MypagePhone from "components/my_page/MypagePhone";
 import MypageMemberShip from "components/my_page/MypageMemberShip";
 
 
@@ -22,7 +16,6 @@ function App() {
     axios.get('/hello')
     .then(response => setHello(response.data))
     .catch(error => console.log(error));
-
   }, [])
 
   return (
@@ -43,7 +36,7 @@ function App() {
 
           </Routes>  
         </BrowserRouter>
-       {/* <br/> */}
+       	{/* <br/> */}
         {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
 
 
