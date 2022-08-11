@@ -264,9 +264,9 @@
     width: 6px;
 }
 
-.k1-related-articles{
+/* .k1-related-articles{
     margin: 24px 0;
-}
+} */
 
  .k1-warning:before {
     background: url(https://help.nflxext.com/helpcenter/6546d9f6cb64ebb7df0045fadff9d3d5.svg) 50%;
@@ -497,18 +497,6 @@
     font-weight: bold;
 }
 
-
-a {
-    color: #e50914;
-    font-weight: 400;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-
 .page-block h3 {
     margin-top: 40px;
 }
@@ -517,8 +505,12 @@ a:hover {
     margin-top: 40px;
 }
 
-.k1-related-articles a:hover {
+.k1-related-article a:hover {
     color:#4c4948;
+}
+
+.k1-related-article a {
+    font-size: 16px;
 }
 
 .k1-aa:hover {
@@ -533,10 +525,27 @@ a:hover {
     display: inline-block;
 }
 
+.k1-top-articles  a:hover {
+    text-decoration: underline;
+}
+
 
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
+
+.k2-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+    flex-grow: 1;
+    line-height: 24px;
+    color: #221f1f;
+    text-decoration: none;
+    align-self: center;
+}
+
+
 
 .k2-recommendation a {
     flex-direction: row;
@@ -544,6 +553,9 @@ a:hover {
     text-decoration: none!important;
     border-radius: 4px;
     box-sizing: border-box;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
 }
 
 .k2-category .k2-category-wrapper a{
@@ -627,6 +639,7 @@ a:hover {
 
 .k2-title:hover {
     text-decoration: underline;
+    color: #e50914;
 }
 
 .k2-btn:hover{
@@ -646,7 +659,6 @@ a:hover {
 }
 
 a {
-    
     font-weight: 400;
     text-decoration: none;
     cursor: pointer;
@@ -696,6 +708,14 @@ a {
     word-wrap: break-word;
 }
 
+
+.k1-page-block h3 {
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    margin-bottom: 8px;
+}
 
 
 .k2-page-article .k2-has-related-articles .k2-related-articles a {
@@ -878,7 +898,7 @@ h1 {
     width: 24px;
 }
 
-header .k2-dropdown.open .k2-dropdown-toggle {
+.k2-dropdown.open .k2-dropdown-toggle {
     text-decoration: underline;
 }
 
@@ -1069,6 +1089,5 @@ ol {
     display: flex;
     flex-grow: 1;
     justify-content: start;
-    color: #e50914;
     font-weight: 400;
 }

@@ -22,9 +22,9 @@ const AbleAutoPlay = () => {
                             <li>
                                 <p>
                                     넷플릭스 앱 홈 화면에서 프로필 아이콘 
-                                    <img src="https://help.nflxext.com/e565d473-f945-41e2-9c5d-3c8ef216169b_icon-profile_en.png" class="k1-image_inline" alt="" /> 
-                                    또는 <span class="NF_UIREF font-bold">더 보기</span> 
-                                    <img src="https://help.nflxext.com/389060d5-a380-4a84-b38f-cd12e17d853b_icon_android_Netflix_menu_en.png" class="k1-image_inline" alt="" />
+                                    <img className="inline ml-2 mr-2" src="https://help.nflxext.com/e565d473-f945-41e2-9c5d-3c8ef216169b_icon-profile_en.png" alt="" /> 
+                                    또는<span class="NF_UIREF font-bold">더 보기</span> 
+                                    <img className="inline ml-2 mr-2" src="https://help.nflxext.com/389060d5-a380-4a84-b38f-cd12e17d853b_icon_android_Netflix_menu_en.png" alt="" />
                                     를 탭합니다.
                                 </p>
                             </li>
