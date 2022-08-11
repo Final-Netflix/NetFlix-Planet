@@ -2,14 +2,43 @@ import React, { useState } from 'react';
 
 const MoreLikeThis = () => {
   const[moreContentList, setMoreContentList] = useState(false)
+  const [playIconHover, setPlayIconHover] = useState(false);
+  const [wishHover, setWishHover] = useState(false);
 
+
+  /* 재생버튼 */
+  const playIconHoverEnter = () => {
+    setPlayIconHover(true);
+  }
+  const playIconHoverLeave = () => {
+    setPlayIconHover(false);
+  }
+  
+  /* 더보기 */
   const openContentList=()=>{
     setMoreContentList(!moreContentList)
+  }
+
+  /* 찜 */
+  const wishHoverEnter = () => {
+    setWishHover(true);
+  }
+  const wishHoverLeave = () => {
+    setWishHover(false);
   }
   
 
   return (
     <div className='ptrack_container block text-[#fff] text-[16px] leading-[1.4]'>
+      { wishHover &&
+      <div className='block break-words text-[1vw]'>
+        <div className="css-1w5d83q-popupBaseCss-popupCss show left-[148px] top-[782px]">
+          <div className="css-1y6cdq8-popupContentCss-Popup relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
+            <div className="css-g5m0d-toolTip-chevronBottom-toolTip block">내가 찜한 콘텐츠에 추가</div>
+          </div>
+        </div>
+      </div>
+      }
       <div className='ptrack_content block text-[#fff] text-[16px] leading-[1.4]'>
         <div className='moreLikeThis_wrapper bg-[#181818] text-[#fff] text-[16px] leading-[1.4]'>
           <h3 className='moreLikeThis_header text-[24px] font-bold mb-[20px] mt-[48px] block leading-[1.4]'>함께 시청된 콘텐츠</h3>
@@ -21,10 +50,13 @@ const MoreLikeThis = () => {
                     <img className='block w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
                     src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWrjUJ6SFpSid-BbBvAs0iYtQTQdhNduw1myC9vb0LuI4FMI5soSqskzIEBFw-gsc2tGEx0yimt1sgRD6M7lIausswDvaoVi6_Y.webp?r=e19' alt='문호 스트레이독스'></img>
                   </div>
-                  <div className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-0 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
+                  {/* play icon */}
+                  <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
+                  { playIconHover &&   
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                       <path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path>
                     </svg>
+                  }
                   </div>
                   <span className='duration absolute right-[5%] top-[5%] whitespace-nowrap cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>시즌 3개</span>
                 </div>
@@ -58,7 +90,7 @@ const MoreLikeThis = () => {
                     <div className='block text-[#fff] text-[16px] leading-[1.4] cursor-pointer'>
                       <div className='ltr_toolTipWrapper relative block text-[#fff] text-[16px] leading-[1.4] cursor-pointer'>
                         <div className='ptrack_content block text-[#fff] text-[16px] leading-[1.4] cursor-pointer'>
-                          <button aria-label='내가 찜한 콘텐츠에 추가' className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-100 p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
+                          <button onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} aria-label='내가 찜한 콘텐츠에 추가' className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-100 p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
                             <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
                               <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns='http://www.w3.org/2000/svg' className='Hawkins_Icon_Standard w-auto h-[100%] leading-0 cursor-pointer select-none break-words whitespace-nowrap'>

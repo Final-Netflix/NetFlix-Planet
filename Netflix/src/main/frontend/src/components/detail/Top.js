@@ -3,15 +3,30 @@ import 'css/detail/top.css';
 
 const Top = () => {
   const [wishHover, setWishHover] = useState(false);
+  const [wishDelete, setWishDelete] = useState(false);
+  const [wishDeleteHover, setWishDeleteHover] = useState(false);
   const [likeHover, setLikeHover] = useState(false);
   const [likeDetailHover, setLikeDetailHover] = useState(false);
+  const [dislikeDetailHover, setDislikeDetailHover] = useState(false);
+  const [bestDetailHover, setBestDetailHover] = useState(false);
 
   /* 찜 */
+  //찜한 콘텐츠에 추가
   const wishHoverEnter = () => {
     setWishHover(true);
   }
   const wishHoverLeave = () => {
     setWishHover(false);
+  }
+  //찜한 콘텐츠 삭제
+  const wishDeleteHandler = () => {
+    setWishDelete(!wishDelete);
+  }
+  const wishDeleteEnter = () => {
+    setWishDeleteHover(true);
+  }
+  const wishDeleteLeave = () => {
+    setWishDeleteHover(false);
   }
 
   /* 평가하기 */
@@ -21,13 +36,28 @@ const Top = () => {
   const likeHoverLeave = () => {
     setLikeHover(false);
   }
-
+  
   /* 평가하기 디테일 */
+  //좋아요
   const likeDetailHoverEnter = () => {
     setLikeDetailHover(true);
   }
   const likeDetailHoverLeave = () => {
     setLikeDetailHover(false);
+  }
+  //맘에 안 들어요
+  const dislikeDetailHoverEnter = () => {
+    setDislikeDetailHover(true);
+  }
+  const dislikeDetailHoverLeave = () => {
+    setDislikeDetailHover(false);
+  }
+  //최고예요
+  const bestDetailHoverEnter = () => {
+    setBestDetailHover(true);
+  }
+  const bestDetailHoverLeave = () => {
+    setBestDetailHover(false);
   }
 
   return (
@@ -35,29 +65,45 @@ const Top = () => {
     <div>
       { wishHover &&
       <div className='block break-words text-[1vw]'>
-        <div className="css-1w5d83q-popupBaseCss-popupCss show left-[145px] top-[315px]">
+        <div className="css-1w5d83q-popupBaseCss-popupCss show left-[130px] top-[325px]">
           <div className="css-1y6cdq8-popupContentCss-Popup relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
             <div className="css-g5m0d-toolTip-chevronBottom-toolTip block">내가 찜한 콘텐츠에 추가</div>
           </div>
         </div>
       </div>
       }
-      {/* { likeDetailHover && */}
+      { wishDeleteHover &&
       <div className='block break-words text-[1vw]'>
-        <div className="css-1ef3g7z show">
-          <div className="css-m6m86k left-[486px] top-[371px]">
+        <div className="css-1w5d83q-popupBaseCss-popupCss show left-[124px] top-[325px]">
+          <div className="css-1y6cdq8-popupContentCss-Popup relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
+            <div className="css-g5m0d-toolTip-chevronBottom-toolTip block">내가 찜한 콘텐츠에서 삭제</div>
+          </div>
+        </div>
+      </div>
+      }
+      { likeDetailHover &&
+      <div className='block break-words text-[1vw]'>
+        <div className="css-1ef3g7z show left-[233px] top-[322px]">
+          <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
             <div className="css-1th9py block">좋아요</div>
           </div>
         </div>
       </div>
-      {/* } */}
-      
-      <div className="css-1ef3g7z show">
-        <div className="css-m6m86k">
+      } 
+      { dislikeDetailHover &&
+      <div className="css-1ef3g7z show left-[156px] top-[322px]">
+        <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">맘에 안 들어요</div>
           </div>
       </div>
-      
+      }
+      { bestDetailHover &&
+      <div className="css-1ef3g7z show left-[276px] top-[322px]">
+        <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
+          <div className="css-1th9py block">최고예요</div>
+          </div>
+      </div>
+      }
 
       <div className='c2_previewModal rounded-t-md overflow-hidden bg-[#000] cursor-pointer relative text-[#fff] text-[16px]'>
         <div className='absolute w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
@@ -95,9 +141,10 @@ const Top = () => {
                 </a>
                 <div className='ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
+                    {/* 추가버튼 */}
                     <button className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible' 
-                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave}>
-                      <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={wishDeleteHandler}>
+                      <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap' onMouseLeave={wishDeleteLeave}>
                         <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
                             <path fillRule="evenodd" clipRule="evenodd" d="M11 2V11H2V13H11V22H13V13H22V11H13V2H11Z" fill="currentColor"></path>
@@ -107,7 +154,26 @@ const Top = () => {
                           </svg> */}
                         </div>
                       </div>
+                      {/* 삭제버튼 */}
+                      { wishDelete &&
+                      <button className="color-supplementary absolute max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[#000] border-white border-[2px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible" 
+                              aria-label="내가 찜한 콘텐츠에서 삭제" data-uia="add-to-my-list-added" type="button" onMouseEnter={wishDeleteEnter} onMouseLeave={wishDeleteLeave}>
+                        <div class="ltr-1ksxkn9 leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap">
+                          <div class="small ltr-18dhnor h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap" role="presentation">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap">
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+                                fill="currentColor"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </button>
+                      }
                     </button>
+
                   </div>
                 </div>
                 {/* <div className='css'> */}
@@ -125,12 +191,12 @@ const Top = () => {
                       </button>
                       {/* 평가하기 */}
                       { likeHover &&
-                      <div className='thumbs_selection_overlay_container opacity-[1] translate-x-[-50%] translate-y-[-50%] translate-z-[0px] scale-[1] ml-[0.1rem] mt-[-0.1rem] absolute top-[50%] left-[50%] transition-opacity-[0.1s] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
+                      <div onMouseLeave={likeHoverLeave} className='thumbs_selection_overlay_container opacity-[1] translate-x-[-50%] translate-y-[-50%] translate-z-[0px] scale-[1] ml-[0.1rem] mt-[-0.1rem] absolute top-[50%] left-[50%] transition-opacity-[0.1s] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                         <div className='thumbs_selection_popover cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                           <div className='block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                            <div className='ltr_thumbContainerCss h-[3rem] w-[10rem] bg-[rgb(35,35,35)] rounded-[3rem] shadow-[rgb(0 0 0 / 60%) 0px 0px 2px 0px, rgb(0 0 0 / 50%) 0px 8px 16px 0px] flex p-[0.8rem] justify-between items-center cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
+                            <div className='ltr_thumbContainerCss h-[3.8rem] w-[13.3rem] bg-[rgb(35,35,35)] rounded-[3rem] shadow-[rgb(0 0 0 / 60%) 0px 0px 2px 0px, rgb(0 0 0 / 50%) 0px 8px 16px 0px] flex p-[0.8rem] justify-between items-center cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                               <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                                <button aria-label='맘에 안 들어요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
+                                <button  onMouseOver={dislikeDetailHoverEnter} onMouseLeave={dislikeDetailHoverLeave} aria-label='맘에 안 들어요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
                                   <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
                                     <defs>
                                       <clipPath id="__lottie_element_115">
@@ -167,7 +233,7 @@ const Top = () => {
                                 </button>
                               </div>
                               <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                              <button aria-label='좋아요로 평가하기' type="button" className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
+                              <button onMouseOver={likeDetailHoverEnter} onMouseLeave={likeDetailHoverLeave} aria-label='좋아요로 평가하기' type="button" className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
                               {/* <button onMouseOver={likeDetailHoverEnter} onMouseLeave={likeDetailHoverLeave} aria-label='좋아요로 평가하기' type="button" className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'> */}
                                   <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
                                     <defs>
@@ -202,7 +268,7 @@ const Top = () => {
                                 </button>
                               </div>
                               <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                              <button aria-label='최고예요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
+                              <button onMouseOver={bestDetailHoverEnter} onMouseLeave={bestDetailHoverLeave} aria-label='최고예요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
                                   <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" preserveAspectRatio="xMidYMid meet" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
                                     <defs>
                                       <clipPath id="__lottie_element_70"><rect width="72" height="72" x="0" y="0"></rect></clipPath>

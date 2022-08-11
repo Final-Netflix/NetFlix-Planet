@@ -45,32 +45,11 @@
   transform: translateX(-50%);
   top: 95%;
 }
-/*.color_supplementary:hover {
-  background-color: rgba(42,42,42,.6);
-  border-color: hsla(0,0%,100%,.5);
-  border-width: 2px;
+.color_supplementary:hover {
   border-color: white;
-  background-color: transparent;
-  color: white;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  -webkit-box-align: center;
-  align-items: center;
-  appearance: none;
-  border: 0px;
-  cursor: pointer;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  opacity: 1;
-  padding: 0.8rem;
-  position: relative;
-  user-select: none;
-  will-change: background-color, color;
-  word-break: break-word;
-  white-space: nowrap;
-  border-radius: 50%;
-} */
+  border-weight: 2px;
+  background-color: #181818;
+}
 .ltr_thumbContainerCss {
 box-shadow: rgb(0 0 0 / 60%) 0px 0px 2px 0px, rgb(0 0 0 / 50%) 0px 8px 16px 0px;
 }
@@ -123,7 +102,6 @@ box-shadow: rgb(0 0 0 / 60%) 0px 0px 2px 0px, rgb(0 0 0 / 50%) 0px 8px 16px 0px;
 .css-1ef3g7z {
     border-radius: 0.3rem;
     font-size: 0.8rem;
-    opacity: 0;
     padding: 0px;
     pointer-events: none;
     position: absolute;
@@ -134,14 +112,10 @@ box-shadow: rgb(0 0 0 / 60%) 0px 0px 2px 0px, rgb(0 0 0 / 50%) 0px 8px 16px 0px;
     z-index: 10;
     background-color: transparent;
 }
-.css-m6m86k {
-    position: relative;
-    overflow: hidden;
-}
 .css-1th9py {
     position: relative;
     padding: 0.6rem 1.6rem;
-    font-size: 1.6rem;
+    font-size: 1rem;
     font-weight: 700;
     color: rgb(24, 24, 24);
     background-color: rgb(230, 230, 230);
