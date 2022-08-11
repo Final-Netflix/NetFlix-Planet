@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MypageContainer = () => {
+const MypageContainer2 = () => {
 
     return (
         <div className='m1_bd small:mt-5 small:mx-[30px] bg-[#f3f3f3] small:mb-0 mt-3 mx-0 mb-0 p-0 tracking-normal font-sans text-[#333] text-[16px] cursor-default  break-[keep-all]' style={{wordBreak : 'keep-all' , direction : 'ltr'}}>
@@ -100,4 +100,4 @@ const MypageContainer = () => {
     );
 };
 
-export default MypageContainer;
+export default MypageContainer2;
