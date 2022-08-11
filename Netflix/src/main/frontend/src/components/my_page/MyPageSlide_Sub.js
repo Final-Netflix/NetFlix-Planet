@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import MyPageNewProfileEmail from './MyPageNewProfileEmail';
 
 const MyPageSlide_Sub = () => {
+    const [visible, setVisible] = useState(0);
+
     return (
         <div>
-            <div className="user_slideMenu pl-[20px] ">
+            <div className="user_slideMenu pl-[20px]">
                 <ul className="m2_user2 link">
 
                 <li className="m2_list1 flex justify-between w-full">
-                        <div className="pl-[20%] pt-1 pb-7">프로필 이메일</div>
+                    <div className="pl-[20%] pt-1 pb-7">프로필 이메일</div>
                         <button>
                             <div className="flex justify-end w-full text-blue-500">추가</div>
                         </button>
-                    </li>
+                </li>
                     <div className="border-solid ml-[20%] mt-3 border-t-[1px] h-1 border-neutral-300"></div>
                     
                     <li className="m2_list1 flex justify-between w-full">
@@ -69,7 +73,6 @@ const MyPageSlide_Sub = () => {
             </div>
             {/* user_slideMenu */}
         </div>
-
     );
 };
 
