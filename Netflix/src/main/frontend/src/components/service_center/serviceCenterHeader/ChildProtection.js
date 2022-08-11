@@ -7,21 +7,7 @@ const ChildProtection = () => {
 
             <div className="k1-global-content">
                 <div className="k1-container">
-                    <div className="k1-breadcrumb-container">
-                        <ul className="k1-breadcrumb">
-                            <li>
-                                <a href="/ko">
-                                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                        <polygon points="16.3515625 11.1015625 16.3515625 12.25 9.2421875 12.25 12.4960938 15.53125 11.6757812 16.3515625 7 11.6757812 11.6757812 7 12.4960938 7.8203125 9.2421875 11.1015625"></polygon>
-                                    </svg>
-                                    고객 센터 홈으로 돌아가기
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
                     <h1 className="k1-kb-title">플래닛 자녀 보호 기능</h1>
-
                     <div className="k1-pane-wrapper">
                         <div className="k1-left-pane">
                             <section
@@ -45,82 +31,40 @@ const ChildProtection = () => {
                                             <ol className="k1-ol">
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="https://help.netflix.com/ko/node/114275">어린이 전용 프로필 생성</a>
+                                                         <a class="k1-aa" href="/service/detail/createChildProfile">어린이 전용 프로필 생성</a>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="https://help.netflix.com/ko/node/114276">프로필 관람등급 설정 또는 콘텐츠 차단 방법</a>
+                                                         <a class="k1-aa" href="/service/detail/blockContents">프로필 관람등급 설정 또는 콘텐츠 차단 방법</a>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="https://help.netflix.com/ko/node/114277">내 프로필 또는 계정의 다른 프로필 잠금</a>
+                                                         <a class="k1-aa" href="/service/detail/lockProfile">내 프로필 또는 계정의 다른 프로필 잠금</a>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="https://help.netflix.com/ko/node/122551">새로운 프로필 추가 시 PIN 요구</a>
+                                                         <a class="k1-aa" href="/service/detail/addProfilePIN">새로운 프로필 추가 시 PIN 요구</a>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="https://help.netflix.com/ko/node/2102">자동 재생 활성화 또는 비활성화</a>
+                                                         <a class="k1-aa" href="/service/detail/ableAutoPlay">자동 재생 활성화 또는 비활성화</a>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" target="_blank" href="https://help.netflix.com/ko/node/101917">개별 프로필의 시청 기록 액세스</a>
+                                                         <a class="k1-aa" target="_blank" href="/service/detail/accessViewRecords">개별 프로필의 시청 기록 액세스</a>
                                                     </p>
                                                 </li>
                                             </ol>
                                             <p></p>
-                                            <h3 className="mt-[40px] text-[18px] font-bold mb-[30px]">관련 문서</h3>
-                                            <ul>
-                                                <li>
-                                                    <p className="k1-p text-[16px] mb-[16px] ">
-                                                        <a  href="https://help.netflix.com/ko/node/114280">최신 자녀 보호 기능 이용 방법</a>
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p className="k1-p text-[16px] mb-[16px]">
-                                                        <a href="https://help.netflix.com/ko/node/2064">넷플릭스의 TV 프로그램 및 영화 관람등급</a>
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p className="k1-p text-[16px] mb-[16px]">
-                                                        <a href="https://help.netflix.com/ko/node/121877">넷플릭스 게임 이용등급</a>
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p className="k1-p text-[16px] mb-[16px]">
-                                                        <a target="_blank" href="https://help.netflix.com/ko/node/24805">계정 수준 PIN 관리</a><br />
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                            <h3 className="mt-[40px] text-[18px] font-bold mb-[30px]">문제 해결</h3>
-                                            <ul>
-                                                <li>
-                                                    <p className="k1-p text-[16px] mb-[16px]">
-                                                        <a href="https://help.netflix.com/ko/node/114833">넷플릭스 키즈 환경을 사용할 수 없는 이유는 무엇인가요? </a>
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p className="k1-p text-[16px] mb-[16px]">
-                                                        <a href="https://help.netflix.com/ko/node/108211">넷플릭스 키즈 환경에서 관람등급 제한을 변경할 수 없음</a>
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p className="k1-p text-[16px] mb-[16px]">
-                                                        <a href="https://help.netflix.com/ko/node/114781">프로필 잠금 PIN을 입력하라는 메시지가 표시되지 않음</a>
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                                                                    </div>
                                     </div>
                                 </div>
                             </section>
-
                             <div id="k1-article-feedback-container"></div>
                         </div>
 
