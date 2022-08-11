@@ -102,8 +102,8 @@ const Header = ({ scroll }) => {
                                 <span className="c1-caret relative translate-y-[10px] h-0 w-0 border-[5px] border-solid border-r-transparent border-l-transparent border-b-transparent border-t-white ml-[10px]" role="presentation"></span>
                             </div>
                             <div className='absolute right-[3.5rem] m-4'>
-                                <div className="topbar translate-x-[375px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
-                                <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[180px] h-[116px] bg-[#222222]/70'>
+                                <div className="topbar translate-x-[10.5rem] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
+                                <ul className='c1-sub-menu-list border-solid w-[180px] h-[116px] bg-[#222222]/70'>
                                     <li className='c1-sub-menu-item'>
                                         <div className='c1-ptrack-container'>
                                             <div className='c1-ptrack-content'>
