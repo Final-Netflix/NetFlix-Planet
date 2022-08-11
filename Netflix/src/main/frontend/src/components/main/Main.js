@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import Header from './Header';
+import Test from './Test';
 import View from './View';
 
 const Main = () => {
@@ -28,6 +29,7 @@ const Main = () => {
             <Header scroll={ scroll }/>
             <View/>
             <Footer/>
+            {/* <Test/> */}
 
             <Link to="/detail">
     	        <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
