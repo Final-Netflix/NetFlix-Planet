@@ -21,12 +21,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <Main/> }></Route>
-
         <Route path="/detail" element={ <Detail/> }></Route>
+
         <Route path="/my" element={ <MyPage/> }></Route>
         <Route path="/container" element={ <MypagePassword/> }></Route>
+        <Route path="/my/:detail" element={ <MyPage/> }></Route>
+        
         <Route path="/service" element={ <ServiceCenter/> }></Route>
-
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 
