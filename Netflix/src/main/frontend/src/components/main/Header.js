@@ -8,6 +8,7 @@ const Header = ({ scroll }) => {
     const openSearch = () => setSearchBox(!searchBox);
 
     const [notice, setNotice] = useState(false);
+    const [profile, setProfile] = useState(false);
 
     let headerName = '';
 
@@ -66,15 +67,49 @@ const Header = ({ scroll }) => {
                                     </path>
                                 </svg>
                             </button>
-                            <div className='absolute right-10 m-4'>
-                                <div className="topbar bg-[#e5e5e5] h-[2px]"></div>
-                                <ul className='c1-sub-menu-list'>
+                            {
+                                notice && 
+                                <div className='absolute right-[7rem] m-4'>
+                                    <div className="topbar translate-x-[375px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
+                                    <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[400px] h-[116px] bg-[#222222]/70'>
+                                        <li className='c1-sub-menu-item'>
+                                            <div className='c1-ptrack-container'>
+                                                <div className='c1-ptrack-content'>
+                                                    <ul className='c1-notifications-container'>
+                                                        <li className='c1-notification'>
+                                                            <div className='c1-empty-notification text-center mt-[48px]'>
+                                                                <div>최근 알림 메시지가 없습니다.</div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        </span>
+                    </div>
+                    <div className="c1-nav-element mr-[10px]">
+                        <div className="c1-account-menu-item">
+                            <div className="c1-account-dropdown-button flex" onMouseEnter={() => setProfile(true)} onMouseLeave={() => setProfile(false)}>
+                                <a href="/YourAccount" role="button" tabIndex="0" aria-haspopup="true" aria-expanded="false" aria-label="&amp;#xAE40;&amp;#xBBF8;&amp;#xC18C;&nbsp;- 계정 &amp; 설정">
+                                    <span className="c1-profile-link" role="presentation">
+                                        <img className="c1-profile-icon rounded-[4px]" alt=""
+                                            src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdYJV5wt63AcxNaDoqDXUhqZb55oN5Dxt1m-Zdn_z5rn_hIq9m8dA8JB2xdcPmrY3yXnlVWYKPXnOrbv2QN4aEVU28dESJg.png?r=1d4"/>
+                                    </span>
+                                </a>
+                                <span className="c1-caret relative translate-y-[10px] h-0 w-0 border-[5px] border-solid border-r-transparent border-l-transparent border-b-transparent border-t-white ml-[10px]" role="presentation"></span>
+                            </div>
+                            <div className='absolute right-[3.5rem] m-4'>
+                                <div className="topbar translate-x-[375px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
+                                <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[180px] h-[116px] bg-[#222222]/70'>
                                     <li className='c1-sub-menu-item'>
                                         <div className='c1-ptrack-container'>
                                             <div className='c1-ptrack-content'>
                                                 <ul className='c1-notifications-container'>
                                                     <li className='c1-notification'>
-                                                        <div className='c1-empty-notification'>
+                                                        <div className='c1-empty-notification text-center mt-[48px]'>
                                                             <div>최근 알림 메시지가 없습니다.</div>
                                                         </div>
                                                     </li>
@@ -83,19 +118,6 @@ const Header = ({ scroll }) => {
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
-                        </span>
-                    </div>
-                    <div className="c1-nav-element mr-[10px]">
-                        <div className="c1-account-menu-item">
-                            <div className="c1-account-dropdown-button flex">
-                                <a href="/YourAccount" role="button" tabIndex="0" aria-haspopup="true" aria-expanded="false" aria-label="&amp;#xAE40;&amp;#xBBF8;&amp;#xC18C;&nbsp;- 계정 &amp; 설정">
-                                    <span className="c1-profile-link" role="presentation">
-                                        <img className="c1-profile-icon rounded-[4px]" alt=""
-                                            src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdYJV5wt63AcxNaDoqDXUhqZb55oN5Dxt1m-Zdn_z5rn_hIq9m8dA8JB2xdcPmrY3yXnlVWYKPXnOrbv2QN4aEVU28dESJg.png?r=1d4"/>
-                                    </span>
-                                </a>
-                                <span className="c1-caret relative translate-y-[10px] h-0 w-0 border-[5px] border-solid border-r-transparent border-l-transparent border-b-transparent border-t-white ml-[10px]" role="presentation"></span>
                             </div>
                         </div>
                     </div>
