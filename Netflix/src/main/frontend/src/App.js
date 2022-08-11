@@ -11,6 +11,8 @@ import ServiceCenterDetail from "./components/service_center/ServiceCenterDetail
 import MypageSelf_phone from "components/my_page/MypageSelf_phone";
 import MypageMailChange from "components/my_page/MypageMailChange";
 import MypagePassword from "components/my_page/MypagePassword";
+import MypagePhone from "components/my_page/MypagePhone";
+import MypageMemberShip from "components/my_page/MypageMemberShip";
 
 
 function App() {
@@ -36,9 +38,9 @@ function App() {
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 
-      </Routes>  
-      {/* <br/> */}
-        {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
+      </Routes>
+
+        {/*  백엔드에서 가져온 데이터입니다 : { hello }  */}
     </BrowserRouter>
   );
 }
