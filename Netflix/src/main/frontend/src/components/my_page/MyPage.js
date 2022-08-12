@@ -9,6 +9,7 @@ import MyPageHeader from './MyPageHeader';
 import MypageFooter from './MyPageFooter';
 import { useParams } from 'react-router-dom';
 import MyPageNewProfileEmail from './MyPageNewProfileEmail';
+import MovieRating from './MovieRating';
 
 const MyPage = () => {
 
@@ -47,7 +48,7 @@ const MyPage = () => {
                                 <div className="w-full pb-20">
                                     <div className="border-solid mt-9 border-t-[1px] h-9 border-zinc-700 w-full">
                                         <div className="flex justify-start w-full">
-                                            <div className="m2_account_right z-[2] pr-[60px] left-0">
+                                            <div className="z-[2] pr-[50px] left-0">
                                                 <div className="text-zinc-500 text-xl pb-5 pt-5 z-0">멤버십 & 결제정보</div>
                                                 <div><button className=" float-none w-56 pt-4 pb-4 rounded-md bg-gray-300 z-0">멤버십 해지</button></div>
                                             </div>
@@ -99,11 +100,13 @@ const MyPage = () => {
                                         <div className="border-solid mt-5 border-t-[1px] h-2 border-zinc-700"></div>
                                         
                                         <div className="flex justify-start w-full mb-4">
-                                            <div className="text-zinc-500 text-xl pb-5 pt-5">멤버십 상세정보</div>
-                                            <div className="pt-6 ml-[19%] font-bold">베이식</div>
-                                            <button>
-                                                <div className="ml-[570px] text-blue-500">멤버십 변경</div>
-                                            </button>
+                                            <div className=" text-zinc-500 text-xl pb-5 pt-5">멤버십 상세정보</div>
+                                            <div className="flex justify-end pl-[200px] pb-5 pt-6 font-bold">베이식</div>
+                                            <div>   
+                                                <button>
+                                                    <div className= "flex justify-end pl-[560px] text-end pb-5 pt-6 text-blue-500">멤버십 변경</div>
+                                                </button>
+                                            </div>
                                         </div>
 
                                         <div className="border-solid pb-10 border-t-[1px] h-2 border-zinc-700"></div>
@@ -171,7 +174,7 @@ const MyPage = () => {
                                                                 <h3 className="font-bold pb-2">키즈당</h3>
                                                                 <div className="text-gray-600 text-xs">12+ 12+ 등급 이하</div>
                                                             </div>
-                                                            <button className="flex justify-start pt-3 pl-[57%]" onClick={ onToggle4 }>
+                                                            <button className="flex justify-start pt-3 ml-[57%]" onClick={ onToggle4 }>
                                                                 { isShow4 ? <img src={ slideUpButton } className="w-8 h-7" /> : <img src={ slideDownButton } className="w-8 h-7" />}
                                                             </button>
                                                         </div>
@@ -189,8 +192,10 @@ const MyPage = () => {
                 </div>
                 : detail === 'addEmail' ?
                 <MyPageNewProfileEmail/>
-                : <div> none</div>
-            }
+                : detail === 'movieRating' ?
+                <MovieRating/> 
+                : <div>none</div>
+            } 
         </div>
     );
 };
