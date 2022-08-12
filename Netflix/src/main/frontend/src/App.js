@@ -23,7 +23,10 @@ function App() {
         <Route path="/" element={ <Main/> }></Route>
 
         <Route path="/detail" element={ <Detail/> }></Route>
-        <Route path="/my" element={ <MyPage/> }></Route>
+        <Route path="/my">
+          <Route index element={<MyPage/>}/>
+          <Route path=":detail" element={<MyPage/>}/>
+        </Route>
         <Route path="/container" element={ <MypagePassword/> }></Route>
         <Route path="/service" element={ <ServiceCenter/> }></Route>
 
