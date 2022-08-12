@@ -391,32 +391,32 @@ const AccountSecurity = () => {
                 </div>
             </div>
                 <div className="k1-right-pane">
-                    <div className="K1-wrapper">
-                        <div className="K1-page-block">
+                    <div className="k1-wrapper">
+                        <div className="k1-page-block">
                             <h3>추천 문서</h3>
-                            <ul className="K1-related-articles mb-4">
-                                <li className="K1-related-article list-disc ml-5">
-                                    <a className="text-[18px] underline">프로필 생성 및 수정 방법</a>
+                            <ul className="k1-related-articles">
+                                <li className="k1-related-article">
+                                    <a>프로필 생성 및 수정 방법</a>
                                 </li>
                             </ul>
-                            <ul className="K1-related-articles mb-4">
-                                <li className="K1-related-article list-disc ml-5">
-                                    <a className="text-[18px] underline">비밀번호 복구를 위한 전화번호 설정 방법</a>
+                            <ul className="k1-related-articles">
+                                <li className="k1-related-article">
+                                    <a>비밀번호 복구를 위한 전화번호 설정 방법</a>
                                 </li>
                             </ul>
-                            <ul className="K1-related-articles mb-4">
-                                <li className="K1-related-article list-disc ml-5">
-                                    <a className="text-[18px] underline">시청 기록에서 컨텐츠를 숨기는 방법</a>
+                            <ul className="k1-related-articles">
+                                <li className="k1-related-article">
+                                    <a>시청 기록에서 컨텐츠를 숨기는 방법</a>
                                 </li>
                             </ul>
-                            <ul className="K1-related-articles mb-4">
-                                <li className="K1-related-article list-disc ml-5">
-                                    <a className="text-[18px] underline">플래닛에서 언어를 변경하는 방법</a>
+                            <ul className="k1-related-articles">
+                                <li className="k1-related-article">
+                                    <a>플래닛에서 언어를 변경하는 방법</a>
                                 </li>
                             </ul>
-                            <ul className="K1-related-articles mb-4">
-                                <li className="K1-related-article list-disc ml-5">
-                                    <a className="text-[18px] underline">PayPal 청구 ID 또는 결제 ID 찾기</a>
+                            <ul className="k1-related-articles">
+                                <li className="k1-related-article">
+                                    <a>PayPal 청구 ID 또는 결제 ID 찾기</a>
                                 </li>
                             </ul>
                         </div>

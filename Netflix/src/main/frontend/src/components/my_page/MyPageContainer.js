@@ -29,10 +29,9 @@ const MypageContainer = () => {
     return (
         <div className = "m2_container">
                 <div className="px-32 py-36 w-full min-h-[1000px] max-w-[1248px] mx-auto">
-                        <h1 className="text-4xl float-left pr-6 ">계정</h1>
-                        <img className="mt-2 float-left " src={membershipImg} width="30" height="300"/>
-                        <h3 className="pt-3  text-zinc-600 font-bold">멤버십 시작 : 2022년 8월</h3>
-                
+                    <h1 className="text-4xl float-left pr-6 ">계정</h1>
+                    <img className="mt-2 float-left " src={membershipImg} width="30" height="300"/>
+                    <h3 className="pt-3  text-zinc-600 font-bold">멤버십 시작 : 2022년 8월</h3>
                     <div className="w-full pb-20">
                         <div className="border-solid mt-9 border-t-[1px] h-9 border-zinc-700 w-full">
                             <div className="flex justify-start w-full">
@@ -173,7 +172,7 @@ const MypageContainer = () => {
                         </div>
                     </div>
                 </div> 
-            </div> //container
+            </div> //container 
     );
 };
 

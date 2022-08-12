@@ -4,12 +4,16 @@ import React, { useState } from 'react';
 
 import MyPageHeader from './MyPageHeader';
 import MypageFooter from './MyPageFooter';
+
 import MypageContainer from './MyPageContainer';
-import { useParams } from 'react-router-dom';
 import Verification from './verification/Verification';
+import { useParams } from 'react-router-dom';
+import MyPageNewProfileEmail from './MyPageNewProfileEmail';
 
 const MyPage = () => {
-   const{detail} = useParams()
+	
+    const {detail} = useParams();
+
    
     
     return (
@@ -17,8 +21,9 @@ const MyPage = () => {
             <MyPageHeader/>
             {detail || <MypageContainer/> }
             {detail === 'mfa' && <Verification/>}
+            {detail === 'addEmail' && <MyPageNewProfileEmail/>}
             <MypageFooter/>
-        </div>
+       </div>
     );
 };
 

@@ -20,16 +20,20 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* smile */}
         <Route path="/" element={ <Main/> }></Route>
-
         <Route path="/detail" element={ <Detail/> }></Route>
+        <Route path="/container" element={ <MypagePassword/> }></Route>
+        {/* smile */}
+
+        {/* hong */}
         <Route path="/my">
           <Route index element={<MyPage/>}/>
           <Route path=":detail" element={<MyPage/>}/>
         </Route>
-        <Route path="/container" element={ <MypagePassword/> }></Route>
+        {/* hong */}
+        
         <Route path="/service" element={ <ServiceCenter/> }></Route>
-
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 

@@ -23,12 +23,8 @@ const ServiceCenter = () => {
                 <ServiceCenterDetail/>
                 
             }
-
             <ServiceCenterFooter />
-            
         </div>
-
-        
     );
 };
 
