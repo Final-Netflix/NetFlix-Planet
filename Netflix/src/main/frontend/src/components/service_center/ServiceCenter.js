@@ -10,7 +10,7 @@ import ServiceCenterDetail from './ServiceCenterDetail';
 
 const ServiceCenter = () => {
 
-    const{detail} = useParams()
+    const {detail} = useParams()
 
    /*  console.log(detail); */
     return (
