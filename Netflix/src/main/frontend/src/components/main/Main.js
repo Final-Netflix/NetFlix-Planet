@@ -29,7 +29,7 @@ const Main = () => {
             <Header scroll={ scroll }/>
             <View/>
             <Footer/>
-            {/* <Test/> */}
+            <Test/>
 
             <Link to="/detail">
     	        <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
