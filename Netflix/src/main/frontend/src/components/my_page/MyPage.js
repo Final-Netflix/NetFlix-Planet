@@ -9,6 +9,7 @@ import MypageContainer from './MyPageContainer';
 import Verification from './verification/Verification';
 import { useParams } from 'react-router-dom';
 import MyPageNewProfileEmail from './MyPageNewProfileEmail';
+import MovieRating from './MovieRating';
 
 const MyPage = () => {
 	
@@ -22,6 +23,7 @@ const MyPage = () => {
             {detail || <MypageContainer/> }
             {detail === 'mfa' && <Verification/>}
             {detail === 'addEmail' && <MyPageNewProfileEmail/>}
+            {detail === 'movieRating' && <MovieRating/> }
             <MypageFooter/>
        </div>
     );

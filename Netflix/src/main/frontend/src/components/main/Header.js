@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../image/main/logo.png';
+import edit from 'image/main/edit.png';
+import service from 'image/main/service.png';
+import user from 'image/main/user.png';
 import { Link } from 'react-router-dom';
 
 
@@ -23,9 +26,9 @@ const Header = ({ scroll }) => {
             <div className='c1-header-container h-full flex pl-[37px] pr-[37px] justify-between items-center z-[10]'>
                 <div>
                     <div className='flex'>
-                        <div><img className='w-40' src={ logo }/></div>
+                        <Link to='/'><div><img className='w-40' src={ logo }/></div></Link>
                         <ul className='m-0 p-0 flex items-center tracking-normal'>
-                            <li className='ml-[18px]'><Link to="">홈</Link></li>
+                            <li className='ml-[18px]'><Link to="/">홈</Link></li>
                             <li className='ml-[18px]'><Link to="">시리즈</Link></li>
                             <li className='ml-[18px]'><Link to="">영화</Link></li>
                             <li className='ml-[18px]'><Link to="">NEW! 요즘 대세 콘텐츠</Link></li>
@@ -69,7 +72,7 @@ const Header = ({ scroll }) => {
                             </button>
                             {
                                 notice && 
-                                <div className='absolute right-[7rem] m-4'>
+                                <div className='absolute right-[100px] m-[14px]'>
                                     <div className="topbar translate-x-[375px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
                                     <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[400px] h-[116px] bg-[#222222]/70'>
                                         <li className='c1-sub-menu-item'>
@@ -101,24 +104,89 @@ const Header = ({ scroll }) => {
                                 </a>
                                 <span className="c1-caret relative translate-y-[10px] h-0 w-0 border-[5px] border-solid border-r-transparent border-l-transparent border-b-transparent border-t-white ml-[10px]" role="presentation"></span>
                             </div>
-                            <div className='absolute right-[3.5rem] m-4'>
-                                <div className="topbar translate-x-[10.5rem] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
-                                <ul className='c1-sub-menu-list border-solid w-[180px] h-[116px] bg-[#222222]/70'>
-                                    <li className='c1-sub-menu-item'>
-                                        <div className='c1-ptrack-container'>
-                                            <div className='c1-ptrack-content'>
-                                                <ul className='c1-notifications-container'>
-                                                    <li className='c1-notification'>
-                                                        <div className='c1-empty-notification text-center mt-[48px]'>
-                                                            <div>최근 알림 메시지가 없습니다.</div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                            {
+                                profile &&
+                                <div className='absolute right-[56px] m-[14px]'>
+                                    <div className="topbar translate-x-[160px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
+                                    <ul className='c1-sub-menu-list pt-[10px] py-[5px] border-[#333333] border-[1px] border-solid w-[180px] bg-[#000000]/90'>
+                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
+                                            <div className='flex'>
+                                                <a className='c1-profile-link flex'>
+                                                    <div className='c1-avatar-wrapper mr-[10px]'>
+                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
+                                                    </div>
+                                                    <span className='c1-profile-name my-[10px]'>이원형</span>
+                                                </a>
                                             </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                                        </li>
+                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
+                                            <div className='flex'>
+                                                <a className='c1-profile-link flex hover:underline'>
+                                                    <div className='c1-avatar-wrapper mr-[10px]'>
+                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
+                                                    </div>
+                                                    <span className='c1-profile-name my-[10px]'>이원형</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
+                                            <div className='flex'>
+                                                <a className='c1-profile-link flex hover:underline'>
+                                                    <div className='c1-avatar-wrapper mr-[10px]'>
+                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
+                                                    </div>
+                                                    <span className='c1-profile-name my-[10px]'>이원형</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
+                                            <div className='flex'>
+                                                <a className='c1-profile-link flex hover:underline'>
+                                                    <div className='c1-avatar-wrapper mr-[10px]'>
+                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ edit }></img>
+                                                    </div>
+                                                    <span className='c1-profile-name my-[10px]'>프로필 관리</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul className='c1-sub-menu-list pt-[10px] py-[5px] border-[#333333] border-[1px] border-t-0 border-solid w-[180px] bg-[#000000]/90'>
+                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
+                                            <div className='flex'>
+                                                <Link to="/my">
+                                                    <a className='c1-profile-link flex hover:underline'>
+                                                        <div className='c1-avatar-wrapper mr-[10px]'>
+                                                            <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ user }></img>
+                                                        </div>
+                                                        <span className='c1-profile-name my-[10px]'>계정</span>
+                                                    </a>
+                                                </Link>
+                                            </div>
+                                        </li>
+                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
+                                            <div className='flex'>
+                                                <Link to="/service">
+                                                    <a className='c1-profile-link flex hover:underline'>
+                                                        <div className='c1-avatar-wrapper mr-[10px]'>
+                                                            <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ service }></img>
+                                                        </div>
+                                                        <span className='c1-profile-name my-[10px]'>고객센터</span>
+                                                    </a>
+                                                </Link>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul className='c1-sub-menu-list py-[10px] border-[#333333] border-[1px] border-t-0 border-solid w-[180px] bg-[#000000]/90'>
+                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
+                                            <Link to="/logout">
+                                                <div className='text-center hover:underline'>
+                                                    <span className='c1-profile-name my-[10px] text-[13px]'>넷플릭스에서 로그아웃</span>
+                                                </div>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
