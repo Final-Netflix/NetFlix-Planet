@@ -5,19 +5,7 @@ const CreateChildProfile = () => {
         <div>
             <div className="k1-global-content">
                 <div className="k1-container">
-                    <div className="k1-breadcrumb-container">
-                        <ul className="k1-breadcrumb">
-                            <li>
-                                <a href="k1-/ko">
-                                    <svg width="k1-24px" height="k1-24px" viewBox="k1-0 0 24 24" version="k1-1.1" xmlns="k1-http://www.w3.org/2000/svg">
-                                        <polygon points="k1-16.3515625 11.1015625 16.3515625 12.25 9.2421875 12.25 12.4960938 15.53125 11.6757812 16.3515625 7 11.6757812 11.6757812 7 12.4960938 7.8203125 9.2421875 11.1015625"></polygon>
-                                    </svg>
-                                    고객 센터 홈으로 돌아가기
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
+                    
                     <h1 className="k1-kb-title">특정 관람등급이 설정된 프로필 생성 방법</h1>
 
                     <div className="k1-pane-wrapper">
@@ -47,7 +35,7 @@ const CreateChildProfile = () => {
                                                         <li>
                                                             <p>
                                                                 <span className="k1-NF_UIREF">키즈</span> 프로필 아이콘에는 고유한 로고(
-                                                                <img src="https://help.nflxext.com/65ddd9f9-2f71-4d62-8bb4-8aa1ed54aa08_kids-logo_ko.png" className="k1-image_inline" alt="k1-" />)가 표시되므로 쉽게 식별할 수 있습니다.
+                                                                <img className='inline' src="https://help.nflxext.com/65ddd9f9-2f71-4d62-8bb4-8aa1ed54aa08_kids-logo_ko.png" alt="k1-" />)가 표시되므로 쉽게 식별할 수 있습니다.
                                                             </p>
                                                         </li>
                                                     </ul>
@@ -58,7 +46,7 @@ const CreateChildProfile = () => {
                                             </ol>
                                             <p>디바이스에서 프로필을 만들 수 없거나 모바일 브라우저를 사용 중인 경우, 컴퓨터에서 <a href="k1-https://www.netflix.com">Netflix.com</a>을 방문하여 위의 단계를 따르세요.</p>
                                             <p></p>
-                                            <h2>넷플릭스 키즈 환경</h2>
+                                            <h2 className='text-[24px] font-bold mb-[8px] mt-[40px]'>넷플릭스 키즈 환경</h2>
                                             <p><span className="k1-NF_UIREF">넷플릭스 키즈 환경</span> 프로필의 특징은 다음과 같습니다.</p>
                                             <ul>
                                                 <li><p>단순화된 디자인 및 느낌</p></li>
@@ -66,7 +54,7 @@ const CreateChildProfile = () => {
                                                 <li><p>어린이를 위해 엄선된 TV 프로그램 및 영화만 재생 가능</p></li>
                                                 <li><p>넷플릭스 게임을 제공하지 않음</p></li>
                                                 <li>
-                                                    <p>식별하기 쉽도록 프로필 아이콘에 고유한 로고(<img src="https://help.nflxext.com/65ddd9f9-2f71-4d62-8bb4-8aa1ed54aa08_kids-logo_ko.png" className="k1-image_inline" alt="k1-" />)가 표시됨</p>
+                                                    <p>식별하기 쉽도록 프로필 아이콘에 고유한 로고(<img className='inline' src="https://help.nflxext.com/65ddd9f9-2f71-4d62-8bb4-8aa1ed54aa08_kids-logo_ko.png" alt="k1-" />)가 표시됨</p>
                                                 </li>
                                             </ul>
                                             <p>
