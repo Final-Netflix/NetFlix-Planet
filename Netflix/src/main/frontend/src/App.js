@@ -22,7 +22,6 @@ function App() {
       <Routes>
         {/* smile */}
         <Route path="/" element={ <Main/> }></Route>
-        <Route path="/detail" element={ <Detail/> }></Route>
         <Route path="/container" element={ <MypagePassword/> }></Route>
         {/* smile */}
 
@@ -32,6 +31,11 @@ function App() {
           <Route path=":detail" element={<MyPage/>}/>
         </Route>
         {/* hong */}
+
+        {/* hee */}
+        <Route path="/detail" element={ <Detail /> }></Route>
+        <Route path="/detail/:detail" element={ <Detail /> }></Route>
+        {/* hee */}
         
         <Route path="/service" element={ <ServiceCenter/> }></Route>
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>

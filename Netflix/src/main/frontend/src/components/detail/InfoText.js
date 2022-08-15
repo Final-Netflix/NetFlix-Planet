@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const InfoText = () => {
 
@@ -57,9 +58,11 @@ const InfoText = () => {
             <div className='previewModal_tags_person text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>출연:</span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
+              <Link to='searchActor'>
+                <a className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
                   에구치 타쿠야,
                 </a>
+              </Link>
               </span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
@@ -80,9 +83,11 @@ const InfoText = () => {
             <div className='previewModal_tags_genre text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>장르:</span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
+                <Link to='searchGenre'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
                   일본 작품,
                 </a>
+                </Link>
               </span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
@@ -98,9 +103,11 @@ const InfoText = () => {
             <div className='previewModal_tags_series text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>시리즈 특징:</span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
+              <Link to='searchGenre'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
                   색다른,
                 </a>
+              </Link>
               </span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
