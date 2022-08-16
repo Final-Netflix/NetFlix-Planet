@@ -1,4 +1,30 @@
-
+@font-face {
+    font-family: nf-icon;
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot);
+    src: url(https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.eot?#iefix)
+        format("embedded-opentype"),
+        url(https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.woff) format("woff"),
+        url(https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.ttf) format("truetype"),
+        url(https://assets.nflxext.com/ffe/siteui/fonts/nf-icon-v1-93.svg#nf-icon-v1-93) format("svg");
+}
+[class*=" icon-"],
+[class^="icon-"] {
+    font-family: nf-icon;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: none;
+    transform: translateZ(0);
+}
+.icon-leftCaret:before{
+    content:"\e868"
+}
+.icon-rightCaret:before {
+    content: "\e867";
+}
 .rowContainer {
     position: relative;
     z-index: 0;
@@ -10,11 +36,17 @@
 .rowContainer .rowContent .slider {
     z-index: 2;
 }
-.rowContainer .rowContent .slider .handle {
-    background: hsla(0, 0%, 8%, 0.5);
+.rowContainer .rowContent .slider .slick-arrow {
+    background: hsla(0, 0%, 0%, 0);
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    z-index: 30;
 }
-.rowContainer .rowContent .slider:hover .handle.active:hover {
-    background: hsla(0, 0%, 8%, 0.7);
+.rowContainer .rowContent .slider:hover .slick-arrow:hover {
+    background: hsla(0, 0%, 8%, 0);
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    z-index: 30;
 }
 @media screen and (max-width: 499px) {
     .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
@@ -135,7 +167,7 @@
 .slider .sliderMask.showPeek {
     overflow-x: visible;
 }
-.slider .handle {
+.slider .slick-arrow {
     bottom: 0;
     color: #fff;
     display: flex;
@@ -147,14 +179,15 @@
     z-index: 20;
 }
 @media screen and (min-width: 1500px) {
-    .slider .handle {
+    .slider .slick-arrow {
         width: 60px;
     }
 }
-.slider .handle.active {
+
+.slider .slick-arrow.active {
     cursor: pointer;
 }
-.slider .handle > .indicator-icon {
+.slider .slick-arrow > .indicator-icon {
     align-self: center;
     display: none;
     font-size: 2.5vw;
@@ -162,44 +195,49 @@
     transition: transform 0.1s ease-out 0s;
 }
 @media screen and (min-width: 1500px) {
-    .slider .handle > .indicator-icon {
+    .slider .slick-arrow > .indicator-icon {
         font-size: 2em;
     }
 }
-.slider .handle.handlePrev {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-    left: -2px;
+.slider .slick-arrow.slick-prev {
+    height: 100%;
+    left: 0px;
+    transform: translateY(0%);
+    background: hsla(0, 0%, 8%, 0.5);
 }
-.slider .handle.handlePrev .indicator-icon {
-    transform-origin: 55% 50%;
+.slider .slick-arrow.slick-prev:before {
+    content: none;
 }
-.slider .handle.handleNext {
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-    right: 0;
+.slider .slick-arrow.slick-next:before{
+    content: none;
 }
-.slider .handle.handleNext .indicator-icon {
+.slider .slick-arrow.slick-next {
+    height: 100%;
+    right: 0px;
+    transform: translateY(0%);
+    background: hsla(0, 0%, 8%, 0.5);
+}
+.slider .slick-arrow.slick-next .indicator-icon {
     transform-origin: 45% 50%;
 }
 .slider .sliderContent:not(.animating) .sliderItemHidden {
     display: none;
 }
-.slider-hover-trigger-layer:hover .slider .handle.active .indicator-icon {
+.slider-hover-trigger-layer:hover .slider .slick-arrow.active .indicator-icon {
     display: block;
 }
-.slider-hover-trigger-layer:hover .slider .handle.active:hover .indicator-icon {
+.slider-hover-trigger-layer:hover .slider .slick-arrow.active:hover .indicator-icon {
     color: #fff;
     font-weight: 700;
     transform: scale(1.25);
 }
-.slider-hover-trigger-layer .slider .handle.active:focus .indicator-icon {
+.slider-hover-trigger-layer .slider .slick-arrow.active:focus .indicator-icon {
     color: #fff;
     display: block;
     font-weight: 700;
     transform: scale(1.25);
 }
-.slider .handle:focus .indicator-icon {
+.slider .slick-arrow:focus .indicator-icon {
     color: #fff;
     font-weight: 700;
     transform: scale(1.25);

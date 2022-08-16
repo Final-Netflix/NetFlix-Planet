@@ -3,7 +3,7 @@ import Movie from './Movie';
 
 // https://velog.io/@jahommer/React-app6-TMDB-API
 
-const Test = () => {
+const APITest = () => {
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     const URL = "https://api.themoviedb.org/3/movie/"
@@ -52,4 +52,4 @@ const Test = () => {
     );
 };
 
-export default Test;
+export default APITest;
