@@ -13,7 +13,40 @@ const Header = ({ scroll }) => {
     const [notice, setNotice] = useState(false);
     const [profile, setProfile] = useState(false);
 
-    let headerName = '';
+    let noticeTimer;
+    let profileTimer;
+
+    const noticeOut = () => {
+        noticeTimer = setTimeout(() => {
+            setNotice(false);
+        }, 500);
+        return () => {
+            clearTimeout(noticeTimer);
+        };  
+    };
+
+    const noticeIn = () => {
+        setNotice(true);
+        setProfile(false);
+        clearTimeout(noticeTimer);
+    }
+
+    const profileOut = () => {
+        profileTimer = setTimeout(() => {
+            setProfile(false);
+        }, 1000);
+        return () => {
+            clearTimeout(profileTimer);
+        };  
+    };
+
+    const profileIn = () => {
+        setProfile(true);
+        setNotice(false);
+        clearTimeout(profileTimer);
+    }
+
+    let headerName;
 
     if(scroll){
         headerName='c1-header bg-[#141414] z-[10] fixed top-0 w-full h-[68px] text-[12px] text-white';
@@ -63,7 +96,7 @@ const Header = ({ scroll }) => {
                     </div>
                     <div className="c1-nav-element mr-[10px] mt-[4px]">
                         <span className="c1-notifications mr-[10px]">
-                            <button className="c1-notifications-menu" aria-haspopup="true" aria-expanded="false" aria-label="알림" onMouseEnter={() => setNotice(true)} onMouseLeave={() => setNotice(false)}>
+                            <button className="c1-notifications-menu" aria-haspopup="true" aria-expanded="false" aria-label="알림" onMouseEnter={ noticeIn } onMouseLeave={ noticeOut }>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-notify-icon">
                                     <path fillRule="evenodd" clipRule="evenodd" fill="currentColor"
                                         d="M13 4.57092C16.3922 5.05624 18.9998 7.9736 18.9998 11.5V15.2538C20.0486 15.3307 21.0848 15.4245 22.107 15.5347L21.8926 17.5232C18.7219 17.1813 15.409 17 11.9998 17C8.59056 17 5.27764 17.1813 2.10699 17.5232L1.89258 15.5347C2.91473 15.4245 3.95095 15.3307 4.99978 15.2538V11.5C4.99978 7.97345 7.6076 5.05599 11 4.57086V2H13V4.57092ZM8.62568 19.3712C8.6621 20.5173 10.1509 22 11.9993 22C13.8477 22 15.3365 20.5173 15.373 19.3712C15.38 19.1489 15.1756 19 14.9531 19H9.04555C8.82308 19 8.61862 19.1489 8.62568 19.3712Z">
@@ -72,7 +105,7 @@ const Header = ({ scroll }) => {
                             </button>
                             {
                                 notice && 
-                                <div className='absolute right-[100px] m-[14px]'>
+                                <div className='absolute right-[100px] m-[14px]' onMouseEnter={ noticeIn } onMouseLeave={() => setNotice(false)}>
                                     <div className="topbar translate-x-[375px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
                                     <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[400px] h-[116px] bg-[#222222]/70'>
                                         <li className='c1-sub-menu-item'>
@@ -95,7 +128,7 @@ const Header = ({ scroll }) => {
                     </div>
                     <div className="c1-nav-element mr-[10px]">
                         <div className="c1-account-menu-item">
-                            <div className="c1-account-dropdown-button flex" onMouseEnter={() => setProfile(true)} onMouseLeave={() => setProfile(false)}>
+                            <div className="c1-account-dropdown-button flex" onMouseEnter={ profileIn } onMouseLeave={ profileOut }>
                                 <a href="/YourAccount" role="button" tabIndex="0" aria-haspopup="true" aria-expanded="false" aria-label="&amp;#xAE40;&amp;#xBBF8;&amp;#xC18C;&nbsp;- 계정 &amp; 설정">
                                     <span className="c1-profile-link" role="presentation">
                                         <img className="c1-profile-icon rounded-[4px]" alt=""
@@ -106,12 +139,12 @@ const Header = ({ scroll }) => {
                             </div>
                             {
                                 profile &&
-                                <div className='absolute right-[56px] m-[14px]'>
+                                <div className='absolute right-[56px] m-[14px]' onMouseEnter={ profileIn } onMouseLeave={() => setProfile(false)}>
                                     <div className="topbar translate-x-[160px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
                                     <ul className='c1-sub-menu-list pt-[10px] py-[5px] border-[#333333] border-[1px] border-solid w-[180px] bg-[#000000]/90'>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
-                                                <a className='c1-profile-link flex'>
+                                                <a className='c1-profile-link flex hover:underline'>
                                                     <div className='c1-avatar-wrapper mr-[10px]'>
                                                         <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
                                                     </div>

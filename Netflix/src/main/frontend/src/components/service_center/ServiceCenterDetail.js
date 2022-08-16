@@ -25,15 +25,20 @@ import AccessViewRecords from './serviceCenterHeader/AccessViewRecords';
 
 
 const ServiceCenterDetail = () => {
-    const {category} = useParams()
-    console.log(category)
+    const {category} = useParams();
+    console.log(category);
+
+    const goHome = () => {
+        window.location.href = "/";
+    }
+
     return (
         <div className='k1-global-container'>
             <div className="k1-global-header pt-4">
                 <div className="k1-container">
                     <div className="k1-inner-container">
                         <div className="k1-branding">
-                            <img alt='로고' className="w-40" src={ logo }></img>
+                            <img alt='로고' className="w-40 cursor-pointer" src={ logo } onClick={ goHome }></img>
                             <Link to='/service'><span className='k1-helpcenter-logo last:'>  ㅣ  고객센터</span></Link>
                         </div>
                         <div className="k1-action"></div>
@@ -53,8 +58,10 @@ const ServiceCenterDetail = () => {
                                         <polygon points="16.3515625 11.1015625 16.3515625 12.25 9.2421875 12.25 12.4960938 15.53125 11.6757812 16.3515625 7 11.6757812 11.6757812 7 12.4960938 7.8203125 9.2421875 11.1015625"></polygon>
                                     </svg>
                                     
-                                </Link>          
+                                </Link>
+                                <Link to='/service'>
                                     고객 센터 홈으로 돌아가기
+                                </Link>          
                                 </a>
                             </li>
                         </ul>

@@ -248,6 +248,9 @@
     border-radius: 50%;
 }
 
+html {
+    height: 100%;
+}
 @media screen and (min-width: 1500px) {
     .c1-billboard-row .c1-billboard .info {
         left: 60px;
