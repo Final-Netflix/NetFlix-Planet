@@ -49,13 +49,13 @@ const MypageContainer = () => {
                                     <div className="flex justify-between">
                                         <div className="pt-5 text-neutral-500">비밀번호 : ****************</div>
                                         <button>
-                                       <div className="pl-90 pt-5 text-end text-blue-500">비밀번호 변경</div>
+                                            <Link to='changePwd'><div className="pl-90 pt-5 text-end text-blue-500">비밀번호 변경</div></Link>
                                         </button>
                                     </div>
                                     <div className="flex justify-between">
                                         <div className="pt-5 text-neutral-500">전화번호 : 010-1234-5678</div>
                                         <button>
-                                        <Link to='mfa'><div className="pl-90 pt-5 text-end text-blue-500">휴대폰 번호 변경</div></Link>
+                                            <Link to='mfa'><div className="pl-90 pt-5 text-end text-blue-500">휴대폰 번호 변경</div></Link>
                                         </button>
                                     </div>
                                     <div className="border-solid mt-6 border-t-[1px] h-3 border-neutral-200"></div>
@@ -90,7 +90,7 @@ const MypageContainer = () => {
                                 <div className="text-zinc-500 text-xl pb-5 pt-5">멤버십 상세정보</div>
                                 <div className="pt-6 ml-[19%] font-bold">베이식</div>
                                 <button>
-                                    <div className="ml-[523px] text-blue-500">멤버십 변경</div>
+                                    <Link to='changePlan'><div className="ml-[523px] text-blue-500">멤버십 변경</div></Link>
                                 </button>
                             </div>
 

@@ -7,11 +7,15 @@ import Detail from "./components/detail/Detail";
 import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypagePassword from "components/my_page/MypagePassword";
+import ScrollTop from "components/main/ScrollTop";
+import { useLocation } from 'react-router-dom';
+
 
 function App() {
   const [hello, setHello] = useState('')
 
   useEffect(() => {
+   
     axios.get('/hello')
     .then(response => setHello(response.data))
     .catch(error => console.log(error));
@@ -19,6 +23,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollTop/>
       <Routes>
         {/* smile */}
         <Route path="/" element={ <Main/> }></Route>
