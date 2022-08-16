@@ -10,20 +10,26 @@ import Verification from './verification/Verification';
 import { useParams } from 'react-router-dom';
 import MyPageNewProfileEmail from './MyPageNewProfileEmail';
 import MovieRating from './MovieRating';
+import ProfileLock from './ProfileLock';
+import WatchRecord from './WatchRecord';
+import PlaySetting from './PlaySetting';
+import MovieRating_Sub from './MovieRating_Sub';
 
 const MyPage = () => {
 	
     const {detail} = useParams();
-
-   
-    
+ 
     return (
         <div className=" m2_screen w-screen min-h-screen bg-[#f3f3f3]">
             <MyPageHeader/>
-            {detail || <MypageContainer/> }
+            {detail || <MypageContainer/>}
             {detail === 'mfa' && <Verification/>}
-            {detail === 'addEmail' && <MyPageNewProfileEmail/>}
-            {detail === 'movieRating' && <MovieRating/> }
+            {detail === 'newProfileEmail' && <MyPageNewProfileEmail/>}
+            {detail === 'movieRating' && <MovieRating/>}
+            {detail === 'profileLock' && <ProfileLock/>}
+            {detail === 'watchRecord' && <WatchRecord/>}
+            {detail === 'playSetting' && <PlaySetting/>}
+            {detail === 'movieRating_Sub' && <MovieRating_Sub/>}
             <MypageFooter/>
        </div>
     );
