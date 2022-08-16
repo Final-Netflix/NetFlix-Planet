@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'css/detail/top.css';
+import { Link } from 'react-router-dom';
 
 const Top = () => {
   const [wishHover, setWishHover] = useState(false);
@@ -10,6 +11,9 @@ const Top = () => {
   const [dislikeDetailHover, setDislikeDetailHover] = useState(false);
   const [bestDetailHover, setBestDetailHover] = useState(false);
   const [audioMute, setAudioMute] = useState(false);
+  const [likeClick, setLikeClick] = useState(false);
+  const [dislikeClick, setDislikeClick] = useState(false);
+  const [rated, setRated] = useState(false);
 
   /* 찜 */
   //찜한 콘텐츠에 추가
@@ -60,6 +64,22 @@ const Top = () => {
   const bestDetailHoverLeave = () => {
     setBestDetailHover(false);
   }
+  //좋아요 활성화
+  const likeActive=()=>{
+    setLikeClick(!likeClick);
+  }
+  //싫어요 활성화
+  const dislikeActive=()=>{
+    setDislikeClick(!dislikeClick);
+  }
+
+  //평가함
+  const ratedEnter=()=>{
+    setRated(true);
+  }
+  const ratedLeave=()=>{
+    setRated(false);
+  }
 
   /* 음소거 */
   const mute = () => {
@@ -100,7 +120,7 @@ const Top = () => {
       <div className="css-1ef3g7z show left-[156px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">맘에 안 들어요</div>
-          </div>
+        </div>
       </div>
       }
       { bestDetailHover &&
@@ -108,6 +128,20 @@ const Top = () => {
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">최고예요</div>
           </div>
+      </div>
+      }
+      { likeClick && rated &&
+      <div className="css-1ef3g7z show left-[233px] top-[322px]">
+        <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
+          <div className="css-1th9py block">평가함</div>
+        </div>
+      </div>
+      }
+      { dislikeClick && rated &&
+      <div className="css-1ef3g7z show left-[180px] top-[322px]">
+        <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
+          <div className="css-1th9py block">평가함</div>
+        </div>
       </div>
       }
 
@@ -202,7 +236,7 @@ const Top = () => {
                           <div className='block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                             <div className='ltr_thumbContainerCss h-[3.8rem] w-[13.3rem] bg-[rgb(35,35,35)] rounded-[3rem] shadow-[rgb(0 0 0 / 60%) 0px 0px 2px 0px, rgb(0 0 0 / 50%) 0px 8px 16px 0px] flex p-[0.8rem] justify-between items-center cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                               <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                                <button  onMouseOver={dislikeDetailHoverEnter} onMouseLeave={dislikeDetailHoverLeave} aria-label='맘에 안 들어요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
+                                <button onMouseOver={dislikeDetailHoverEnter} onMouseLeave={dislikeDetailHoverLeave} onClick={dislikeActive} aria-label='맘에 안 들어요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
                                   <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
                                     <defs>
                                       <clipPath id="__lottie_element_115">
@@ -236,10 +270,46 @@ const Top = () => {
                                       </g>
                                     </g>
                                   </svg>
+                                  {/* 싫어요 누른 상태 */}
+                                  { dislikeClick &&
+                                  <button aria-label="'싫어요'로 이미 평가함" type="button" onMouseEnter={ratedEnter} onMouseLeave={ratedLeave} className='ButtonColorStatesCss_active max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] absolute select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
+                                    <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
+                                      <defs>
+                                        <clipPath id="__lottie_element_1487"><rect width="72" height="72" x="0" y="0" className='w-[72] h-[72] x-0 y-0 pointer-events-none select-none break-words whitespace-nowrap cursor-pointer text-[rgb(169,169,169)]'></rect></clipPath>
+                                        <clipPath id="__lottie_element_1489"><path d="M0,0 L31,0 L31,31 L0,31z"></path></clipPath>
+                                      </defs>
+                                      <g clipPath='url(#__lottie_element_1487)'>
+                                        <g clipPath='url(#__lottie_element_1489' transform="matrix(1,0,0,1,19.625,20.5)" opacity="1">
+                                          <g className='hidden'>
+                                            <g></g>
+                                            <g>
+                                              <path></path>
+                                            </g>
+                                          </g>
+                                          <g className='hidden'>
+                                            <g></g>
+                                            <g>
+                                              <path></path>
+                                            </g>
+                                          </g>
+                                          <g transform="matrix(1,0,0,1,15.71399974822998,15.83899974822998)" opacity="1" className='block'>
+                                            <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                                            <path 
+                                              fill="rgb(255,255,255)" 
+                                              fill-opacity="1" 
+                                              d=" M-1.312999963760376,6.495999813079834 C-1.312999963760376,6.495999813079834 -1.406999945640564,5.74399995803833 -1.406999945640564,5.74399995803833 C-1.468999981880188,5.25 -1.468999981880188,4.75 -1.406999945640564,4.25600004196167 C-1.406999945640564,4.25600004196167 -1.125,2 -1.125,2 C-1.125,2 -5.5,2 -5.5,2 C-6.328000068664551,2 -7,1.3279999494552612 -7,0.5 C-7,-0.02199999988079071 -6.732999801635742,-0.48100000619888306 -6.328999996185303,-0.75 C-6.328999996185303,-0.75 -6.5,-0.75 -6.5,-0.75 C-7.328000068664551,-0.75 -8,-1.4220000505447388 -8,-2.25 C-8,-2.9800000190734863 -7.478000164031982,-3.5889999866485596 -6.7870001792907715,-3.7230000495910645 C-7.215000152587891,-3.986999988555908 -7.5,-4.460000038146973 -7.5,-5 C-7.5,-5.828000068664551 -6.828000068664551,-6.5 -6,-6.5 C-6,-6.5 -5.618000030517578,-6.5 -5.618000030517578,-6.5 C-5.855999946594238,-6.764999866485596 -6,-7.116000175476074 -6,-7.5 C-6,-8.32800006866455 -5.328000068664551,-9 -4.5,-9 C-4.5,-9 -0.01600000075995922,-9 -0.01600000075995922,-9 C1.3049999475479126,-9 2.6029999256134033,-8.654999732971191 3.75,-8 C3.75,-8 3.9230000972747803,-7.901000022888184 3.9230000972747803,-7.901000022888184 C4.955999851226807,-7.310999870300293 6.125999927520752,-7 7.315999984741211,-7 C7.693999767303467,-7 8,-6.693999767303467 8,-6.315999984741211 C8,-6.315999984741211 8,-0.7540000081062317 8,-0.7540000081062317 C8,-0.30799999833106995 7.703999996185303,0.08399999886751175 7.275000095367432,0.2070000022649765 C7.275000095367432,0.2070000022649765 5.238999843597412,0.7889999747276306 5.238999843597412,0.7889999747276306 C4.763000011444092,0.925000011920929 4.355000019073486,1.2319999933242798 4.0929999351501465,1.6519999504089355 C4.0929999351501465,1.6519999504089355 2.1519999504089355,4.756999969482422 2.1519999504089355,4.756999969482422 C2.052999973297119,4.915999889373779 2,5.099999904632568 2,5.2870001792907715 C2,5.2870001792907715 2,8.52400016784668 2,8.52400016784668 C2,8.786999702453613 1.7869999408721924,9 1.5240000486373901,9 C0.0820000022649765,9 -1.1339999437332153,7.927000045776367 -1.312999963760376,6.495999813079834z"
+                                            ></path>
+                                            </g>
+                                          </g>
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </button>
+                                  }
                                 </button>
                               </div>
                             <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                              <button onMouseOver={likeDetailHoverEnter} onMouseLeave={likeDetailHoverLeave} aria-label='좋아요로 평가하기' type="button" className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
+                              <button onMouseOver={likeDetailHoverEnter} onMouseLeave={likeDetailHoverLeave} onClick={likeActive} aria-label='좋아요로 평가하기' type="button" className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
                                 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
                                   <defs>
                                     <clipPath id="__lottie_element_127"><rect width="72" height="72" x="0" y="0" className='w-[72] h-[72] x-0 y-0 pointer-events-none select-none break-words whitespace-nowrap cursor-pointer text-[rgb(169,169,169)]'></rect></clipPath>
@@ -271,7 +341,8 @@ const Top = () => {
                                   </g>
                                 </svg>
                                 {/* 좋아요 누른 상태 */}
-                                <button aria-label="'좋아요'로 이미 평가함" type="button" className='ButtonColorStatesCss_active max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] absolute select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
+                                { likeClick &&
+                                <button aria-label="'좋아요'로 이미 평가함" type="button" onMouseEnter={ratedEnter} onMouseLeave={ratedLeave} className='ButtonColorStatesCss_active max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] absolute select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
                                   <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
                                     <defs>
                                       <clipPath id="__lottie_element_1487"><rect width="72" height="72" x="0" y="0" className='w-[72] h-[72] x-0 y-0 pointer-events-none select-none break-words whitespace-nowrap cursor-pointer text-[rgb(169,169,169)]'></rect></clipPath>
@@ -304,71 +375,7 @@ const Top = () => {
                                     </g>
                                   </svg>
                                 </button>
-                                {/* <button aria-label="'좋아요'로 이미 평가함" type="button" className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] absolute select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
-                                  <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
-                                    <defs>
-                                      <clipPath id="__lottie_element_1487"><rect width="72" height="72" x="0" y="0" className='w-[72] h-[72] x-0 y-0 pointer-events-none select-none break-words whitespace-nowrap cursor-pointer text-[rgb(169,169,169)]'></rect></clipPath>
-                                      <clipPath id="__lottie_element_1489"><path d="M0,0 L31,0 L31,31 L0,31z"></path></clipPath>
-                                    </defs>
-                                    <g clipPath='url(#__lottie_element_1487)'>
-                                      <g clipPath='url(#__lottie_element_1489' transform="matrix(1,0,0,1,19.625,20.5)" opacity="1">
-                                        <g className='hidden'>
-                                          <g></g>
-                                          <g>
-                                            <path></path>
-                                          </g>
-                                        </g>
-                                        <g className='hidden'>
-                                          <g></g>
-                                          <g>
-                                            <path></path>
-                                          </g>
-                                        </g>
-                                        <g transform="matrix(1,0,0,1,15.71399974822998,15.83899974822998)" opacity="1" className='block'>
-                                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                                          <path
-                                            fill="rgb(255,255,255)"
-                                            fill-opacity="1"
-                                            d=" M1.312999963760376,-6.495999813079834 C1.312999963760376,-6.495999813079834 1.406999945640564,-5.74399995803833 1.406999945640564,-5.74399995803833 C1.468999981880188,-5.25 1.468999981880188,-4.75 1.406999945640564,-4.25600004196167 C1.406999945640564,-4.25600004196167 1.125,-2 1.125,-2 C1.125,-2 5.5,-2 5.5,-2 C6.328000068664551,-2 7,-1.3279999494552612 7,-0.5 C7,0.02199999988079071 6.732999801635742,0.48100000619888306 6.328999996185303,0.75 C6.328999996185303,0.75 6.5,0.75 6.5,0.75 C7.328000068664551,0.75 8,1.4220000505447388 8,2.25 C8,2.9800000190734863 7.478000164031982,3.5889999866485596 6.7870001792907715,3.7230000495910645 C7.215000152587891,3.986999988555908 7.5,4.460000038146973 7.5,5 C7.5,5.828000068664551 6.828000068664551,6.5 6,6.5 C6,6.5 5.618000030517578,6.5 5.618000030517578,6.5 C5.855999946594238,6.764999866485596 6,7.116000175476074 6,7.5 C6,8.32800006866455 5.328000068664551,9 4.5,9 C4.5,9 0.01600000075995922,9 0.01600000075995922,9 C-1.3049999475479126,9 -2.6029999256134033,8.654999732971191 -3.75,8 C-3.75,8 -3.9230000972747803,7.901000022888184 -3.9230000972747803,7.901000022888184 C-4.955999851226807,7.310999870300293 -6.125999927520752,7 -7.315999984741211,7 C-7.693999767303467,7 -8,6.693999767303467 -8,6.315999984741211 C-8,6.315999984741211 -8,0.7540000081062317 -8,0.7540000081062317 C-8,0.30799999833106995 -7.703999996185303,-0.08399999886751175 -7.275000095367432,-0.2070000022649765 C-7.275000095367432,-0.2070000022649765 -5.238999843597412,-0.7889999747276306 -5.238999843597412,-0.7889999747276306 C-4.763000011444092,-0.925000011920929 -4.355000019073486,-1.2319999933242798 -4.0929999351501465,-1.6519999504089355 C-4.0929999351501465,-1.6519999504089355 -2.1519999504089355,-4.756999969482422 -2.1519999504089355,-4.756999969482422 C-2.052999973297119,-4.915999889373779 -2,-5.099999904632568 -2,-5.2870001792907715 C-2,-5.2870001792907715 -2,-8.52400016784668 -2,-8.52400016784668 C-2,-8.786999702453613 -1.7869999408721924,-9 -1.5240000486373901,-9 C-0.0820000022649765,-9 1.1339999437332153,-7.927000045776367 1.312999963760376,-6.495999813079834z"
-                                          ></path>
-                                          </g>
-                                        </g>
-                                      </g>
-                                    </g>
-                                  </svg>
-                                </button> */}
-                              </button>
-                              <button onMouseOver={likeDetailHoverEnter} onMouseLeave={likeDetailHoverLeave} aria-label='좋아요로 평가하기' type="button" className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
-                                <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
-                                  <defs>
-                                    <clipPath id="__lottie_element_127"><rect width="72" height="72" x="0" y="0" className='w-[72] h-[72] x-0 y-0 pointer-events-none select-none break-words whitespace-nowrap cursor-pointer text-[rgb(169,169,169)]'></rect></clipPath>
-                                    <clipPath id="__lottie_element_129"><path d="M0,0 L31,0 L31,31 L0,31z"></path></clipPath>
-                                  </defs>
-                                  <g clipPath='url(#__lottie_element_127)'>
-                                    <g clipPath='url(#__lottie_element_129)' transform="matrix(1,0,0,1,19.625,20.5)" opacity="1">
-                                      <g transform="matrix(1,0,0,1,27.74799919128418,16.035999298095703)" opacity="1">
-                                        <g opacity="1" transform="matrix(2,0,0,2,0,0)"></g>
-                                        <g opacity="1" transform="matrix(1,0,0,1,-11.97599983215332,-0.03400000184774399)">
-                                          <path
-                                            fill="rgb(255,255,255)"
-                                            fill-opacity="1"
-                                            d=" M-1.25,-4.2870001792907715 C-1.25,-3.9119999408721924 -1.3550000190734863,-3.5450000762939453 -1.5540000200271606,-3.2269999980926514 C-1.5540000200271606,-3.2269999980926514 -3.494999885559082,-0.12200000137090683 -3.494999885559082,-0.12200000137090683 C-3.888000011444092,0.5070000290870667 -4.5,0.968999981880188 -5.214000225067139,1.1729999780654907 C-5.214000225067139,1.1729999780654907 -7.25,1.753999948501587 -7.25,1.753999948501587 C-7.25,1.753999948501587 -7.25,6.5 -7.25,6.5 C-6.133999824523926,6.505000114440918 -5.025000095367432,6.686999797821045 -3.9660000801086426,7.039999961853027 C-3.9660000801086426,7.039999961853027 -2.4730000495910645,7.538000106811523 -2.4730000495910645,7.538000106811523 C-1.5549999475479126,7.843999862670898 -0.593999981880188,8 0.37299999594688416,8 C0.37299999594688416,8 4.25,8 4.25,8 C5.078000068664551,8 5.75,7.328000068664551 5.75,6.5 C5.75,6.5 5.75,6.000999927520752 5.75,6.000999927520752 C5.75,6.000999927520752 6.14900016784668,5.701000213623047 6.14900016784668,5.701000213623047 C6.515999794006348,5.426000118255615 6.75,4.989999771118164 6.75,4.5 C6.75,4.4070000648498535 6.742000102996826,4.316999912261963 6.72599983215332,4.230000019073486 C6.72599983215332,4.230000019073486 6.644999980926514,3.7850000858306885 6.644999980926514,3.7850000858306885 C6.644999980926514,3.7850000858306885 6.926000118255615,3.430999994277954 6.926000118255615,3.430999994277954 C7.129000186920166,3.174999952316284 7.25,2.8529999256134033 7.25,2.5 C7.25,2.1470000743865967 7.129000186920166,1.8250000476837158 6.926000118255615,1.569000005722046 C6.926000118255615,1.569000005722046 6.644999980926514,1.215000033378601 6.644999980926514,1.215000033378601 C6.644999980926514,1.215000033378601 6.72599983215332,0.7699999809265137 6.72599983215332,0.7699999809265137 C6.742000102996826,0.6830000281333923 6.75,0.5929999947547913 6.75,0.5 C6.75,-0.328000009059906 6.078000068664551,-1 5.25,-1 C5.25,-1 1.180999994277954,-1 1.180999994277954,-1 C1.180999994277954,-1 1.503999948501587,-2.25 1.503999948501587,-2.25 C1.6480000019073486,-2.808000087738037 1.75,-3.4149999618530273 1.75,-4 C1.75,-4.7729997634887695 1.5729999542236328,-5.7729997634887695 1.3569999933242798,-6.689000129699707 C1.1779999732971191,-7.447000026702881 0.4650000035762787,-8 -0.41200000047683716,-8 C-0.41200000047683716,-8 -1.25,-8 -1.25,-8 C-1.25,-8 -1.25,-4.2870001792907715 -1.25,-4.2870001792907715z M-3.25,-8.5 C-3.25,-9.32800006866455 -2.578000068664551,-10 -1.75,-10 C-1.75,-10 -0.41200000047683716,-10 -0.41200000047683716,-10 C1.2929999828338623,-10 2.890000104904175,-8.902999877929688 3.303999900817871,-7.1479997634887695 C3.5290000438690186,-6.193999767303467 3.75,-5.011000156402588 3.75,-4 C3.75,-3.6600000858306885 3.7249999046325684,-3.3239998817443848 3.684000015258789,-3 C3.684000015258789,-3 5.25,-3 5.25,-3 C7.183000087738037,-3 8.75,-1.4329999685287476 8.75,0.5 C8.75,0.5630000233650208 8.748000144958496,0.6259999871253967 8.744999885559082,0.6880000233650208 C9.0649995803833,1.2170000076293945 9.25,1.8380000591278076 9.25,2.5 C9.25,3.1619999408721924 9.0649995803833,3.7829999923706055 8.744999885559082,4.311999797821045 C8.748000144958496,4.374000072479248 8.75,4.436999797821045 8.75,4.5 C8.75,5.4710001945495605 8.354000091552734,6.349999904632568 7.7170000076293945,6.982999801635742 C7.48199987411499,8.687999725341797 6.019000053405762,10 4.25,10 C4.25,10 0.37299999594688416,10 0.37299999594688416,10 C-0.8090000152587891,10 -1.9839999675750732,9.8100004196167 -3.1059999465942383,9.435999870300293 C-3.1059999465942383,9.435999870300293 -4.598999977111816,8.937999725341797 -4.598999977111816,8.937999725341797 C-5.468999862670898,8.64799976348877 -6.380000114440918,8.5 -7.296999931335449,8.5 C-8.37600040435791,8.5 -9.25,7.625999927520752 -9.25,6.546999931335449 C-9.25,6.546999931335449 -9.25,1.753999948501587 -9.25,1.753999948501587 C-9.25,0.8610000014305115 -8.657999992370605,0.07599999755620956 -7.798999786376953,-0.16899999976158142 C-7.798999786376953,-0.16899999976158142 -5.763999938964844,-0.75 -5.763999938964844,-0.75 C-5.526000022888184,-0.8180000185966492 -5.322000026702881,-0.972000002861023 -5.190999984741211,-1.1820000410079956 C-5.190999984741211,-1.1820000410079956 -3.25,-4.2870001792907715 -3.25,-4.2870001792907715 C-3.25,-4.2870001792907715 -3.25,-8.5 -3.25,-8.5z"
-                                          ></path>
-                                        </g>
-                                      </g>
-                                      <g className='hidden'>
-                                        <g>
-                                          <path></path>
-                                        </g>
-                                      </g>
-                                      <g className='hidden'>
-                                        <g>
-                                          <path></path>
-                                        </g>
-                                      </g>
-                                    </g>
-                                  </g>
-                                </svg>
+                                }
                               </button>
                             </div>
                             <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
@@ -383,8 +390,14 @@ const Top = () => {
                                       <mask id="__lottie_element_177" mask-type="alpha">
                                         <g filter="url(#__lottie_element_178)">
                                           <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
-                                          <g className='hidden'>
-                                            <g><path></path></g>
+                                          <g transform="matrix(1,0,0,1,31.5,37.03200149536133)" opacity="1" className='block'>
+                                            <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+                                              <path
+                                                fill="rgb(63,84,255)"
+                                                fill-opacity="1"
+                                                d=" M7.400000095367432,5.539999961853027 C7.388999938964844,5.567999839782715 7.376999855041504,5.59499979019165 7.364999771118164,5.622000217437744 M-7.275000095367432,-0.2070000022649765 C-7.275000095367432,-0.2070000022649765 -7.823999881744385,-2.130000114440918 -7.823999881744385,-2.130000114440918 M-3.75,8 C-3.75,8 -4.742000102996826,9.736000061035156 -4.742000102996826,9.736000061035156 M-4.742000102996826,9.736000061035156 C-4.742000102996826,9.736000061035156 -4.914999961853027,9.637999534606934 -4.914999961853027,9.637999534606934 C-5.645999908447266,9.220000267028809 -6.473999977111816,9 -7.315999984741211,9 C-8.79800033569336,9 -10,7.797999858856201 -10,6.315999984741211 C-10,6.315999984741211 -10,0.7540000081062317 -10,0.7540000081062317 C-10,-0.5849999785423279 -9.112000465393066,-1.7619999647140503 -7.823999881744385,-2.130000114440918 C-7.823999881744385,-2.130000114440918 -5.789000034332275,-2.7119998931884766 -5.789000034332275,-2.7119998931884766 C-5.789000034332275,-2.7119998931884766 -4,-5.573999881744385 -4,-5.573999881744385 C-4,-5.573999881744385 -4,-8.52400016784668 -4,-8.52400016784668 C-4,-9.892000198364258 -2.8919999599456787,-11 -1.5240000486373901,-11 C0.9259999990463257,-11 2.99399995803833,-9.175000190734863 3.2980000972747803,-6.74399995803833 C3.2980000972747803,-6.74399995803833 3.375999927520752,-6.116000175476074 3.375999927520752,-6.116000175476074 C3.4639999866485596,-5.413000106811523 3.4579999446868896,-4.701000213623047 3.3589999675750732,-4 C3.3589999675750732,-4 5.5,-4 5.5,-4 C7.433000087738037,-4 9,-2.433000087738037 9,-0.5 C9,-0.40299999713897705 8.996000289916992,-0.3059999942779541 8.98799991607666,-0.210999995470047 C9.61400032043457,0.42100000381469727 10,1.2899999618530273 10,2.25 C10,2.9719998836517334 9.781999588012695,3.6419999599456787 9.407999992370605,4.198999881744385 C9.468000411987305,4.455999851226807 9.5,4.723999977111816 9.5,5 C9.5,6.198999881744385 8.89799976348877,7.25600004196167 7.979000091552734,7.88700008392334 C7.785999774932861,9.637999534606934 6.302000045776367,11 4.5,11 C4.5,11 0.01600000075995922,11 0.01600000075995922,11 C-1.652999997138977,11 -3.2929999828338623,10.564000129699707 -4.742000102996826,9.736000061035156z"
+                                              ></path>
+                                            </g>
                                           </g>
                                         </g>
                                       </mask>
@@ -393,6 +406,17 @@ const Top = () => {
                                       </filter>
                                       <mask id="__lottie_element_170" mask-type="alpha">
                                         <g filter="url(#__lottie_element_171)">
+                                          <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
+                                            <g className='hidden'>
+                                              <path></path>
+                                            </g>
+                                        </g>
+                                      </mask>
+                                      <filter id="__lottie_element_178" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+                                        <feComponentTransfer in="SourceGraphic"><feFuncA type="table" tableValues="1.0 0.0"></feFuncA></feComponentTransfer>
+                                      </filter>
+                                      <mask id="__lottie_element_177" mask-type="alpha">
+                                        <g filter="url(#__lottie_element_178)">
                                           <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
                                           <g transform="matrix(1,0,0,1,32.3120002746582,37.345001220703125)" opacity="1" className='block'>
                                             <g opacity="1" transform="matrix(1,0,0,1,0,0)">
@@ -405,14 +429,14 @@ const Top = () => {
                                           </g>
                                         </g>
                                       </mask>
-                                      <filter id="__lottie_element_178" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+                                      <filter id="__lottie_element_110" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
                                         <feComponentTransfer in="SourceGraphic"><feFuncA type="table" tableValues="1.0 0.0"></feFuncA></feComponentTransfer>
                                       </filter>
-                                      <mask id="__lottie_element_177" mask-type="alpha">
-                                        <g filter="url(#__lottie_element_178)">
+                                      <mask id="__lottie_element_109" mask-type="alpha">
+                                        <g filter="url(#__lottie_element_110)">
                                           <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
                                           <g className='hidden'>
-                                            <g><path></path></g>
+                                              <g><path></path></g>
                                           </g>
                                         </g>
                                       </mask>
@@ -551,9 +575,11 @@ const Top = () => {
         </div>
       </div>
       <div className='c2_previewModal_close block cursor-pointer m-[1em] absolute right-0 top-0 z-[2] text-[#fff] text-[16px] leading-[1.4]'>
+        <Link to='/'>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" role="button" aria-label="close" tabIndex="0" xmlns='http://www.w3.org/2000/svg' className='Hawkins_Icon_Standard bg-[#181818] rounded-[50%] h-[36px] p-[8px] w-[36px] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
           <path fillRule="evenodd" clipRule="evenodd" d="M2.29297 3.70706L10.5859 12L2.29297 20.2928L3.70718 21.7071L12.0001 13.4142L20.293 21.7071L21.7072 20.2928L13.4143 12L21.7072 3.70706L20.293 2.29285L12.0001 10.5857L3.70718 2.29285L2.29297 3.70706Z" fill="currentColor"></path>
         </svg>
+        </Link>
       </div>
     </div>
   );

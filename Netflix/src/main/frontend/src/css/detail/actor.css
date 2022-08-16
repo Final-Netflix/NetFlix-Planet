@@ -1,0 +1,205 @@
+.css-1c1fp6l {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    will-change: scroll-position;
+    box-sizing: border-box;
+}
+.ltr-iuxblq {
+    position: relative;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    align-self: center;
+    margin: 2rem auto;
+    z-index: 2;
+    padding: 0px;
+    width: 80vw;
+    min-height: 100vh;
+    max-width: 80vw;
+    background-color: rgb(24, 24, 24);
+}
+.ltr-12udmky.hasIcon {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+.ltr-12udmky.color-tertiary {
+    background-color: transparent;
+    color: white;
+}
+.ltr-12udmky {
+    -webkit-box-align: center;
+    align-items: center;
+    appearance: none;
+    border: 0px;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    opacity: 1;
+    padding: 0.8rem;
+    position: relative;
+    user-select: none;
+    will-change: background-color, color;
+    word-break: break-word;
+    white-space: nowrap;
+    border-radius: 50%;
+}
+.css-z7fdox {
+    left: 1.6rem;
+    top: 1.6rem;
+    position: absolute;
+}
+button {
+    overflow: visible;
+}
+.ltr-18dhnor.small {
+    height: 1.8rem;
+    width: 1.8rem;
+}
+.t_17d527 .svg-icon {
+    border: 1px solid transparent;
+    margin: 0 -1px;
+    overflow: visible;
+    transform: scale(1);
+}
+.ltr-18dhnor svg {
+    height: 100%;
+    width: 100%;
+}
+.c2-css-1axxs14 {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 20rem;
+    font-size: 4rem;
+    font-weight: 900;
+    padding: 0px 6%;
+    text-align: center;
+}
+.css-m64ku3 {
+    padding-top: 3rem;
+}
+.gallery {
+    margin: 0;
+    min-height: 1000px;
+    overflow: hidden;
+}
+div {
+    display: block;
+}
+.gallery .galleryContent {
+    position: relative;
+    z-index: 0;
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px)
+.gallery .rowContainer {
+    margin-bottom: 4.5vw;
+}
+.gallery .rowContainer {
+    margin: 0 0 4vw;
+}
+.lolomoRow, .rowContainer {
+    transition: transform .54s cubic-bezier(.5,0,.1,1) 0s;
+}
+.rowContainer {
+    position: relative;
+    z-index: 0;
+}
+.rowContainer .rowContent {
+    box-sizing: border-box;
+    padding: 0;
+}
+.rowContainer .rowContent .slider {
+    z-index: 2;
+}
+.slider {
+    margin: 0;
+    padding: 0 4%;
+    position: relative;
+    touch-action: pan-y;
+}
+.slider .sliderMask.showPeek {
+    overflow-x: visible;
+}
+.slider .sliderMask {
+    overflow-x: hidden;
+    padding-bottom: 1px;
+}
+.slider .sliderMask .sliderContent {
+    white-space: nowrap;
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px)
+.gallery-modal .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: 25%;
+}
+.slider .sliderMask .sliderContent .slider-item:first-child {
+    padding-left: 0;
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px)
+.rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: 20%;
+}
+.slider .sliderMask .sliderContent .slider-item {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 0.2vw;
+    position: relative;
+    vertical-align: top;
+    white-space: normal;
+    z-index: 1;
+}
+.title-card:not(.loadingTitle) {
+    display: block;
+}
+.title-card {
+    position: relative;
+    z-index: 1;
+}
+.previewModal--backDrop {
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.ltr-eze6o3.hasIcon {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+.ltr-eze6o3.color-tertiary {
+    background-color: transparent;
+    color: white;
+}
+.ltr-eze6o3 {
+    -webkit-box-align: center;
+    align-items: center;
+    appearance: none;
+    border: 0px;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    opacity: 1;
+    padding: 0.8rem;
+    user-select: none;
+    will-change: background-color, color;
+    word-break: break-word;
+    white-space: nowrap;
+    border-radius: 50%;
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    z-index: 1;
+}
+
+.ltr-12udmky.color-tertiary:not(:disabled):hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
