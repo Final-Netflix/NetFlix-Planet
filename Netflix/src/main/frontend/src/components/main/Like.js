@@ -3,16 +3,16 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import View from './components/View';
 
-const Movie = () => {
+const Like = () => {
     const scroll = false;
 
     return (
-        <>
+        <div>
             <Header scroll={ scroll }/>
             <View/>
             <Footer/> 
-        </>
+        </div>
     );
 };
 
-export default Movie;
+export default Like;

@@ -16,6 +16,14 @@ const TopTen = () => {
         {index: 10, src: 'https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABc1nAdcdKPWjdTUAcxoIi_t118oIu5PU0S4nXS8XwoD2_C8UlYNABDcLc67hEecq2ZBRjkIG_fwTBVLv7d41xrQ6H7iJ8M0WNCjlV04rsX13UuIRkBZLQ0nZ7jX1MwzTgwlHIb_8Q8n2nQK9fWSNVA.webp?r=f66', title: '도시어부'}
     ]);
 
+    const goNextSlide = () => {
+        document.getElementsByClassName("slick-next")[0].click();
+    }
+
+    const goPrevSlide = () => {
+        document.getElementsByClassName("slick-prev")[0].click();
+    }
+
     return (
         <div>
             <div className="lolomoRow lolomoRow_title_card css-0" data-list-context="mostWatched">
@@ -25,14 +33,10 @@ const TopTen = () => {
                 <div className="rowContainer rowContainer_title_card" id="row-1">
                     <div className="ptrack-container">
                         <div className="rowContent slider-hover-trigger-layer">
-                            <div className="slider" style={{padding: '0px'}}>
-                                <span className="handle handlePrev active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-leftCaret"></b></span>
-                                {/* <ul className="pagination-indicator">
-                                    <li className="active"></li>
-                                    <li className=""></li>
-                                </ul> */}
+                            <div className="slider">
+                                <span onClick={ goPrevSlide } className="handle handlePrev active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-leftCaret"></b></span>
                                 <TopTenList data={ data } setData={ setData }/>
-                                <span className="handle handleNext active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>
+                                <span onClick={ goNextSlide } className="handle handleNext active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>
                             </div>
                         </div>
                     </div>

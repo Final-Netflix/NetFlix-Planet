@@ -8,12 +8,33 @@ const TopTenList = ({ data }) => {
     let settings = {
         dots: true,
         infinite: true,
-        speed: 500,
         slidesToShow: 6,
         slidesToScroll: 6,
-        cssEase: "linear"
+        cssEase: "linear",
+        responsive: [
+            {
+                breakpoint: 1400,
+                settings:{
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                }
+            },
+            {
+                breakpoint: 1100,
+                settings:{
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                }
+            },
+            {
+                breakpoint: 800,
+                settings:{
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            }
+        ]
     }
-
 
     return (
         <div className="sliderMask showPeek">

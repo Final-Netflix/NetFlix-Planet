@@ -10,7 +10,7 @@ const Special = () => {
                         <div>
                             <div className="z-[2] full-screen bottom-0 left-0 right-0 top-0 absolute">
                                 <div className="c1-hero-image-wrapper bottom-0 left-0 right-0 top-0 absolute">
-                                    <img className="c1-static-image z-[5]" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABYBvZb2AgEEflaa-y1zGL3r19ArgfOpL-xE6MD2CCT5912oIyHNJ2Ip9iZSWYa1Defn1UkMDshmTYVdw2QDifBwwcgLOfKcLurah.webp?r=6c2" alt="" />
+                                    <img className="c1-static-image z-[5]" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABbH6veKSImlLn0AJn8mHjMxH_U_kp2zji5Ws1ZntZ9sy94JXkPK0mUhZZ8PpkrYeOO-Tx_lT6W3ZdSnHY5-kY6tp17sH3PYOYSgU.webp?r=844" alt="" />
                                     <div className="c1-trailer-vignette left-0 absolute right-0 z-[8]"></div>
                                     <div className="c1-hero-vignette left-0 absolute right-0 z-[8]"></div>
                                     <div className="c1-embedded-components relative z-10"></div>
@@ -38,7 +38,7 @@ const Special = () => {
                                 <div className="logo-and-text">
                                     <div className="titleWrapper" style={{transformOrigin:'left bottom', transform:'scale(1) translate3d(0px, 0px, 0px)', transitionDuration:'1300ms', transitionDelay:'0ms'}}>
                                         <div className="c1-billboard-title">
-                                        <img alt="김비서가 왜 그럴까" className="title-logo" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABfY24buSwhYXYuZMzorU1CK8qxlV9wKzB4s86M7bJwXgyKvA2skawxw32VzY0fyAuwN5oKqT1rGzKQAGXB9W-RL9rq6mJ4jLdNnr7DOs1wgt.webp?r=c50" title="김비서가 왜 그럴까" />
+                                        <img alt="동백꽃 필 무렵" className="title-logo" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSyPa0C67xQMR05YG0aeRP5SNNvBdpFPt5RPlhhFC6kdiu2WujPPQOBQSmYf3afEa7AW2GwlbBuYkgMpW4S0HCydrAp2fI5pD-p1_JJ0Y4Gj.webp?r=ae8" title="동백꽃 필 무렵" />
                                         </div>
                                     </div>
                                     <div className="info-wrapper" style={{transform: 'translate3d(0px, 0px, 0px)', transitionDuration:'1300ms', transitionDelay: '0ms', opacity: '1'}}>
@@ -46,7 +46,7 @@ const Special = () => {
                                         <div className="episode-title-container"></div>
                                         <div className="synopsis-fade-container">
                                             <div className="synopsis no-supplemental">
-                                            <div className="ptrack-content" data-ui-tracking-context="%7B%22evidenceKey%22:%22web_synopsis%7C81030241_INFORMATIVE%7Cko%7C_IFD_%22,%22video_id%22:1,%22track_id%22:254015180,%22request_id%22:%22aba3f3bc-7a36-42a3-b026-23b23b29dedb-254957602%22,%22list_id%22:%22GPS_96C5ED18C072934A21339FA7EE6B1C-332B50E1F27340-8F71DCC590_p_1659875873618%22,%22row%22:0,%22rank%22:0,%22appView%22:%22synopsisEvidence%22,%22usePresentedEvent%22:true%7D" data-tracking-uuid="6db1ab2e-966a-4c19-b6b5-0ff4909c7116">진심 아니지? 날 보필할 특권을 포기할 리 없잖아. 자기애로 똘똘 뭉친 부회장 영준. 9년간 완벽하게 일해 온 김비서가 그만둔단 말을 믿을 수 없다. 초특급 대우에 갖은 수를 다 쓰지만 안 통한다. 그렇다면 최후의 수단을 쓸 수밖에.</div>
+                                            <div className="ptrack-content" data-ui-tracking-context="%7B%22evidenceKey%22:%22web_synopsis%7C81030241_INFORMATIVE%7Cko%7C_IFD_%22,%22video_id%22:1,%22track_id%22:254015180,%22request_id%22:%22aba3f3bc-7a36-42a3-b026-23b23b29dedb-254957602%22,%22list_id%22:%22GPS_96C5ED18C072934A21339FA7EE6B1C-332B50E1F27340-8F71DCC590_p_1659875873618%22,%22row%22:0,%22rank%22:0,%22appView%22:%22synopsisEvidence%22,%22usePresentedEvent%22:true%7D" data-tracking-uuid="6db1ab2e-966a-4c19-b6b5-0ff4909c7116">천진하지만 강단 있는 싱글 맘 동백. 씩씩하게 살고 싶지만, 세상의 편견이 여전히 힘들다. 이런 그녀를 찾아온 설렘, 어쩌면 사랑. 이제부터, 조금 더 용감해져도 될까.</div>
                                             </div>
                                         </div>
                                         </div>
