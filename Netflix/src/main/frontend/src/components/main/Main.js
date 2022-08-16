@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Header from './Header';
 import View from './View';
 
+
 const Main = () => {
 
     const [scroll, setScroll] = useState(false);
