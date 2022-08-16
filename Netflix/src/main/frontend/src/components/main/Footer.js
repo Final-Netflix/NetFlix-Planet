@@ -3,7 +3,7 @@ import 'css/main/footer.css';
 
 const Footer = () => {
     return (
-        <div role="contentinfo" className="c1-member-footer" id="member-footer">
+        <div role="contentinfo" className="c1-member-footer bg-[#141414]" id="member-footer">
             <div className="c1-social-links">
                 <a className="c1-social-link" href="https://www.facebook.com/NetflixKR" target="_blank" aria-label="facebook">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-svg-icon c1-svg-icon-facebook-logo">

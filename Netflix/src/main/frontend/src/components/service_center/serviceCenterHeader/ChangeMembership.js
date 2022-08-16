@@ -3,20 +3,6 @@ import React from 'react';
 const ChangeMembership = () => {
     return (
         <div>
-            <div class="k1-global-content">
-                <div class="k1-container">
-                    <div class="k1-breadcrumb-container">
-                        <ul class="k1-breadcrumb">
-                            <li>
-                                <a href="/ko">
-                                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                        <polygon points="16.3515625 11.1015625 16.3515625 12.25 9.2421875 12.25 12.4960938 15.53125 11.6757812 16.3515625 7 11.6757812 11.6757812 7 12.4960938 7.8203125 9.2421875 11.1015625"></polygon>
-                                    </svg>
-                                    고객 센터 홈으로 돌아가기
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
 
                     <h1 class="k1-kb-title">멤버십 변경 방법</h1>
 
@@ -97,8 +83,6 @@ const ChangeMembership = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
             
     );
 };

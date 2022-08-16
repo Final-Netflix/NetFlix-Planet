@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import Header from './Header';
-import Test from './Test';
 import View from './View';
 
 const Main = () => {

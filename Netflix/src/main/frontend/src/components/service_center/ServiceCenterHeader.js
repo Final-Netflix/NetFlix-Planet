@@ -26,7 +26,9 @@ const ServiceCenterHeader = () => {
                                     {/* <img className="w-40" src= { logo }> </img> */}
                                     {/* <svg className="k2-netflix-svg w-[88px] h-[32px]" ></svg>
                                     <svg className="n-svg"></svg> */}
+                                    <Link to='/'>
                                     <img alt='로고' className="w-40" src={ logo }></img>
+                                    </Link>
                                 </div>
                                 {/* <a className="helpcenter-logo">고객 센터</a> */}
                             </div>
@@ -35,8 +37,8 @@ const ServiceCenterHeader = () => {
                                 <ul className="k2-nav k2-navbar-nav k2-member-sign-in k2-account-dropdown k2-pull-right ">
                                     <li className="k2-dropdown k2-open">
                                         <a className="k2-btn  k2-btn-med k2-hc-profile-name k2-dropdown-toggle">
-                                            <Link className='k2-btn text-[#f5f5f1] -mr-4' to='' onClick={()=>openTab()}>
-                                            옥지독지
+                                            <Link className='k2-btn text-[#f5f5f1] -mr-[25px]' to='' onClick={()=>openTab()}>
+                                            옥지
                                             </Link>
                                         </a>
                                         <img className="k2-arrow" src="https://help.nflxext.com/helpcenter/d8b50ece09e6271eb5688c85a1d7eab5.svg"></img>
@@ -61,7 +63,9 @@ const ServiceCenterHeader = () => {
                             </div>
                         </div>
                         <div className="k2-logo-wrapper flex justify-center">
+                            <Link to='/service'>
                             <a className="k2-helpcenter-logo cursor-pointer text-[white] text-4xl font-extrabold pt-2 hover:no-underline ">고객 센터</a>
+                            </Link>
                         </div>
                         <div className="k2-search-form-container">
                             <div className="k2-search-placeholder">
