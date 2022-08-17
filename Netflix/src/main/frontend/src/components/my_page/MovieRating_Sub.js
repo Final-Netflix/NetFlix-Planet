@@ -21,9 +21,36 @@ const MovieRating_Sub = () => {
                         </div>
 
                         <div className = "text-[#333] w-[100%] text-4xl mb-100 mt-[3%] ">정수 프로필의 관람등급</div>
-                        <div className = "w-[100%] text-2xl mt-10 mb-10">이 프로필에서는 모든 관람등급의 콘텐츠가 표시됩니다.</div>
+                        
+                            <div className = "w-[100%] text-2xl mt-10 mb-10">이 프로필에서는 모든 관람등급의 콘텐츠가 표시됩니다.</div>
+                        
+                        <div className = "flex">
+                            <div className="border-solid pb-8 border-t-[5px] h-2 border-green-600 w-[90px] mt-7"></div>
+                            <input className= "w-[32px] rounded-full " type = "radio"></input>
+                            <div className="border-solid pb-8 border-t-[5px] h-2 border-green-600 w-[160px] mt-7"></div>
+                            <input className= "w-[32px] rounded-full " type = "radio"></input>
+                            <div className="border-solid pb-8 border-t-[5px] h-2 border-green-600 w-[160px] mt-7"></div>
+                            <input className= "w-[32px] rounded-full " type = "radio"></input>
+                            <div className="border-solid pb-8 border-t-[5px] h-2 border-green-600 w-[160px] mt-7"></div>
+                            <input className= "w-[32px] rounded-full " type = "radio"></input>
+                            <div className="border-solid pb-8 border-t-[5px] h-2 border-green-600 w-[160px] mt-7"></div>
+                            <input className= "w-[32px] rounded-full " type = "radio"></input>
+                            <div className="border-solid pb-8 border-t-[5px] h-2 border-green-600 w-[90px] mt-7"></div>
+                            <input className= "w-[32px] rounded-full " type = "radio"></input>
+                            <div className="border-solid pb-8 border-t-[5px] h-2 border-green-600 w-[90px] mt-7"></div>
+                        </div>
 
-                        <div className="border-solid pb-10 border-t-[1px] h-2 border-zinc-300"></div>
+                        <div className = "flex">
+                            <div className = "bg-green-600 text-white w-[85px] h-[28px] text-center pt-2 pb-8 text-lg ml-20 mt-3 rounded-md ">전체 관람가</div>
+                            <div className = "bg-green-600 text-white w-[90px] h-[28px] text-center pt-2 pb-8 text-lg ml-32 mt-3 rounded-md">7+ 관람가</div>
+                            <div className = "bg-green-600 text-white w-[95px] h-[28px] text-center pt-2 pb-8 text-lg ml-28 mt-3 rounded-md">12+ 관람가</div>
+                            <div className = "bg-green-600 text-white w-[95px] h-[28px] text-center pt-2 pb-8 text-lg ml-28 mt-3 rounded-md">15+ 관람가</div>
+                            <div className = "bg-green-600 text-white w-[80px] h-[28px] text-center pt-2 pb-8 text-lg ml-28 mt-3 rounded-md">청불</div>
+                            <div className = "bg-green-600 text-white w-[90px] h-[28px] text-center pt-2 pb-8 text-lg ml-10 mt-3 rounded-md">19+ 관람가</div>
+                        </div>
+
+
+                        <div className="border-solid pb-10 border-t-[1px] h-2 border-zinc-300 mt-10"></div>
 
                         <div className = "text-[#333] w-[100%] text-4xl mb-100 ">키즈 프로필</div>
 
@@ -39,9 +66,13 @@ const MovieRating_Sub = () => {
                         <br/>
                         <br/>
 
-                        <div className = "flex mt-10">
-                            <button type = "button" className = "rounded w-[98px] bg-[#0080ff] text-[#fff] h-[37px] text-xl ml-[40%]">저장</button>
-                            <button type = "button"  className = "rounded w-[98px] bg-[#ccc] h-[37px] text-inherit ml-4 text-lg">취소</button>
+                        <div className = "flex mt-8">
+                            <Link to = "/my">
+                                <button type = "button" className = "rounded w-[98px] bg-[#0080ff] text-[#fff] h-[37px] text-xl ml-[150%]">저장</button>
+                            </Link>
+                            <Link to = "/my">
+                                <button type = "button"  className = "rounded w-[98px] bg-[#ccc] h-[37px] text-inherit ml-[170%] text-lg">취소</button>
+                            </Link>
                         </div>
                     
                     </div>

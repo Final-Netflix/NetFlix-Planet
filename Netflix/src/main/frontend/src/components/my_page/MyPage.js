@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-
-
-
 import MyPageHeader from './MyPageHeader';
 import MypageFooter from './MyPageFooter';
-
 import MypageContainer from './MyPageContainer';
 import Verification from './verification/Verification';
 import { useParams } from 'react-router-dom';
@@ -16,7 +12,8 @@ import PlaySetting from './PlaySetting';
 import MovieRating_Sub from './MovieRating_Sub';
 import MypageMemberShip from './MypageMemberShip';
 import MypagePassword from './MypagePassword';
-
+import EvaluationContent from './EvaluationContent';
+import ProfileLock_Sub from './ProfileLock_Sub';
 
 const MyPage = () => {
 	
@@ -33,10 +30,13 @@ const MyPage = () => {
 
             {detail === 'newProfileEmail' && <MyPageNewProfileEmail/>}
             {detail === 'movieRating' && <MovieRating/>}
-            {detail === 'profileLock' && <ProfileLock/>}
-            {detail === 'watchRecord' && <WatchRecord/>}
-            {detail === 'playSetting' && <PlaySetting/>}
             {detail === 'movieRating_Sub' && <MovieRating_Sub/>}
+            {detail === 'profileLock' && <ProfileLock/>}
+            {detail === 'profileLock_Sub' && <ProfileLock_Sub/>}
+            {detail === 'watchRecord' && <WatchRecord/>}
+            {detail === 'evaluationContent' && <EvaluationContent/>}
+            {detail === 'playSetting' && <PlaySetting/>}
+
             {detail === 'changePwd' && <MypagePassword/>}
             {detail === 'changePlan' && <MypageMemberShip/>}
            	</div>
