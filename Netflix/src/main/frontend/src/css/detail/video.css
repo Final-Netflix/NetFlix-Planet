@@ -1,4 +1,4 @@
-.t_17d527 .watch-video {
+.watch-video {
     box-sizing: border-box;
     height: 100%;
     left: 0;
@@ -9,7 +9,7 @@
     top: 0;
     width: 100%;
 }
-.t_17d527 .watch-video--player-view {
+.watch-video--player-view {
     height: 100%;
     left: 0;
     margin: 0;
@@ -67,7 +67,7 @@ audio, canvas, progress, video {
     position: relative;
     width: 100%;
 }
-.t_17d527 .watch-video--back-container, .t_17d527 .watch-video--flag-container {
+.watch-video--back-container, .watch-video--flag-container {
     background-image: linear-gradient(180deg,rgba(0,0,0,.3) 0,transparent 20%);
     box-sizing: border-box;
     padding-left: 3rem;
@@ -133,7 +133,7 @@ svg:not(:root) {
     -ms-flex-pack: center;
     justify-content: center;
 }
-.t_17d527 .watch-video--bottom-controls-container {
+.watch-video--bottom-controls-container {
     background-image: linear-gradient(0deg,rgba(0,0,0,.3) 0,transparent);
     box-sizing: border-box;
     margin: 0;
@@ -212,7 +212,7 @@ svg:not(:root) {
     transform: translateY(-50%);
     transition: transform 0.2s ease 0s;
     will-change: height, left, width, transform, transition;
-    left: calc(175.064px - 0.75rem);
+    left: calc(50.064px - 0.75rem);
 }
 .ltr-6alejv {
     box-sizing: border-box;

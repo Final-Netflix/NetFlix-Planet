@@ -6,11 +6,11 @@ const Video = () => {
     <div>
       <div className="watch-video" data-uia="watch-video">
         <div className="watch-video--player-view" data-uia="watch-video-player-view-minimized">
-          <div className="active ltr-fntwn3" data-uia="player" data-videoid="81566007" tabindex="0">
+          <div className="active ltr-fntwn3" data-uia="player" data-videoid="81566007" tabIndex="0">
             <div className="ltr-op8orf" data-uia="video-canvas">
               <div className='relative w-[100%] h-[100%] overflow-hidden'>
                 <div className='relative w-[100%] h-[100%] overflow-hidden' id="81566007">
-                  <video src="blob:https://www.netflix.com/e5669d38-4bf8-404c-8a6d-9ae2ee9ac43f" tabindex="-1" className='h-[100%] w-[1200px]'></video>
+                  <video src="blob:https://www.netflix.com/e5669d38-4bf8-404c-8a6d-9ae2ee9ac43f" tabIndex="-1" className='h-[100%] w-[1200px]'></video>
                   <div className="player-timedtext hidden [direction: ltr]"></div>
                 </div>
               </div>
@@ -56,14 +56,14 @@ const Video = () => {
                   <button className="button-primary watch-video--skip-content-button medium hasLabel ltr-ublg01" data-uia="player-skip-intro" type="button"><span className="ltr-657tup">오프닝 건너뛰기</span></button>
               </div>
               <div className="watch-video--bottom-controls-container ltr-hpbgml items-end justify-center">
-                  <div className="ltr-jezwko" data-uia="controls-standard" tabindex="0">
+                  <div className="ltr-jezwko" data-uia="controls-standard" tabIndex="0">
                       <div className="ltr-1bt0omd">
                           <div className="ltr-1i33xgl items-[normal] justify-[normal]">
                               <div className="ltr-hpbgml items-center flex-grow-[1] justify-[normal]">
-                                  <div aria-orientation="horizontal" className="medium ltr-13q34j2" data-uia="timeline" max="4626663" min="0" role="slider" tabindex="-1">
+                                  <div aria-orientation="horizontal" className="medium ltr-13q34j2" data-uia="timeline" max="4626663" min="0" role="slider" tabIndex="-1">
                                       <div data-uia="timeline-bar" className="ltr-lbmpgb">
-                                          <div className="ltr-xd82k2 w-[45px]"></div>
-                                          <div className="ltr-1c4ubff w-[10px]"></div>
+                                          <div className="ltr-xd82k2 w-[80px]"></div>
+                                          <div className="ltr-1c4ubff w-[50px]"></div>
                                           <div
                                               aria-label="재생 시간 표시줄"
                                               aria-valuemax="4626663"
@@ -71,7 +71,7 @@ const Video = () => {
                                               aria-valuenow="35065"
                                               aria-valuetext="35/4626"
                                               data-uia="timeline-knob"
-                                              tabindex="0"
+                                              tabIndex="0"
                                               className="ltr-uwc8j6"
                                           ></div>
                                       </div>
