@@ -3,7 +3,7 @@ import React from 'react';
 const MypageFooter = () => {
     return (
         <div>
-            <div className="border-solid pb-10 mt-10 border-t-[1px] h-2 bg-[#f3f3f3] border-[#e6e6e6]"></div> 
+            <div className="border-solid pb-10 mt-10 border-t-[1px] h-2 bg-[#f3f3f3] border-[#e6e6e6] "></div> 
                 <div className = "pb-20 bg-[#f3f3f3]">
                     <div role="contentinfo" className="c1-member-footer  h-[600px]" id="member-footer" style={{margin : 0}}>
                         <div className="c1-social-links">

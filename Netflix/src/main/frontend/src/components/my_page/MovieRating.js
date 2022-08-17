@@ -19,7 +19,9 @@ const MovieRating = () => {
                             <input type = "password" className=" rounded w-[300px] h-[40px] border-x-2 border-y-2 border-t-1 border-r-1 border-b-1 border-l-1 text-sm border-gray-400 mt-10" ></input>
                             <button className = "mt-12 text-[#0080ff] text-2xl ml-3"> 비밀번호를 잊으셨나요?</button>
                         </div>
-                    <button className = "rounded w-[98px]  bg-[#0080ff] text-[#fff] h-[37px] font-bold text-lg mt-20 ml-80 "  >다음</button>
+                    <Link to = "/my/movieRating_Sub">
+                        <button className = "rounded w-[98px]  bg-[#0080ff] text-[#fff] h-[37px] font-bold text-lg mt-20 ml-80 ">다음</button>
+                    </Link>
                     <Link to = "/my">
                         <button className="rounded w-[98px] bg-[#ccc] h-[37px] text-inherit ml-4 text-lg">취소</button>
                     </Link>

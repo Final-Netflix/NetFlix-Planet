@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import membershipImg from '../../image/my_page/membershipImg.png';
 import slideDownButton from '../../image/my_page/slideDownButton.png';
 import slideUpButton from '../../image/my_page/slideUpButton.png';
 import MyPageSlide_Sub from './MyPageSlide_Sub';
+import save from '../../image/my_page/save.png';
 
 const MypageContainer = () => {
 
@@ -12,7 +12,7 @@ const MypageContainer = () => {
     const [isShow2, setIsShow2] = useState(false)
     const [isShow3, setIsShow3] = useState(false)
     const [isShow4, setIsShow4] = useState(false)
-    
+
     const onToggle1 = () => {
         setIsShow1(!isShow1)
     }
@@ -29,9 +29,17 @@ const MypageContainer = () => {
     return (
         <div className = "m2_container">
                 <div className="px-32 py-36 w-full min-h-[1000px] max-w-[1248px] mx-auto">
-                    <h1 className="text-4xl float-left pr-6 ">계정</h1>
-                    <img className="mt-2 float-left " src={membershipImg} width="30" height="300"/>
-                    <h3 className="pt-3  text-zinc-600 font-bold">멤버십 시작 : 2022년 8월</h3>
+                    <div className = "flex">
+                        <h1 className="w-[10%] text-5xl justify-start pr-4 ">계정</h1>
+                        <img className="mt-5 justify-start w-[35px] h-[40px]" src={ membershipImg }/>
+                        <h3 className="mt-8 ml-3 text-zinc-600 font-bold text-lg">멤버십 시작 : 2022년 8월</h3>
+                    </div>
+
+                    <div className = "flex w-[100%] pt-7 pb-4 pl-5 rounded-md bg-green-500 z-0">
+                        <img src = { save } className = "w-[45px]"></img>
+                        <div className = " w-[100%] pt-1 text-xl">프로필 이메일이 변경되었습니다.</div>
+                    </div>
+
                     <div className="w-full pb-20">
                         <div className="border-solid mt-9 border-t-[1px] h-9 border-zinc-700 w-full">
                             <div className="flex justify-start w-full">
@@ -85,7 +93,7 @@ const MypageContainer = () => {
                                 </div>
                             </div>
                             <div className="border-solid mt-5 border-t-[1px] h-2 border-zinc-700"></div>
-                            
+
                             <div className="flex justify-start w-full mb-4">
 
                                 <div className="text-zinc-500 text-xl pb-5 pt-5">멤버십 상세정보</div>
@@ -98,15 +106,15 @@ const MypageContainer = () => {
 
                             <div className="border-solid pb-10 border-t-[1px] h-2 border-zinc-700"></div>
 
-                            <div className='m2_user_profile flex justify-between w-full'>   
-                                <div className=" text-zinc-500 text-xl pb-5  w-[270px] ">프로필 & 자녀 보호 설정</div>
+                            <div className='m2_user_profile flex justify-between w-full'>
+                                <div className=" text-zinc-500 text-xl pb-5 w-[270px]">프로필 & 자녀 보호 설정</div>
                                     <div className = "w-[80%] m2_user">
                                         <div className="flex flex-wrap ml-[10%] w-[100%]">
                                             <img
                                                 className="w-14 rounded-md"
                                                 src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229"
                                             />
-                                            
+
                                             <div className="pt-3 pl-5">
                                                 <h3 className="font-bold pb-2">박어른</h3>
                                                 <div className="text-gray-600 text-xs">모든 관람등급</div>
@@ -115,10 +123,10 @@ const MypageContainer = () => {
                                                 {isShow1 ? <img src={slideUpButton} className=" w-8 h-7"/> : <img src={slideDownButton} className="w-8 h-7" />}
                                             </button>
                                         </div>
-                                            
+
                                         <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
                                         { isShow1? <MyPageSlide_Sub/>: ''}
-                                        
+
                                         <div className="flex flex-wrap ml-[10%] w-[100%]">
                                             <img
                                                 className="w-14 rounded-md"
@@ -148,31 +156,31 @@ const MypageContainer = () => {
                                             </button>
                                         </div>
 
-                                        <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
-                                        { isShow3 ? <MyPageSlide_Sub/> : ''}
-                                       
-                                        <div className="flex flex-wrap ml-[10%] w-[100%]">
-                                                <img
-                                                    className="w-14 rounded-md"
-                                                    src="https://occ-0-325-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABWG8kTfZ7jmDE0Q7j3amzJqHSu8-xZtnJ6JBhMqFIWA9GBXI8rVc-25IaVNxHfGAKx29HifG2wwygT7ogbGM9KShYBKyOGrYDg.png?r=11f"
-                                                />
-                                            <div className="pt-3 pl-5 ">
-                                                <h3 className="font-bold pb-2">키즈당</h3>
-                                                <div className="text-gray-600 text-xs">12+ 등급 이하</div>
-                                            </div>
-                                            <button className="ml-[68%] relative " onClick = { onToggle4 }>
-                                                { isShow4 ? <img src={  slideUpButton } className="w-8 h-7" /> :<img src= { slideDownButton } className="w-8 h-7" />}
-                                            </button>
-                                        </div>
+                                    <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
+                                    { isShow3 ? <MyPageSlide_Sub/> : ''}
 
-                                        <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
-                                        { isShow4 ? <MyPageSlide_Sub/> : '' }
+                                    <div className="flex flex-wrap ml-[10%] w-[100%]">
+                                            <img
+                                                className="w-14 rounded-md"
+                                                src="https://occ-0-325-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABWG8kTfZ7jmDE0Q7j3amzJqHSu8-xZtnJ6JBhMqFIWA9GBXI8rVc-25IaVNxHfGAKx29HifG2wwygT7ogbGM9KShYBKyOGrYDg.png?r=11f"
+                                            />
+                                        <div className="pt-3 pl-5 ">
+                                            <h3 className="font-bold pb-2">키즈당</h3>
+                                            <div className="text-gray-600 text-xs">12+ 등급 이하</div>
+                                        </div>
+                                        <button className="ml-[68%] relative " onClick = { onToggle4 }>
+                                            { isShow4 ? <img src={  slideUpButton } className="w-8 h-7" /> :<img src= { slideDownButton } className="w-8 h-7" />}
+                                        </button>
                                     </div>
-                                </div> 
+
+                                    <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
+                                    { isShow4 ? <MyPageSlide_Sub/> : '' }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div> 
-            </div> //container 
+                </div>
+            </div> //container
     );
 };
 
