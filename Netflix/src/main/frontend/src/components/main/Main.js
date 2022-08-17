@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import APITest from './APITest';
-import Footer from './Footer';
-import Header from './Header';
-import View from './View';
-
+import Home from './Home';
+import Like from './Like';
+import Movie from './Movie';
+import New from './New';
+import Series from './Series';
 
 const Main = () => {
 
+    const {tab} = useParams();
     const [scroll, setScroll] = useState(false);
 
     useEffect(() => {
@@ -27,9 +29,11 @@ const Main = () => {
 
     return (
         <div className='bg-[#141414]'>
-            <Header scroll={ scroll }/>
-            <View/>
-            <Footer/>
+            {tab || <Home scroll={ scroll }/>}
+            {tab === 'series' && <Series/>}
+            {tab === 'movie' && <Movie/>}
+            {tab === 'new' && <New/>}
+            {tab === 'like' && <Like/>}
             {/* <APITest/> */}
 
             <Link to="/detail">

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-
-
 import MyPageHeader from './MyPageHeader';
 import MypageFooter from './MyPageFooter';
 
