@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../main/Footer.js';
 
 const MypageFooter = () => {
     return (

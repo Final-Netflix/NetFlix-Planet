@@ -8,11 +8,6 @@ import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypagePassword from "components/my_page/MypagePassword";
 import ScrollTop from "components/main/ScrollTop";
-import { useLocation } from 'react-router-dom';
-
-
-
-
 
 function App() {
   const [hello, setHello] = useState('')
@@ -29,7 +24,10 @@ function App() {
       <ScrollTop/>
       <Routes>
         {/* smile */}
-        <Route path="/" element={ <Main/> }></Route>
+        <Route path="/">
+          <Route index element={ <Main/> }/>
+          <Route path=":tab" element={ <Main/> }/>
+        </Route>
         <Route path="/container" element={ <MypagePassword/> }></Route>
         {/* smile */}
 

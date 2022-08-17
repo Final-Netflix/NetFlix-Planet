@@ -237,6 +237,9 @@
     font-weight: 700;
     transform: scale(1.25);
 }
+.slider-hover-trigger-layer:hover .slick-dots {
+    display: block !important;
+}
 .slider .slick-arrow:focus .indicator-icon {
     color: #fff;
     font-weight: 700;
@@ -264,31 +267,28 @@
 .lolomoRow.lolomoRow_title_card:hover {
     z-index: 3;
 }
-.lolomoRow .pagination-indicator {
-    display: none;
+.lolomoRow .slick-dots {
+    display: none !important;
+    text-align: end;
     list-style-type: none;
-    margin: -24px 0 12px;
+    margin: -20px 0 12px;
     padding: 0;
     position: absolute;
-    right: 4%;
+    right: 0%;
     top: 0;
 }
-@media screen and (min-width: 1500px) {
-    .lolomoRow .pagination-indicator {
-        right: 62px;
-    }
-}
-.lolomoRow .pagination-indicator li {
+.lolomoRow .slick-dots li {
     background-color: #4d4d4d;
     display: inline-block;
     height: 2px;
+    margin: 0;
     margin-left: 1px;
     width: 12px;
 }
-.lolomoRow .pagination-indicator .active {
+.lolomoRow .slick-dots .slick-active {
     background-color: #aaa;
 }
-.lolomoRow .slider:hover .pagination-indicator {
+.lolomoRow .slider:hover .slick-dots {
     display: block;
 }
 .lolomoRow.lolomoRow_title_card .rowTitle {
@@ -414,4 +414,11 @@
     transition: transform 0.4s, opacity 0.4s;
     transition-delay: 0.2s;
     z-index: 1;
+}
+.slick-dots li button,
+.slick-dots li.slick-active button,
+.slick-dots li button:before,
+.slick-dots li.slick-active button:before {
+    all: unset !important;
+    display: none !important;
 }
