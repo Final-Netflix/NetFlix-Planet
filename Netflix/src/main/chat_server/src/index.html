@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,16 @@
 
 <body>
     <div class="wrapper">
-        <div class="user-container">
+        <div class="chat-header">
+            <button tabindex="0" class="chat-end-button" title="채팅종료">
+                <img class="x-img" src="image/x1.png"  >
+                    <!-- <path fill-rule="evenodd" clip-rule ="evenodd"
+                     d="M20.364 18.95L13.414 12l6.95-6.95-1.414-1.414-6.95 6.95-6.95-6.95L3.636 5.05l6.95 6.95-6.95 6.95 1.414 1.414 6.95-6.95 6.95 6.95 1.414-1.414z" fill="gray"></path> -->
+
+                </img>
+            </button>
+        </div>
+        <div class="user-container" style="display: none;">
             <label for="nickname">대화명</label>
             <input type="text" id="nickname">
         </div>
@@ -28,8 +38,25 @@
     </div>
 
 
+    <script>
+        const URLSearch = new URLSearchParams(location.search);
+
+        function searchParam(key) {
+        return new URLSearchParams(location.search).get(key);
+        };
+        
+        searchParam('nickname')
+        console.log(searchParam('nickname'));
+
+        document.getElementById('nickname').value = searchParam('nickname'); 
+
+        
+    </script>
+
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/chat.js"></script>
+
+
 </body>
 </html>

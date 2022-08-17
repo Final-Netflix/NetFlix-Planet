@@ -38,7 +38,7 @@ html, body {
 
 .display-container {
     flex: 12;
-    background: #b2c7d9;
+    background: #fff;
     overflow-y: scroll;
 }
 
@@ -107,7 +107,9 @@ html, body {
     padding: 0.5rem;
     font-size: 12px;
     margin: 0 5px;
-    flex: 7px
+    flex: 7px;
+    max-width: 500px;   
+    width: auto;
 }
 
 .time {
@@ -121,9 +123,54 @@ html, body {
 }
 
 .sent .message {
-    background: #ffeb33;
+    background: #0c82fe;
+    color: #e7e6eb;
 }
 
 .received .message {
+    background: #e7e6eb;
+}
+
+.chat-header {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 16px;
     background: #fff;
+    box-shadow: 0 1px 12px rgb(0 0 0 / 20%);
+}
+
+.chat-end-button {
+    padding: 0px;
+    outline: none;
+    position: relative;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid transparent;
+    line-height: 0px;
+    letter-spacing: .01em;
+    text-align: right;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+svg {
+    vertical-align: middle;
+}
+
+.x-img {
+    width: 10px;
+    height: 10px;
 }
