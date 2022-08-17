@@ -36,11 +36,11 @@ const ServiceCenterHeader = () => {
                                 {/* justify/align-item은 display-flex일때만 적용됨 */}
                                 <ul className="k2-nav k2-navbar-nav k2-member-sign-in k2-account-dropdown k2-pull-right ">
                                     <li className="k2-dropdown k2-open">
-                                        <a className="k2-btn  k2-btn-med k2-hc-profile-name k2-dropdown-toggle">
+                                        <div className="k2-btn  k2-btn-med k2-hc-profile-name k2-dropdown-toggle">
                                             <Link className='k2-btn text-[#f5f5f1] -mr-[25px]' to='' onClick={()=>openTab()}>
                                             옥지
                                             </Link>
-                                        </a>
+                                        </div>
                                         <img className="k2-arrow" src="https://help.nflxext.com/helpcenter/d8b50ece09e6271eb5688c85a1d7eab5.svg"></img>
                                        
                                         { visible &&
@@ -64,7 +64,7 @@ const ServiceCenterHeader = () => {
                         </div>
                         <div className="k2-logo-wrapper flex justify-center">
                             <Link to='/service'>
-                            <a className="k2-helpcenter-logo cursor-pointer text-[white] text-4xl font-extrabold pt-2 hover:no-underline ">고객 센터</a>
+                            <div className="k2-helpcenter-logo cursor-pointer text-[white] text-4xl font-extrabold pt-2 hover:no-underline ">고객 센터</div>
                             </Link>
                         </div>
                         <div className="k2-search-form-container">

@@ -14,13 +14,12 @@ const ServiceCenter = () => {
 
    /*  console.log(detail); */
     return (
-
         <div className='k1-global-container bg-white text-[#141414]'>
             {
                 detail === undefined ?
-                [<ServiceCenterHeader />,
-                <ServiceCenterContainer />]:
-                <ServiceCenterDetail/>
+                [<ServiceCenterHeader key={1} />,
+                <ServiceCenterContainer key={2} />]:
+                <ServiceCenterDetail />
                 
             }
             <ServiceCenterFooter />
