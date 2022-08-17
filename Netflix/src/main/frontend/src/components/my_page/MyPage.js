@@ -25,18 +25,18 @@ const MyPage = () => {
             <MyPageHeader/>
 
             <div className='relative'>
-            {detail || <MypageContainer/> }
+                {detail || <MypageContainer/> }
 
-            {detail === 'mfa' && <Verification/>}
+                {detail === 'mfa' && <Verification/>}
 
-            {detail === 'newProfileEmail' && <MyPageNewProfileEmail/>}
-            {detail === 'movieRating' && <MovieRating/>}
-            {detail === 'profileLock' && <ProfileLock/>}
-            {detail === 'watchRecord' && <WatchRecord/>}
-            {detail === 'playSetting' && <PlaySetting/>}
-            {detail === 'movieRating_Sub' && <MovieRating_Sub/>}
-            {detail === 'changePwd' && <MypagePassword/>}
-            {detail === 'changePlan' && <MypageMemberShip/>}
+                {detail === 'newProfileEmail' && <MyPageNewProfileEmail/>}
+                {detail === 'movieRating' && <MovieRating/>}
+                {detail === 'profileLock' && <ProfileLock/>}
+                {detail === 'watchRecord' && <WatchRecord/>}
+                {detail === 'playSetting' && <PlaySetting/>}
+                {detail === 'movieRating_Sub' && <MovieRating_Sub/>}
+                {detail === 'changePwd' && <MypagePassword/>}
+                {detail === 'changePlan' && <MypageMemberShip/>}
            	</div>
             <MypageFooter/>
        </div>
