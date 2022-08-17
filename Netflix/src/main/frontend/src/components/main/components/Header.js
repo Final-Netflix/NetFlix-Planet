@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../image/main/logo.png';
+import logo from 'image/main/logo.png';
 import edit from 'image/main/edit.png';
 import service from 'image/main/service.png';
 import user from 'image/main/user.png';
@@ -62,10 +62,10 @@ const Header = ({ scroll }) => {
                         <Link to='/'><div><img className='w-40' src={ logo }/></div></Link>
                         <ul className='m-0 p-0 flex items-center tracking-normal'>
                             <li className='ml-[18px]'><Link to="/">홈</Link></li>
-                            <li className='ml-[18px]'><Link to="">시리즈</Link></li>
-                            <li className='ml-[18px]'><Link to="">영화</Link></li>
-                            <li className='ml-[18px]'><Link to="">NEW! 요즘 대세 콘텐츠</Link></li>
-                            <li className='ml-[18px]'><Link to="">내가 찜한 콘텐츠</Link></li>
+                            <li className='ml-[18px]'><Link to="/series">시리즈</Link></li>
+                            <li className='ml-[18px]'><Link to="/movie">영화</Link></li>
+                            <li className='ml-[18px]'><Link to="/new">NEW! 요즘 대세 콘텐츠</Link></li>
+                            <li className='ml-[18px]'><Link to="/like">내가 찜한 콘텐츠</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ const Header = ({ scroll }) => {
                                 notice && 
                                 <div className='absolute right-[100px] m-[14px]' onMouseEnter={ noticeIn } onMouseLeave={() => setNotice(false)}>
                                     <div className="topbar translate-x-[375px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
-                                    <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[400px] h-[116px] bg-[#222222]/70'>
+                                    <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[400px] h-[116px] bg-[#000000]/70 hover:bg-[#000000]/90'>
                                         <li className='c1-sub-menu-item'>
                                             <div className='c1-ptrack-container'>
                                                 <div className='c1-ptrack-content'>
@@ -129,12 +129,10 @@ const Header = ({ scroll }) => {
                     <div className="c1-nav-element mr-[10px]">
                         <div className="c1-account-menu-item">
                             <div className="c1-account-dropdown-button flex" onMouseEnter={ profileIn } onMouseLeave={ profileOut }>
-                                <a href="/YourAccount" role="button" tabIndex="0" aria-haspopup="true" aria-expanded="false" aria-label="&amp;#xAE40;&amp;#xBBF8;&amp;#xC18C;&nbsp;- 계정 &amp; 설정">
-                                    <span className="c1-profile-link" role="presentation">
-                                        <img className="c1-profile-icon rounded-[4px]" alt=""
-                                            src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdYJV5wt63AcxNaDoqDXUhqZb55oN5Dxt1m-Zdn_z5rn_hIq9m8dA8JB2xdcPmrY3yXnlVWYKPXnOrbv2QN4aEVU28dESJg.png?r=1d4"/>
-                                    </span>
-                                </a>
+                                <span className="c1-profile-link" role="presentation">
+                                    <img className="c1-profile-icon rounded-[4px]" alt=""
+                                        src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdYJV5wt63AcxNaDoqDXUhqZb55oN5Dxt1m-Zdn_z5rn_hIq9m8dA8JB2xdcPmrY3yXnlVWYKPXnOrbv2QN4aEVU28dESJg.png?r=1d4"/>
+                                </span>
                                 <span className="c1-caret relative translate-y-[10px] h-0 w-0 border-[5px] border-solid border-r-transparent border-l-transparent border-b-transparent border-t-white ml-[10px]" role="presentation"></span>
                             </div>
                             {
@@ -144,42 +142,42 @@ const Header = ({ scroll }) => {
                                     <ul className='c1-sub-menu-list pt-[10px] py-[5px] border-[#333333] border-[1px] border-solid w-[180px] bg-[#000000]/90'>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
-                                                <a className='c1-profile-link flex hover:underline'>
+                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
                                                     <div className='c1-avatar-wrapper mr-[10px]'>
                                                         <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
                                                     </div>
                                                     <span className='c1-profile-name my-[10px]'>이원형</span>
-                                                </a>
+                                                </div>
                                             </div>
                                         </li>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
-                                                <a className='c1-profile-link flex hover:underline'>
+                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
                                                     <div className='c1-avatar-wrapper mr-[10px]'>
                                                         <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
                                                     </div>
                                                     <span className='c1-profile-name my-[10px]'>이원형</span>
-                                                </a>
+                                                </div>
                                             </div>
                                         </li>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
-                                                <a className='c1-profile-link flex hover:underline'>
+                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
                                                     <div className='c1-avatar-wrapper mr-[10px]'>
                                                         <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
                                                     </div>
                                                     <span className='c1-profile-name my-[10px]'>이원형</span>
-                                                </a>
+                                                </div>
                                             </div>
                                         </li>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
-                                                <a className='c1-profile-link flex hover:underline'>
+                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
                                                     <div className='c1-avatar-wrapper mr-[10px]'>
                                                         <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ edit }></img>
                                                     </div>
                                                     <span className='c1-profile-name my-[10px]'>프로필 관리</span>
-                                                </a>
+                                                </div>
                                             </div>
                                         </li>
                                     </ul>
@@ -187,24 +185,24 @@ const Header = ({ scroll }) => {
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
                                                 <Link to="/my">
-                                                    <a className='c1-profile-link flex hover:underline'>
+                                                    <div className='c1-profile-link flex hover:underline cursor-pointer'>
                                                         <div className='c1-avatar-wrapper mr-[10px]'>
                                                             <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ user }></img>
                                                         </div>
                                                         <span className='c1-profile-name my-[10px]'>계정</span>
-                                                    </a>
+                                                    </div>
                                                 </Link>
                                             </div>
                                         </li>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
                                                 <Link to="/service">
-                                                    <a className='c1-profile-link flex hover:underline'>
+                                                    <div className='c1-profile-link flex hover:underline cursor-pointer'>
                                                         <div className='c1-avatar-wrapper mr-[10px]'>
                                                             <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ service }></img>
                                                         </div>
                                                         <span className='c1-profile-name my-[10px]'>고객센터</span>
-                                                    </a>
+                                                    </div>
                                                 </Link>
                                             </div>
                                         </li>

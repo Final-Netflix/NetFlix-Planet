@@ -11,10 +11,6 @@ import ScrollTop from "components/main/ScrollTop";
 import { useLocation } from 'react-router-dom';
 import Linked from "components/detail/Linked";
 
-
-
-
-
 function App() {
   const [hello, setHello] = useState('')
 
@@ -30,7 +26,10 @@ function App() {
       <ScrollTop/>
       <Routes>
         {/* smile */}
-        <Route path="/" element={ <Main/> }></Route>
+        <Route path="/">
+          <Route index element={ <Main/> }/>
+          <Route path=":tab" element={ <Main/> }/>
+        </Route>
         <Route path="/container" element={ <MypagePassword/> }></Route>
         {/* smile */}
 
