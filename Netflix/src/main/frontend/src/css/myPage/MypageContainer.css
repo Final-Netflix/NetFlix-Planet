@@ -168,7 +168,7 @@ input[type="checkbox"], input[type="radio"] {
     border: 1px solid #b3b3b3;
     content: "";
     display: block;
-    left: -36px;
+    left: -34px;
     padding: 0;
     position: absolute;
     top: 2px;
@@ -176,6 +176,21 @@ input[type="checkbox"], input[type="radio"] {
 .ui-binary-input input[type=checkbox]+label:before {
     height: 25px;
     width: 25px;
+}
+.ui-binary-input input[type=checkbox]:checked+label:after {
+    color: #0080ff;
+    content: "\e804";
+    font-family: nf-icon;
+    font-size: 28px;
+    left: -36px;
+    top: -2px;
+}
+.change-password-form input[type=password]:focus {
+    outline: none;
+    border-color: blue;
+}
+.ui-binary-input input[type=checkbox]+label:after, .ui-binary-input input[type=radio]+label:after {
+    position: absolute;
 }
 .ui-binary-input .helper {
     color: grey;
@@ -357,6 +372,15 @@ ul.m1_structural li.m1_phone-number {
     height: 48px;
     padding: 10px 10px 0;
     width: 100%;
+}
+.nfInput #m1_inputError {
+    color: #b92d2b;
+    font-size: 13px;
+}
+.nfInput .hasText+.placeLabel, .nfInput .nfTextField:focus+.placeLabel {
+    font-size: 11px;
+    top: 4px;
+    transform: translateY(0);
 }
 .m1_nfTextField:invalid, .m1_nfTextField:valid {
     box-shadow: none;
