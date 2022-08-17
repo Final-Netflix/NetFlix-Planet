@@ -9,6 +9,7 @@ import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypagePassword from "components/my_page/MypagePassword";
 import ScrollTop from "components/main/ScrollTop";
 import { useLocation } from 'react-router-dom';
+import Linked from "components/detail/Linked";
 
 
 
@@ -42,7 +43,7 @@ function App() {
 
         {/* hee */}
         <Route path="/detail" element={ <Detail /> }></Route>
-        <Route path="/detail/:detail" element={ <Detail /> }></Route>
+        <Route path="/detail/:detail" element={ <Linked /> }></Route>
         {/* hee */}
         
         <Route path="/service" element={ <ServiceCenter/> }></Route>
