@@ -3,6 +3,7 @@ import 'css/detail/content.css';
 import { Link } from 'react-router-dom';
 
 const Content = () => {
+
   const [moreContent, setMoreContent] = useState(false);
   const [playIconHover, setPlayIconHover] = useState(false);
   const [playIconHover2, setPlayIconHover2] = useState(false);
@@ -27,6 +28,7 @@ const Content = () => {
   }
 
   return (
+    
     <div className='ptrack_container block text-[#fff] text-[16px] leading-[1.4]'>
       <div className='ptrack_content block text-[#fff] text-[16px] leading-[1.4]'>
         <div className='episodeSelector bg-[#181818] pt-[1em] px-0 pb-0 block text-[#fff] text-[16px] leading-[1.4]'>
@@ -36,6 +38,7 @@ const Content = () => {
             <div className='episodeSelector_season_name text-[18px] block text-[#fff] leading-[1.4]'>SPYxFAMILY 스파이 패밀리</div>
           </div>
           <div className='episodeSelector_container flex flex-col flex-wrap justify-start text-[#fff] text-[16px] leading-[1.4]'>
+            <Link to='video'>
             <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCardList bg-[#333] border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>1</div>
               <div className='titleCard_imageWrapper rounded-[4px] flex-[0_0_18%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
@@ -44,7 +47,7 @@ const Content = () => {
                   src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABXv5d0NNs57Mc_FcCDfPSVBsfz9QnPTiPX7B-VPKHKV5xTgW4a75CHCULnNvaXSzJdIYsFSe7cbGWpLHD_cBxOAro1tpL0wv4830aLfcVUneXkH4B1t6_U_C.webp?r=51e' alt='오퍼레이션 올빼미'></img>
                 </div>
                 {/* play icon */}
-                <Link to='video'>
+                
                 <div className='titleCard_playIcon items-center from-[hsla(0,0%,9%,.7)] to-[transparent 25%] bg-gradient-to-b bottom-0 flex justify-center left-0 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 { playIconHover && 
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] opacity-100 p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]' xmlns='http://www.w3.org/2000/svg'>
@@ -52,7 +55,7 @@ const Content = () => {
                   </svg>
                 }
                 </div>
-                </Link>
+                
                 <progress className='titleCard_progress bg-[grey] bottom-0 text-[#e50914] h-[0.25em] m-0 p-0 absolute w-[100%] appearance-auto cursor-pointer text-[16px] leading-[1.4]'></progress>
               </div>
               <div className='titleCard_metadataWrapper flex-[0_0_70%] text-[1em] min-h-[100%] block cursor-pointer text-[#fff] leading-[1.4]'>
@@ -67,7 +70,7 @@ const Content = () => {
                 </p>
               </div>
             </div>
-            
+            </Link>
             <div onMouseEnter={playIconHoverEnter2} onMouseLeave={playIconHoverLeave2} className='titleCardList min-h-[10em] items-center border-b-[1px] border-solid border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='아내 역을 확보하라' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>2</div>
               <div className='titleCard_imageWrapper rounded-[4px] flex-[0_0_18%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>

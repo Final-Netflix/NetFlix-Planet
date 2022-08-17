@@ -12,7 +12,7 @@ const MypageContainer = () => {
     const [isShow2, setIsShow2] = useState(false)
     const [isShow3, setIsShow3] = useState(false)
     const [isShow4, setIsShow4] = useState(false)
-    
+
     const onToggle1 = () => {
         setIsShow1(!isShow1)
     }
@@ -93,7 +93,7 @@ const MypageContainer = () => {
                                 </div>
                             </div>
                             <div className="border-solid mt-5 border-t-[1px] h-2 border-zinc-700"></div>
-                            
+
                             <div className="flex justify-start w-full mb-4">
 
                                 <div className="text-zinc-500 text-xl pb-5 pt-5">멤버십 상세정보</div>
@@ -114,7 +114,7 @@ const MypageContainer = () => {
                                                 className="w-14 rounded-md"
                                                 src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229"
                                             />
-                                            
+
                                             <div className="pt-3 pl-5">
                                                 <h3 className="font-bold pb-2">박어른</h3>
                                                 <div className="text-gray-600 text-xs">모든 관람등급</div>
@@ -123,10 +123,10 @@ const MypageContainer = () => {
                                                 {isShow1 ? <img src={slideUpButton} className=" w-8 h-7"/> : <img src={slideDownButton} className="w-8 h-7" />}
                                             </button>
                                         </div>
-                                            
+
                                         <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
                                         { isShow1? <MyPageSlide_Sub/>: ''}
-                                        
+
                                         <div className="flex flex-wrap ml-[10%] w-[100%]">
                                             <img
                                                 className="w-14 rounded-md"
@@ -158,7 +158,7 @@ const MypageContainer = () => {
 
                                     <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
                                     { isShow3 ? <MyPageSlide_Sub/> : ''}
-                                    
+
                                     <div className="flex flex-wrap ml-[10%] w-[100%]">
                                             <img
                                                 className="w-14 rounded-md"
@@ -176,11 +176,11 @@ const MypageContainer = () => {
                                     <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
                                     { isShow4 ? <MyPageSlide_Sub/> : '' }
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-                </div> 
-            </div> //container 
+                </div>
+            </div> //container
     );
 };
 

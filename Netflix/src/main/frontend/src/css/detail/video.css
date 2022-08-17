@@ -27,3 +27,210 @@
     pointer-events: auto;
     position: absolute;
 }
+.ltr-op8orf {
+    background-color: rgb(0, 0, 0);
+    box-sizing: border-box;
+    height: 100%;
+    left: 0px;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms linear 0s;
+    pointer-events: auto;
+    width: 100%;
+    will-change: opacity;
+}
+.ltr-op8orf video {
+    left: 50%;
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+audio, canvas, progress, video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+.ltr-1420x7p {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.ltr-1i33xgl {
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.t_17d527 .watch-video--back-container, .t_17d527 .watch-video--flag-container {
+    background-image: linear-gradient(180deg,rgba(0,0,0,.3) 0,transparent 20%);
+    box-sizing: border-box;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 3rem;
+}
+.ltr-hpbgml {
+    box-sizing: border-box;
+    display: flex;
+    min-height: 0px;
+    min-width: 0px;
+    position: relative;
+}
+.ltr-1dcjcj4.medium {
+    height: 5.2rem;
+    width: 5.2rem;
+}
+.ltr-1dcjcj4 {
+    position: relative;
+    will-change: opacity;
+}
+.ltr-1enhvti {
+    background-color: transparent;
+    border-radius: 0.2rem;
+    border: none;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    transition: transform 150ms ease 0s;
+    will-change: height, width;
+}
+button {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+.ltr-18dhnor svg {
+    height: 100%;
+    width: 100%;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+.ltr-18dhnor.control-medium {
+    height: 4.4rem;
+    width: 4.4rem;
+}
+.ltr-18dhnor {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.t_17d527 .watch-video--bottom-controls-container {
+    background-image: linear-gradient(0deg,rgba(0,0,0,.3) 0,transparent);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.ltr-jezwko {
+    box-sizing: border-box;
+    direction: ltr;
+    height: 100%;
+    margin: 0px;
+    padding: 0px 2rem;
+    pointer-events: auto;
+    position: relative;
+    width: 100%;
+}
+.ltr-1bt0omd {
+    box-sizing: border-box;
+    position: relative;
+}
+.ltr-13q34j2.medium {
+    height: 2.25rem;
+}
+.ltr-13q34j2 {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    will-change: height;
+}
+.medium .ltr-lbmpgb {
+    height: 0.375rem;
+}
+.ltr-lbmpgb {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: gray;
+    transition: height 0.2s ease 0s;
+    will-change: height;
+}
+.ltr-xd82k2 {
+    position: absolute;
+    box-sizing: border-box;
+    height: 100%;
+    top: 0px;
+    background-color: lightgray;
+    will-change: left, width;
+}
+.ltr-1c4ubff {
+    background-color: red;
+    box-sizing: border-box;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    will-change: transition, width;
+}
+.medium .ltr-uwc8j6 {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.ltr-uwc8j6 {
+    background-color: red;
+    border-radius: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease 0s;
+    will-change: height, left, width, transform, transition;
+    left: calc(175.064px - 0.75rem);
+}
+.ltr-6alejv {
+    box-sizing: border-box;
+    display: flex;
+    min-height: 0px;
+    min-width: 0px;
+    position: relative;
+    padding-left: 1rem;
+    width: 7rem;
+}
+.ltr-jgzoky {
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    color: rgb(255, 255, 255);
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+.ltr-1bt0omd {
+    box-sizing: border-box;
+    position: relative;
+}
