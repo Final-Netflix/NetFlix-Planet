@@ -40,13 +40,12 @@
     background: hsla(0, 0%, 0%, 0);
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
-    z-index: 30;
+    z-index: -1;
 }
 .rowContainer .rowContent .slider:hover .slick-arrow:hover {
     background: hsla(0, 0%, 8%, 0);
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
-    z-index: 30;
 }
 @media screen and (max-width: 499px) {
     .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
@@ -421,4 +420,7 @@
 .slick-dots li.slick-active button:before {
     all: unset !important;
     display: none !important;
+}
+.slick-slider .slick-list {
+    z-index: 10;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const MypageSelf_phone = () => {
+const MypageSelf_phone = ({onAddd, count}) => {
     
     
     const Tel = ({ Ref }) => {
@@ -8,10 +8,10 @@ const MypageSelf_phone = () => {
         const change = (e)=> {
             const {value} = e.target
             //숫자만 입력되게 하는 정규식
-            setTel(value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))
             const input = document.getElementsByClassName('m1_pin-number-input')
             const nodes = [...e.target.parentElement.children];
             const index = nodes.indexOf(e.target)
+            setTel(value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'))
             if(index<5) {
                 if(input[index].value===value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1') && input[index].value.length ===1) {
                     input[index+1].focus()
@@ -47,7 +47,7 @@ const MypageSelf_phone = () => {
         
         return <input type="tel" maxLength="1" ref={ Ref }  pattern="[0-9]+"
         className="m1_pin-number-input bg-inherit border-[none] border-b-soild border-b-[4px] border-[#b3b3b3] text-[72px] text-[#4d4d4d] my-0 mx-[10px] p-0 min-h-[38px] min-w-[38px] text-center  w-[1.2em] leading-normal" 
-        tabIndex="0" aria-label="PIN&nbsp;입력 인풋&nbsp;1." defaultValue={ tel } onChange={change }/>
+        tabIndex="0" aria-label="PIN&nbsp;입력 인풋&nbsp;1." value={ tel } onChange={change }/>
     }
  
     
@@ -58,10 +58,7 @@ const MypageSelf_phone = () => {
         document.querySelector('#btn-continue').disabled =true;
     }, []);
     
-    const goMypage = ()=> {
-        console.log('얼마나 좋아')
-        window.location.href = '/my';
-    }
+   
 
 
     return (
@@ -83,7 +80,7 @@ const MypageSelf_phone = () => {
                                 <Tel/>
                                 <Tel/>
                             </div>
-                            <button id="btn-continue" type="button" autoComplete="off" onClick={goMypage}  tabIndex="0" className="m1_nf-btn nf-btn-secondary nf-btn-solid nf-btn-oversize  bg-[#737373] text-[15px] max-w-[500px] min-w-[110px] min-h-[60px] py-[0.75rem] px-[25.333333px] text-[#fff] w-[80%] rounded-[4px]" style={{color : 'white' , cursor : 'default'}} placeholder="">
+                            <button id="btn-continue" type="button" autoComplete="off" onClick={onAddd}  tabIndex="0" className="m1_nf-btn nf-btn-secondary nf-btn-solid nf-btn-oversize  bg-[#737373] text-[15px] max-w-[500px] min-w-[110px] min-h-[60px] py-[0.75rem] px-[25.333333px] text-[#fff] w-[80%] rounded-[4px]" style={{color : 'white' , cursor : 'default'}} placeholder="">
                                 코드를 입력해 계속 진행
                             </button>
                         </form>
