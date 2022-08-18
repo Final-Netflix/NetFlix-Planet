@@ -5,9 +5,11 @@ import slideDownButton from '../../image/my_page/slideDownButton.png';
 import slideUpButton from '../../image/my_page/slideUpButton.png';
 import MyPageSlide_Sub from './MyPageSlide_Sub';
 import save from '../../image/my_page/save.png';
+import MypageFooter from './MyPageFooter';
+import useStore from 'store';
 
 const MypageContainer = () => {
-
+    const {valEmail , valPhone} = useStore();
     const [isShow1, setIsShow1] = useState(false)
     const [isShow2, setIsShow2] = useState(false)
     const [isShow3, setIsShow3] = useState(false)
@@ -51,7 +53,7 @@ const MypageContainer = () => {
                                     <div className="flex justify-between w-full">
                                         <div className="pt-6 font-bold">1006pp@naver.com</div>
                                         <button>
-                                            <Link to='mfa'><div className="pt-6 pl-90 text-end text-blue-500">이메일 변경</div></Link>
+                                            <Link to='mfa' onClick={valEmail}><div className="pt-6 pl-90 text-end text-blue-500">이메일 변경</div></Link>
                                         </button>
                                     </div>
                                     <div className="flex justify-between">
@@ -63,7 +65,7 @@ const MypageContainer = () => {
                                     <div className="flex justify-between">
                                         <div className="pt-5 text-neutral-500">전화번호 : 010-1234-5678</div>
                                         <button>
-                                            <Link to='mfa'><div className="pl-90 pt-5 text-end text-blue-500">휴대폰 번호 변경</div></Link>
+                                            <Link to='mfa' onClick={valPhone}><div className="pl-90 pt-5 text-end text-blue-500">휴대폰 번호 변경</div></Link>
                                         </button>
                                     </div>
                                     <div className="border-solid mt-6 border-t-[1px] h-3 border-neutral-200"></div>
@@ -177,6 +179,7 @@ const MypageContainer = () => {
                                     { isShow4 ? <MyPageSlide_Sub/> : '' }
                                 </div>
                             </div>
+                        <MypageFooter/>
                         </div>
                     </div>
                 </div>

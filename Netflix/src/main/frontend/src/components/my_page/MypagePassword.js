@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'css/myPage/MypageContainer.css'
 const MypagePassword = () => {
     const [checked , setChecked] = useState(true)
@@ -14,15 +14,20 @@ const MypagePassword = () => {
     }
     //저장 버튼(유효성 검사 및 비밀번호 변경)
     const onSave = ()=> {
+        document.getElementsByClassName('m1_inputError')[1].innerText = ''
         const id1 = document.getElementById('id_currentPassword')
         const id2 = document.getElementById('id_newPassword')
-        const id3 = document.getElementById('id-confirmPassword')
+        const id3 = document.getElementById('id_confirmNewPassword')
         //비밀번호 대조는 나중에 추가해야함
-        if(id1.value.length <=6) {
+        if(id1.value.length <6) {
             id1.focus()
         }
-        if(id2.value.length <=6) {
-            document.getElementById('m1_inputError').innerText ='비밀번호는 6~60자 사이여야 합니다.'
+        else if(id2.value.length <6) {
+            document.getElementsByClassName('m1_inputError')[1].innerText ='비밀번호는 6~60자 사이여야 합니다.'
+        }else if(id2.value !==id3.value) {
+            document.getElementsByClassName('m1_inputError')[2].innerText ='새 비밀번호와 일치해야 합니다.'
+        }else {
+            window.location.href = '/my'
         }
     
     }
@@ -61,10 +66,9 @@ const MypagePassword = () => {
                 <label className="input_id" placeholder="currentPassword">
                     <input type="password" onBlur={onBlur} onChange={changePwd} data-uia="field-currentPassword" value={pwd} name={id} className="nfTextField" id={`id_${id}`} tabIndex="0" autoComplete="off" maxLength="60" minLength="4" dir="" />
                     <label htmlFor={`id_${id}`} className="placeLabel">{content}</label>
-                    <div className="checkedPwd"></div>
                 </label>
             </div>
-            <div id="m1_inputError"></div>
+            <div id="m1_inputError" className="m1_inputError"></div>
             {
                 id === 'currentPassword' &&  <div id="" className="inputCaption" data-uia=""><a data-ui="action_forgot_password" href="/loginhelp">비밀번호를 잊으셨나요? </a></div>
             }
