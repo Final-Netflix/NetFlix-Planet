@@ -155,11 +155,11 @@ const Video = () => {
                                       </div>
                                   </div>
                                   <div className="ltr-1fkysoc items-[normal] flex-grow-[1] justify-[normal]">
-                                      <div className="ltr-1i33xgl min-w-[3rem] w-[3rem]"></div>
+                                      <div className="c2-ltr-1i33xgl min-w-[3rem]"></div>
                                       <div className="medium ltr-qnht66" data-uia="video-title">
-                                          <h4>이상한 변호사 우영우</h4>
-                                          <span>1화</span>
-                                          <span>이상한 변호사 우영우</span>
+                                          <h4 className='text-white'>이상한 변호사 우영우</h4>
+                                          <span className='text-white'>1화</span>
+                                          <span className='text-white'>이상한 변호사 우영우</span>
                                       </div>
                                   </div>
                                   <div className="ltr-hpbgml items-[normal] justify-end">
