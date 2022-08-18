@@ -8,11 +8,13 @@ import MyPage from "./components/my_page/MyPage";
 import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypagePassword from "components/my_page/MypagePassword";
 import ScrollTop from "components/main/ScrollTop";
-import { useLocation } from 'react-router-dom';
 import Linked from "components/detail/Linked";
+import SignUp from "components/user/SignUp"
+import useStore from "store";
 
 function App() {
   const [hello, setHello] = useState('')
+  const {val , valEmail , valPhone} = useStore();
 
   useEffect(() => {
    
@@ -38,6 +40,8 @@ function App() {
           <Route index element={<MyPage/>}/>
           <Route path=":detail" element={<MyPage/>}/>
         </Route>
+        {/* login */}
+        <Route path='/signUp' element={<SignUp/>}></Route>
         {/* hong */}
 
         {/* hee */}
