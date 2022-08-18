@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="userChatSQL">
+  	
+  	<insert id="createChatRoom" parameterType="java.util.Map">
+  		insert into CHAT_ROOM
+	  		(
+	  			chat_room_id,
+				chat_code,
+				profile_id,
+				video_id,
+				video_type,
+				play_time,
+				room_title
+			)values
+			(
+				1,
+				#{code},
+				1,
+				1,
+				'1',
+				now(),
+				#{subject}
+			)
+			
+    </insert>
+  	
+  </mapper>
+ 
