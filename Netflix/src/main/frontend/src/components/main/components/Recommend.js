@@ -26,6 +26,10 @@ const Recommend = ({ order, classification }) => {
         {type: "movie", title: "코미디"},
         {type: "movie", title: "음악 & 뮤지컬"},
         {type: "movie", title: "어워드 수상 감독"},
+        {type: "both", title: "새로운 콘텐츠"},
+        {type: "both", title: "기다림이 아깝지 않은 콘텐츠"},
+        {type: "both", title: "이번 주 공개 콘텐츠"},
+        {type: "both", title: "다음 주 공개 콘텐츠"},
     ]
 
     const classificationName = allClassification[classification].title;

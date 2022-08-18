@@ -36,12 +36,22 @@ const View = () => {
     return (
         <div className='bg-[#141414]'>
             <Special/>
-            <TopTen/>
-            {
+            <TopTen type='tv'/>
+            <Recommend order='1' classification = { arr[0] }/>
+            <Recommend order='2' classification = { arr[1] }/>
+            <Recommend order='3' classification = { arr[2] }/>
+            <Recommend order='4' classification = { arr[3] }/>
+            <Recommend order='5' classification = { arr[4] }/>
+            <TopTen type='movie'/>
+            <Recommend order='6' classification = { arr[5] }/>
+            <Recommend order='7' classification = { arr[6] }/>
+            <Recommend order='8' classification = { arr[7] }/>
+            <Recommend order='9' classification = { arr[8] }/>
+            {/* {
                 arr.map((item, index) => {
                     return <Recommend key={ index } order={ index+1 } classification = { item }/>
                 })
-            }
+            } */}
         </div>
     );
 };
