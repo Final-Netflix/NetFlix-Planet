@@ -29,20 +29,13 @@ const Main = () => {
     }
 
     return (
-        <div className='bg-[#141414]'>
-
-            {tab || <Home scroll={ scroll }/>}
-            {tab === 'series' && <Series/>}
-            {tab === 'movie' && <Movie/>}
-            {tab === 'new' && <New/>}
-            {tab === 'like' && <Like/>}
-            {tab === 'search' && <Search/>}
-
+        <div className={ tab === 'search' ? 'bg-[#141414] absolute' : 'bg-[#141414]'}>
             {tab === undefined && <Home scroll={ scroll }/>}
             {tab === 'series' && <Series scroll={ scroll }/>}
             {tab === 'movie' && <Movie scroll={ scroll }/>}
             {tab === 'new' && <New scroll={ scroll }/>}
             {tab === 'like' && <Like scroll={ scroll }/>}
+            {tab === 'search' && <Search scroll={ scroll }/>}
 
             {/* <APITest/> */}
 
@@ -60,11 +53,6 @@ const Main = () => {
 	            <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
     	            go객센터
     	        </button>
-            </Link>
-            <Link to="/container">
-                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-                    마이페이지안쪽
-                </button>
             </Link>
             <Link to="/container">
                 <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">

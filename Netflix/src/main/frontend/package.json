@@ -20,7 +20,7 @@
     "socket.io": "^4.5.1",
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.19",
-    "zustand": "^4.0.0"
+    "zustand": "^4.1.0"
   },
   "proxy": "http://localhost:8080",
   "scripts": {
