@@ -3,12 +3,14 @@ import React from 'react';
 import '../../css/serviceCenter/serviceCenter.css';
 
 import { Link } from 'react-router-dom';
+import UserChatRoom from 'components/user_chat/UserChatRoom';
 
 
 
 const ConsumerCenterContainer = () => {
     return (
         <div className="k1-container">
+            <UserChatRoom></UserChatRoom>
             <section className='k1-top-articles'>
                 <div className='k1-categories'>
                     <div className="k1-category">

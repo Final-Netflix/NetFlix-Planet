@@ -1,0 +1,35 @@
+.chatW_userChatRoom{
+    width: 300px;
+    height: 600px;
+    border: solid black 1px;
+    position:absolute;
+    left: 80%;
+    background-color: #dddddd;
+    z-index : 999;
+}
+.chatW_userChatRoom .chatW_topButton{
+    width: 100px;
+    border: solid black 1px;
+    background-color: white;
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
+}
+.chatW_userChatRoom_title{
+    background-color: white;
+    border-bottom: solid #333333 1px;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
+.chatW_miniBtn{
+    border: solid black 1px;
+    background-color: white;
+    margin-left: 20px;
+}
+.chatW_inputForm{
+    margin: 5px;
+}
+.chatW_userChatInfo{
+    margin: 10px;
+}

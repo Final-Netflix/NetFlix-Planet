@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Info from './Info';
 import Top from './Top';
 import Linked from './Linked';

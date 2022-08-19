@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'css/main/topTen.css';
 import TopTenList from './TopTenList';
 
-const TopTen = () => {
+const TopTen = ({ type }) => {
     const [data, setData] = useState([
         {index: 1, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZ3X4h02lWYNAQdGJP_GQQurfKG7nktUwK3uDDrRW5BSuYIv5tjYJNtKN6Ljy08lpVMPXgoA9CebHyEr8Xz__r_MUsPnfqXKy10u-rWEgQ-CbbtFUe8_gdhDcquzXBIQpxJASYCViJXoV9pM2SvC8Q.webp?r=15c', title: '이상한 변호사 우영우'},
         {index: 2, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABR4-SKX3hJWAD_F67B8ghjm3bvZ5nOpcmT9QNYokQ_yK9pfePaFbxQkSmjd0B08nWqPjY2rmc0Vojo6lpj7uJqftS-4GTM7XyiKL.webp?r=d83', title: '인사이더'},
@@ -28,7 +28,7 @@ const TopTen = () => {
         <div>
             <div className="lolomoRow lolomoRow_title_card css-0" data-list-context="mostWatched">
                 <h2 className="rowHeader css-0">
-                    <span className="rowTitle css-0"><div className="row-header-title">오늘 대한민국의 TOP 10 시리즈</div></span>
+                    <span className="rowTitle css-0"><div className="row-header-title">오늘 대한민국의 TOP 10 { type==='tv' ? '시리즈' : '영화'}</div></span>
                 </h2>
                 <div className="rowContainer rowContainer_title_card" id="row-1">
                     <div className="ptrack-container">
