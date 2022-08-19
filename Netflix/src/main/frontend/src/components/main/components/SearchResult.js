@@ -221,18 +221,6 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="c1-rowContainer c1-rowContainer_title_card" id="row-0">
-                            <div className="c1-ptrack-container">
-                            <div className="c1-rowContent c1-slider-hover-trigger-layer">
-                                <div className="c1-slider">
-                                    <div className="c1-sliderMask c1-showPeek">
-                                        <div className="c1-sliderContent c1-row-with-x-columns" >
                                             <div className="c1-slider-item c1-slider-item-0">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-0" className="c1-title-card">
@@ -366,9 +354,9 @@ const SearchResult = () => {
                                                 	</div>
                                             	</div>
                                         	</div>
-                                    	</div>
-                                	</div>
-                            	</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
