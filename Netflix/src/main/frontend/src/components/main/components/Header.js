@@ -3,10 +3,11 @@ import logo from 'image/main/logo.png';
 import edit from 'image/main/edit.png';
 import service from 'image/main/service.png';
 import user from 'image/main/user.png';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 const Header = ({ scroll }) => {
+
     const [searchBox, setSearchBox] = useState(false);
     const openSearch = () => setSearchBox(!searchBox);
 

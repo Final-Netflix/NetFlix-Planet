@@ -618,13 +618,13 @@ const SearchResult = () => {
                                                             </a>
                                                         </div>
                                                         <div className="bob-container"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                                    	</div>
+                                                	</div>
+                                            	</div>
+                                        	</div>
+                                    	</div>
+                                	</div>
+                            	</div>
                             </div>
                         </div>
                     </div>

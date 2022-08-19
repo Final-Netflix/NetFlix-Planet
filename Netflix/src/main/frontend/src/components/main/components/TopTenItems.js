@@ -15,9 +15,15 @@ const icons = [
 
 const TopTenItems = ({ item }) => {
     const icon = icons.find(icon => icon.index === item.index);
+    const videoIn = () => {
+        
+    }
+    const videoOut = () => {
+
+    }
 
     return (
-        <div className="slider-item" style={{width: '100%'}}>
+        <div className="slider-item" style={{width: '100%'}} onMouseEnter={ videoIn } onMouseLeave={ videoOut }>
             <div className="title-card-container css-0">
                 <div id="title-card" className="title-card title-card-top-10">
                     <div className="ptrack-content">

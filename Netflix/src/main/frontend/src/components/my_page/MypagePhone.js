@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'css/myPage/MypageContainer.css'
 
 const Mypagephone = () => {
+    const [phone , setPhone] = useState('');
+    const onInput = (e)=> {
+        setPhone(e.target.value)
+        const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+        if(regPhone.test(e.target.value) === true ) {
+        document.querySelector('#btn-next').disabled = false;
+        }else {
+        document.querySelector('#btn-next').disabled = true;
+        }
+    }
+    const changePhone = ()=> {
+        window.location.href= '/my'
+    }
+    useEffect(()=> {
+        document.querySelector('#btn-next').disabled = true;
+    }, [])
+   
     return (
         <div className="m1_bd">
             <div className="m1_responsive-account-container">
@@ -23,7 +40,8 @@ const Mypagephone = () => {
                                             name="phoneNumber"
                                             className="m1_nfTextField hasText"
                                             id="id_phoneNumber"
-                                            value="010-3618-4453"
+                                            value={phone}
+                                            onChange={onInput}
                                             tabIndex="0"
                                             autoComplete="off"
                                             maxLength="15"
@@ -36,7 +54,7 @@ const Mypagephone = () => {
                         </li>
                     </ul>
                     <div className="m1_nf-btn-bar change-phone-buttons">
-                        <button id="btn-next" type="submit" autoComplete="off" tabIndex="0" disabled="" className="m1_nf-btn m1_nf-btn-primary m1_nf-btn-retro m1_nf-btn-small" data-uia="action_next-phone" placeholder="">다음</button>
+                        <button id="btn-next" type="button" autoComplete="off" tabIndex="0" onClick={changePhone} className="m1_nf-btn m1_nf-btn-primary m1_nf-btn-retro m1_nf-btn-small" data-uia="action_next-phone" placeholder="">다음</button>
                         <button id="btn-delete" type="button" autoComplete="off" tabIndex="0" className="m1_nf-btn m1_nf-btn-secondary m1_nf-btn-retro m1_nf-btn-small" data-uia="action_delete-phone" placeholder="">전화번호 삭제</button>
                         <button id="btn-cancel" type="button" autoComplete="off" tabIndex="0" className="m1_nf-btn m1_nf-btn-secondary m1_nf-btn-solid m1_nf-btn-small" data-uia="action_cancel-change-phone" placeholder="">취소</button>
                     </div>

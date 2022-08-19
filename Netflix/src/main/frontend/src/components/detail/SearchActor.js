@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SearchActor = () => {
   return (
     <div>
-      <div className="focus-trap-wrapper" tabindex="-1">
+      <div className="focus-trap-wrapper" tabIndex="-1">
         <div className="gallery-modal">
           <div className="css-1c1fp6l">
             <div className='opacity-100 z-[2] transform-none'>
@@ -16,8 +16,8 @@ const SearchActor = () => {
                     <div className="small ltr-18dhnor" role="presentation">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="svg-icon svg-icon-back-arrow" aria-label="back">
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M24 11.0001L3.41421 11.0001L8.70711 5.70718L7.29289 4.29297L0.292892 11.293C0.105356 11.4805 0 11.7349 0 12.0001C0 12.2653 0.105356 12.5196 0.292892 12.7072L7.29289 19.7072L8.70711 18.293L3.41421 13.0001H24V11.0001Z"
                           fill="currentColor"
                         ></path>
@@ -46,7 +46,7 @@ const SearchActor = () => {
                                             data-ui-tracking-context="%7B%22list_id%22:%22unknown%22,%22location%22:%22rolesModalDisplay%22,%22rank%22:0,%22request_id%22:%229ba8aa1d-5675-4f9c-b29b-2e5368e6dd3e-53244716%22,%22row%22:0,%22track_id%22:200256542,%22video_id%22:80128686,%22image_key%22:%22sdp%7C17ddabd0-c98b-11e7-bd4d-12e5ed47ac84%7Cko%22,%22supp_video_id%22:1,%22lolomo_id%22:%22unknown%22,%22maturityMisMatchEdgy%22:false,%22maturityMisMatchNonEdgy%22:false,%22titleInformationDensity%22:%22%22,%22titleInformationDensityExplored%22:%22%22,%22appView%22:%22boxArt%22,%22usePresentedEvent%22:true%7D"
                                             data-tracking-uuid="2da8bd5c-8e86-4264-b7bc-6b517483d993"
                                           >
-                                            <a href="/watch/80128686?tctx=0%2C0%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="청춘시대" tabindex="0" aria-hidden="false" className="slider-refocus">
+                                            <a href="/watch/80128686?tctx=0%2C0%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="청춘시대" tabIndex="0" aria-hidden="false" className="slider-refocus">
                                               <div className="boxart-size-16x9 boxart-container boxart-rounded">
                                                 <img
                                                     className="boxart-image boxart-image-in-padded-container"
@@ -59,8 +59,8 @@ const SearchActor = () => {
                                                 <div className="bob-jawbone-chevron">
                                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="svg-icon svg-icon-chevron-down">
                                                     <path
-                                                      fill-rule="evenodd"
-                                                      clip-rule="evenodd"
+                                                      fillRule="evenodd"
+                                                      clipRule="evenodd"
                                                       d="M19.293 7.29297L12.0001 14.5859L4.70718 7.29297L3.29297 8.70718L11.293 16.7072C11.4805 16.8947 11.7349 17.0001 12.0001 17.0001C12.2653 17.0001 12.5196 16.8947 12.7072 16.7072L20.7072 8.70718L19.293 7.29297Z"
                                                       fill="currentColor"
                                                     ></path>
@@ -81,7 +81,7 @@ const SearchActor = () => {
                                             data-ui-tracking-context="%7B%22list_id%22:%22unknown%22,%22location%22:%22rolesModalDisplay%22,%22rank%22:1,%22request_id%22:%229ba8aa1d-5675-4f9c-b29b-2e5368e6dd3e-53244716%22,%22row%22:0,%22track_id%22:200256542,%22video_id%22:81430282,%22image_key%22:%22sdp%7C834a0680-204d-11ec-ba5a-0ef204274675%7Cko%7Cozx%7C81430283%22,%22supp_video_id%22:1,%22lolomo_id%22:%22unknown%22,%22maturityMisMatchEdgy%22:false,%22maturityMisMatchNonEdgy%22:false,%22titleInformationDensity%22:%22%22,%22titleInformationDensityExplored%22:%22%22,%22appView%22:%22boxArt%22,%22usePresentedEvent%22:true%7D"
                                             data-tracking-uuid="2f36320a-586d-4e6c-a69d-2195fa4d7080"
                                           >
-                                            <a href="/watch/81430282?tctx=0%2C1%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="연모" tabindex="0" aria-hidden="false" className="slider-refocus">
+                                            <a href="/watch/81430282?tctx=0%2C1%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="연모" tabIndex="0" aria-hidden="false" className="slider-refocus">
                                               <div className="boxart-size-16x9 boxart-container boxart-rounded">
                                                 <img
                                                   className="boxart-image boxart-image-in-padded-container"
@@ -94,8 +94,8 @@ const SearchActor = () => {
                                                 <div className="bob-jawbone-chevron">
                                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="svg-icon svg-icon-chevron-down">
                                                     <path
-                                                      fill-rule="evenodd"
-                                                      clip-rule="evenodd"
+                                                      fillRule="evenodd"
+                                                      clipRule="evenodd"
                                                       d="M19.293 7.29297L12.0001 14.5859L4.70718 7.29297L3.29297 8.70718L11.293 16.7072C11.4805 16.8947 11.7349 17.0001 12.0001 17.0001C12.2653 17.0001 12.5196 16.8947 12.7072 16.7072L20.7072 8.70718L19.293 7.29297Z"
                                                       fill="currentColor"
                                                     ></path>
@@ -116,7 +116,7 @@ const SearchActor = () => {
                                             data-ui-tracking-context="%7B%22list_id%22:%22unknown%22,%22location%22:%22rolesModalDisplay%22,%22rank%22:2,%22request_id%22:%229ba8aa1d-5675-4f9c-b29b-2e5368e6dd3e-53244716%22,%22row%22:0,%22track_id%22:200256542,%22video_id%22:81518991,%22image_key%22:%22sdp%7Cafff7651-e218-11ec-abb0-0a070623e8a7%7Cko%7Cozx%7C81518992%22,%22supp_video_id%22:1,%22lolomo_id%22:%22unknown%22,%22maturityMisMatchEdgy%22:false,%22maturityMisMatchNonEdgy%22:false,%22titleInformationDensity%22:%22%22,%22titleInformationDensityExplored%22:%22%22,%22appView%22:%22boxArt%22,%22usePresentedEvent%22:true%7D"
                                             data-tracking-uuid="35e70640-952e-45aa-a129-721b66e29636"
                                           >
-                                            <a href="/watch/81518991?tctx=0%2C2%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="이상한 변호사 우영우" tabindex="0" aria-hidden="false" className="slider-refocus">
+                                            <a href="/watch/81518991?tctx=0%2C2%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="이상한 변호사 우영우" tabIndex="0" aria-hidden="false" className="slider-refocus">
                                               <div className="boxart-size-16x9 boxart-container boxart-rounded">
                                                 <img
                                                   className="boxart-image boxart-image-in-padded-container"
@@ -129,8 +129,8 @@ const SearchActor = () => {
                                                 <div className="bob-jawbone-chevron">
                                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="svg-icon svg-icon-chevron-down">
                                                     <path
-                                                      fill-rule="evenodd"
-                                                      clip-rule="evenodd"
+                                                      fillRule="evenodd"
+                                                      clipRule="evenodd"
                                                       d="M19.293 7.29297L12.0001 14.5859L4.70718 7.29297L3.29297 8.70718L11.293 16.7072C11.4805 16.8947 11.7349 17.0001 12.0001 17.0001C12.2653 17.0001 12.5196 16.8947 12.7072 16.7072L20.7072 8.70718L19.293 7.29297Z"
                                                       fill="currentColor"
                                                     ></path>
@@ -159,8 +159,8 @@ const SearchActor = () => {
                     <div className="small ltr-18dhnor" role="presentation">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard" aria-label="close">
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M2.29297 3.70706L10.5859 12L2.29297 20.2928L3.70718 21.7071L12.0001 13.4142L20.293 21.7071L21.7072 20.2928L13.4143 12L21.7072 3.70706L20.293 2.29285L12.0001 10.5857L3.70718 2.29285L2.29297 3.70706Z"
                           fill="currentColor"
                         ></path>
@@ -174,8 +174,8 @@ const SearchActor = () => {
           </div>
         </div>
     </div>
-    <div tabindex="-1" className='opacity-[0.7]'>
-      <div className="previewModal--backDrop" tabindex="-1" data-uia="previewModal--backDrop"></div>
+    <div tabIndex="-1" className='opacity-[0.7]'>
+      <div className="previewModal--backDrop" tabIndex="-1" data-uia="previewModal--backDrop"></div>
     </div>
     </div>
   );
