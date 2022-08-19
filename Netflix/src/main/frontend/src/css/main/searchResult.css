@@ -1,0 +1,300 @@
+.mainView {
+    min-height: 1000px;
+    position: relative;
+    z-index: 0;
+}
+.mainView .gallery, .mainView .rowListContainer {
+    box-sizing: border-box;
+    padding-top: 5rem;
+}
+.gallery {
+    margin: 0;
+    min-height: 1000px;
+    overflow: hidden;
+}
+.gallery.search {
+    padding-top: 3%;
+}
+.search-title-header {
+    min-height: 65px;
+}
+.top-\[5vw\] {
+    top: 5vw;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.relative {
+    position: relative;
+}
+div {
+    display: block;
+}
+.rail {
+    display: inline-block;
+    font-size: 1.5vw;
+    margin: 1em 0 0;
+    min-height: 10px;
+    width: 100%;
+}.dvds, .people, .suggestions {
+    display: flex;
+    margin: 10px 0 20px 4%;
+    overflow: hidden;
+}
+.dvds, .people, .suggestions {
+    line-height: 1.6;
+}
+.suggestionRailContainer {
+    display: flex;
+}
+.search .gallery {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.gallery .galleryContent {
+    position: relative;
+    z-index: 0;
+}
+.gallery .rowContainer {
+    margin: 0 0 4vw;
+}
+.rowContainer {
+    transition: transform .54s cubic-bezier(.5,0,.1,1) 0s;
+}
+.rowContainer {
+    position: relative;
+    z-index: 0;
+}
+.rowContainer .rowContent {
+    box-sizing: border-box;
+    padding: 0;
+}
+.rowContainer .rowContent .slider {
+    z-index: 2;
+}
+.dvds ul, .people ul, .suggestions ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+.dvds ul li, .people ul li, .suggestions ul li {
+    border-right: 1px solid grey;
+    flex: 0 auto;
+    list-style: none;
+    padding: 0 0.5em;
+}
+.title-group-collection {
+    display: inline-block;
+    height: 1.1vw;
+    margin-right: 0.25em;
+    vertical-align: sub;
+    width: 1.1vw;
+}
+.dvds .dvdLabel, .dvds .peopleLabel, .dvds .suggestionsLabel, .people .dvdLabel, .people .peopleLabel, .people .suggestionsLabel, .suggestions .dvdLabel, .suggestions .peopleLabel, .suggestions .suggestionsLabel {
+    color: grey;
+    flex: 0 auto;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.slider {
+    margin: 0;
+    padding: 0 4%;
+    position: relative;
+    touch-action: pan-y;
+}
+.slider .sliderMask.showPeek {
+    overflow-x: visible;
+}
+.slider .sliderMask {
+    overflow-x: hidden;
+    padding-bottom: 1px;
+}
+.slider .sliderMask .sliderContent {
+    white-space: nowrap;
+}
+.slider .sliderMask .sliderContent .slider-item:first-child {
+    padding-left: 0;
+}
+
+.sliderContent  {
+    display : flex !important;
+    flex-wrap: wrap !important; /*짤리면 밑으로 */
+}
+.slider .sliderMask .sliderContent .slider-item {
+    box-sizing: border-box;
+    display: inline-block;
+    flex-wrap: wrap !important;
+    padding: 0 0.2vw;
+    position: relative;
+    vertical-align: top;
+    white-space: normal;
+    z-index: 1;
+}
+.title-card:not(.loadingTitle) {
+    display: block;
+}
+.title-card {
+    position: relative;
+    z-index: 1;
+}
+.title-card .slider-refocus {
+    display: block;
+}
+a {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+a {
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+}
+a {
+    background-color: transparent;
+}
+* {
+    letter-spacing: 0!important;
+}
+.dvds ul li a, .people ul li a, .suggestions ul li a {
+    color: #fff;
+}
+.title-group-collection {
+    display: inline-block;
+    height: 1.1vw;
+    margin-right: 0.25em;
+    vertical-align: sub;
+    width: 1.1vw;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+@media screen and (min-width: 1281px) and (max-width: 1600px) and (orientation: landscape) {
+    body, html {
+        font-size: .75vw;
+    }
+}
+@media screen and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) {
+    body, html {
+        font-size: .85vw;
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 799px) {
+    .gallery .rowContainer {
+        margin-bottom: 7.5vw;
+    }
+}
+@media screen and (min-width: 800px) and (max-width: 1099px){
+    .gallery .rowContainer {
+        margin-bottom: 5.5vw;
+    }
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+    .gallery .rowContainer {
+        margin-bottom: 4.5vw;
+    }
+}
+@media screen and (min-width: 1400px) {
+    .mainView .gallery, .mainView .rowListContainer {
+        margin-top: 3.5%;
+    } 
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 25%;
+    }
+}
+@media screen and (max-width: 499px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 50%;
+    }
+    .slider-item-0 {
+        margin-bottom : 20px;
+    }
+    .slider-item-1 {
+        margin-bottom : 20px;
+    }  
+}
+@media screen and (min-width: 500px) and (max-width: 799px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 33.333333%;
+    }
+    .slider-item-0 {
+        margin-bottom : 20px;
+    }
+    .slider-item-1 {
+        margin-bottom : 20px;
+    }
+    .slider-item-2 {
+        margin-bottom : 20px;
+    }
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 25%;
+    }
+    .slider-item-0 {
+        margin-bottom : 20px;
+    }
+    .slider-item-1 {
+        margin-bottom : 20px;
+    }
+    .slider-item-2 {
+        margin-bottom : 20px;
+    }
+    .slider-item-3 {
+        margin-bottom : 20px;
+    }
+}
+@media screen and (min-width: 1100px) and (max-width: 1399px) {
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 20%;
+    }
+    .slider-item-0 {
+        margin-bottom : 20px;
+    }
+    .slider-item-1 {
+        margin-bottom : 20px;
+    }
+    .slider-item-2 {
+        margin-bottom : 20px;
+    }
+    .slider-item-3 {
+        margin-bottom : 20px;
+    }
+    .slider-item-4 {
+        margin-bottom : 20px;
+    }
+}
+@media screen and (min-width: 1400px) { /* 1번 */
+    .rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+        width: 16.66666667%;
+    }
+    .slider-item-0 { /* 0번째 이미지부터 */
+        margin-bottom : 20px;
+    }
+    .slider-item-1 {
+        margin-bottom : 50px;
+    }
+    .slider-item-2 {
+        margin-bottom : 50px;
+    }
+    .slider-item-3 {
+        margin-bottom : 50px;
+    }
+    .slider-item-4 {
+        margin-bottom : 50px;
+    }
+    .slider-item-5 {
+        margin-bottom : 50px;
+    }
+}

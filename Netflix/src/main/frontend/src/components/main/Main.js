@@ -5,6 +5,7 @@ import Home from './Home';
 import Like from './Like';
 import Movie from './Movie';
 import New from './New';
+import Search from './Search';
 import Series from './Series';
 
 const Main = () => {
@@ -34,6 +35,7 @@ const Main = () => {
             {tab === 'movie' && <Movie/>}
             {tab === 'new' && <New/>}
             {tab === 'like' && <Like/>}
+            {tab === 'search' && <Search/>}
             {/* <APITest/> */}
 
             <Link to="/detail">
@@ -50,6 +52,11 @@ const Main = () => {
 	            <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
     	            go객센터
     	        </button>
+            </Link>
+            <Link to="/container">
+                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
+                    마이페이지안쪽
+                </button>
             </Link>
             <Link to="/container">
                 <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">

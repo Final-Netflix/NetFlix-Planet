@@ -10,6 +10,7 @@ import MypagePassword from "components/my_page/MypagePassword";
 import ScrollTop from "components/main/ScrollTop";
 import { useLocation } from 'react-router-dom';
 import Linked from "components/detail/Linked";
+import SearchResult from "components/main/components/SearchResult";
 
 function App() {
   const [hello, setHello] = useState('')

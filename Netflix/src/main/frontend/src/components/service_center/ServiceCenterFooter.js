@@ -26,7 +26,7 @@ const ServiceCenterFooter = () => {
                             <div id="k1-chat-contact" class="k1-popover-wrapper k1-chat-btn-wrapper k1-channel" data-enablemobilechat="true">
                                 <div onClick={() => {
                                 
-                                window.open(`http://localhost:5000?nickname=${'옥지'}`, "_blank", "width=350px, height=550px", "false");
+                                window.open(`http://localhost:5000?nickname=${'정수'}`, "_blank", "width=350px, height=550px", "false");
 
                                 }} id="k1-startChatTrigger" class="k1-btn k1-btn-lightgrey k1-start-chat-button k1-beacon-event" data-beacon="action=ChatButton" data-locale="ko" data-country="KR">실시간 채팅 시작하기</div>
                             </div>
