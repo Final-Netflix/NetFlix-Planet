@@ -12,8 +12,8 @@ const SearchResult = () => {
                                 <div className="c1-ptrack-container">
                                     <div className="c1-ptrack-content">
                                         <div className="c1-suggestionRailContainer">
-                                            <span className="c1-suggestionsLabel">다음과 관련된 콘텐츠:</span>
-                                            <ul>
+                                            <span className="c1-suggestionsLabel text-2xl">다음과 관련된 콘텐츠:</span>
+                                            <ul className = "text-2xl">
                                                 <li>
                                                     <div className="c1-ptrack-content">
                                                         <a>
@@ -89,7 +89,7 @@ const SearchResult = () => {
                                 <div className="c1-slider">
                                     <div className="c1-sliderMask c1-showPeek">
                                         <div className="c1-sliderContent c1-row-with-x-columns" >
-                                            <div className="c1-slider-item c1-slider-item-0">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-0" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -113,7 +113,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-1">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-1" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -137,7 +137,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-2">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-2" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -161,7 +161,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-3">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-3" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -185,7 +185,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-4">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-4" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -203,7 +203,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-5">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-5" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -221,7 +221,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-0">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-0" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -245,7 +245,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-1">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-1" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -269,7 +269,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-2">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-2" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -293,7 +293,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-3">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-3" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -317,7 +317,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-4">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-4" className="c1-title-card">
                                                         <div className="c1-ptrack-content">
@@ -335,7 +335,7 @@ const SearchResult = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="c1-slider-item c1-slider-item-5">
+                                            <div className="c1-slider-item">
                                                 <div className="c1-title-card-container css-0">
                                                     <div id="title-card-0-5" className="c1-title-card">
                                                         <div className="c1-ptrack-content">

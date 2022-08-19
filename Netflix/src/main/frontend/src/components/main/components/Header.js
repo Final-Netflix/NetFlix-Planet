@@ -3,17 +3,19 @@ import logo from 'image/main/logo.png';
 import edit from 'image/main/edit.png';
 import service from 'image/main/service.png';
 import user from 'image/main/user.png';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
-const Header = ({ scroll }) => {
+const Header = ({ scroll, search, setSearch }) => {
 
-    const [searchBox, setSearchBox] = useState(false);
-    const openSearch = () => setSearchBox(!searchBox);
+    const { tab } = useParams();
 
+    const navigate = useNavigate();
+    const [searchBox, setSearchBox] = useState(tab === 'search' ? true : false);
+    
     const [notice, setNotice] = useState(false);
     const [profile, setProfile] = useState(false);
-
+    
     let noticeTimer;
     let profileTimer;
 
@@ -46,7 +48,20 @@ const Header = ({ scroll }) => {
         setNotice(false);
         clearTimeout(profileTimer);
     }
+    
+    const openSearch = () => setSearchBox(!searchBox);
 
+    const goSearchPage = (e) => {
+        setSearch(e.target.value);
+        console.log(search);
+        if(search != ''){
+            navigate('/search');
+        }
+        else{
+            navigate('/');
+        }
+    }
+    
     let headerName;
 
     if(scroll){
@@ -83,7 +98,7 @@ const Header = ({ scroll }) => {
                                                 </path>
                                             </svg>
                                             <label id="c1-searchInput-label" className='hidden'>검색</label> 
-                                            <input type='text' id="c1-searchInput" name="c1-searchInput" placeholder='제목, 사람, 장르' maxLength='80' className='c1-focus-visible outline-none bg-transparent border-none text-white inline-block text-[14px] py-[7px] pl-[14px] pr-[7px] w-[212px]' style={{opacity: 1, transitionDuration: '300ms'}}></input>
+                                            <input type='text' id="c1-searchInput" name="c1-searchInput" placeholder='제목, 사람, 장르' value={ search } onChange={ goSearchPage } maxLength='80' className='c1-focus-visible outline-none bg-transparent border-none text-white inline-block text-[14px] py-[7px] pl-[14px] pr-[7px] w-[212px]' style={{opacity: 1, transitionDuration: '300ms'}}></input>
                                         </div>
                                     : 
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-search-icon" onClick={ openSearch }>

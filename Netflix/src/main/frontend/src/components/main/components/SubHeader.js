@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import "css/main/subHeader.css";
+import { useParams } from 'react-router-dom';
 
 const SubHeader = ({ scroll }) => {
 
+    const { tab } = useParams();
     const [subScroll, setSubScroll] = useState(false);
 
     useEffect(() => {
@@ -39,7 +41,7 @@ const SubHeader = ({ scroll }) => {
             <div className="c1-sub-header-wrapper w-full">
                 <div className="c1-aro-gallery-header w-full">
                     <div className="c1-aro-genre-details">
-                        <span className="c1-genreTitle text-white font-bold">시리즈</span>
+                        <span className="c1-genreTitle text-white font-bold">{ tab === 'movie' ? '영화' : '시리즈'}</span>
                         <div className="c1-subgenres">
                             <div className="c1-ptrack-container">
                                 <div className="c1-ptrack-content" data-ui-tracking-context="%7B%22appView%22:%22categorySelector%22,%22usePresentedEvent%22:true%7D" data-tracking-uuid="35645cd8-1a7e-4d2d-b762-367a57531ef2">
