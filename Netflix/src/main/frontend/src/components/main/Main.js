@@ -29,11 +29,11 @@ const Main = () => {
 
     return (
         <div className='bg-[#141414]'>
-            {tab || <Home scroll={ scroll }/>}
-            {tab === 'series' && <Series/>}
-            {tab === 'movie' && <Movie/>}
-            {tab === 'new' && <New/>}
-            {tab === 'like' && <Like/>}
+            {tab === undefined && <Home scroll={ scroll }/>}
+            {tab === 'series' && <Series scroll={ scroll }/>}
+            {tab === 'movie' && <Movie scroll={ scroll }/>}
+            {tab === 'new' && <New scroll={ scroll }/>}
+            {tab === 'like' && <Like scroll={ scroll }/>}
             {/* <APITest/> */}
 
             <Link to="/detail">
