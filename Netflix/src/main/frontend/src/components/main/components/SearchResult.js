@@ -4,12 +4,12 @@ import 'css/main/searchResult.css';
 const SearchResult = () => {
 
     return (
-        <div className = "c1_mainView">
-            <div className = "c1_gallery row-with-x-columns search relative top-[5vw]">
-                <div className = "c1_search-title-header">
-                    <div className="c1_rail">
-                            <div className="c1_suggestions">
-                                <div className="c1_ptrack-container">
+        <div className = "mainView">
+            <div className = "gallery row-with-x-columns search relative top-[5vw]">
+                <div className = "search-title-header">
+                    <div className="rail">
+                            <div className="suggestions">
+                                <div className="ptrack-container">
                                     <div
                                         className="ptrack-content"
                                         data-ui-tracking-context="%7B%22referenceId%22:%22NAPA@@%7C355012ed-4a33-43e8-9560-85f84d8d83c6-250789344_suggestions/1//%EC%95%84%EC%95%84/0/0%22,%22napaRequestId%22:%22355012ed-4a33-43e8-9560-85f84d8d83c6-250789344%7C1%22,%22appView%22:%22searchSuggestionResults%22%7D"
@@ -125,7 +125,7 @@ const SearchResult = () => {
                             </div>
                     </div>
                 </div>
-                <div className = "c1_galleryContent">
+                <div className = "galleryContent">
                     <div className = "galleryLockups">
                         <div className="rowContainer rowContainer_title_card" id="row-0">
                             <div className="ptrack-container">
