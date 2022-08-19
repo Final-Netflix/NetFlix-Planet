@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import UserChatRoomList from './UserChatRoomList';
 import '../../css/userChat/userChat.css';
 import axios from 'axios';
+import UserChatting from './UserChatting';
 
 const UserChatRoom = () => {
-    const[createVisible,setCreateVisible] = useState(true)
-    const[joinVisible,setJoinVisible] = useState(true)
+    const[chattingView, setChattingView] = useState(true);
+    const[createVisible,setCreateVisible] = useState(true);
+    const[joinVisible,setJoinVisible] = useState(true);
+    const changeChattionView=()=>{
+        setChattingView(!chattingView)
+    }
     const openCreate=()=>{
         setCreateVisible(!createVisible)
     }
@@ -20,8 +25,9 @@ const UserChatRoom = () => {
     })
     const qs = require('qs');
     const createData = {
-        'code': code,
-        'subject': subject
+        'chat_code': code,
+        'room_title': subject,
+        'profile_id' : 3
     }
     const createChat=()=>{
         axios({
@@ -44,17 +50,22 @@ const UserChatRoom = () => {
         setJoinCode(e.target.value);
     }
     const joinData = {
-        'joinCode': joinCode
+        'profile_id': 3,
+        'chat_code' : joinCode
     }
     const joinChatRoom=()=>{
         axios({
             method : 'post',
             url : 'http://localhost:8080/joinChatRoom',
             data : qs.stringify(joinData),
-          }).then(function(response){
-            console.log(response);
-          });
+          })
+          .then()
+          .catch(error => console.log(error));
     }
+
+    const [chatRoomId, setChatRoomId] = useState('');
+
+    console.log(chatRoomId);
     
     return (
         <div className="chatW_userChatRoom">
@@ -103,7 +114,12 @@ const UserChatRoom = () => {
                         </>
                     }
                 </div>
-                <UserChatRoomList/>
+                {
+                    chattingView ? 
+                        <UserChatRoomList setChatRoomId={ setChatRoomId } changeChattionView = {changeChattionView}/>
+                    :
+                        <UserChatting chatRoomId={chatRoomId} changeChattionView = {changeChattionView}/>
+                }
             </div>
         </div>
     );
