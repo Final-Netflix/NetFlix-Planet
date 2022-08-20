@@ -59,7 +59,7 @@ const ServiceCenterDetail = () => {
                                     </svg>
                                     
                                 </Link>
-                                <Link to='/service'>
+                                <Link to='/service' className='text-[red] hover:underline'>
                                     고객 센터 홈으로 돌아가기
                                 </Link>          
                                 </a>

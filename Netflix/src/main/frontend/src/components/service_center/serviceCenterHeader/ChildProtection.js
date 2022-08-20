@@ -31,32 +31,32 @@ const ChildProtection = () => {
                                             <ol className="k1-ol">
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="/service/detail/createChildProfile">어린이 전용 프로필 생성</a>
+                                                         <Link class="k1-aa" to="/service/detail/createChildProfile">어린이 전용 프로필 생성</Link>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="/service/detail/blockContents">프로필 관람등급 설정 또는 콘텐츠 차단 방법</a>
+                                                         <Link class="k1-aa" to="/service/detail/blockContents">프로필 관람등급 설정 또는 콘텐츠 차단 방법</Link>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="/service/detail/lockProfile">내 프로필 또는 계정의 다른 프로필 잠금</a>
+                                                         <Link class="k1-aa" to="/service/detail/lockProfile">내 프로필 또는 계정의 다른 프로필 잠금</Link>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="/service/detail/addProfilePIN">새로운 프로필 추가 시 PIN 요구</a>
+                                                         <Link class="k1-aa" to="/service/detail/addProfilePIN">새로운 프로필 추가 시 PIN 요구</Link>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" href="/service/detail/ableAutoPlay">자동 재생 활성화 또는 비활성화</a>
+                                                         <Link class="k1-aa" to="/service/detail/ableAutoPlay">자동 재생 활성화 또는 비활성화</Link>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <p className="k1-p text-[16px] mb-[16px] font-bold">
-                                                         <a class="k1-aa" target="_blank" href="/service/detail/accessViewRecords">개별 프로필의 시청 기록 액세스</a>
+                                                         <Link class="k1-aa" target="_blank" to="/service/detail/accessViewRecords">개별 프로필의 시청 기록 액세스</Link>
                                                     </p>
                                                 </li>
                                             </ol>
@@ -74,19 +74,19 @@ const ChildProtection = () => {
                                     <h3>추천 문서</h3>
                                     <ul className="k1-related-articles" data-tracking-id="5fb09f44-dafe-4a56-8023-ba523a04d375">
                                         <li className="k1-related-article">
-                                            <a href="/ko/node/24805" data-id="24805" data-index="1">계정 수준 PIN을 관리하는 방법</a>
+                                            <Link to="#" data-id="24805" data-index="1">계정 수준 PIN을 관리하는 방법</Link>
                                         </li>
                                         <li className="k1-related-article">
-                                            <a href="/ko/node/10421" data-id="10421" data-index="2">프로필 생성 및 수정 방법</a>
+                                            <Link to="#" data-id="10421" data-index="2">프로필 생성 및 수정 방법</Link>
                                         </li>
                                         <li className="k1-related-article">
-                                            <a href="/ko/node/102377" data-id="102377" data-index="3">넷플릭스 시작하기</a>
+                                            <Link to="#" data-id="102377" data-index="3">넷플릭스 시작하기</Link>
                                         </li>
                                         <li className="k1-related-article">
-                                            <a href="/ko/node/412" data-id="412" data-index="4">넷플릭스 소개</a>
+                                            <Link to="#" data-id="412" data-index="4">넷플릭스 소개</Link>
                                         </li>
                                         <li className="k1-related-article">
-                                            <a href="/ko/node/22205" data-id="22205" data-index="5">시청 기록에서 콘텐츠를 숨기는 방법</a>
+                                            <Link to="#" data-id="22205" data-index="5">시청 기록에서 콘텐츠를 숨기는 방법</Link>
                                         </li>
                                     </ul>
                                 </div>
