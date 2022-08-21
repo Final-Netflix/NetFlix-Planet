@@ -12,6 +12,7 @@ import Linked from "components/detail/Linked";
 import SearchResult from "components/main/components/SearchResult";
 import SignUp from "components/user/SignUp"
 import useStore from "store";
+import DetailForMovie from "components/detail/DetailForMovie";
 
 
 function App() {
@@ -48,7 +49,9 @@ function App() {
 
         {/* hee */}
         <Route path="/detail" element={ <Detail /> }></Route>
+        <Route path="/detailM" element={ <DetailForMovie /> }></Route>
         <Route path="/detail/:detail" element={ <Linked /> }></Route>
+        <Route path="/detailM/:detail" element={ <Linked /> }></Route>
         {/* hee */}
         
         <Route path="/service" element={ <ServiceCenter/> }></Route>

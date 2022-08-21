@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from "prop-types";
+
 import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 
-const Top = () => {
+function Top ({poster_path, title, genre_ids ,id}) {
   const [wishHover, setWishHover] = useState(false);
   const [wishDelete, setWishDelete] = useState(false);
   const [wishDeleteHover, setWishDeleteHover] = useState(false);
@@ -158,18 +160,23 @@ const Top = () => {
           </div>
         </div>
         <div className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
-          <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABXQhM9UIOiaYmBg96LoJL9C-yj7Vx6_8dPdHVvyCMpRv2UP1PQOJgLBcCFDngWDhXJ5leiW1SGSTEZge7mTxo0IP95RlwnmKzkE4sZJ90_L5nLX41LHU8MJAgdWgjZGeu62W35r2E7ziLxDN0QbBG4DBmpUGBGY9witDoj6gEykXyXwAJ2rNvGiNxYuvxyzt0lRQE_WwDyUZeCtglbin4o1pnEp8gEtSLE1QRsJHY6YEryjBRskBxELAoeZMEQAfrPZ5LnQj9WeP7WCKJOQKPi83u5lBy57ThjIvhT4rwjwVeBxMJxxHQ6Rlbo-pP5mQW_tLMuq3dpVQaY33ePcHCADYSgDltvFrSVOREUd10GxinWhkDu-FSm9ch3A1C6E4NXBD1vkWm7su5ISbxbnZTHG6bZuuc9dbQWPs5SwC-4s4f44.webp?r=4a8'></img>
-          <img className='hidden border-0' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABXQhM9UIOiaYmBg96LoJL9C-yj7Vx6_8dPdHVvyCMpRv2UP1PQOJgLBcCFDngWDhXJ5leiW1SGSTEZge7mTxo0IP95RlwnmKzkE4sZJ90_L5nLX41LHU8MJAgdWgjZGeu62W35r2E7ziLxDN0QbBG4DBmpUGBGY9witDoj6gEykXyXwAJ2rNvGiNxYuvxyzt0lRQE_WwDyUZeCtglbin4o1pnEp8gEtSLE1QRsJHY6YEryjBRskBxELAoeZMEQAfrPZ5LnQj9WeP7WCKJOQKPi83u5lBy57ThjIvhT4rwjwVeBxMJxxHQ6Rlbo-pP5mQW_tLMuq3dpVQaY33ePcHCADYSgDltvFrSVOREUd10GxinWhkDu-FSm9ch3A1C6E4NXBD1vkWm7su5ISbxbnZTHG6bZuuc9dbQWPs5SwC-4s4f44.webp?r=4a8'></img>
+          {/* <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABXQhM9UIOiaYmBg96LoJL9C-yj7Vx6_8dPdHVvyCMpRv2UP1PQOJgLBcCFDngWDhXJ5leiW1SGSTEZge7mTxo0IP95RlwnmKzkE4sZJ90_L5nLX41LHU8MJAgdWgjZGeu62W35r2E7ziLxDN0QbBG4DBmpUGBGY9witDoj6gEykXyXwAJ2rNvGiNxYuvxyzt0lRQE_WwDyUZeCtglbin4o1pnEp8gEtSLE1QRsJHY6YEryjBRskBxELAoeZMEQAfrPZ5LnQj9WeP7WCKJOQKPi83u5lBy57ThjIvhT4rwjwVeBxMJxxHQ6Rlbo-pP5mQW_tLMuq3dpVQaY33ePcHCADYSgDltvFrSVOREUd10GxinWhkDu-FSm9ch3A1C6E4NXBD1vkWm7su5ISbxbnZTHG6bZuuc9dbQWPs5SwC-4s4f44.webp?r=4a8'></img> */}
+          <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title }></img>
+          {/* <img className='hidden border-0' src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title }></img> */}
         </div>
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          {/* <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img> */}
         </div>
         <div className='opacity-[1]'>
           <div className='previewModal_player_titleTreatmentWrapper opacity-[1] from-[#181818] to-[transparent 50%] bg-gradient-to-t h-[100%] absolute top-0 w-[100%]'>
             <div className='previewModal_player_titleTreatment_left bottom-[5%] left-[3em] absolute w-[40%]'>
-              <img className='hidden border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
-              <img className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
+              <h2 className='hidden border-0' >{ title }</h2>
+              <h2 className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' >{ title }</h2>
+              {/* <img className='hidden border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
+              <img className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img> */}
               <div className='buttonControls_container items-center flex mb-[1em] min-h-[2em]'>
                 <a href='#' className='m-[0.25em] text-[#fff] cursor-pointer no-underline bg-transparent'>
                   <button className='playButton hover:bg-[#e5e7eb] max-h-[42px] min-h-[32px] pl-[2rem] pr-[2.4rem] bg-white text-black items-center appearance-none border-0 rounded-[4px] cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap overflow-visible'>
@@ -385,146 +392,7 @@ const Top = () => {
                             </div>
                             <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                               <button onMouseOver={bestDetailHoverEnter} onMouseLeave={bestDetailHoverLeave} onClick={bestActive} aria-label='최고예요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
-                                {/* <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 72 72" width="72" height="72" preserveAspectRatio="xMidYMid meet" className='w-[100%] h-[100%] pointer-events-none z-0 scale-[2] overflow-hidden select-none break-words whitespace-nowrap font-[inherit] cursor-pointer text-[rgb(169,169,169)] normal-case'>
-                                  <defs>
-                                    <clipPath id="__lottie_element_70"><rect width="72" height="72" x="0" y="0"></rect></clipPath>
-                                    <clipPath id="__lottie_element_72"><path d="M0,0 L410,0 L410,410 L0,410z"></path></clipPath>
-                                    <filter id="__lottie_element_157" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
-                                      <feComponentTransfer in="SourceGraphic"><feFuncA type="table" tableValues="1.0 0.0"></feFuncA></feComponentTransfer>
-                                    </filter>
-                                    <mask id="__lottie_element_177" mask-type="alpha">
-                                      <g filter="url(#__lottie_element_178)">
-                                        <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
-                                        <g transform="matrix(1,0,0,1,31.5,37.03200149536133)" opacity="1" className='block'>
-                                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                                            <path
-                                              fill="rgb(63,84,255)"
-                                              fill-opacity="1"
-                                              d=" M7.400000095367432,5.539999961853027 C7.388999938964844,5.567999839782715 7.376999855041504,5.59499979019165 7.364999771118164,5.622000217437744 M-7.275000095367432,-0.2070000022649765 C-7.275000095367432,-0.2070000022649765 -7.823999881744385,-2.130000114440918 -7.823999881744385,-2.130000114440918 M-3.75,8 C-3.75,8 -4.742000102996826,9.736000061035156 -4.742000102996826,9.736000061035156 M-4.742000102996826,9.736000061035156 C-4.742000102996826,9.736000061035156 -4.914999961853027,9.637999534606934 -4.914999961853027,9.637999534606934 C-5.645999908447266,9.220000267028809 -6.473999977111816,9 -7.315999984741211,9 C-8.79800033569336,9 -10,7.797999858856201 -10,6.315999984741211 C-10,6.315999984741211 -10,0.7540000081062317 -10,0.7540000081062317 C-10,-0.5849999785423279 -9.112000465393066,-1.7619999647140503 -7.823999881744385,-2.130000114440918 C-7.823999881744385,-2.130000114440918 -5.789000034332275,-2.7119998931884766 -5.789000034332275,-2.7119998931884766 C-5.789000034332275,-2.7119998931884766 -4,-5.573999881744385 -4,-5.573999881744385 C-4,-5.573999881744385 -4,-8.52400016784668 -4,-8.52400016784668 C-4,-9.892000198364258 -2.8919999599456787,-11 -1.5240000486373901,-11 C0.9259999990463257,-11 2.99399995803833,-9.175000190734863 3.2980000972747803,-6.74399995803833 C3.2980000972747803,-6.74399995803833 3.375999927520752,-6.116000175476074 3.375999927520752,-6.116000175476074 C3.4639999866485596,-5.413000106811523 3.4579999446868896,-4.701000213623047 3.3589999675750732,-4 C3.3589999675750732,-4 5.5,-4 5.5,-4 C7.433000087738037,-4 9,-2.433000087738037 9,-0.5 C9,-0.40299999713897705 8.996000289916992,-0.3059999942779541 8.98799991607666,-0.210999995470047 C9.61400032043457,0.42100000381469727 10,1.2899999618530273 10,2.25 C10,2.9719998836517334 9.781999588012695,3.6419999599456787 9.407999992370605,4.198999881744385 C9.468000411987305,4.455999851226807 9.5,4.723999977111816 9.5,5 C9.5,6.198999881744385 8.89799976348877,7.25600004196167 7.979000091552734,7.88700008392334 C7.785999774932861,9.637999534606934 6.302000045776367,11 4.5,11 C4.5,11 0.01600000075995922,11 0.01600000075995922,11 C-1.652999997138977,11 -3.2929999828338623,10.564000129699707 -4.742000102996826,9.736000061035156z"
-                                            ></path>
-                                          </g>
-                                        </g>
-                                      </g>
-                                    </mask>
-                                    <filter id="__lottie_element_171" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
-                                      <feComponentTransfer in="SourceGraphic"><feFuncA type="table" tableValues="1.0 0.0"></feFuncA></feComponentTransfer>
-                                    </filter>
-                                    <mask id="__lottie_element_170" mask-type="alpha">
-                                      <g filter="url(#__lottie_element_171)">
-                                        <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
-                                          <g className='hidden'>
-                                            <path></path>
-                                          </g>
-                                      </g>
-                                    </mask>
-                                    <filter id="__lottie_element_178" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
-                                      <feComponentTransfer in="SourceGraphic"><feFuncA type="table" tableValues="1.0 0.0"></feFuncA></feComponentTransfer>
-                                    </filter>
-                                    <mask id="__lottie_element_177" mask-type="alpha">
-                                      <g filter="url(#__lottie_element_178)">
-                                        <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
-                                        <g transform="matrix(1,0,0,1,32.3120002746582,37.345001220703125)" opacity="1" className='block'>
-                                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                                            <path
-                                              fill="rgb(63,84,255)"
-                                              fill-opacity="1"
-                                              d=" M-2.75,-12 C-2.75,-12 -1.4119999408721924,-12 -1.4119999408721924,-12 C1.121000051498413,-12 3.6019999980926514,-10.359000205993652 4.250999927520752,-7.60699987411499 C4.423999786376953,-6.870999813079834 4.614999771118164,-5.929999828338623 4.702000141143799,-4.98199987411499 C7.426000118255615,-4.760000228881836 9.588000297546387,-2.553999900817871 9.741000175476074,0.1889999955892563 C10.067000389099121,0.8930000066757202 10.25,1.6770000457763672 10.25,2.5 C10.25,3.3239998817443848 10.067000389099121,4.10699987411499 9.741000175476074,4.810999870300293 C9.675999641418457,5.9770002365112305 9.246999740600586,7.046000003814697 8.569000244140625,7.90500020980835 C7.947999954223633,10.26200008392334 5.802000045776367,12 3.25,12 C3.25,12 -0.34599998593330383,12 -0.34599998593330383,12 C-2.007999897003174,12 -3.6540000438690186,11.661999702453613 -5.182000160217285,11.006999969482422 C-5.182000160217285,11.006999969482422 -6.005000114440918,10.654999732971191 -6.005000114440918,10.654999732971191 C-6.243000030517578,10.553000450134277 -6.5,10.5 -6.758999824523926,10.5 C-8.687000274658203,10.5 -10.25,8.937000274658203 -10.25,7.008999824523926 C-10.25,7.008999824523926 -10.25,1.6180000305175781 -10.25,1.6180000305175781 C-10.25,0.10300000011920929 -9.394000053405762,-1.281999945640564 -8.038999557495117,-1.9600000381469727 C-8.038999557495117,-1.9600000381469727 -7.486000061035156,-2.2360000610351562 -7.486000061035156,-2.2360000610351562 C-7.486000061035156,-2.2360000610351562 -6.25,-4.708000183105469 -6.25,-4.708000183105469 C-6.25,-4.708000183105469 -6.25,-8.5 -6.25,-8.5 C-6.25,-10.432999610900879 -4.683000087738037,-12 -2.75,-12z"
-                                            ></path>
-                                          </g>
-                                        </g>
-                                      </g>
-                                    </mask>
-                                    <filter id="__lottie_element_110" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
-                                      <feComponentTransfer in="SourceGraphic"><feFuncA type="table" tableValues="1.0 0.0"></feFuncA></feComponentTransfer>
-                                    </filter>
-                                    <mask id="__lottie_element_109" mask-type="alpha">
-                                      <g filter="url(#__lottie_element_110)">
-                                        <rect width="72" height="72" x="0" y="0" fill="#ffffff" opacity="0"></rect>
-                                        <g className='hidden'>
-                                            <g><path></path></g>
-                                        </g>
-                                      </g>
-                                    </mask>
-                                  </defs>
-                                  <g clipPath='url(#__lottie_element_138)'>
-                                    <g mask="url(#__lottie_element_177)" className='hidden'>
-                                      <g>
-                                        <g>
-                                          <g><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4"></path></g>
-                                        </g>
-                                      </g>
-                                      <g className='hidden'>
-                                        <g><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4"></path></g>
-                                      </g>
-                                      <g mask="url(#__lottie_element_170)" className='block'>
-                                        <g transform="matrix(1,0,0,1,39.81199645996094,33.90599822998047)" opacity="1">
-                                          <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                                            <path
-                                              stroke-linecap="butt"
-                                              stroke-linejoin="miter"
-                                              fill-opacity="0"
-                                              stroke-miterlimit="4"
-                                              stroke="rgb(255,255,255)"
-                                              stroke-opacity="1"
-                                              stroke-width="2"
-                                              d=" M-2.75,-9 C-2.75,-9 -1.4119999408721924,-9 -1.4119999408721924,-9 C-0.12099999934434891,-9 1.034999966621399,-8.175000190734863 1.3309999704360962,-6.918000221252441 C1.5509999990463257,-5.982999801635742 1.75,-4.892000198364258 1.75,-4 C1.75,-3.305000066757202 1.628999948501587,-2.6110000610351562 1.472000002861023,-2 C1.472000002861023,-2 4.25,-2 4.25,-2 C5.63100004196167,-2 6.75,-0.8809999823570251 6.75,0.5 C6.75,0.652999997138977 6.736000061035156,0.8029999732971191 6.710000038146973,0.9480000138282776 C7.047999858856201,1.3739999532699585 7.25,1.9140000343322754 7.25,2.5 C7.25,3.0859999656677246 7.047999858856201,3.625999927520752 6.710000038146973,4.052000045776367 C6.736000061035156,4.197000026702881 6.75,4.3470001220703125 6.75,4.5 C6.75,5.317999839782715 6.35699987411499,6.044000148773193 5.75,6.5 C5.75,7.88100004196167 4.63100004196167,9 3.25,9 C3.25,9 -0.34599998593330383,9 -0.34599998593330383,9 C-1.6019999980926514,9 -2.8450000286102295,8.744999885559082 -4,8.25 C-4,8.25 -4.822999954223633,7.896999835968018 -4.822999954223633,7.896999835968018 C-5.434999942779541,7.635000228881836 -6.093999862670898,7.5 -6.758999824523926,7.5 C-7.03000020980835,7.5 -7.25,7.28000020980835 -7.25,7.008999824523926 C-7.25,7.008999824523926 -7.25,1.6180000305175781 -7.25,1.6180000305175781 C-7.25,1.2389999628067017 -7.035999774932861,0.8930000066757202 -6.697000026702881,0.7239999771118164 C-6.697000026702881,0.7239999771118164 -5.8460001945495605,0.2980000078678131 -5.8460001945495605,0.2980000078678131 C-5.459000110626221,0.10400000214576721 -5.145999908447266,-0.20900000631809235 -4.952000141143799,-0.5960000157356262 C-4.952000141143799,-0.5960000157356262 -3.3559999465942383,-3.7890000343322754 -3.3559999465942383,-3.7890000343322754 C-3.2869999408721924,-3.927999973297119 -3.25,-4.080999851226807 -3.25,-4.236000061035156 C-3.25,-4.236000061035156 -3.25,-8.5 -3.25,-8.5 C-3.25,-8.776000022888184 -3.0260000228881836,-9 -2.75,-9z"
-                                            ></path>
-                                          </g>
-                                        </g>
-                                      </g>
-                                      <g transform="matrix(1,0,0,1,32.3120002746582,37.90700149536133)" opacity="1" className='block'>
-                                        <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                                          <path
-                                            stroke-linecap="butt"
-                                            stroke-linejoin="miter"
-                                            fill-opacity="0"
-                                            stroke-miterlimit="4"
-                                            stroke="rgb(255,255,255)"
-                                            stroke-opacity="1"
-                                            stroke-width="2"
-                                            d=" M-2.75,-9 C-2.75,-9 -1.4119999408721924,-9 -1.4119999408721924,-9 C-0.12099999934434891,-9 1.034999966621399,-8.175000190734863 1.3309999704360962,-6.918000221252441 C1.5509999990463257,-5.982999801635742 1.75,-4.892000198364258 1.75,-4 C1.75,-3.305000066757202 1.628999948501587,-2.6110000610351562 1.472000002861023,-2 C1.472000002861023,-2 4.25,-2 4.25,-2 C5.63100004196167,-2 6.75,-0.8809999823570251 6.75,0.5 C6.75,0.652999997138977 6.736000061035156,0.8029999732971191 6.710000038146973,0.9480000138282776 C7.047999858856201,1.3739999532699585 7.25,1.9140000343322754 7.25,2.5 C7.25,3.0859999656677246 7.047999858856201,3.625999927520752 6.710000038146973,4.052000045776367 C6.736000061035156,4.197000026702881 6.75,4.3470001220703125 6.75,4.5 C6.75,5.317999839782715 6.35699987411499,6.044000148773193 5.75,6.5 C5.75,7.88100004196167 4.63100004196167,9 3.25,9 C3.25,9 -0.34599998593330383,9 -0.34599998593330383,9 C-1.6019999980926514,9 -2.8450000286102295,8.744999885559082 -4,8.25 C-4,8.25 -4.822999954223633,7.896999835968018 -4.822999954223633,7.896999835968018 C-5.434999942779541,7.635000228881836 -6.093999862670898,7.5 -6.758999824523926,7.5 C-7.03000020980835,7.5 -7.25,7.28000020980835 -7.25,7.008999824523926 C-7.25,7.008999824523926 -7.25,1.6180000305175781 -7.25,1.6180000305175781 C-7.25,1.2389999628067017 -7.035999774932861,0.8930000066757202 -6.697000026702881,0.7239999771118164 C-6.697000026702881,0.7239999771118164 -5.8460001945495605,0.2980000078678131 -5.8460001945495605,0.2980000078678131 C-5.459000110626221,0.10400000214576721 -5.145999908447266,-0.20900000631809235 -4.952000141143799,-0.5960000157356262 C-4.952000141143799,-0.5960000157356262 -3.3559999465942383,-3.7890000343322754 -3.3559999465942383,-3.7890000343322754 C-3.2869999408721924,-3.927999973297119 -3.25,-4.080999851226807 -3.25,-4.236000061035156 C-3.25,-4.236000061035156 -3.25,-8.5 -3.25,-8.5 C-3.25,-8.776000022888184 -3.0260000228881836,-9 -2.75,-9z"
-                                          ></path>
-                                        </g>
-                                      </g>
-                                      <g mask="url(#__lottie_element_163)" className='hidden'>
-                                        <g>
-                                          <g><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4"></path></g>
-                                        </g>
-                                      </g>
-                                      <g className='hidden'>
-                                        <g><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4"></path></g>
-                                      </g>
-                                      <g mask="url(#__lottie_element_156)" className='hidden'>
-                                        <g>
-                                          <g><path></path></g>
-                                        </g>
-                                      </g>
-                                      <g className='hidden'>
-                                        <g><path></path></g>
-                                      </g>
-                                      <g clip-path="url(#__lottie_element_140)" transform="matrix(0.15610000491142273,0,0,0.15610000491142273,3.249500274658203,-0.7504997253417969)" opacity="1" className='block'>
-                                        <g className='hidden'>
-                                          <g><path></path></g>
-                                        </g>
-                                        <g className='hidden'>
-                                          <g><path></path></g>
-                                        </g>
-                                        <g className='hidden'>
-                                          <g><path></path></g>
-                                        </g>
-                                        <g className='hidden'>
-                                          <g><path></path></g>
-                                        </g>
-                                        <g className='hidden'>
-                                          <g><path></path></g>
-                                        </g>
-                                        <g className='hidden'>
-                                          <g><path></path></g>
-                                        </g>
-                                      </g>
-                                    </g>
-                                  </g>
-                                </svg> */}
+                                
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard relative text-[#fff]"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 2V5.76393C13.5 6.07442 13.4277 6.38065 13.2889 6.65836L12.7708 7.69437C12.6876 7.22319 12.5917 6.77987 12.5006 6.39344C12.31 5.5852 11.9615 4.87278 11.5 4.2696V1.5C11.5 0.671574 12.1716 0 13 0H14.3377C16.0428 0 17.6401 1.09702 18.0539 2.85235C18.2788 3.80611 18.5 4.98865 18.5 6C18.5 6.33974 18.4752 6.6755 18.4338 7H20C21.933 7 23.5 8.567 23.5 10.5C23.5 10.5631 23.4983 10.6258 23.495 10.6883C23.8153 11.217 24 11.8378 24 12.5C24 13.1622 23.8153 13.783 23.495 14.3118C23.4983 14.3742 23.5 14.4369 23.5 14.5C23.5 15.4709 23.1039 16.3496 22.467 16.9827C22.2319 18.6873 20.7692 20 19 20H17.7925C17.9004 19.6191 17.9683 19.2213 17.9913 18.8115C18.1119 18.5513 18.2129 18.2801 18.2922 18H19C19.8284 18 20.4999 17.3285 20.5 16.5001L20.5 16.0006L20.8994 15.7006C21.266 15.4253 21.5 14.9901 21.5 14.5C21.5 14.4071 21.4917 14.317 21.476 14.2301L21.3955 13.7851L21.6764 13.4308C21.8794 13.1748 22 12.8529 22 12.5C22 12.1471 21.8794 11.8252 21.6764 11.5692L21.3955 11.2149L21.476 10.7699C21.4917 10.6831 21.5 10.5929 21.5 10.5C21.5 9.67157 20.8284 9 20 9H17.2219H15.9315L16.2536 7.75039C16.3976 7.1919 16.5 6.58478 16.5 6C16.5 5.22716 16.3233 4.22758 16.1073 3.31126C15.9285 2.55292 15.2152 2 14.3377 2H13.5ZM6 9.76393V6H6.83772C7.71518 6 8.42852 6.55292 8.60729 7.31126C8.82331 8.22758 9 9.22716 9 10C9 10.5848 8.89755 11.1919 8.75359 11.7504L8.43147 13H9.72193H12.5C13.3284 13 14 13.6716 14 14.5C14 14.5929 13.9917 14.6831 13.976 14.7699L13.8955 15.2149L14.1764 15.5692C14.3794 15.8252 14.5 16.1471 14.5 16.5C14.5 16.8529 14.3794 17.1748 14.1764 17.4308L13.8955 17.7851L13.976 18.2301C13.9917 18.317 14 18.4071 14 18.5C14 18.9901 13.766 19.4253 13.3994 19.7006L13 20.0006L13 20.5001C12.9999 21.3285 12.3284 22 11.5 22H9H8H7.90394C6.78317 22 5.67407 21.7724 4.64392 21.3309L3.82098 20.9782C3.24116 20.7297 2.62633 20.576 2 20.5219V15.618L2.85093 15.1926C3.43151 14.9023 3.90228 14.4315 4.19257 13.8509L5.78885 10.6584C5.92771 10.3806 6 10.0744 6 9.76393ZM5.5 4C4.67157 4 4 4.67157 4 5.5V9.76393L2.40372 12.9565C2.30695 13.15 2.15003 13.307 1.9565 13.4037L1.10557 13.8292C0.428005 14.168 0 14.8605 0 15.618V21.0086C0 21.8323 0.667718 22.5 1.49139 22.5C2.02143 22.5 2.54595 22.6077 3.03314 22.8165L3.85608 23.1691C5.13519 23.7173 6.51232 24 7.90394 24H8H9H11.5C13.2692 24 14.7319 22.6873 14.967 20.9827C15.6039 20.3496 16 19.4709 16 18.5C16 18.4369 15.9983 18.3742 15.995 18.3118C16.3153 17.783 16.5 17.1622 16.5 16.5C16.5 15.8378 16.3153 15.217 15.995 14.6883C15.9983 14.6258 16 14.5631 16 14.5C16 12.567 14.433 11 12.5 11H10.9338C10.9752 10.6755 11 10.3397 11 10C11 8.98865 10.7788 7.80611 10.5539 6.85235C10.1401 5.09702 8.54284 4 6.83772 4H5.5Z" fill="currentColor"></path>
                                 {/* 최고예요 누른 상태 */}
                                 { bestClick &&
@@ -595,5 +463,10 @@ const Top = () => {
     </div>
   );
 };
+
+Top.propTypes = {
+  poster_path : PropTypes.string.isRequired,
+  title : PropTypes.string.isRequired,
+}
 
 export default Top;
