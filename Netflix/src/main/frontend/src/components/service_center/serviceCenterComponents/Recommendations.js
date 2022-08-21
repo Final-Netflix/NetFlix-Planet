@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ServiceCenter from '../ServiceCenter';
+import { Link } from 'react-router-dom';
 
 const Recommendations = (props) => {
     const [ data ] = useState([
@@ -29,10 +30,10 @@ const Recommendations = (props) => {
                     return (
                         <div key={i} className="k2-recommendations mb-[16px]">
                             <div className="k2-help-card p-0 rounded border-2 w-[270px] shadow-md  h-[56px] mr-4 bg-[#fff] justify-center">
-                                <a href={item.href} className="k2-noreferrer">
+                                <Link to={item.href} className="k2-noreferrer">
                                     <img className="k2-icon mr-[16px]" alt={item.alt} src={item.imageUrl}></img>
                                     <h3 className="k2-title">{item.title}</h3>   
-                                </a>    
+                                </Link>    
                             </div>
                         </div> 
                     )

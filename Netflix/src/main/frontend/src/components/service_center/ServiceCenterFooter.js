@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import '../../css/serviceCenter/serviceCenter.css';
-const ServiceCenterFooter = () => {
+const ServiceCenterFooter = (props) => {
     return (
         <div id="k1-footer" class="k1-global-footer">
             <div id="k1-contact-bar" class="k1-global-contactbar">
@@ -25,8 +25,10 @@ const ServiceCenterFooter = () => {
                         <div class="k1-channel">
                             <div id="k1-chat-contact" class="k1-popover-wrapper k1-chat-btn-wrapper k1-channel" data-enablemobilechat="true">
                                 <div onClick={() => {
-                                
-                                window.open(`http://localhost:5000?nickname=${'옥지'}`, "_blank", "width=350px, height=550px", "false");
+
+                                    props.setOpenChat(true)
+                                // window.open(`http://localhost:5000?nickname=${'옥지'}`, "_blank", "width=350px, height=550px", "false");
+
 
                                 }} id="k1-startChatTrigger" class="k1-btn k1-btn-lightgrey k1-start-chat-button k1-beacon-event" data-beacon="action=ChatButton" data-locale="ko" data-country="KR">실시간 채팅 시작하기</div>
                             </div>

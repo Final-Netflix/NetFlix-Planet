@@ -16,16 +16,60 @@
 				room_title
 			)values
 			(
-				1,
-				#{code},
-				1,
-				1,
-				'1',
+				#{seq}+1,
+				#{chat_code},
+				#{profile_id},
+				null,
+				null,
 				now(),
-				#{subject}
+				#{room_title}
 			)
 			
     </insert>
+  	<insert id="joinChatRoom" parameterType="java.util.Map">
+  		insert into CHAT_PARTICIPANT
+  			(chat_room_id ,profile_id)
+  				values
+		  			(	
+		  				#{chat_room_id},
+		  				#{profile_id}
+		  			)
+  	</insert>
+  	<select id="getChatRoomId" resultType="String" parameterType="java.util.Map">
+  		select chat_room_id from CHAT_ROOM where CHAT_CODE = #{chat_code}
+  	</select>
   	
+  	<select id="getListChatRoom" resultType="userChatRoom" parameterType="java.util.Map">
+  		select * from CHAT_ROOM
+			LEFT OUTER JOIN CHAT_PARTICIPANT
+    		On CHAT_PARTICIPANT.PROFILE_ID = #{profile_id}<!-- 로그인 한사람 -->
+            where CHAT_ROOM.CHAT_ROOM_ID = CHAT_PARTICIPANT.CHAT_ROOM_ID
+  	</select>
+  	<select id="chatRoomSeq" resultType="int">
+  		select max(CHAT_ROOM_ID) from CHAT_ROOM
+  	</select>
+  	<select id="chatSeq" resultType="int">
+  		select max(CHAT_ID) from CHAT
+  	</select>
+  	<insert id="sendChat" parameterType="java.util.Map">
+  		insert into CHAT(
+			chat_id,
+			content,
+			profile_id,
+			chat_room_id,
+			reg_date
+  		)
+  		values(
+  			#{seq},
+  			#{content},
+  			#{profile_id},
+  			#{chat_room_id},
+  			now()
+  		)
+  	</insert>
+  	<select id="getUserChatList" resultType="userChat" parameterType="java.util.Map">
+  		select * from CHAT where chat_room_id=#{chat_room_id}
+  		
+  	</select>
   </mapper>
  

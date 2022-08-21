@@ -7,16 +7,19 @@ import TopTen from './TopTen';
 const View = () => {
 
     const {tab} = useParams();
-    const classificationNum = 21;
+    
+    let classificationNum;
+    tab === undefined ? classificationNum = 21 :
+    tab === 'series'  ? classificationNum = 14 : classificationNum = 14;
 
     function generateArr () {  
-        let arr = [];  
-        let i = 0;  
+        let arr = [];
+        let i = 0;
         while (i < 9) {    
             let n = Math.floor(Math.random() * classificationNum);
             if (!sameNum(n)) {      
                 arr.push(n);
-                i++;    
+                i++;   
             }  
         }  
         
@@ -36,13 +39,14 @@ const View = () => {
     return (
         <div className='bg-[#141414]'>
             <Special/>
-            <TopTen type='tv'/>
+            { tab === undefined ? <TopTen type='tv'/> : 
+              tab === 'series'  ? <TopTen type='tv'/> : <TopTen type='movie'/>}
             <Recommend order='1' classification = { arr[0] }/>
             <Recommend order='2' classification = { arr[1] }/>
             <Recommend order='3' classification = { arr[2] }/>
             <Recommend order='4' classification = { arr[3] }/>
             <Recommend order='5' classification = { arr[4] }/>
-            <TopTen type='movie'/>
+            { tab === undefined && <TopTen type='movie'/>}
             <Recommend order='6' classification = { arr[5] }/>
             <Recommend order='7' classification = { arr[6] }/>
             <Recommend order='8' classification = { arr[7] }/>

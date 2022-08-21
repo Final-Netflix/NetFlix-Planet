@@ -1,5 +1,6 @@
 import React from 'react';
 import 'css/main/special.css';
+import { useParams } from 'react-router-dom';
 
 const Special = () => {
     return (

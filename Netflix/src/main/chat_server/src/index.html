@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="wrapper">
         <div class="chat-header">
+            <div class="chat-logo-area">
+                <img class="p-img" src="image/p.png">
+                <div class="p-planet-wrap">
+                    <span class="p-planet-1">플래닛</span>
+                    <span class="p-planet-2">Planet 고객 센터</span>
+                </div>
+            </div>
             <button tabindex="0" class="chat-end-button" title="채팅종료">
-                <img class="x-img" src="image/x1.png"  >
-                    <!-- <path fill-rule="evenodd" clip-rule ="evenodd"
-                     d="M20.364 18.95L13.414 12l6.95-6.95-1.414-1.414-6.95 6.95-6.95-6.95L3.636 5.05l6.95 6.95-6.95 6.95 1.414 1.414 6.95-6.95 6.95 6.95 1.414-1.414z" fill="gray"></path> -->
-
+                <img class="x-img" src="image/x-img.png" onclick="window.parent.postMessage({ message: 'close_chat' }, '*')">
+                <!-- <path fill-rule="evenodd" clip-rule ="evenodd"
+                    d="M20.364 18.95L13.414 12l6.95-6.95-1.414-1.414-6.95 6.95-6.95-6.95L3.636 5.05l6.95 6.95-6.95 6.95 1.414 1.414 6.95-6.95 6.95 6.95 1.414-1.414z" fill="gray"></path> -->
+                    
                 </img>
             </button>
         </div>
@@ -26,13 +34,15 @@
         </div>
         <div class="display-container">
             <ul class="chatting-list">
-               
+                
             </ul>
         </div>
         <div class="input-container">
             <span>
-                <input type="text" class="chatting-input">
-                <button class="send-button">전송</button>
+                <input type="text" class="chatting-input" placeholder="답변 입력">
+                <button class="send-button">
+                    <img class="send-img" src="image/send.png">
+                </button>
             </span>
         </div>
     </div>
@@ -40,9 +50,9 @@
 
     <script>
         const URLSearch = new URLSearchParams(location.search);
-
+        
         function searchParam(key) {
-        return new URLSearchParams(location.search).get(key);
+            return new URLSearchParams(location.search).get(key);
         };
         
         searchParam('nickname')
@@ -56,6 +66,12 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/chat.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
+    
 
 
 </body>
