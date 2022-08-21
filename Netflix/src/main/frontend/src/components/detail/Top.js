@@ -153,7 +153,7 @@ const Top = () => {
       <div className='c2_previewModal rounded-t-md overflow-hidden bg-[#000] cursor-pointer relative text-[#fff] text-[16px]'>
         <div className='absolute w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
           <div id='81593318' className='relative w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
-            <video src='blob:https://www.netflix.com/f882d0a2-b791-4023-842a-059fea5d8ab6' className='absolute w-[100%] h-[100%] object-cover inline-block align-baseline'></video> {/* video 실행 안됨 */}
+            {/* <video src='blob:https://www.netflix.com/f882d0a2-b791-4023-842a-059fea5d8ab6' className='absolute w-[100%] h-[100%] object-cover inline-block align-baseline'></video> {/* video 실행 안됨  */}
             <div className='c2_player_timedtext absolute inset-0 hidden mt-0 mr-[88.2px] mb-0 ml-[235.2px]'></div>
           </div>
         </div>
