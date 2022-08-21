@@ -9,10 +9,18 @@ html, body {
 
 .wrapper {
     height: 100%;
-    width: 100%;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+
+.user {
+    font-size: 11px;
+}
+
+.user-container2 {
+    flex:1;
 }
 
 .user-container { 
@@ -40,6 +48,7 @@ html, body {
     flex: 12;
     background: #fff;
     overflow-y: scroll;
+    border-bottom: 2px solid #e7e6eb;
 }
 
 .input-container {
@@ -63,18 +72,25 @@ html, body {
     height: 100%;
     flex: 8;
     border: none;
+    padding: 5px;
+    outline: none;
 }
 
 .send-button {
-    flex :1;
-    background: #ffeb33;
     border: none;
     height: 100%;
-    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+.send-img{
+    height: 24px;
+    width: 24px;
 }
 
 .chatting-list li {
-    width: 100%;
+    width: 90%;
     padding: 0.3rem;
     display: flex;
     justify-content: flex-start;
@@ -103,7 +119,7 @@ html, body {
 }
 
 .message {
-    border-radius: 5px;
+    border-radius: 10px 10px 10px 10px;
     padding: 0.5rem;
     font-size: 12px;
     margin: 0 5px;
@@ -123,7 +139,7 @@ html, body {
 }
 
 .sent .message {
-    background: #0c82fe;
+    background: #4285f3;
     color: #e7e6eb;
 }
 
@@ -138,13 +154,37 @@ html, body {
     overflow: hidden;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    justify-content: flex-end;
     width: 100%;
     padding: 16px;
     background: #fff;
     box-shadow: 0 1px 12px rgb(0 0 0 / 20%);
+}
+
+.chat-logo-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.p-planet-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-planet-1 {
+    padding-left: 10px;
+    padding-top: 7px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.p-planet-2 {
+    padding-left: 10px;
+    padding-top: 3px;
+    font-size: 12px;
+    color: #8b8a88;
 }
 
 .chat-end-button {
@@ -164,6 +204,7 @@ html, body {
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
+    justify-content: flex-end;
 }
 
 svg {
@@ -171,6 +212,28 @@ svg {
 }
 
 .x-img {
-    width: 10px;
-    height: 10px;
+    width: 17px;
+    height: 17px;
+    display: flex;
+}
+
+.p-img {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: left;
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 75%;
+    background-color: var(--white);
+    transform: translate(-50%, -50%);
+}
+
+.p-planet {
+    display: flexbox;
 }

@@ -9,23 +9,26 @@ const sendButton = document.querySelector(".send-button")
 const displayContainer = document.querySelector(".display-container")
 
 
-
-
-
 chatInput.addEventListener("keypress", (event)=> {
     console.log(event)
     if(event.keyCode === 13){ 
-        send();
+            send();
+        
     }
+
 })
 
 function send() {
-    const param = {
-        name: nickname.value,
-        msg: chatInput.value
+    if(chatInput.value.length != 0) { 
+    
+        const param = {
+            name: nickname.value,
+            msg: chatInput.value
+        }
+        socket.emit("chatting", param)
+        chatInput.value = "";
+        
     }
-    socket.emit("chatting", param)
-    chatInput.value = "";
 }
 
 sendButton.addEventListener("click", send)
@@ -46,6 +49,22 @@ function LiModel(name, msg, time) {
     this.msg = msg;
     this.time = time;
 
+    // this.makeLi = () => {
+    //     const li = document.createElement("li");
+    //     li.classList.add(nickname.value === this.name ? "sent" : "received")
+    //     const dom = `
+    //     <span class="profile">
+    //     <img class="image" src="https://placeimg.com/50/50/any" alt="any">
+    //     </span>
+    //     <span class="user">${this.name}</span>
+    //     <span class="message">${this.msg}</span>
+    //     <span class="time">${this.time}</span>`;
+
+        
+    //     li.innerHTML = dom;
+    //     chatList.appendChild(li)
+    // }
+
     this.makeLi = () => {
         const li = document.createElement("li");
         li.classList.add(nickname.value === this.name ? "sent" : "received")
@@ -62,3 +81,6 @@ function LiModel(name, msg, time) {
         chatList.appendChild(li)
     }
 }
+
+
+
