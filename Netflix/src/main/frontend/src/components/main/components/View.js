@@ -46,7 +46,7 @@ const View = () => {
             <Recommend order='3' classification = { arr[2] }/>
             <Recommend order='4' classification = { arr[3] }/>
             <Recommend order='5' classification = { arr[4] }/>
-            { tab === undefined && <TopTen type='movie'/>}
+            {/* { tab === undefined && <TopTen type='movie'/>} */}
             <Recommend order='6' classification = { arr[5] }/>
             <Recommend order='7' classification = { arr[6] }/>
             <Recommend order='8' classification = { arr[7] }/>
