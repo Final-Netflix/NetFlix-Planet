@@ -22,6 +22,7 @@ import LockProfile from './serviceCenterHeader/LockProfile';
 import AddProfilePIN from './AddProfilePIN';
 import AbleAutoPlay from './serviceCenterHeader/AbleAutoPlay';
 import AccessViewRecords from './serviceCenterHeader/AccessViewRecords';
+import AdminChat from './adminChat/AdminChat';
 
 
 const ServiceCenterDetail = () => {
@@ -98,10 +99,10 @@ const ServiceCenterDetail = () => {
             <div className="k1-footer-push">
 
 
-            </div>
-            
-
+            </div>         
         </div>
+
+        
     );
 };
 

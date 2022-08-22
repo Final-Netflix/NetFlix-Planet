@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 const ServiceCenter = () => {
     const {detail} = useParams()
 
-    const [opneChat, setOpenChat] = useState(false)
+    const [openChat, setOpenChat] = useState(false)
 
 
     
@@ -52,7 +52,7 @@ const ServiceCenter = () => {
             />
             {
             
-            opneChat === true &&
+            openChat === true &&
 
             <div className='k1-box w-[320px] h-[500px] fixed right-0 bottom-0 '>
                 <iframe

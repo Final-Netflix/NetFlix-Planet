@@ -12,6 +12,7 @@ import Linked from "components/detail/Linked";
 import SearchResult from "components/main/components/SearchResult";
 import SignUp from "components/user/SignUp"
 import useStore from "store";
+import AdminChat from "components/service_center/adminChat/AdminChat";
 
 
 function App() {
@@ -51,9 +52,12 @@ function App() {
         <Route path="/detail/:detail" element={ <Linked /> }></Route>
         {/* hee */}
         
+        
         <Route path="/service" element={ <ServiceCenter/> }></Route>
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
+        <Route path="/admin_chat" element={<AdminChat />}></Route>
+
 
       </Routes>
        	{/* <br/> */}

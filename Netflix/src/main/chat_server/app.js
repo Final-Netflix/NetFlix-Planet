@@ -19,6 +19,8 @@ app.use(express.static(path.join(__dirname, "src")))
 
 const PORT = process.env.PORT || 5000;
 
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 
 io.on("connection", (socket)=>{
     socket.on("chatting",(data)=>{
@@ -33,7 +35,13 @@ io.on("connection", (socket)=>{
     
 })
 
+app.get('/', function(req, res){
+    res.render('index');
+})
 
+app.get('/admin', function(req, res){
+    res.render('index');
+})
 
 
 server.listen(PORT, ()=> console.log(`server is runnung ${PORT}`))
