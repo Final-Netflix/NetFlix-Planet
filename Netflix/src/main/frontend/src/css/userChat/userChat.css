@@ -1,35 +1,97 @@
 .chatW_userChatRoom{
     width: 300px;
     height: 600px;
-    border: solid black 1px;
+    border-radius: 10px;
+    border: solid #111111 3px;
     position:absolute;
     left: 80%;
-    background-color: #dddddd;
+    background-color: #333333;
     z-index : 999;
 }
+.chatW_userChatRoom input{
+    border : 0;
+    background: none;
+    color: #cccccc;
+    border-bottom: solid 1px #cccccc;
+}
+
 .chatW_userChatRoom .chatW_topButton{
     width: 100px;
-    border: solid black 1px;
-    background-color: white;
+    background-color: none;
     font-size: 20px;
     margin: 10px;
     padding: 5px;
+    border-bottom: #cccccc solid 1px;
 }
+.chatW_userChatRoom .chatW_topButton span{
+    color: #cccccc;
+}
+
 .chatW_userChatRoom_title{
-    background-color: white;
     border-bottom: solid #333333 1px;
     font-size: 20px;
     text-align: center;
     padding: 10px;
 }
+.chatW_userChatRoom_title span{
+    color : #ff3333;
+    font-size: 25px;
+
+}
+.chatW_miniBtnForm{
+    margin: 20px;
+    text-align: center;
+}
 .chatW_miniBtn{
-    border: solid black 1px;
-    background-color: white;
-    margin-left: 20px;
+    width: 50px;
+    border-bottom: #cccccc solid 1px;
+    background-color: none;
+    margin: 10px;
+}
+.chatW_miniBtn span{
+    font-size: 20px;
+    color: #cccccc;
 }
 .chatW_inputForm{
     margin: 5px;
 }
-.chatW_userChatInfo{
+.chatW_inputForm span{
+    color: #cccccc;
+    font-size: 20px;
+}
+.chatW_inputForm input, .chatW_userChatInputForm input{
+    width: 200px;
+    font-size: 20px;
+    color : white;
+    margin-top: 5px;
+}
+
+.chatW_infoForm .chatW_userChatInfo{
     margin: 10px;
+    float: left;
+}
+
+.chatW_infoForm:after{
+    clear: both;
+    display :block;
+    content: '';
+}
+.chatW_hatRoomListForm h1{
+    color : #ffffff;
+}
+.chatW_listUl span{
+    color: #ffffff;
+}
+.chatW_userChattingList{
+    height: 400px;
+}
+.chatW_userChattingList span{
+    color: #dddddd;
+    font-size: 18px;
+}
+.chatW_userChattingList li{
+    margin: 10px;
+}
+.chatW_userChattingForm{
+    margin: 20px;
 }

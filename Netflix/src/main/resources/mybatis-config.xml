@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="userChat.bean.UserChatRoomDTO" alias="userChatRoom"/>
 		<typeAlias type="userChat.bean.UserChatDTO" alias="userChat"/>
+		<typeAlias type="user.bean.UserDTO" alias="user"/>
 	</typeAliases>
 	
 	<mappers>

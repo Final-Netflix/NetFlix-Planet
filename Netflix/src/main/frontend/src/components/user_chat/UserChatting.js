@@ -13,7 +13,7 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     }
     const chatListDate = {
         'chat_room_id': chatRoomId,
-        'profile_id' : 3,
+        'profile_id' : 3
     }
     const sendChat=()=>{
         axios({
@@ -40,8 +40,8 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
         setChatInput(e.target.value);
     }
     return (
-        <div className='userChatting'>
-            <div>
+        <div className='chatW_userChatting'>
+            <div className='chatW_userChattingList'>
                 {
                     data.map(item=>
                         <ul>
@@ -53,9 +53,11 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
                         )
                 }
             </div>
-            <div>
+            <div className='chatW_userChatInputForm'>
                 <input type="text" onChange={chattingInput}></input>
-                <button type="button" onClick={sendChat}>보내기</button>
+                <button type="button" onClick={sendChat}>
+                    보내기
+                </button>
             </div>
             <div><button onClick={changeChattionView}>목록</button></div>
         </div>

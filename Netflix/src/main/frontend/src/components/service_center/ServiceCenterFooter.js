@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import '../../css/serviceCenter/serviceCenter.css';
 const ServiceCenterFooter = (props) => {
@@ -25,11 +24,8 @@ const ServiceCenterFooter = (props) => {
                         <div className="k1-channel">
                             <div id="k1-chat-contact" className="k1-popover-wrapper k1-chat-btn-wrapper k1-channel" data-enablemobilechat="true">
                                 <div onClick={() => {
-
                                     props.setOpenChat(true)
                                 // window.open(`http://localhost:5000?nickname=${'옥지'}`, "_blank", "width=350px, height=550px", "false");
-
-
                                 }} id="k1-startChatTrigger" className="k1-btn k1-btn-lightgrey k1-start-chat-button k1-beacon-event" data-beacon="action=ChatButton" data-locale="ko" data-country="KR">실시간 채팅 시작하기</div>
                             </div>
                         </div>
