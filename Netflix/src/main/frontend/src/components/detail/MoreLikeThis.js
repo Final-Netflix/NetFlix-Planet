@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from "prop-types";
 
-const MoreLikeThis = () => {
+const MoreLikeThis = ({poster_path, overview, genre_ids, id}) => {
   const[moreContentList, setMoreContentList] = useState(false)
   const [playIconHover, setPlayIconHover] = useState(false);
   const [wishHover, setWishHover] = useState(false);
-
 
   /* 재생버튼 */
   const playIconHoverEnter = () => {
@@ -48,7 +48,9 @@ const MoreLikeThis = () => {
                 <div className='titleCard_imageWrapper relative cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     <img className='block w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
-                    src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWrjUJ6SFpSid-BbBvAs0iYtQTQdhNduw1myC9vb0LuI4FMI5soSqskzIEBFw-gsc2tGEx0yimt1sgRD6M7lIausswDvaoVi6_Y.webp?r=e19' alt='문호 스트레이독스'></img>
+                    src={ "https://image.tmdb.org/t/p/w200" + poster_path }></img>
+                    {/* <img className='block w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
+                    src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWrjUJ6SFpSid-BbBvAs0iYtQTQdhNduw1myC9vb0LuI4FMI5soSqskzIEBFw-gsc2tGEx0yimt1sgRD6M7lIausswDvaoVi6_Y.webp?r=e19' alt='문호 스트레이독스'></img> */}
                   </div>
                   {/* play icon */}
                   <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
@@ -105,12 +107,13 @@ const MoreLikeThis = () => {
                   </div>
                   <p className='titleCard_synopsis text-[#d2d2d2] m-0 pt-0 px-[1em] pb-[1em] text-[14px] leading-[20px] block cursor-pointer'>
                     <div className='ptrack_container block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>
-                      <div className='ptrack_content block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>무장탐정사. 특별한 능력으로 경찰 대신 크고 작은 사건을 해결하는 탐정들의 집단.</div>
+                      {/* <div className='ptrack_content block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>무장탐정사. 특별한 능력으로 경찰 대신 크고 작은 사건을 해결하는 탐정들의 집단.</div> */}
+                      <div className='ptrack_content block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>{ overview }</div>
                     </div>
                   </p>
                 </div>
               </div>
-              <div className='moreLikeThis_item h-[100%] m-[0.1em] flex-[0_0_47%] min-h-[22em] rounded-[0.25em] cursor-pointer overflow-hidden relative block text-[#fff] text-[16px] leading-[1.4]' role="button" aria-label='호리미야'>
+              {/* <div className='moreLikeThis_item h-[100%] m-[0.1em] flex-[0_0_47%] min-h-[22em] rounded-[0.25em] cursor-pointer overflow-hidden relative block text-[#fff] text-[16px] leading-[1.4]' role="button" aria-label='호리미야'>
                 <div className='titleCard_imageWrapper relative cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     <img className='block w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
@@ -138,7 +141,7 @@ const MoreLikeThis = () => {
                               <svg className='thumb_up_filled opacity-0 border-[1px] border-solid border-transparent my-0 mx-[-1px] overflow-visible scale-[1] pointer-events-none text-[#fff] text-[16px] leading-[1.4] cursor-pointer' xmlns='http://www.w3.org/2000/svg'>
                                 <path></path>
                               </svg>
-                            </div> */}
+                            </div> *
                             <span className='match_score text-[#46d369] whitespace-[unset] max-w-[300px] opacity-[1] inline-block font-bold text-[16px] leading-[1.4]'>97% 일치</span>
                           </div>
                         </span>
@@ -172,8 +175,8 @@ const MoreLikeThis = () => {
                     </div>
                   </p>
                 </div>
-              </div>
-              <div className='moreLikeThis_item h-[100%] m-[0.1em] flex-[0_0_47%] min-h-[22em] rounded-[0.25em] cursor-pointer overflow-hidden relative block text-[#fff] text-[16px] leading-[1.4]' role="button" aria-label='호리미야'>
+              </div> */}
+              {/* <div className='moreLikeThis_item h-[100%] m-[0.1em] flex-[0_0_47%] min-h-[22em] rounded-[0.25em] cursor-pointer overflow-hidden relative block text-[#fff] text-[16px] leading-[1.4]' role="button" aria-label='호리미야'>
                 <div className='titleCard_imageWrapper relative cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     <img className='block w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
@@ -201,7 +204,7 @@ const MoreLikeThis = () => {
                               <svg className='thumb_up_filled opacity-0 border-[1px] border-solid border-transparent my-0 mx-[-1px] overflow-visible scale-[1] pointer-events-none text-[#fff] text-[16px] leading-[1.4] cursor-pointer' xmlns='http://www.w3.org/2000/svg'>
                                 <path></path>
                               </svg>
-                            </div> */}
+                            </div> *
                             <span className='match_score text-[#46d369] whitespace-[unset] max-w-[300px] opacity-[1] inline-block font-bold text-[16px] leading-[1.4]'>97% 일치</span>
                           </div>
                         </span>
@@ -235,7 +238,7 @@ const MoreLikeThis = () => {
                     </div>
                   </p>
                 </div>
-              </div>
+              </div> */}
               
               { moreContentList &&
               <div className='moreLikeThis_item h-[100%] m-[0.1em] flex-[0_0_47%] min-h-[22em] rounded-[0.25em] cursor-pointer overflow-hidden relative block text-[#fff] text-[16px] leading-[1.4]' role="button" aria-label='문호 스트레이독스'>
@@ -322,5 +325,12 @@ const MoreLikeThis = () => {
     </div>
   );
 };
+
+MoreLikeThis.propTypes = {
+  poster_path : PropTypes.string.isRequired,
+  title : PropTypes.string.isRequired,
+  overview : PropTypes.string.isRequired,
+  genre_ids : PropTypes.arrayOf(PropTypes.number).isRequired
+}
 
 export default MoreLikeThis;

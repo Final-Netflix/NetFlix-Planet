@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Movie from './APIMovie';
+import Top from './Top';
 
 // https://velog.io/@jahommer/React-app6-TMDB-API
 
@@ -36,7 +37,7 @@ const APITest = () => {
 
     return (
         <div>
-            { 
+            {/* { 
                 loading ? <h1>Loading... </h1> :
                 <div>{ movies.map(movie =>
                         <Movie
@@ -47,7 +48,19 @@ const APITest = () => {
                             genre_ids={ movie.genre_ids }
                         />) } 
                 </div>
-            } 
+            } */}
+            { 
+                loading ? <h1>Loading... </h1> :
+                <div>{ movies.map(movie =>
+                        <Top
+                            key={ movie.id }
+                            poster_path={ movie.poster_path }
+                            title={ movie.title }
+                            overview={ movie.overview }
+                            genre_ids={ movie.genre_ids }
+                        />) } 
+                </div>
+            }    
         </div>
     );
 };
