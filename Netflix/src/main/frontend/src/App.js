@@ -12,8 +12,8 @@ import Linked from "components/detail/Linked";
 import SearchResult from "components/main/components/SearchResult";
 import SignUp from "components/user/SignUp"
 import useStore from "store";
+import AdminChat from "components/service_center/adminChat/AdminChat";
 import DetailForMovie from "components/detail/DetailForMovie";
-
 
 function App() {
   const [hello, setHello] = useState('')
@@ -54,9 +54,12 @@ function App() {
         <Route path="/detailM/:detail" element={ <Linked /> }></Route>
         {/* hee */}
         
+        
         <Route path="/service" element={ <ServiceCenter/> }></Route>
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
+        <Route path="/admin_chat" element={<AdminChat />}></Route>
+
 
       </Routes>
        	{/* <br/> */}

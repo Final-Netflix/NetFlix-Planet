@@ -19,8 +19,8 @@ public class UserChatServiceImpl implements UserChatService {
 	public void createChatRoom(Map<String,String> map) {
 		int chatRoomSeq = userChatDAO.chatRoomSeq()+1;
 		map.put("seq",chatRoomSeq+"");
+		
 		userChatDAO.createChatRoom(map);
-
 	}
 
 	@Override
