@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
-const About = () => {
+const About = ({name, id}) => {
   return (
     <div className='ptrack_container block text-[#fff] text-[16px] leading-[1.4]'>
       <div className='ptrack_content block text-[#fff] text-[16px] leading-[1.4]'>
@@ -15,11 +16,14 @@ const About = () => {
             <div className='previewModal_tags_person text-[14px] leading-[20px] mt-[0.5em] mr-[0.5em] mb-[0.5em] ml-0 break-words block text-[#fff]'>
               <span className='previewModal_tags_label text-[#777] text-[14px] leading-[20px] break-words'>출연:</span>
               <span className='tag_item text-[14px] leading-[20px] break-words'>
-                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
+                {/* <a href="#" className='text-[#fff] cursor-pointer no-underline'>
                   에구치 타쿠야,
+                </a> */}
+                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
+                  { name },
                 </a>
               </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words'>
+              {/* <span className='tag_item text-[14px] leading-[20px] break-words'>
                 <a href="#" className='text-[#fff] cursor-pointer no-underline'>
                   타네자키 아츠미,
                 </a>
@@ -43,7 +47,7 @@ const About = () => {
                 <a href="#" className='text-[#fff] cursor-pointer no-underline'>
                   야마지 카즈히로
                 </a>
-              </span>
+              </span> */}
             </div>
             <div className='previewModal_tags_genre text-[14px] leading-[20px] mt-[0.5em] mr-[0.5em] mb-[0.5em] ml-0 break-words block text-[#fff]'>
               <span className='previewModal_tags_label text-[#777] text-[14px] leading-[20px] break-words'>장르:</span>
@@ -103,5 +107,9 @@ const About = () => {
     </div>
   );
 };
+
+About.propTypes = {
+  name : PropTypes.string.isRequired
+}
 
 export default About;
