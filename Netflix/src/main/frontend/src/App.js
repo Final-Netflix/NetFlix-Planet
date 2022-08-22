@@ -12,6 +12,8 @@ import Linked from "components/detail/Linked";
 import SearchResult from "components/main/components/SearchResult";
 import SignUp from "components/user/SignUp"
 import useStore from "store";
+import Payment from "components/my_page/payment/Payment";
+import Login from "components/login/Login";
 
 
 function App() {
@@ -42,6 +44,10 @@ function App() {
           <Route index element={<MyPage/>}/>
           <Route path=":detail" element={<MyPage/>}/>
         </Route>
+        <Route path="/payment">
+          <Route index element={<Payment/>}/>
+          <Route path=":detail" element={<Payment/>}/>
+        </Route>
         {/* login */}
         <Route path='/signUp' element={<SignUp/>}></Route>
         {/* hong */}
@@ -55,6 +61,7 @@ function App() {
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 
+        <Route path="/login" element={<Login/>}/>
       </Routes>
        	{/* <br/> */}
         {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
