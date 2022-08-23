@@ -5,15 +5,19 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     const qs = require('qs');
     const [data, setData]=useState([]);
     const [chatInput, setChatInput]=useState('');
-
+    const [chatCheck,setChatCheck] = useState(1);
+    setTimeout(function() {
+        setChatCheck(chatCheck+1);
+      }, 2000);
+      
     const sendChatDate = {
         'chat_room_id': chatRoomId,
-        'profile_id' : 3,
+        'profile_id' : localStorage.getItem('profile_id'),
         'content' : chatInput
     }
     const chatListDate = {
         'chat_room_id': chatRoomId,
-        'profile_id' : 3
+        'profile_id' : localStorage.getItem('profile_id')
     }
     const sendChat=()=>{
         axios({
@@ -23,6 +27,7 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
           })
           .then()
           .catch(error => console.log(error));
+          setChatInput('');
     }
     useEffect(()=> {
         axios({
@@ -32,10 +37,10 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
           })
           .then(res => {
                 setData(res.data);
+                console.log(chatCheck);
             })
           .catch(error => console.log(error));
-        
-    },[data]);
+    },[chatCheck]);
     const chattingInput=(e)=>{
         setChatInput(e.target.value);
     }
@@ -46,6 +51,12 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
                     data.map(item=>
                         <ul>
                            <li>
+                                <div className='flex'>
+                                    <img src={item.img_path} className='w-[30px] h-[30px]'></img>
+                                    <span>{item.profile_name}</span>
+                                </div>
+                                <span>{item.profile_id}
+                                </span>
                                 <span>{item.content}
                                 </span>
                             </li> 
@@ -54,7 +65,7 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
                 }
             </div>
             <div className='chatW_userChatInputForm'>
-                <input type="text" onChange={chattingInput}></input>
+                <input type="text" onChange={chattingInput} value={chatInput}></input>
                 <button type="button" onClick={sendChat}>
                     보내기
                 </button>
