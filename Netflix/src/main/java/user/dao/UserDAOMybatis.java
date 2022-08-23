@@ -1,5 +1,6 @@
 package user.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import user.bean.UserDTO;
+import user.bean.UserProfileDTO;
 
 @Repository
 @Transactional
@@ -21,6 +23,7 @@ public class UserDAOMybatis implements UserDAO {
 	}
 
 	@Override
+
 	public String signUpCheck(UserDTO userDTO) {
 		return sqlSession.selectOne("userSQL.signUpCheck", userDTO);
 	}
@@ -33,6 +36,15 @@ public class UserDAOMybatis implements UserDAO {
 	@Override
 	public String emailCheck(String user_email) {
 		return sqlSession.selectOne("userSQL.emailCheck", user_email);
+	}
+
+	public List<UserProfileDTO> getProfileList(Map<String, String> map) {
+		return sqlSession.selectList("userSQL.getProfileList",map);
+	}
+
+	@Override
+	public UserProfileDTO getProfile(Map<String, String> map) {
+		return sqlSession.selectOne("userSQL.getProfile",map);
 	}
 
 }

@@ -1,5 +1,6 @@
 package user.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import user.bean.UserDTO;
+import user.bean.UserProfileDTO;
+
 import user.send.Request;
 import user.send.SmsResponse;
 import user.send.SmsService;
@@ -38,9 +41,7 @@ public class UserController {
 	
 	@PostMapping("/login")
 	@ResponseBody
-	public boolean login(@RequestParam Map<String,String> map) {
-		System.out.println("1"+map);
-		//System.out.println("3"+userService.login(map));
+	public UserDTO login(@RequestParam Map<String,String> map) {
 		return userService.login(map);
 	}
 	
@@ -58,6 +59,18 @@ public class UserController {
 		return userService.emailCheck(user_email);
 	}
 	
+
+	@PostMapping("/getProfileList")
+	@ResponseBody
+	public List<UserProfileDTO> getProfileList(@RequestParam Map<String,String> map) {
+		return userService.getProfileList(map);
+	}
+	@PostMapping("/getProfile")
+	@ResponseBody
+	public UserProfileDTO getProfile(@RequestParam Map<String,String> map) {
+		return userService.getProfile(map);
+	}
+
 }
 
 

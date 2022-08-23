@@ -30,7 +30,7 @@ const DetailForMovie = () => {
               `https://api.themoviedb.org/3/genre/movie/list?api_key=${ KEY }`)
           ).json();
 
-      console.log("hihihi | " + JSON.stringify(json));
+      /* console.log("hihihi | " + JSON.stringify(json)); */
   }
 
   const getNames = async () => {
@@ -39,7 +39,7 @@ const DetailForMovie = () => {
           `https://api.themoviedb.org/3/movie/682110/credits?api_key=${ KEY }&language=ko-KR`)
       ).json();
     setCredits(json.cast);
-}
+  }
 
   useEffect(() => {
       getMovies();
@@ -53,28 +53,20 @@ const DetailForMovie = () => {
         <div className='c2_dialog mt-[30px] left-auto origin-[50%_12.5%] top-[2em] w-[848px] opacity-100 mb-[2em] transform-none min-w-0 z-[2] bg-transparent rounded-[6px] text-[#fff] text-[16px] will-change-transform'>
         { 
           loading ? <h1>Loading... </h1> :
-          <div>{ movies.map(movie =>
+          <div>{ movies.map (movie =>
                 <Top
                     key={ movie.id }
                     poster_path={ movie.poster_path }
+                    backdrop_path= { movie.backdrop_path }
                     title={ movie.title }
                 />) } 
           </div>
         }
           <div className='c2_previewModal_info opacity-[1] bg-[#181818] relative block text-[#fff] text-[16px] leading-[1.4]'>
             <div className='c2_detail_modal_container py-0 px-[3em] block text-[#fff] text-[16px] leading-[1.4]'>
-              {
-                <div>{ movies.map (movie =>
-                      <InfoText 
-                      key={ movie.id }
-                      poster_path={ movie.poster_path }
-                      title={ movie.title }
-                      overview={ movie.overview }
-                      genre_ids={ movie.genre_ids }
-                      />)
-                      }
-                </div>
-              }
+
+            <InfoText />
+                
               {
                 <div>{ movies.map (movie =>
                       <MoreLikeThis 
@@ -87,15 +79,9 @@ const DetailForMovie = () => {
                       }
                 </div>
               }
-              {
-                <div>{ credits.map (credit =>
-                      <About 
-                      key={ credit.id }
-                      name={ credit.name }
-                      />)
-                      }
-                </div>
-              }
+              
+            <About/>
+                      
             </div>
           </div>
           <Linked />
