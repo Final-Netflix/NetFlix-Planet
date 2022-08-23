@@ -16,5 +16,5 @@ public class UserChatDTO {
 	private int chat_room_id;
 	private String content;
 	private Date reg_date;
-	
+	 
 }
