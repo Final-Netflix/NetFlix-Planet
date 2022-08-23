@@ -22,6 +22,7 @@ import LockProfile from './serviceCenterHeader/LockProfile';
 import AddProfilePIN from './AddProfilePIN';
 import AbleAutoPlay from './serviceCenterHeader/AbleAutoPlay';
 import AccessViewRecords from './serviceCenterHeader/AccessViewRecords';
+import AdminChat from './adminChat/AdminChat';
 
 
 const ServiceCenterDetail = () => {
@@ -59,7 +60,7 @@ const ServiceCenterDetail = () => {
                                     </svg>
                                     
                                 </Link>
-                                <Link to='/service'>
+                                <Link to='/service' className='text-[red] hover:underline'>
                                     고객 센터 홈으로 돌아가기
                                 </Link>          
                                 </a>
@@ -98,10 +99,10 @@ const ServiceCenterDetail = () => {
             <div className="k1-footer-push">
 
 
-            </div>
-            
-
+            </div>         
         </div>
+
+        
     );
 };
 

@@ -9,8 +9,17 @@ import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypagePassword from "components/my_page/MypagePassword";
 import ScrollTop from "components/main/ScrollTop";
 import Linked from "components/detail/Linked";
+import SearchResult from "components/main/components/SearchResult";
 import SignUp from "components/user/SignUp"
 import useStore from "store";
+
+import AdminChat from "components/service_center/adminChat/AdminChat";
+import DetailForMovie from "components/detail/DetailForMovie";
+
+import Payment from "components/my_page/payment/Payment";
+import Login from "components/login/Login";
+
+
 
 function App() {
   const [hello, setHello] = useState('')
@@ -40,6 +49,10 @@ function App() {
           <Route index element={<MyPage/>}/>
           <Route path=":detail" element={<MyPage/>}/>
         </Route>
+        <Route path="/payment">
+          <Route index element={<Payment/>}/>
+          <Route path=":detail" element={<Payment/>}/>
+        </Route>
         {/* login */}
         <Route path='/signUp'>
           <Route index element={<SignUp/>}/>
@@ -50,13 +63,19 @@ function App() {
 
         {/* hee */}
         <Route path="/detail" element={ <Detail /> }></Route>
+        <Route path="/detailM" element={ <DetailForMovie /> }></Route>
         <Route path="/detail/:detail" element={ <Linked /> }></Route>
+        <Route path="/detailM/:detail" element={ <Linked /> }></Route>
         {/* hee */}
+        
         
         <Route path="/service" element={ <ServiceCenter/> }></Route>
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
+        <Route path="/admin_chat" element={<AdminChat />}></Route>
 
+
+        <Route path="/login" element={<Login/>}/>
       </Routes>
        	{/* <br/> */}
         {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}

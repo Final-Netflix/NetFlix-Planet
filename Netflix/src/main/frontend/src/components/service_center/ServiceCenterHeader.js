@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import '../../css/serviceCenter/serviceCenter.css';
 import Recommendations from './serviceCenterComponents/Recommendations';
 import logo from '../../image/main/logo.png';
@@ -13,7 +14,8 @@ const ServiceCenterHeader = () => {
         setVisible(!visible)
     }
 
-    
+
+
 
     return (
         <div className="k2-page-home">

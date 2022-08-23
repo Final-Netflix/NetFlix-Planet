@@ -47,7 +47,7 @@ const APITest = () => {
                             genre_ids={ movie.genre_ids }
                         />) } 
                 </div>
-            }   
+            } 
         </div>
     );
 };

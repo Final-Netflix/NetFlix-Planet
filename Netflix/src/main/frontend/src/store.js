@@ -7,5 +7,4 @@ const useStore = create((set)=> ({
  valPhone : ()=> set(({val : 'phone'})),
  onReSet :  ()=> set(({val : ''})),
 }));
-
 export default useStore;

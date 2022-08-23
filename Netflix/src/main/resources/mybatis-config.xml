@@ -4,6 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias type="userChat.bean.UserChatRoomDTO" alias="userChatRoom"/>
+		<typeAlias type="userChat.bean.UserChatDTO" alias="userChat"/>
+		<typeAlias type="user.bean.UserDTO" alias="user"/>
 	</typeAliases>
 	
 	<mappers>

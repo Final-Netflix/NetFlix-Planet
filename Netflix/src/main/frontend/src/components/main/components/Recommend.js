@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import 'css/main/recommend.css';
 import RecommendList from './RecommendList';
+import { useParams } from 'react-router-dom';
 
 const Recommend = ({ order, classification }) => {
+
+    const {tab} = useParams();
 
     const allClassification = [
         {type: "series", title: "해외 시리즈"},
@@ -26,13 +29,20 @@ const Recommend = ({ order, classification }) => {
         {type: "movie", title: "코미디"},
         {type: "movie", title: "음악 & 뮤지컬"},
         {type: "movie", title: "어워드 수상 감독"},
-        {type: "both", title: "새로운 콘텐츠"},
-        {type: "both", title: "기다림이 아깝지 않은 콘텐츠"},
-        {type: "both", title: "이번 주 공개 콘텐츠"},
-        {type: "both", title: "다음 주 공개 콘텐츠"},
+        {type: "new", title: "새로운 콘텐츠"},
+        {type: "new", title: "기다림이 아깝지 않은 콘텐츠"},
+        {type: "new", title: "이번 주 공개 콘텐츠"},
+        {type: "new", title: "다음 주 공개 콘텐츠"},
     ]
 
-    const classificationName = allClassification[classification].title;
+    let tabClassification;
+    
+    tab === undefined ? tabClassification = allClassification.concat() : 
+    tab === 'new'     ? tabClassification = allClassification.concat() : 
+    tab === 'series'  ? tabClassification = allClassification.filter(all => all.type === 'series' || all.type === 'both') : 
+                        tabClassification = allClassification.filter(all => all.type === 'movie' || all.type === 'both');
+
+    const classificationName = tabClassification[classification].title;
 
     const [data, setData] = useState([
         {index: 1, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABbjb31i4fAWwVXAPu6txU4VkZ1ogJJBEFx3eqps0P4i0PnJczUF189oqry1JPqWIIBH3XLu4_dF2p0h7y1agdNo4qEW-lqJxW7g.webp?r=393', title: '호텔 델루나'},

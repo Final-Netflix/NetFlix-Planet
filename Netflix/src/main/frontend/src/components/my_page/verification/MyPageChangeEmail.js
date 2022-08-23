@@ -63,5 +63,4 @@ const MyPageChangeEmail = () => {
 
     );
 };
-
 export default MyPageChangeEmail;

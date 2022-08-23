@@ -1,8 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Info from './Info';
 import Top from './Top';
 import Linked from './Linked';
+import APITest from './APITest';
 
 const Detail = () => {
 
@@ -14,6 +14,7 @@ const Detail = () => {
             <Top />
             <Info />
             <Linked />
+            {/* <APITest /> */}
           </div>
         </div>
         <div tabIndex="-1" className='opacity-[0.7] leading-[1.4]'>

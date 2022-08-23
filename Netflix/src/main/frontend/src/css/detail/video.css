@@ -1,4 +1,4 @@
-.t_17d527 .watch-video {
+.watch-video {
     box-sizing: border-box;
     height: 100%;
     left: 0;
@@ -9,7 +9,7 @@
     top: 0;
     width: 100%;
 }
-.t_17d527 .watch-video--player-view {
+.watch-video--player-view {
     height: 100%;
     left: 0;
     margin: 0;
@@ -66,8 +66,18 @@ audio, canvas, progress, video {
     height: 100%;
     position: relative;
     width: 100%;
+    
+    align-items: normal;
+    justify-content: normal;
 }
-.t_17d527 .watch-video--back-container, .t_17d527 .watch-video--flag-container {
+.c2-ltr-1i33xgl {
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    position: relative;
+    width: 3rem;
+}
+.watch-video--back-container, .watch-video--flag-container {
     background-image: linear-gradient(180deg,rgba(0,0,0,.3) 0,transparent 20%);
     box-sizing: border-box;
     padding-left: 3rem;
@@ -133,7 +143,7 @@ svg:not(:root) {
     -ms-flex-pack: center;
     justify-content: center;
 }
-.t_17d527 .watch-video--bottom-controls-container {
+.watch-video--bottom-controls-container {
     background-image: linear-gradient(0deg,rgba(0,0,0,.3) 0,transparent);
     box-sizing: border-box;
     margin: 0;
@@ -212,7 +222,7 @@ svg:not(:root) {
     transform: translateY(-50%);
     transition: transform 0.2s ease 0s;
     will-change: height, left, width, transform, transition;
-    left: calc(175.064px - 0.75rem);
+    left: calc(50.064px - 0.75rem);
 }
 .ltr-6alejv {
     box-sizing: border-box;
@@ -230,7 +240,42 @@ svg:not(:root) {
     font-size: 1.6rem;
     line-height: 2rem;
 }
-.ltr-1bt0omd {
-    box-sizing: border-box;
-    position: relative;
+.ltr-qnht66.medium {
+    font-size: 2rem;
 }
+.ltr-qnht66 {
+    direction: ltr;
+    font-size: 2rem;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.ltr-qnht66 > * {
+    display: inline;
+}
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.ltr-qnht66.medium > * + * {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.ltr-1fkysoc {
+    box-sizing: border-box;
+    display: flex;
+    min-height: 0px;
+    min-width: 0px;
+    position: relative;
+    flex-basis: 14rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-top: 0.5rem;
+}
+
