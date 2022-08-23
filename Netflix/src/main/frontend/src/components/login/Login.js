@@ -89,7 +89,6 @@ const Login = () => {
             {
                 isLogin? 
                 <div>
-
                     <div><h1 className='text-[#cccccc] m-0'>프로필 선택(안나오면 새로고침)</h1></div>
                     
                     <ul className="display: flex">
@@ -110,7 +109,7 @@ const Login = () => {
                         )
                     }
                   
-                    
+            
                     </ul>
                     <button onClick={logoutBtn} className="m-[30px] text-[#cccccc]">로그아웃</button>
                 </div>

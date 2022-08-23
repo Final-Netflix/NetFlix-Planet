@@ -46,20 +46,19 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     }
     return (
         <div className='chatW_userChatting'>
-            <div className='chatW_userChattingList'>
+            <div className='chatW_userChattingList overflow-scroll overflow-x-hidden'>
                 {
                     data.map(item=>
                         <ul>
                            <li>
                                 <div className='flex'>
-                                    <img src={item.img_path} className='w-[30px] h-[30px]'></img>
+                                    <img src={item.img_path} className='rounded-[50%] w-[32px] h-[32px]'></img>
                                     <span>{item.profile_name}</span>
                                 </div>
                                 <span>{item.profile_id}
                                 </span>
-                                <span>{item.content}
-                                </span>
-                            </li> 
+
+                      		</li>
                         </ul>
                         )
                 }

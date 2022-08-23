@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'css/detail/video.css';
 import chat from '../../image/detail/chat.png';
 import { Link } from 'react-router-dom';
 
 const Video = () => {
+  const [isChat, setIsChat] = useState(false);
   return (
     <div>
-      <div className="watch-video" data-uia="watch-video">
+      <div className="watch-video flex" data-uia="watch-video" style={isChat && {width: '82%'}}>
         <div className="watch-video--player-view" data-uia="watch-video-player-view-minimized">
           <div className="active ltr-fntwn3" data-uia="player" data-videoid="81566007" tabIndex="0">
             <div className="ltr-op8orf" data-uia="video-canvas">
@@ -272,13 +273,13 @@ const Video = () => {
             </div>
           </div>
         </div>
+        <div className='bg-white absolute right-0 w-[18%]'>test</div>
       </div>
       <div className="visually-hidden hidden">
         <div id="standaloneAudioDescriptionAvailable">화면 해설이 제공됩니다</div>
         <div id="episodesAudioDescriptionAvailable">일부 에피소드에 화면 해설이 제공됩니다</div>
         <div id="playWithAudioDescription">화면 해설을 켠 채로 시작합니다</div>
       </div>
-
     </div>
   );
 };
