@@ -6,6 +6,11 @@
   	<select id="login" resultType="user" parameterType="java.util.Map">
   		select * from USER where user_email = #{user_id} and user_pwd = #{user_pwd}
   	</select>
-  	
+  	<select id="getProfileList" parameterType="java.util.Map" resultType="userProfile">
+  		select * from USER_PROFILE where user_email=#{user_email}
+  	</select>
+  	<select id="getProfile" parameterType="java.util.Map" resultType="userProfile">
+  		select * from USER_PROFILE where profile_id=#{profile_id}
+  	</select>
   </mapper>
  
