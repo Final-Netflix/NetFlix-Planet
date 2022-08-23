@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import user.bean.UserDTO;
 import user.send.Request;
 import user.send.SmsResponse;
 import user.send.SmsService;
@@ -26,7 +27,7 @@ public class UserController {
 	UserService userService = null;
 	
 		
-	@PostMapping("/kingkong")
+	@PostMapping("/send-sms")
 	@ResponseBody
 	public ResponseEntity<SmsResponse> sms_sends(@ModelAttribute Request request) throws Exception {
 		System.out.println(request.getRecipientPhoneNumber());
@@ -42,6 +43,21 @@ public class UserController {
 		//System.out.println("3"+userService.login(map));
 		return userService.login(map);
 	}
+	
+	@PostMapping("/signUp")
+	@ResponseBody
+	public String signUp(@ModelAttribute UserDTO userDTO) {
+		System.out.println(userDTO);
+		String check = userService.signUp(userDTO);
+		return check;
+	}
+	@PostMapping("/emailCheck")
+	@ResponseBody
+	public String emailCheck(@RequestParam String user_email) {
+		
+		return userService.emailCheck(user_email);
+	}
+	
 }
 
 
