@@ -69,6 +69,23 @@ function LiModel(name, msg, time) {
     this.makeLi = () => {
         const li = document.createElement("li");
         li.classList.add(nickname.value === this.name ? "sent" : "received")
+        // const dom = `
+        
+        // <div class="ad_m">
+        //     <span class="profile">
+        //         ${this.name === '관리자' ? '<img class="image" src="image/p.png" alt="any">' : ''}
+        //     </span>
+        //     <div class="ad_b">
+        //         <span class="message">${this.msg}</span>
+        //         <div class="ad_c">
+        //             <span class="user">${this.name === '관리자' ? '관리자' : ''}</span>
+        //             <span class="time">${this.time}</span>
+        //         </div>
+        //     </div>
+            
+        // </div>`;
+        
+        
         const dom = `
         
         <div class="ad_m">
@@ -78,13 +95,13 @@ function LiModel(name, msg, time) {
             <div class="ad_b">
                 <span class="message">${this.msg}</span>
                 <div class="ad_c">
-                    <span class="user">${this.name === '관리자' ? '관리자' : ''}</span>
+                    <span class="user">${this.name}</span>
                     <span class="time">${this.time}</span>
                 </div>
             </div>
             
         </div>`;
-        
+
         
         li.innerHTML = dom;
         chatList.appendChild(li)
