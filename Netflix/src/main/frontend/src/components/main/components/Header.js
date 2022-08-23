@@ -25,7 +25,7 @@ const Header = ({ scroll, search, setSearch }) => {
         }, 500);
         return () => {
             clearTimeout(noticeTimer);
-        };  
+        };
     };
 
     const noticeIn = () => {
@@ -40,7 +40,7 @@ const Header = ({ scroll, search, setSearch }) => {
         }, 1000);
         return () => {
             clearTimeout(profileTimer);
-        };  
+        };
     };
 
     const profileIn = () => {
@@ -51,16 +51,30 @@ const Header = ({ scroll, search, setSearch }) => {
     
     const openSearch = () => setSearchBox(!searchBox);
 
-    const goSearchPage = (e) => {
+    /* const goSearchPage = (e) => {
         setSearch(e.target.value);
-        console.log(search);
+        console.log('search 1 = '+ search);  // ok
         if(search != ''){
-            navigate('/search');
+            navigate('/search' , { state : { type : search }}); // state : e.target.value
         }
         else{
             navigate('/');
         }
+    } */
+
+    const goSearchPage = (e) => {
+        setSearch(e.target.value)
     }
+
+    useEffect (()=> {
+        if(search != ''){
+            navigate('/search' , { state : { type : search }}); // state : e.target.value
+        }
+        else{
+            navigate('/');
+        }
+    }, [search])
+
     
     let headerName;
 
@@ -98,7 +112,7 @@ const Header = ({ scroll, search, setSearch }) => {
                                                 </path>
                                             </svg>
                                             <label id="c1-searchInput-label" className='hidden'>검색</label> 
-                                            <input type='text' id="c1-searchInput" name="c1-searchInput" placeholder='제목, 사람, 장르' value={ search } onChange={ goSearchPage } maxLength='80' className='c1-focus-visible outline-none bg-transparent border-none text-white inline-block text-[14px] py-[7px] pl-[14px] pr-[7px] w-[212px]' style={{opacity: 1, transitionDuration: '300ms'}}></input>
+                                            <input type='text' id="c1-searchInput" name="c1-searchInput" placeholder='제목, 사람, 장르' value={ search } onChange = {goSearchPage}  maxLength='80' className='c1-focus-visible outline-none bg-transparent border-none text-white inline-block text-[14px] py-[7px] pl-[14px] pr-[7px] w-[212px]' style={{opacity: 1, transitionDuration: '300ms'}}></input>
                                         </div>
                                     : 
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-search-icon" onClick={ openSearch }>
@@ -120,7 +134,7 @@ const Header = ({ scroll, search, setSearch }) => {
                                 </svg>
                             </button>
                             {
-                                notice && 
+                                notice &&
                                 <div className='absolute right-[100px] m-[14px]' onMouseEnter={ noticeIn } onMouseLeave={() => setNotice(false)}>
                                     <div className="topbar translate-x-[375px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
                                     <ul className='c1-sub-menu-list border-[#e5e5e5] border-[1px] border-t-2 border-solid w-[400px] h-[116px] bg-[#000000]/70 hover:bg-[#000000]/90'>
