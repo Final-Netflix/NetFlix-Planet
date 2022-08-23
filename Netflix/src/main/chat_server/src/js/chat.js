@@ -1,5 +1,6 @@
 "use strict"
 
+
 const socket = io();
 
 const nickname = document.querySelector("#nickname")
