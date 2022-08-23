@@ -63,6 +63,8 @@ const UserChatRoom = () => {
           .catch(error => console.log(error));
     }
     const [chatRoomId, setChatRoomId] = useState('');
+    const isLogin = localStorage.getItem('isLogin');
+    console.log("isLogin | " + isLogin);
     
     return (
         <div className="chatW_userChatRoom" >
