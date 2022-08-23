@@ -1,0 +1,772 @@
+#m1_appMountPoint {
+    line-height: normal;
+}
+#m1_appMountPoint .m1_netflix-sans-font-loaded {
+    font-family: Netflix Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+#m1_appMountPoint .m1_basicLayout.m1_simplicity {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 0;
+}
+#m1_appMountPoint div.m1_basicLayout .m1_nfHeader {
+    border-bottom: 1px solid #e6e6e6;
+}
+#m1_appMountPoint div.m1_basicLayout .m1_nfHeader,#m1_appMountPoint  div.m1_basicLayout .m1_simpleContainer {
+    background-color: #fff;
+}
+#m1_appMountPoint .m1_nfHeader,#m1_appMountPoint  .m1_nfHeader.m1_signupBasicHeader {
+    height: 90px;
+}
+#m1_appMountPoint .m1_noBorderHeader {
+    background-color: transparent;
+    border-bottom: 0;
+    position: relative;
+}
+#m1_appMountPoint .m1_svg-nfLogo.m1_signupBasicHeader {
+    margin-top: 20px;
+    height :90px;
+    margin-left: 3%;
+}
+#m1_appMountPoint .m1_svg-nfLogo {
+    fill: #e50914;
+    display: inline-block;
+    line-height: 90px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+#m1_appMountPoint .m1_simpleContainer a {
+    color: #0071eb;
+    text-decoration: none;
+}
+#m1_appMountPoint .m1_simpleContainer a {
+    background-color: transparent;
+}
+#m1_appMountPoint .m1_svg-nfLogo .m1_svg-icon-netflix-logo {
+    height: 45px;
+    vertical-align: middle;
+    width: 167px;
+}
+#m1_appMountPoint svg:not(:root) {
+    overflow: hidden;
+}
+#m1_appMountPoint .m1_screen-reader-text {
+    left: -9999px;
+    position: absolute;
+    top: -9999px;
+}
+#m1_appMountPoint .m1_authLinks.m1_signupBasicHeader {
+    margin: 0 3%;
+}
+#m1_appMountPoint .m1_authLinks {
+    color: #333;
+    float: right;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 90px;
+}
+#m1_SignUpComponets .m1_simpleContainer {
+    padding-bottom: 95px;
+}
+#m1_SignUpComponets .m1_basicLayout.m1_simplicity .m1_simpleContainer {
+    flex-grow: 1;
+}
+#m1_SignUpComponets div.m1_basicLayout .m1_nfHeader,#m1_SignUpComponets  div.m1_basicLayout .m1_simpleContainer {
+    background-color: #fff;
+}
+#m1_SignUpComponets .m1_simpleContainer {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    overflow: hidden;
+    width: 100%;
+}
+#m1_SignUpComponets div.m1_basicLayout .m1_centerContainer {
+    --layout-container-side-padding: 32px;
+    padding: 20px 32px 60px;
+    padding: 20px var(--layout-container-side-padding) 60px;
+}
+#m1_SignUpComponets .m1_centerContainer {
+    display: none;
+    overflow: hidden;
+}
+#m1_SignUpComponets .m1_centerContainer {
+    box-sizing: border-box;
+    margin: 0 auto 15px;
+    max-width: 978px;
+    padding: 20px 3% 60px;
+}
+#m1_SignUpComponets .m1_regFormContainer {
+    margin: 0 auto;
+    max-width: 440px;
+    text-align: left;
+}
+#m1_appMountPoint .m1_regFormContainer .m1_stepHeader {
+    margin-top: 20px;
+}
+#m1_appMountPoint .m1_stepHeader {
+    display: inline-block;
+}
+#m1_appMountPoint div.m1_basicLayout .m1_stepIndicator {
+    font-size: 13px;
+    text-align: inherit;
+}
+#m1_appMountPoint .m1_stepIndicator {
+    display: block;
+    font-size: 13px;
+    line-height: 19px;
+    text-align: left;
+}
+#m1_appMountPoint b,#m1_appMountPoint  strong {
+    font-weight: 700;
+}
+#m1_SignUpComponets div.m1_basicLayout.m1_hasLargeTypography h1 {
+    font-size: 32px;
+}
+#m1_appMountPoint .m1_stepTitle {
+    display: inline-block;
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 700;
+    margin : 0 0 10px;
+}
+#m1_SignUpComponets .m1_checkmark-group--text,
+#m1_SignUpComponets .m1_contextRow,
+#m1_SignUpComponets .m1_regContainer .m1_contextBody,
+#m1_SignUpComponets .m1_regFormContainer .m1_contextRow {
+    font-size: 18px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#m1_appMountPoint div.m1_basicLayout.m1_hasLargeTypography .m1_paymentContainer .m1_contextRow+.m1_contextRow,
+#m1_appMountPoint div.m1_basicLayout.m1_hasLargeTypography .m1_regFormContainer .m1_contextRow+.m1_contextRow {
+    font-size: 18px;
+    margin-top: 10px;
+}
+#m1_SignUpComponets .m1_regFormContainer .m1_simpleForm {
+    margin: 16px 0 20px;
+}
+#m1_SignUpComponets ul.m1_structural {
+    margin: 0;
+    padding: 0;
+}
+#m1_SignUpComponets .m1_ui-grid {
+    box-sizing: border-box;
+}
+#m1_SignUpComponets ul.m1_structural>li {
+    list-style: none;
+    margin-left: 0;
+}
+#m1_SignUpComponets .m1_nfFormSpace {
+    margin-bottom: 10px;
+}
+#m1_SignUpComponets .m1_nfInput,#m1_SignUpComponets  .m1_nfInput .m1_nfInputPlacement {
+    position: relative;
+}
+#m1_SignUpComponets .m1_nfInput {
+    max-width: 500px;
+}
+#m1_SignUpComponets .m1_nfInput,#m1_SignUpComponets  .m1_nfInput .m1_nfInputPlacement {
+    position: relative;
+}
+#m1_SignUpComponets .m1_nfInput.m1_nfInputOversize .m1_nfTextField {
+    height: 60px;
+}
+#m1_SignUpComponets .m1_nfInput .m1_nfTextField {
+    height: 48px;
+    padding: 10px 10px 0;
+    width: 100%;
+}
+#m1_SignUpComponets .m1_nfTextField:invalid,#m1_SignUpComponets  .m1_nfTextField:valid {
+    box-shadow: none;
+}
+#m1_SignUpComponets .m1_nfTextField {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #8c8c8c;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #000;
+    display: block;
+    font-size: 16px;
+    height: 44px;
+    padding: 10px 11px;
+    width: 100%;
+}
+#m1_SignUpComponets input {
+    line-height: normal;
+}
+#m1_appMountPoint .m1_nfInput .m1_inputError {
+    color: #b92d2b;
+    font-size: 13px;
+}
+#m1_SignUpComponets .m1_nfInput.m1_nfInputOversize .m1_hasText+.m1_placeLabel,#m1_SignUpComponets .m1_nfInput.m1_nfInputOversize .m1_nfTextField:focus+.m1_placeLabel {
+    font-size: 13px;
+    font-weight: 700;
+    top: 6px;
+}
+#m1_SignUpComponets .m1_nfInput .m1_hasText+.m1_placeLabel,#m1_SignUpComponets  .m1_nfInput .m1_nfTextField:focus+.m1_placeLabel {
+    font-size: 11px;
+    top: 4px;
+    transform: translateY(0);
+}
+#m1_SignUpComponets .m1_nfInput .m1_placeLabel {
+    color: #8c8c8c;
+    font-size: 14px;
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: font .1s ease,top .1s ease,transform .1s ease;
+}
+#m1_SignUpComponets .m1_nfInput .m1_inputError {
+    color: #b92d2b;
+    font-size: 13px;
+}
+#m1_SignUpComponets .m1_ui-binary-input {
+    box-sizing: border-box;
+    font-size: 16px;
+    max-width: 500px;
+    min-height: 32px;
+    padding-left: 36px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#m1_SignUpComponets .m1_ui-binary-input input[type=checkbox],#m1_SignUpComponets  .m1_ui-binary-input input[type=radio] {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+}
+#m1_SignUpComponets input[type=checkbox],#m1_SignUpComponets  input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+#m1_SignUpComponets .m1_ui-binary-input input[type=checkbox]+label {
+    margin: 8px 0;
+}
+#m1_SignUpComponets .m1_ui-binary-input input[type=checkbox]+label,#m1_SignUpComponets  .m1_ui-binary-input input[type=radio]+label {
+    display: block;
+    line-height: 1.m1_2;
+    padding: 6px 0;
+    position: relative;
+}
+#m1_SignUpComponets .m1_ui-binary-input input[type=checkbox]+label:before {
+    height: 25px;
+    width: 25px;
+}
+#m1_SignUpComponets .m1_ui-binary-input input[type=checkbox]+label:before,#m1_SignUpComponets  .m1_ui-binary-input input[type=radio]+label:before {
+    background-color: #fff;
+    border: 1px solid;
+    content: "";
+    display: block;
+    left: -36px;
+    padding: 0;
+    position: absolute;
+    top: 2px;
+}
+#m1_SignUpComponets .m1_ui-binary-input input[type=checkbox]:checked+label:after {
+    border-bottom: 4px solid;
+    border-left: 4px solid;
+    color: #0071eb;
+    content: "";
+    display: block;
+    height: 6px;
+    left: -32px;
+    position: absolute;
+    top: 7px;
+    transform: rotate(-45deg);
+    width: 14px;
+}
+#m1_SignUpComponets .m1_ui-binary-input .m1_helper {
+    color: #8c8c8c;
+    font-size: 13px;
+    line-height: 1em;
+}
+#m1_SignUpComponets .m1_ui-binary-input.error>.m1_helper {
+    color: #b92d2b;
+}
+#m1_SignUpComponets .m1_simpleContainer .m1_submitBtnContainer {
+    margin-top: 24px;
+}
+#m1_SignUpComponets .m1_submitBtnContainer {
+    margin: 0 auto;
+    max-width: 440px;
+    text-align: center;
+}
+#m1_SignUpComponets div.m1_basicLayout.m1_hasLargeTypography button.m1_modal-action-button,#m1_SignUpComponets  div.m1_basicLayout.m1_hasLargeTypography button.m1_nf-btn-primary {
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 500;
+    min-height: 64px;
+}
+#m1_SignUpComponets div.m1_basicLayout .m1_nf-btn-primary,#m1_SignUpComponets  div.m1_basicLayout .m1_nf-btn-secondary {
+    border-radius: 2px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1;
+    min-height: 48px;
+}
+#m1_appMountPoint .m1_nf-btn.m1_nf-btn-oversize {
+    font-size: 19px;
+    line-height: 19px;
+    min-height: 60px;
+    min-width: 110px;
+    padding: 20.m1_5px 2em;
+    width: 100%;
+}
+#m1_appMountPoint .m1_nf-btn-solid.m1_nf-btn-primary,#m1_appMountPoint  .m1_nf-btn-twotone.m1_nf-btn-primary {
+    background-color: #e50914;
+    color: #fff;
+}
+#m1_appMountPoint .m1_nf-btn {
+    font-size: 1rem;
+    min-height: 48px;
+    min-width: 74px;
+    padding: 23.m1_5px 2em;
+    position: relative;
+    width: 100%;
+}
+#m1_appMountPoint .m1_nf-btn {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 25%);
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: .025rem;
+    line-height: 1rem;
+    text-align: center;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+}
+
+
+
+
+/* planform */
+#m1_SignUpComponets .m1_simpleContainer {
+    padding-bottom: 95px;
+}
+#m1_planform {
+    word-break : keep-all;
+}
+#m1_planform h1 {
+    margin : 0;
+}
+#m1_planform .m1_basicLayout.m1_simplicity .m1_simpleContainer {
+    flex-grow: 1;
+}
+#m1_planform div.m1_basicLayout .m1_nfHeader,#m1_planform div.m1_basicLayout .m1_simpleContainer {
+    background-color: #fff;
+}
+#m1_planform .m1_simpleContainer {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    overflow: hidden;
+    width: 100%;
+}
+#m1_planform div.m1_basicLayout .m1_narrowCenterContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+#m1_planform div.m1_basicLayout .m1_centerContainer {
+    --layout-container-side-padding: 32px;
+    padding: 20px 32px 60px;
+    padding: 20px var(--layout-container-side-padding) 60px;
+}
+#m1_planform .m1_centerContainer {
+    display: none;
+    overflow: hidden;
+}
+#m1_planform .m1_centerContainer {
+    box-sizing: border-box;
+    margin: 0 auto 15px;
+    max-width: 978px;
+    padding: 20px 3% 60px;
+}
+
+#m1_planform div.m1_basicLayout .m1_stepIndicator {
+    font-size: 13px;
+    text-align: inherit;
+}
+#m1_planform .m1_stepIndicator {
+    display: block;
+    font-size: 13px;
+    line-height: 19px;
+    text-align: left;
+}
+
+
+#m1_planform .m1_changeAnytime,
+#m1_planform .m1_stepHeader-container {
+    padding: 0 16px;
+}
+#m1_planform .m1_planFormContainer .m1_changeAnytime {
+    margin-bottom: 20px;
+}
+#m1_planform .m1_checkmark-group.m1_-compact {
+    margin-top: 4px;
+}
+#m1_planform .m1_checkmark-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    text-align: left;
+}
+#m1_planform .m1_checkmark-group {
+    order: -1;
+}
+#m1_planform ul {
+    padding: 0;
+}
+#m1_planform .m1_checkmark-group--row {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0;
+}
+#m1_planform ul>li {
+    list-style-type: disc;
+    margin-bottom: 5px;
+    margin-left: 1.1em;
+}
+
+#m1_planform svg:not(:root) {
+    overflow: hidden;
+}
+#m1_planform .m1_checkmark-group--icon {
+    align-self: flex-start;
+    color: #e50914;
+    flex: none;
+    height: 26px;
+    width: 26px;
+}
+#m1_planform  .m1_checkmark-group--text,
+#m1_planform  .m1_contextRow,
+#m1_planform  .m1_regContainer .m1_contextBody,
+#m1_planform  .m1_regFormContainer .m1_contextRow {
+    font-size: 18px;
+    margin-bottom: 0;
+    margin-top: 3.5px;
+}
+#m1_planform .m1_checkmark-group--text {
+    margin-left: 10px;
+}
+#m1_planform .m1_checkmark-group--row.m1_-compact+.m1_checkmark-group--row.m1_-compact {
+    margin-top: 6px;
+}
+
+
+#m1_planform .m1_planFormContainer {
+    margin: 0 auto;
+    max-width: 1024px;
+    overflow: hidden;
+}
+#m1_planform .m1_planGrid__header {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+#m1_planform .m1_planGrid__selector {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+#m1_planform .m1_planGrid__selectorDescription, .m1_planGrid__selectorTitle {
+    clip: rect(1px,1px,1px,1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+#m1_planform .m1_planGrid__selectorChoice {
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    position: relative;
+}
+
+#m1_planform .m1_planGrid--has3Plans .m1_planGrid__planChoice {
+    width: 33.33333%;
+}
+#m1_planform .m1_planGrid__planInput:checked+.m1_planGrid__planLabel {
+    opacity: 1;
+}
+
+#m1_planform input[type=checkbox],#m1_planform  input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+#m1_planform .m1_planGrid__planInput {
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#m1_planform .m1_planGrid__selectorInput {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+}
+#m1_planform .m1_planGrid__planLabel,#m1_planform .m1_planGrid__planLabelDarkOutline,
+#m1_planform .m1_planGrid__planLabelGrey,#m1_planform .m1_planGrid__planLabelOutline {
+    background: #e50914;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 auto;
+    opacity: .6;
+    padding: 18px;
+    text-align: center;
+}
+#m1_planform .m1_planGrid__selectorLabel {
+    -webkit-touch-callout: none;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#m1_planform .m1_planGrid__planLabel:after,#m1_planform .m1_planGrid__planLabelDarkOutline:after,
+#m1_planform .m1_planGrid__planLabelGrey:after,#m1_planform .m1_planGrid__planLabelOutline:after {
+    border: 0 solid transparent;
+    border-top-color: #e50914;
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+}
+#m1_planform .m1_planGrid__featureTable {
+    border-collapse: collapse;
+    padding-bottom: 10px;
+}
+#m1_planform table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#m1_planform .m1_planGrid__featureTableCaption {
+    clip: rect(1px,1px,1px,1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+#m1_planform .m1_planGrid__featureTable,#m1_planform .m1_planGrid__featureTableBody {
+    display: flex;
+    flex-direction: column;
+}
+#m1_planform .m1_planGrid__featureTableRow {
+    align-items: center;
+    display: flex;
+}
+#m1_planform .m1_planGrid__cell {
+    fill: #a6a6a6;
+    box-sizing: border-box;
+    color: #a6a6a6;
+    display: block;
+    flex: 1 1 auto;
+    text-align: center;
+    font-size : 15px;
+}
+#m1_planform .m1_planGrid__featureCell {
+    fill: #333;
+    color: #333;
+    flex: 0 0 auto;
+    text-align: left;
+}
+#m1_planform .m1_planGrid__cell:not(.m1_planGrid__featureCell) {
+    fill: #737373;
+    color: #737373;
+    font-weight: 700;
+}
+#m1_planform .m1_planGrid__cell.m1_planGrid__cell--isSelected:not(.m1_planGrid__featureCell) {
+    fill: #e50914;
+    color: #e50914;
+}
+#m1_planform .m1_planGrid__cell:not(.m1_planGrid__featureCell) {
+    fill: #737373;
+    color: #737373;
+    font-weight: 700;
+}
+#m1_planform .m1_planGrid__booleanCell {
+    position: relative;
+}
+#m1_planform .m1_planGrid__booleanLabel {
+    font-size: 72px;
+    height: 26px;
+    left: 50%;
+    line-height: 1em;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 26px;
+}
+#m1_planform .m1_planGrid__booleanGraphic {
+    height: 26px;
+    width: 26px;
+}
+#m1_planform .m1_planGrid__booleanIcon {
+    display: inline-block;
+    height: 26px;
+    width: 26px;
+}
+#m1_planform .m1_planGrid__disclaimer {
+    color: #737373;
+    display: block;
+    font-size: 13px;
+    padding: 0 150px 0 16px;
+}
+#m1_planform a {
+    background-color: transparent;
+}
+#m1_planform .m1_planGrid__disclaimer+.m1_planGrid__disclaimer {
+    margin-top: 10px;
+}
+#m1_planform .m1_submitBtnContainer,#m1_planform .m1_welcome {
+    padding: 0 16px;
+}
+#m1_planform .m1_submitBtnContainer {
+    margin: 0 auto;
+    max-width: 440px;
+    text-align: center;
+}
+#m1_planform .m1_submitBtnContainer {
+    margin-top: 24px;
+}
+
+
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px) {
+    #m1_planform .m1_planGrid--has3Plans .m1_planGrid__selector {
+        width: 60%;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px) {
+    #m1_planform .m1_planGrid__planSelector {
+        order: 1;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px) {
+    #m1_planform .m1_planGrid__planChoice {
+        padding: 12px 0;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px) {
+    #m1_planform .m1_planGrid__planInput,
+    #m1_planform .m1_planGrid__planLabel, 
+    #m1_planform .m1_planGrid__planLabelDarkOutline, 
+    #m1_planform .m1_planGrid__planLabelGrey, 
+    #m1_planform .m1_planGrid__planLabelOutline {
+        height: 90px;
+        width: 90px;
+    }
+}
+@media only screen and (min-width: 951px) {
+    #m1_planform .m1_planGrid__planInput, 
+    #m1_planform .m1_planGrid__planLabel, 
+    #m1_planform .m1_planGrid__planLabelDarkOutline, 
+    #m1_planform .m1_planGrid__planLabelGrey, 
+    #m1_planform .m1_planGrid__planLabelOutline {
+        height: 120px;
+        width: 120px;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px) {
+    #m1_planform .m1_planGrid__featureTableRow {
+        border-bottom: 1px solid #ccc;
+        min-height: 60px;
+    }
+}
+
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px) {
+    #m1_planform .m1_planGrid--has1Plans .m1_planGrid__cell, 
+    #m1_planform .m1_planGrid--has2Plans .m1_planGrid__cell, 
+    #m1_planform .m1_planGrid--has3Plans .m1_planGrid__cell {
+        width: 20%;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px){
+    #m1_planform .m1_planGrid--has3Plans .m1_planGrid__featureCell {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #m1_planform .m1_planGrid__planInput, 
+    #m1_planform .m1_planGrid__planLabel, 
+    #m1_planform .m1_planGrid__planLabelDarkOutline, 
+    #m1_planform .m1_planGrid__planLabelGrey, 
+    #m1_planform .m1_planGrid__planLabelOutline {
+        height: 75px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #m1_planform .m1_planGrid__planLabel, 
+    #m1_planform .m1_planGrid__planLabelDarkOutline, 
+    #m1_planform .m1_planGrid__planLabelGrey, 
+    #m1_planform .m1_planGrid__planLabelOutline {
+        padding: 13px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #m1_planform .m1_planGrid__planSelector {
+        order: 2;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #m1_planform .m1_planGrid__selector {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #m1_planform .m1_planGrid__planChoice {
+        padding: 8px 4px;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px){
+    #m1_planform .m1_planGrid__cell {
+        padding: 12px 16px;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px) {
+    #m1_planform .m1_planGrid__featureTableRow:last-child {
+        border: 0;
+    }
+}
+@media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px){
+    #m1_planform .m1_planGrid__booleanCell {
+        padding-bottom: 5px;
+        padding-top: 11px;
+    }
+}

@@ -41,7 +41,11 @@ function App() {
           <Route path=":detail" element={<MyPage/>}/>
         </Route>
         {/* login */}
-        <Route path='/signUp' element={<SignUp/>}></Route>
+        <Route path='/signUp'>
+          <Route index element={<SignUp/>}/>
+          <Route path=":detail" element={<SignUp/>}/>
+        </Route>
+        
         {/* hong */}
 
         {/* hee */}
