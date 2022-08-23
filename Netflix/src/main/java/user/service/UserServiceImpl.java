@@ -38,4 +38,11 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getProfile(map);
 	}
 
+	@Override
+	public UserProfileDTO addProfile(Map<String, String> map) {
+		int seq = userDAO.getProfileIdSeq()+1;
+		map.put("profile_id", seq+"");
+		return userDAO.addProfile(map);
+	}
+
 }

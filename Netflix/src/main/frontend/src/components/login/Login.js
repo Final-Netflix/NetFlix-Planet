@@ -92,24 +92,33 @@ const Login = () => {
                     <div><h1 className='text-[#cccccc] m-0'>프로필 선택(안나오면 새로고침)</h1></div>
                     
                     <ul className="display: flex">
-                    {
-                        profileList.map(item=>
-                            <Link to='/' className='text-[#cccccc]'>
-                                <li className='profileForm m-[30px]'>
-                                    <input type="hidden" value={item.profile_id}></input>
-                                    <div onClick={selectProfile} className="text-center">
-                                        <img src={item.img_path} className="w-[200px] h-[200px]"></img>
-                                        <div className="m-[20px]">
-                                            <span >{item.profile_name}</span>
+                        {
+                            profileList.map(item=>
+                                <Link to='/' className='text-[#cccccc]'>
+                                    <li className='profileForm m-[30px]'>
+                                        <input type="hidden" value={item.profile_id}></input>
+                                        <div onClick={selectProfile} className="text-center">
+                                            <img src={item.img_path} className="w-[200px] h-[200px]"></img>
+                                            <div className="m-[20px]">
+                                                <span >{item.profile_name}</span>
 
+                                            </div>
                                         </div>
+                                    </li>
+                                </Link>
+                            )
+                        }
+                        <Link to='addProfile'>
+                            <li className='profileForm m-[30px]'>
+                                <div className='text-white text-center'>
+                                    <img className="w-[200px] h-[200px]"/>
+                                    <div className="m-[20px]">
+                                        <span>프로필 추가</span>
+
                                     </div>
-                                </li>
-                            </Link>
-                        )
-                    }
-                  
-            
+                                </div>
+                            </li>
+                        </Link>
                     </ul>
                     <button onClick={logoutBtn} className="m-[30px] text-[#cccccc]">로그아웃</button>
                 </div>
