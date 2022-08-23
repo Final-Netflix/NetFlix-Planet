@@ -41,7 +41,7 @@ const TopTenList = ({ data }) => {
             <div className="sliderContent row-with-x-columns">
                 <Slider {...settings}>
                 {
-                    data.map(item => <TopTenItems key={ item.index } item = { item }/>)
+                    data.map((item, index) => <TopTenItems key={ index } item={ item } index={ index }/>)
                 }
                 </Slider>
             </div>

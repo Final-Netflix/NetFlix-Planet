@@ -9,10 +9,21 @@ html, body {
 
 .wrapper {
     height: 100%;
-    width: 100%;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+
+.user {
+    font-size: 11px;
+    color: darkgray;
+    padding-left: 5px;
+    padding-top: 2px;
+}
+
+.user-container2 {
+    flex:1;
 }
 
 .user-container { 
@@ -40,9 +51,11 @@ html, body {
     flex: 12;
     background: #fff;
     overflow-y: scroll;
+    border-bottom: 2px solid #e7e6eb;
 }
 
 .input-container {
+    width: 100%;
     flex: 1;
     display: flex;
     justify-content: stretch;
@@ -63,18 +76,25 @@ html, body {
     height: 100%;
     flex: 8;
     border: none;
+    padding: 5px;
+    outline: none;
 }
 
 .send-button {
-    flex :1;
-    background: #ffeb33;
     border: none;
     height: 100%;
-    border-radius: 3px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+
+.send-img{
+    height: 24px;
+    width: 24px;
 }
 
 .chatting-list li {
-    width: 100%;
+    width: 90%;
     padding: 0.3rem;
     display: flex;
     justify-content: flex-start;
@@ -98,23 +118,27 @@ html, body {
 .profile .image {
     border-radius: 50%;
     object-fit: cover;
-    width: 50px;
-    height : 50px;
+    width: 25px;
+    height : 25px;
 }
 
 .message {
-    border-radius: 5px;
-    padding: 0.5rem;
+    border-radius: 10px;
+    padding: 0.7rem;
     font-size: 12px;
     margin: 0 5px;
     flex: 7px;
-    max-width: 500px;   
+    /* max-width: 500px;    */
     width: auto;
+    /* align-self: flex-start; */
+    max-width: 85%;
+    word-break: break-word
 }
 
 .time {
     font-size: 10px;
     margin: 0 5px;
+    color: darkgray;
 }
 
 .sent {
@@ -123,7 +147,7 @@ html, body {
 }
 
 .sent .message {
-    background: #0c82fe;
+    background: #4E61D9;
     color: #e7e6eb;
 }
 
@@ -138,13 +162,38 @@ html, body {
     overflow: hidden;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    justify-content: flex-end;
     width: 100%;
+    height: 75px;
     padding: 16px;
     background: #fff;
     box-shadow: 0 1px 12px rgb(0 0 0 / 20%);
+}
+
+.chat-logo-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.p-planet-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-planet-1 {
+    padding-left: 10px;
+    padding-top: 7px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.p-planet-2 {
+    padding-left: 10px;
+    padding-top: 3px;
+    font-size: 12px;
+    color: #8b8a88;
 }
 
 .chat-end-button {
@@ -164,6 +213,7 @@ html, body {
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
+    justify-content: flex-end;
 }
 
 svg {
@@ -171,6 +221,42 @@ svg {
 }
 
 .x-img {
-    width: 10px;
-    height: 10px;
+    width: 17px;
+    height: 17px;
+    display: flex;
+}
+
+.p-img {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: left;
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 75%;
+    background-color: var(--white);
+    transform: translate(-50%, -50%);
+}
+
+.p-planet {
+    display: flexbox;
+}
+
+.ad_m {
+    display: flex;
+    flex-direction: row;
+}
+
+.ad_b {
+    display: flex;
+    flex-direction: column;
+}
+
+.ad_c {
+    
 }

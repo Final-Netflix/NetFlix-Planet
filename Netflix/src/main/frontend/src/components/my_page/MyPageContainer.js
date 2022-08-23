@@ -75,13 +75,13 @@ const MypageContainer = () => {
                                             <div className="pt-4 pl-10 font-bold ">jeoooo97@naver.com</div>
                                         </div>
                                         <button>
-                                            <div className="pl-90 pt-5 text-end text-blue-500">결제 정보 관리</div>
+                                            <Link to='/payment/paymentInfo'><div className="pl-90 pt-5 text-end text-blue-500">결제 정보 관리</div></Link>
                                         </button>
                                     </div>
                                     <div className="flex justify-between">
                                         <div className="pt-5">다음 결제일은 2022년 9월 1일입니다.</div>
                                         <button>
-                                            <div className="pl-90 pt-5 text-end text-blue-500">예비 결제 수단 등록</div>
+                                            <Link to='/payment/paymentPick'><div className="pl-90 pt-5 text-end text-blue-500">예비 결제 수단 등록</div></Link>
                                         </button>
                                     </div>
                                     <div className="flex justify-end">

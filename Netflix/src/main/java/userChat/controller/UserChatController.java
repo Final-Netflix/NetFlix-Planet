@@ -1,5 +1,6 @@
 package userChat.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import userChat.bean.UserChatDTO;
+import userChat.bean.UserChatRoomDTO;
 import userChat.service.UserChatService;
 
 @Controller
@@ -23,11 +26,24 @@ public class UserChatController {
 	public void createChatRoom(@RequestParam Map<String,String> map) {
 		userChatService.createChatRoom(map);
 	}
-	@PostMapping("/joinChatjoinChatRoom")
+	@PostMapping("/joinChatRoom")
 	@ResponseBody
 	public void joinChatRoom(@RequestParam Map<String,String> map) {
-		//userChatService.joinChatRoom(map);
+		userChatService.joinChatRoom(map);
 	}
-	
-	
+	@PostMapping("/getListChatRoom")
+	@ResponseBody
+	public List<UserChatRoomDTO> getListChatRoom(@RequestParam Map<String,String> map) {
+		return userChatService.getListChatRoom(map);
+	}
+	@PostMapping("/sendChat")
+	@ResponseBody
+	public void sendChat(@RequestParam Map<String,String> map) {
+		userChatService.sendChat(map);
+	}
+	@PostMapping("/getUserChatList")
+	@ResponseBody
+	public List<UserChatDTO> getUserChatList(@RequestParam Map<String,String> map) {
+		return userChatService.getUserChatList(map);
+	}
 }

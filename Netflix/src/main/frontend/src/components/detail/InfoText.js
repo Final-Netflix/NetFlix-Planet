@@ -1,14 +1,16 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 import { Link } from 'react-router-dom';
 
-const InfoText = () => {
+const InfoText = ({poster_path, title, overview, genre_ids, id, name}) => {
 
-  const scrollDown=() => {
+  /* const scrollDown=() => {
     window.scrollTo({
       bottom: 0,
       behavior: "smooth"
-    });
-  }
+    }); 
+  }*/
 
   return (
     <div className='c2_ptrack_container block text-[#fff] text-[16px] leading-[1.4]'>
@@ -37,7 +39,8 @@ const InfoText = () => {
                   </div>
                   <div className='videoMetadata_second_line items-center flex flex-wrap text-[#fff] text-[16px] leading-[1.4]'>
                     <div className='year mr-[0.5em] block text-[#fff] text-[16px] leading-[1.4]'>2022</div>
-                    <a href='#' onClick={scrollDown} className='mr-[0.5em] text-[#fff] text-[16px] leading-[1.4] cursor-pointer no-underline'>
+                    {/* <a href='#' onClick={scrollDown} className='mr-[0.5em] text-[#fff] text-[16px] leading-[1.4] cursor-pointer no-underline'> */}
+                    <a href='#' className='mr-[0.5em] text-[#fff] text-[16px] leading-[1.4] cursor-pointer no-underline'>
                       <span className='maturity_rating inline-block text-[#fff] text-[16px] leading-[1.4] cursor-pointer'>
                         <span className='maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[16px] leading-[1.4] cursor-pointer'>15+</span>
                       </span>
@@ -51,7 +54,8 @@ const InfoText = () => {
             {/* <div className='css mb-[0.5em] flex items-center text-[#fff] text-[16px] leading-[1.4]'></div> */}
             <div className='detailMetadata_css mb-[0.5em] flex items-center text-[#fff] text-[16px] leading-[1.4]'></div>
             <p className='preview_modal_synopsis text-[14px] leading-[24px] mb-[0.5em] block text-[#fff] font-sans'>
-              <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>스파이, 암살자 그리고 초능력자. 각자 다른 사정이 있는 세 사람이 서로에게 정체를 숨기고 가상 가족을 결성한다.</div>
+              <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>{ overview }</div>
+              {/* <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>스파이, 암살자 그리고 초능력자. 각자 다른 사정이 있는 세 사람이 서로에게 정체를 숨기고 가상 가족을 결성한다.</div> */}
             </p>
           </div>
           <div className='detailMetadata_right flex flex-col text-[#fff] text-[16px] leading-[1.4] font-sans'>
@@ -65,6 +69,9 @@ const InfoText = () => {
               </Link>
               </span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
+                {/* <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
+                  { name },
+                </a> */}
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
                   타네자키 아츠미,
                 </a>
@@ -85,8 +92,11 @@ const InfoText = () => {
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
                 <Link to='searchGenre'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  일본 작품,
+                  { genre_ids },
                 </a>
+                {/* <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
+                  일본 작품,
+                </a> */}
                 </Link>
               </span>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
@@ -121,5 +131,13 @@ const InfoText = () => {
     </div>
   );
 };
+
+InfoText.propTypes = {
+  poster_path : PropTypes.string.isRequired,
+  title : PropTypes.string.isRequired,
+  overview : PropTypes.string.isRequired,
+  genre_ids : PropTypes.arrayOf(PropTypes.number).isRequired,
+  name : PropTypes.string.isRequired
+}
 
 export default InfoText;

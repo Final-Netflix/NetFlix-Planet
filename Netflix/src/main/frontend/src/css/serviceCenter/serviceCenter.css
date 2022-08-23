@@ -20,6 +20,11 @@
     
 }
 
+.k1-iframe{
+    box-shadow: 0 5px 20px rgb(0 0 0 / 30%);
+    border-radius: 2%;
+}
+
 .k1-top-articles .k1-category {
     margin-top: 60px;
     font-size: 16px;
@@ -1339,4 +1344,8 @@ ol {
     flex-grow: 1;
     justify-content: start;
     font-weight: 400;
+}
+
+.allow:hover {
+    transition: max-width 1s,opacity 1s,transform .75s;
 }

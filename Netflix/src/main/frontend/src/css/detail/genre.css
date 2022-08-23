@@ -122,6 +122,7 @@ button {
     fill: #fff;
     height: 13px;
     width: 13px;
+    color: white;
 }
 .aro-toggle .aro-grid {
     background: rgba(0,0,0,.1);
@@ -354,6 +355,7 @@ img {
 }
 .chunked-row-container .svg-icon-down-arrow-small {
     width: 1.3rem;
+    color: white;
 }
 .t_adb46a .previewModal--backDrop {
     background-color: #000;
