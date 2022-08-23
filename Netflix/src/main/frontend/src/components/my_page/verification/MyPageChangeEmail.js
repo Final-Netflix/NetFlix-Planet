@@ -5,7 +5,6 @@ const MyPageChangeEmail = () => {
     const changeEmail =(e) => {
         setNewEmail(e.target.value)
         const regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-        console.log(regEmail.test(e.target.value))
         if(regEmail.test(e.target.value)===true) {
             document.getElementsByClassName('m1_inputError')[0].style.visibility ='hidden'
             document.querySelector('#btn-save').disabled = false;
@@ -15,7 +14,6 @@ const MyPageChangeEmail = () => {
         }
     }
     const onChangeEmail = ()=> {
-        console.log(6)
         window.location.href = "/my";
     }
     const onReset = ()=> {
@@ -23,6 +21,8 @@ const MyPageChangeEmail = () => {
     }
     useEffect(()=> {
         document.querySelector('#btn-save').disabled = true;
+        document.getElementsByClassName('m1_inputError')[0].style.visibility ='hidden'
+
     }, [])
     return (
         <div className="m1_bd">
@@ -63,5 +63,4 @@ const MyPageChangeEmail = () => {
 
     );
 };
-
 export default MyPageChangeEmail;

@@ -35,7 +35,7 @@ const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
     return (
         
         <div className="chatW_hatRoomListForm">
-            <h1>채팅방 수  : {data.length} 개</h1>
+            <span>채팅방 수  : {data.length} 개</span>
             {
                 data.map(item=>
                     <>

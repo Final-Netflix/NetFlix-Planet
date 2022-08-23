@@ -1,162 +1,76 @@
 import React from 'react';
-
-const signUp = () => {
+import 'css/user/signUp.css'
+import SignUpComponets from './SignUpComponets';
+import { useParams } from 'react-router-dom';
+import PlanFrom from './PlanFrom';
+const SignUp = () => {
+    const {detail} =useParams();
+    
     return (
-        <div id="appMountPoint">
-            <div class="netflix-sans-font-loaded">
-                <div class="basicLayout notMobile modernInApp hasExtendedDiacritics hasLargeTypography signupSimplicity-registration simplicity" lang="ko-KR" dir="ltr">
-                    <div class="nfHeader noBorderHeader signupBasicHeader onboarding-header">
-                        <a href="/" class="svg-nfLogo signupBasicHeader onboarding-header" data-uia="netflix-header-svg-logo">
-                            <svg viewBox="0 0 111 30" class="svg-icon svg-icon-netflix-logo" aria-hidden="true" focusable="false">
-                                <g id="netflix-logo">
+        <div id="m1_appMountPoint">
+            <div className="m1_netflix-sans-font-loaded">
+                <div className="m1_basicLayout m1_notMobile m1_modernInApp m1_hasExtendedDiacritics m1_hasLargeTypography m1_signupSimplicity-registration m1_simplicity" lang="ko-KR" dir="ltr">
+                    <div className="m1_nfHeader m1_noBorderHeader m1_signupBasicHeader m1_onboarding-header">
+                        <a href="/" className="m1_svg-nfLogo m1_signupBasicHeader m1_onboarding-header" data-uia="netflix-header-svg-logo">
+                            <svg viewBox="0 0 111 30" className="m1_svg-icon m1_svg-icon-netflix-logo" aria-hidden="true" focusable="false">
+                                <g id="m1_netflix-logo">
                                     <path
                                         d="M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.500234,29.4366857 105.718437,29.1554972 L102.374168,20.4686475 L98.9371075,28.4375293 C97.2499766,28.1563408 95.5928391,28.061674 93.9057081,27.8432843 L99.9372012,14.0931671 L94.4680851,-5.68434189e-14 L99.5313525,-5.68434189e-14 L102.593495,7.87421502 L105.874965,-5.68434189e-14 L110.999156,-5.68434189e-14 L105.06233,14.2806261 Z M90.4686475,-5.68434189e-14 L85.8749649,-5.68434189e-14 L85.8749649,27.2499766 C87.3746368,27.3437061 88.9371075,27.4055675 90.4686475,27.5930265 L90.4686475,-5.68434189e-14 Z M81.9055207,26.93692 C77.7186241,26.6557316 73.5307901,26.4064111 69.250164,26.3117443 L69.250164,-5.68434189e-14 L73.9366389,-5.68434189e-14 L73.9366389,21.8745899 C76.6248008,21.9373887 79.3120255,22.1557784 81.9055207,22.2804387 L81.9055207,26.93692 Z M64.2496954,10.6561065 L64.2496954,15.3435186 L57.8442216,15.3435186 L57.8442216,25.9996251 L53.2186709,25.9996251 L53.2186709,-5.68434189e-14 L66.3436123,-5.68434189e-14 L66.3436123,4.68741213 L57.8442216,4.68741213 L57.8442216,10.6561065 L64.2496954,10.6561065 Z M45.3435186,4.68741213 L45.3435186,26.2498828 C43.7810479,26.2498828 42.1876465,26.2498828 40.6561065,26.3117443 L40.6561065,4.68741213 L35.8121661,4.68741213 L35.8121661,-5.68434189e-14 L50.2183897,-5.68434189e-14 L50.2183897,4.68741213 L45.3435186,4.68741213 Z M30.749836,15.5928391 C28.687787,15.5928391 26.2498828,15.5928391 24.4999531,15.6875059 L24.4999531,22.6562939 C27.2499766,22.4678976 30,22.2495079 32.7809542,22.1557784 L32.7809542,26.6557316 L19.812541,27.6876933 L19.812541,-5.68434189e-14 L32.7809542,-5.68434189e-14 L32.7809542,4.68741213 L24.4999531,4.68741213 L24.4999531,10.9991564 C26.3126816,10.9991564 29.0936358,10.9054269 30.749836,10.9054269 L30.749836,15.5928391 Z M4.78114163,12.9684132 L4.78114163,29.3429562 C3.09401069,29.5313525 1.59340144,29.7497422 0,30 L0,-5.68434189e-14 L4.4690224,-5.68434189e-14 L10.562377,17.0315868 L10.562377,-5.68434189e-14 L15.2497891,-5.68434189e-14 L15.2497891,28.061674 C13.5935889,28.3437998 11.906458,28.4375293 10.1246602,28.6868498 L4.78114163,12.9684132 Z"
                                         id="Fill-14"
                                     ></path>
                                 </g>
                             </svg>
-                            <span class="screen-reader-text">Netflix</span>
+                            <span className="m1_screen-reader-text">Netflix</span>
                         </a>
-                        <a href="/login" class="authLinks signupBasicHeader onboarding-header" data-uia="header-login-link">로그인</a>
+                        <a href="/login" className="m1_authLinks m1_signupBasicHeader m1_onboarding-header" data-uia="header-login-link">로그인</a>
                     </div>
-                    <div class="simpleContainer" data-transitioned-child="true">
-                        <div class="centerContainer" style={{display: 'block', transform: 'none' , opacity: 1, transitionDuration: '250ms'}}>
-                            <form method="POST">
-                                <div class="regFormContainer" data-uia="form-registration">
-                                    <div class="">
-                                        <div class="stepHeader-container" data-uia="header">
-                                            <div class="stepHeader" data-a11y-focus="true" tabindex="0">
-                                                <span id="" class="stepIndicator" data-uia=""><b>1</b>/<b>3단계</b></span>
-                                                <h1 class="stepTitle" data-uia="stepTitle">비밀번호를 설정해 멤버십을 시작하세요.</h1>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="contextRow" data-uia="contextRowDone">몇 단계만 더 거치면 넷플릭스 가입 완료!</div>
-                                            <div class="contextRow" data-uia="contextRowPaperWork">복잡한 단계는 모두 없앴습니다.</div>
-                                            <ul class="simpleForm structural ui-grid">
-                                                <li data-uia="field-email+wrapper" class="nfFormSpace">
-                                                    <div data-uia="field-email+container" class="nfInput nfInputOversize">
-                                                        <div class="nfInputPlacement">
-                                                            <label class="input_id" placeholder="email">
-                                                                <input
-                                                                    data-uia="field-email"
-                                                                    name="email"
-                                                                    class="nfTextField hasText"
-                                                                    id="id_email"
-                                                                    type="email"
-                                                                    tabindex="0"
-                                                                    autocomplete="off"
-                                                                    maxlength="50"
-                                                                    minlength="5"
-                                                                    dir="ltr"
-                                                                    value="wnscks19@na.com"
-                                                                />
-                                                                <label for="id_email" class="placeLabel">이메일 주소</label>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li data-uia="field-password+wrapper" class="nfFormSpace">
-                                                    <div data-uia="field-password+container" class="nfInput nfInputOversize">
-                                                        <div class="nfInputPlacement">
-                                                            <label class="input_id" placeholder="password">
-                                                                <input
-                                                                    data-uia="field-password"
-                                                                    name="password"
-                                                                    class="nfTextField"
-                                                                    id="id_password"
-                                                                    type="password"
-                                                                    tabindex="0"
-                                                                    autocomplete="new-password"
-                                                                    maxlength="76"
-                                                                    minlength="6"
-                                                                    dir=""
-                                                                    value=""
-                                                                />
-                                                                <label for="id_password" class="placeLabel">비밀번호를 추가하세요</label>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li data-uia="field-pipcConsent+wrapper" class="nfFormSpace">
-                                                    <div class="ui-binary-input error">
-                                                        <input type="checkbox" class="error" name="pipcConsent" id="cb_pipcConsent" tabindex="0" data-uia="field-pipcConsent" value="true" />
-                                                        <label for="cb_pipcConsent" data-uia="field-pipcConsent+label">
-                                                            <span id="" data-uia="">예, 저는 <a href="https://help.netflix.com/legal/privacy" target="_blank">개인정보 처리방침</a>에 따른 개인정보 수집 및 활용에 동의합니다.</span>
-                                                        </label>
-                                                        <div class="helper">먼저 이용 약관에 동의하셔야 합니다.</div>
-                                                    </div>
-                                                </li>
-                                                <li data-uia="field-emailPreference+wrapper" class="nfFormSpace">
-                                                    <div class="ui-binary-input">
-                                                        <input type="checkbox" class="" name="emailPreference" id="cb_emailPreference" tabindex="0" data-uia="field-emailPreference" value="true" />
-                                                        <label for="cb_emailPreference" data-uia="field-emailPreference+label">예, 넷플릭스 특별 할인 알림 이메일을 보내주세요. (선택 사항)</label>
-                                                        <div class="helper"></div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="submitBtnContainer">
-                                        <button type="submit" autocomplete="off" tabindex="0" class="nf-btn nf-btn-primary nf-btn-solid nf-btn-oversize" data-uia="cta-registration" placeholder="regForm_agree_next_registration_button">
-                                            동의하고 계속
-                                        </button>
-                                    </div>
+                    { detail ? '': <SignUpComponets/>}
+                    { detail==='planform' && <PlanFrom/> }
+                    <div className="border-solid pb-10 mt-10 border-t-[1px] h-2 bg-[#f3f3f3] border-[#e6e6e6] "></div> 
+                        <div className = "myPage_footer pb-20 bg-[#f3f3f3]">
+                            <div role="contentinfo" className="c1-member-footer  h-[600px]" id="member-footer" style={{margin : 0}}>
+                                <div className="c1-social-links">
+                                    <a className="c1-social-link" href="https://www.facebook.com/NetflixKR" target="_blank" aria-label="facebook">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-svg-icon c1-svg-icon-facebook-logo">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M13.9868 13.1621V21.9841H10.0418V13.1621H6.8418V9.51207H10.0468V6.73207C10.0468 3.56707 11.9318 1.82007 14.8148 1.82007C15.7616 1.83321 16.7061 1.91577 17.6408 2.06707V5.17307H16.0448C15.4952 5.10007 14.9422 5.28088 14.5419 5.66447C14.1415 6.04807 13.9373 6.59284 13.9868 7.14507V9.51207H17.4868L16.9278 13.1621H13.9868Z" fill="currentColor"></path>
+                                        </svg>
+                                    </a>
+                                    <a className="c1-social-link" href="https://www.instagram.com/netflixkr/" target="_blank" aria-label="instagram">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-svg-icon c1-svg-icon-instagram-logo">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M21.9302 16.1229C21.9586 17.6764 21.3791 19.1796 20.3152 20.3119C19.1853 21.3804 17.68 21.9606 16.1252 21.9269C14.4742 22.0209 9.52524 22.0209 7.87524 21.9269C6.32151 21.955 4.81816 21.3756 3.68524 20.3119C2.61778 19.1818 2.03769 17.6772 2.07024 16.1229C1.97724 14.4719 1.97724 9.52294 2.07024 7.87294C2.03979 6.3188 2.61957 4.8146 3.68524 3.68294C4.81792 2.61946 6.32187 2.04157 7.87524 2.07294C9.52624 1.97894 14.4752 1.97894 16.1252 2.07294C17.6791 2.04388 19.1828 2.62347 20.3152 3.68794C21.3827 4.81807 21.9628 6.32272 21.9302 7.87694C22.0232 9.52794 22.0232 14.4719 21.9302 16.1229ZM20.2002 11.9999C20.2002 10.5449 20.3202 7.42194 19.8002 6.10594C19.4575 5.23672 18.7695 4.54869 17.9002 4.20594C16.5882 3.68894 13.4612 3.80594 12.0062 3.80594C10.5512 3.80594 7.42824 3.68494 6.11224 4.20594C5.24322 4.54899 4.55529 5.23693 4.21224 6.10594C3.69524 7.41794 3.81224 10.5449 3.81224 11.9999C3.81224 13.4549 3.69124 16.5779 4.21224 17.8939C4.5556 18.7628 5.24343 19.4506 6.11224 19.7939C7.42424 20.3109 10.5522 20.1939 12.0062 20.1939C13.4602 20.1939 16.5842 20.3149 17.9002 19.7939C18.7693 19.4509 19.4572 18.763 19.8002 17.8939C20.3192 16.5819 20.2002 13.4549 20.2002 11.9999ZM17.1302 11.9999C17.1302 14.8311 14.8354 17.1264 12.0042 17.1269C9.17307 17.1275 6.87734 14.8331 6.87624 12.0019C6.87513 9.17077 9.16907 6.8746 12.0002 6.87293C13.361 6.87028 14.6668 7.40953 15.6292 8.37155C16.5916 9.33356 17.1314 10.6392 17.1292 11.9999H17.1302ZM15.3362 11.9999C15.3362 10.1596 13.8446 8.66749 12.0042 8.66694C10.1639 8.66639 8.67134 10.1576 8.67024 11.9979C8.66914 13.8383 10.1599 15.3313 12.0002 15.3329C13.8409 15.3318 15.333 13.8406 15.3352 11.9999H15.3362ZM17.3362 7.85895C16.6735 7.85895 16.1362 7.32168 16.1362 6.65894C16.1362 5.9962 16.6735 5.45894 17.3362 5.45894C17.999 5.45894 18.5363 5.9962 18.5363 6.65894C18.5381 6.97725 18.4127 7.28311 18.1879 7.50847C17.9631 7.73383 17.6576 7.86001 17.3392 7.85895H17.3362Z" fill="currentColor"></path>
+                                        </svg>
+                                    </a>
+                                    <a className="c1-social-link" href="https://twitter.com/netflixkr" target="_blank" aria-label="twitter">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-svg-icon c1-svg-icon-twitter-logo">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M20.7679 8.20699C20.7912 11.5932 19.4564 14.8475 17.0619 17.242C14.6674 19.6365 11.4131 20.9713 8.02688 20.948C5.58911 20.9544 3.2014 20.2564 1.15088 18.938C1.50985 18.9771 1.87079 18.9955 2.23188 18.993C4.24756 18.9984 6.20627 18.3245 7.79188 17.08C5.87426 17.0472 4.18959 15.799 3.59988 13.974C3.8797 14.0187 4.16251 14.0421 4.44588 14.044C4.84342 14.0428 5.23922 13.9914 5.62388 13.891C3.53625 13.4666 2.03658 11.6303 2.03788 9.49999V9.44099C2.65823 9.78763 3.35178 9.98261 4.06188 10.01C2.08967 8.6933 1.48213 6.06953 2.67488 4.01999C4.9496 6.82015 8.30584 8.52335 11.9089 8.70599C11.8373 8.36899 11.8008 8.0255 11.7999 7.68099C11.8012 5.84293 12.9247 4.19202 14.634 3.51624C16.3433 2.84045 18.292 3.27679 19.5499 4.61699C20.552 4.4234 21.513 4.0573 22.3899 3.53499C22.0555 4.56892 21.3554 5.44537 20.4209 5.99999C21.3101 5.89964 22.1793 5.66707 22.9999 5.30999C22.3865 6.20227 21.6272 6.98488 20.7539 7.62499C20.7679 7.81999 20.7679 8.01399 20.7679 8.20699Z" fill="currentColor"></path>
+                                        </svg>
+                                    </a>
+                                    <a className="c1-social-link" href="https://www.youtube.com/channel/UCiEEF51uRAeZeCo8CJFhGWw/featured" target="_blank" aria-label="youtube">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-svg-icon c1-svg-icon-youtube-logo">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M22.5401 6.67C22.2881 5.71873 21.5491 4.97331 20.6001 4.713C18.8801 4.25 12.0001 4.25 12.0001 4.25C12.0001 4.25 5.12009 4.25 3.40009 4.713C2.45106 4.97331 1.71211 5.71873 1.46009 6.67C1.14277 8.42869 0.988785 10.213 1.00009 12C0.988785 13.787 1.14277 15.5713 1.46009 17.33C1.71301 18.2825 2.45414 19.0282 3.40509 19.287C5.12009 19.75 12.0051 19.75 12.0051 19.75C12.0051 19.75 18.8851 19.75 20.6001 19.287C21.5491 19.0267 22.2881 18.2813 22.5401 17.33C22.8574 15.5713 23.0114 13.787 23.0001 12C23.0114 10.213 22.8574 8.42869 22.5401 6.67ZM9.75009 15.27V8.729L15.5001 12L9.75009 15.27Z" fill="currentColor"></path>
+                                        </svg>
+                                    </a>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="site-footer-wrapper centered" style={{transitionDuration: '250ms', opacity: 1}}>
-                        <div class="footer-divider"></div>
-                        <div class="site-footer">
-                            <p class="footer-top">질문이 있으신가요? 문의 전화: &nbsp;<a class="footer-top-a" href="tel:080-001-9587">080-001-9587</a></p>
-                            <ul class="footer-links structural">
-                                <li class="footer-link-item" placeholder="footer_responsive_link_faq_item">
-                                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com/support/412" placeholder="footer_responsive_link_faq"><span id="" data-uia="data-uia-footer-label">자주 묻는 질문</span></a>
-                                </li>
-                                <li class="footer-link-item" placeholder="footer_responsive_link_help_item">
-                                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com" placeholder="footer_responsive_link_help"><span id="" data-uia="data-uia-footer-label">고객 센터</span></a>
-                                </li>
-                                <li class="footer-link-item" placeholder="footer_responsive_link_terms_item">
-                                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com/legal/termsofuse" placeholder="footer_responsive_link_terms"><span id="" data-uia="data-uia-footer-label">이용 약관</span></a>
-                                </li>
-                                <li class="footer-link-item" placeholder="footer_responsive_link_privacy_separate_link_item">
-                                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com/legal/privacy" placeholder="footer_responsive_link_privacy_separate_link">
-                                        <span id="" data-uia="data-uia-footer-label">개인정보</span>
-                                    </a>
-                                </li>
-                                <li class="footer-link-item" placeholder="footer_responsive_link_cookies_separate_link_item">
-                                    <a class="footer-link" data-uia="footer-link" href="#" placeholder="footer_responsive_link_cookies_separate_link"><span id="" data-uia="data-uia-footer-label">쿠키 설정</span></a>
-                                </li>
-                                <li class="footer-link-item" placeholder="footer_responsive_link_corporate_information_item">
-                                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com/legal/corpinfo" placeholder="footer_responsive_link_corporate_information">
-                                        <span id="" data-uia="data-uia-footer-label">회사 정보</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="lang-selection-container" id="lang-switcher">
-                                <div class="nfSelectWrapper inFooter selectArrow prefix" data-uia="language-picker+container">
-                                    <label class="nfLabel" for="lang-switcher-select">언어 선택</label>
-                                    <div class="nfSelectPlacement globe">
-                                        <select data-uia="language-picker" class="nfSelect" id="lang-switcher-select" name="__langSelect" tabindex="0">
-                                            <option selected="" label="한국어" lang="ko" value="/signup/regform?locale=ko-KR">한국어</option>
-                                            <option label="English" lang="en" value="/signup/regform?locale=en-KR">English</option>
-                                        </select>
+                                <ul className="c1-member-footer-links">
+                                    <li className="c1-member-footer-link-wrapper"><a className="c1-member-footer-link" href="/browse/subtitles"><span className="c1-member-footer-link-content">자막 및 음성</span></a></li>
+                                    <li className="c1-member-footer-link-wrapper"><a className="c1-member-footer-link" href="https://help.netflix.com/"><span className="c1-member-footer-link-content">고객 센터</span></a></li>
+                                    <li className="c1-member-footer-link-wrapper"><a className="c1-member-footer-link" href="https://help.netflix.com/legal/termsofuse"><span className="c1-member-footer-link-content">이용 약관</span></a></li>
+                                    <li className="c1-member-footer-link-wrapper"><a className="c1-member-footer-link" href="https://help.netflix.com/legal/privacy"><span className="c1-member-footer-link-content">개인정보</span></a></li>
+                                </ul>
+                                <div className="c1-member-footer-service"><button className="c1-service-code">서비스 코드</button></div>
+                                <div className="c1-member-footer-copyright">
+                                    <div className="c1-copy-text">
+                                    <div className="c1-copy-text-block">넷플릭스서비시스코리아 유한회사 통신판매업신고번호: 제2018-서울종로-0426호 전화번호: 080-001-9587</div>
+                                    <div className="c1-copy-text-block">대표: 레지널드 숀 톰프슨</div>
+                                    <div className="c1-copy-text-block">이메일 주소: korea@netflix.com</div>
+                                    <div className="c1-copy-text-block">주소: 대한민국 서울특별시 종로구 우정국로 26, 센트로폴리스 A동 20층 우편번호 03161</div>
+                                    <div className="c1-copy-text-block">사업자등록번호: 165-87-00119</div>
+                                    <div className="c1-copy-text-block">클라우드 호스팅: Amazon Web Services Inc.</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="copy-text">
-                                <div class="copy-text-block">넷플릭스서비시스코리아 유한회사 통신판매업신고번호: 제2018-서울종로-0426호 전화번호: 080-001-9587</div>
-                                <div class="copy-text-block">대표: 레지널드 숀 톰프슨</div>
-                                <div class="copy-text-block">이메일 주소: korea@netflix.com</div>
-                                <div class="copy-text-block">주소: 대한민국 서울특별시 종로구 우정국로 26, 센트로폴리스 A동 20층 우편번호 03161</div>
-                                <div class="copy-text-block">사업자등록번호: 165-87-00119</div>
-                                <div class="copy-text-block">클라우드 호스팅: Amazon Web Services Inc.</div>
-                                <div id="" class="copy-text-block" data-uia=""><a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1658700119">공정거래위원회 웹사이트</a></div>
-                            </div>
                         </div>
-                    </div>
-                    <div class="a11yAnnouncer" aria-live="assertive" tabindex="-1"></div>
+                    <div className="m1_a11yAnnouncer" aria-live="assertive" tabIndex="-1"></div>
                 </div>
             </div>
         </div>
@@ -164,4 +78,4 @@ const signUp = () => {
     );
 };
 
-export default signUp;
+export default SignUp;
