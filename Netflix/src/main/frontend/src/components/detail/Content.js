@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'css/detail/content.css';
 import { Link } from 'react-router-dom';
 
+import PropTypes from "prop-types";
+
 const Content = () => {
+
+  const KEY = "bc61587b22cd0e5226a33d30e467d867";
+
+  const [episodes, setEpisodes] = useState([]);
+
+  const getEpisodes = async () => {
+    const json = await(
+      await fetch(
+          `https://api.themoviedb.org/3/tv/197067/season/1?api_key=${ KEY }&language=ko-KR`)
+      ).json();
+      setEpisodes(json.episodes);
+  }
+  useEffect(() => {
+    getEpisodes();
+  }, [])
 
   const [moreContent, setMoreContent] = useState(false);
   const [playIconHover, setPlayIconHover] = useState(false);
@@ -38,13 +55,16 @@ const Content = () => {
             <div className='episodeSelector_season_name text-[18px] block text-[#fff] leading-[1.4]'>SPYxFAMILY 스파이 패밀리</div>
           </div>
           <div className='episodeSelector_container flex flex-col flex-wrap justify-start text-[#fff] text-[16px] leading-[1.4]'>
+            
             <Link to='video'>
-            <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCardList bg-[#333] border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
-              <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>1</div>
+              <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave}>
+            { episodes.map (episode => 
+              <div className='titleCardList  border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
+              <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>{ episode.episode_number }</div>
               <div className='titleCard_imageWrapper rounded-[4px] flex-[0_0_18%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <img className='block max-w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
-                  src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABXv5d0NNs57Mc_FcCDfPSVBsfz9QnPTiPX7B-VPKHKV5xTgW4a75CHCULnNvaXSzJdIYsFSe7cbGWpLHD_cBxOAro1tpL0wv4830aLfcVUneXkH4B1t6_U_C.webp?r=51e' alt='오퍼레이션 올빼미'></img>
+                  src={ "https://image.tmdb.org/t/p/w200" + episode.still_path} alt={episode.name}></img>
                 </div>
                 {/* play icon */}
                 
@@ -60,17 +80,19 @@ const Content = () => {
               </div>
               <div className='titleCard_metadataWrapper flex-[0_0_70%] text-[1em] min-h-[100%] block cursor-pointer text-[#fff] leading-[1.4]'>
                 <div className='titleCardList_title flex justify-between pt-[1em] px-[1em] pb-[0.5em] text-[1em] cursor-pointer text-[#fff] leading-[1.4]'>
-                  <span className='titleCard_title_text text-[#fff] text-[1em] font-bold overflow-wrap-anywhere cursor-pointer leading-[1.4]'>오퍼레이션 올빼미</span>
+                  <span className='titleCard_title_text text-[#fff] text-[1em] font-bold overflow-wrap-anywhere cursor-pointer leading-[1.4]'>{episode.name}</span>
                   <span className='text-[1em] cursor-pointer text-[#fff] leading-[1.4]'>
-                    <span className='duration_ellipsized pl-[10px] text-[1em] cursor-pointer text-[#fff] leading-[1.4]'>24분</span>
+                    <span className='duration_ellipsized pl-[10px] text-[1em] cursor-pointer text-[#fff] leading-[1.4]'>{episode.runtime}분</span>
                   </span>
                 </div>
                 <p className='titleCard_synopsis text-[#d2d2d2] m-0 pt-0 px-[1em] pb-[1em] text-[14px] leading-[20px] block cursor-pointer'>
-                  <div className='ptrack_content block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>이웃 나라의 고위직 정치인에게 접근하라는 명령을 받은 엘리트 스파이. 완벽한 위장을 위해 어린 딸을 입양한다.</div>
+                  <div className='ptrack_content block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>{episode.overview}</div>
                 </p>
               </div>
+              </div>)}
             </div>
             </Link>
+
             <div onMouseEnter={playIconHoverEnter2} onMouseLeave={playIconHoverLeave2} className='titleCardList min-h-[10em] items-center border-b-[1px] border-solid border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='아내 역을 확보하라' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>2</div>
               <div className='titleCard_imageWrapper rounded-[4px] flex-[0_0_18%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
@@ -197,5 +219,11 @@ const Content = () => {
     </div>
   );
 };
+
+/* Content.propTypes = {
+  name : PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  runtime : PropTypes.string.isRequired
+} */
 
 export default Content;
