@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Modal from './Modal';
 
 const icons = [
     {index: 0, view: '-20 0 70 154', path: 'M35.377 152H72V2.538L2 19.362v30.341l33.377-8.459V152z'},
@@ -16,26 +15,9 @@ const icons = [
 
 const TopTenItems = ({ item, index }) => {
     const icon = icons.find(icon => icon.index === index);
-    const [previewModal, setPreviewModal] = useState(false);
-
-    let previewModalTimer;
-
-    const videoIn = () => {
-        previewModalTimer = setTimeout(() => {
-            setPreviewModal(true); 
-        }, 500);
-        return () => {
-            clearTimeout(previewModalTimer);
-        }
-    }
-
-    const videoOut = () => {
-        clearTimeout(previewModalTimer);
-        setPreviewModal(false);
-    }
 
     return (
-        <div className="slider-item" style={{width: '100%'}} onMouseEnter={ videoIn } onMouseLeave={ videoOut }>
+        <div className="slider-item" style={{width: '100%'}}>
             <div className="title-card-container css-0">
                 <div id="title-card" className="title-card title-card-top-10">
                     <div className="ptrack-content">
@@ -44,13 +26,13 @@ const TopTenItems = ({ item, index }) => {
                                 <svg id="rank-1" width="100%" height="100%" viewBox={ icon.view } className="svg-icon svg-icon-rank-1 top-10-rank">
                                     <path stroke="#595959" strokeLinejoin="square" strokeWidth="4" d={ icon.path }></path>
                                 </svg>
-                                <img className="boxart-image-in-padded-container" src={ "https://image.tmdb.org/t/p/w200" + item.poster_path } alt="" />
+                                <img className="boxart-image-in-padded-container" src={ "https://image.tmdb.org/t/p/w500" + item.poster_path } alt="" />
+                                <img className="banner-image overflow-hidden translate-y-[-50%]" src={ "https://image.tmdb.org/t/p/w500" + item.poster_path } alt="" style={{ display: 'none' }}/>
                             </div>
                         </a>
                     </div>
                 </div>
             </div>
-            <Modal open={ previewModal } header="Modal heading" />
         </div>
     );
 };

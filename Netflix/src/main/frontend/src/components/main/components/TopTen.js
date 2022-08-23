@@ -65,7 +65,7 @@ const TopTen = ({ type }) => {
                     <div className="rowContainer rowContainer_title_card" id="row-1">
                         <div className="ptrack-container">
                             <div className="rowContent slider-hover-trigger-layer">
-                                <div className="slider">
+                                <div className="slider" style={{ overflow: 'visible' }}>
                                     <span onClick={ goPrevSlide } className="handle handlePrev active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-leftCaret"></b></span>
                                     <TopTenList data={ data } setData={ setData }/>
                                     <span onClick={ goNextSlide } className="handle handleNext active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>

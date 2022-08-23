@@ -9,7 +9,6 @@ import ServiceCenter from "./components/service_center/ServiceCenter";
 import MypagePassword from "components/my_page/MypagePassword";
 import ScrollTop from "components/main/ScrollTop";
 import Linked from "components/detail/Linked";
-import SearchResult from "components/main/components/SearchResult";
 import SignUp from "components/user/SignUp"
 import useStore from "store";
 
@@ -18,8 +17,6 @@ import DetailForMovie from "components/detail/DetailForMovie";
 
 import Payment from "components/my_page/payment/Payment";
 import Login from "components/login/Login";
-
-
 
 function App() {
   const [hello, setHello] = useState('')
