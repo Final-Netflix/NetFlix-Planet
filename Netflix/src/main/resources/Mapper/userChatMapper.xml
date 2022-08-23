@@ -68,7 +68,7 @@
   		)
   	</insert>
   	<select id="getUserChatList" resultType="userChat" parameterType="java.util.Map">
-  		select * from CHAT where chat_room_id=#{chat_room_id}
+  		select * from CHAT as a Inner Join USER_PROFILE as b on a.PROFILE_ID = b.PROFILE_ID and a.chat_Room_id = #{chat_room_id}
   		
   	</select>
   </mapper>
