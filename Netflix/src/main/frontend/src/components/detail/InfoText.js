@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 
 import { Link } from 'react-router-dom';
 
-const InfoText = ({poster_path, title, overview, genre_ids, id, name}) => {
+const InfoText = () => {
+  const KEY = "bc61587b22cd0e5226a33d30e467d867";
+
+  const [movies, setMovies] = useState([]);
+  const [credits, setCredits] = useState([]);
+
+  const getMovies = async () => {
+    const json = await(
+        await fetch(
+            `https://api.themoviedb.org/3/search/movie?api_key=${ KEY }&query=octopus%20teacher&language=ko-KR`)
+        ).json();
+    setMovies(json.results);
+  }
+  const getNames = async () => {
+    const json = await(
+      await fetch(
+          `https://api.themoviedb.org/3/movie/682110/credits?api_key=${ KEY }&language=ko-KR`)
+      ).json();
+    setCredits(json.cast);
+  }
+
+  useEffect(() => {
+    getMovies();
+    getNames();
+  }, [])
+
 
   /* const scrollDown=() => {
     window.scrollTo({
@@ -53,34 +78,26 @@ const InfoText = ({poster_path, title, overview, genre_ids, id, name}) => {
             </div>
             {/* <div className='css mb-[0.5em] flex items-center text-[#fff] text-[16px] leading-[1.4]'></div> */}
             <div className='detailMetadata_css mb-[0.5em] flex items-center text-[#fff] text-[16px] leading-[1.4]'></div>
+            { movies.map ( movie => 
             <p className='preview_modal_synopsis text-[14px] leading-[24px] mb-[0.5em] block text-[#fff] font-sans'>
-              <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>{ overview }</div>
-              {/* <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>스파이, 암살자 그리고 초능력자. 각자 다른 사정이 있는 세 사람이 서로에게 정체를 숨기고 가상 가족을 결성한다.</div> */}
-            </p>
+              <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>
+                { movie.overview }
+              </div>
+            </p>)}
           </div>
           <div className='detailMetadata_right flex flex-col text-[#fff] text-[16px] leading-[1.4] font-sans'>
             <div className='previewModal_tags_person text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>출연:</span>
+              
+              { credits.map (credit => 
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
               <Link to='searchActor'>
                 <a className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  에구치 타쿠야,
+                  {credit.name},
                 </a>
               </Link>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                {/* <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  { name },
-                </a> */}
-                <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  타네자키 아츠미,
-                </a>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  하야미 사오리,
-                </a>
-              </span>
+              </span>)}
+
               <span className='tag_more text-[14px] leading-[20px] break-words font-sans'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
                   더 보기
@@ -89,26 +106,16 @@ const InfoText = ({poster_path, title, overview, genre_ids, id, name}) => {
             </div>
             <div className='previewModal_tags_genre text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>장르:</span>
+              
+              { movies.map (movie => 
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
                 <Link to='searchGenre'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  { genre_ids },
+                  { movie.genre_ids },
                 </a>
-                {/* <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  일본 작품,
-                </a> */}
                 </Link>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  망가 원작 시리즈,
-                </a>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  일본 소년 만화를 만나다
-                </a>
-              </span>
+              </span>)}
+
             </div>
             <div className='previewModal_tags_series text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>시리즈 특징:</span>
@@ -132,12 +139,12 @@ const InfoText = ({poster_path, title, overview, genre_ids, id, name}) => {
   );
 };
 
-InfoText.propTypes = {
+/* InfoText.propTypes = {
   poster_path : PropTypes.string.isRequired,
   title : PropTypes.string.isRequired,
   overview : PropTypes.string.isRequired,
   genre_ids : PropTypes.arrayOf(PropTypes.number).isRequired,
   name : PropTypes.string.isRequired
-}
+} */
 
 export default InfoText;
