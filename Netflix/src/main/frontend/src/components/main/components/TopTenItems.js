@@ -27,7 +27,7 @@ const TopTenItems = ({ item, index }) => {
                                     <path stroke="#595959" strokeLinejoin="square" strokeWidth="4" d={ icon.path }></path>
                                 </svg>
                                 <img className="boxart-image-in-padded-container" src={ "https://image.tmdb.org/t/p/w500" + item.poster_path } alt="" />
-                                <img className="banner-image overflow-hidden translate-y-[-50%]" src={ "https://image.tmdb.org/t/p/w500" + item.poster_path } alt="" style={{ display: 'none' }}/>
+                                <img className="top-banner-image overflow-hidden translate-y-[-50%]" src={ "https://image.tmdb.org/t/p/w500" + item.poster_path } alt=""/>
                             </div>
                         </a>
                     </div>

@@ -41,11 +41,12 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     }
     return (
         <div className='chatW_userChatting'>
-            <div className='chatW_userChattingList'>
+            <div className='chatW_userChattingList overflow-scroll overflow-x-hidden'>
                 {
                     data.map(item=>
                         <ul>
-                           <li>
+                           <li className='flex'>
+                                <img className='rounded-[50%] w-[32px] h-[32px]' src={localStorage.getItem('img_path')}></img>
                                 <span>{item.content}
                                 </span>
                             </li> 

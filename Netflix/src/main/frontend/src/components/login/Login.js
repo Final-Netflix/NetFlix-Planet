@@ -84,20 +84,19 @@ const Login = () => {
 
                     <div><h1>프로필 선택</h1></div>
                     <ul>
-                    {
-                        profileList.map(item=>
-                            <>
-                                <li className='profileForm'>
-                                    <input type="hidden" value={item.profile_id}></input>
-                                    <div onClick={selectProfile} >
-                                    {item.profile_name}
-                                        <img src={item.img_path}></img>
-                                    </div>
-                                </li>
-                            </>
-                        )
-                    }
-                    
+                        {
+                            profileList.map(item=>
+                                <>
+                                    <li className='profileForm'>
+                                        <input type="hidden" value={item.profile_id}></input>
+                                        <div onClick={selectProfile} >
+                                            {item.profile_name}
+                                            <img src={item.img_path}></img>
+                                        </div>
+                                    </li>
+                                </>
+                            )
+                        }
                         <button onClick={logoutBtn}>로그아웃</button>
                         <Link to ='/' className='text-black'><span>메인으로</span></Link>
                     </ul>
