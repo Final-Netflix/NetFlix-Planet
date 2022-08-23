@@ -146,8 +146,8 @@ const Header = ({ scroll, search, setSearch }) => {
                         <div className="c1-account-menu-item">
                             <div className="c1-account-dropdown-button flex" onMouseEnter={ profileIn } onMouseLeave={ profileOut }>
                                 <span className="c1-profile-link" role="presentation">
-                                    <img className="c1-profile-icon rounded-[4px]" alt=""
-                                        src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdYJV5wt63AcxNaDoqDXUhqZb55oN5Dxt1m-Zdn_z5rn_hIq9m8dA8JB2xdcPmrY3yXnlVWYKPXnOrbv2QN4aEVU28dESJg.png?r=1d4"/>
+                                    <img className="c1-profile-icon rounded-[4px] w-[32px] h-[32px]" alt=""
+                                        src={localStorage.getItem('img_path')}/>
                                 </span>
                                 <span className="c1-caret relative translate-y-[10px] h-0 w-0 border-[5px] border-solid border-r-transparent border-l-transparent border-b-transparent border-t-white ml-[10px]" role="presentation"></span>
                             </div>
