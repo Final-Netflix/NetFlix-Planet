@@ -69,6 +69,8 @@ function App() {
         <Route path="/service" element={ <ServiceCenter/> }></Route>
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
+
+
         <Route path="/admin_chat" element={<AdminChat />}></Route>
 
 

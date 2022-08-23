@@ -39,7 +39,7 @@ public class UserController {
 	@ResponseBody
 	public boolean login(@RequestParam Map<String,String> map) {
 		System.out.println("1"+map);
-		//System.out.println("3"+userService.login(map));
+		//System.out.println("3"+userService.login(map)); 
 		return userService.login(map);
 	}
 }
