@@ -14,7 +14,6 @@ import MypageMemberShip from './MypageMemberShip';
 import MypagePassword from './MypagePassword';
 import EvaluationContent from './EvaluationContent';
 import ProfileLock_Sub from './ProfileLock_Sub';
-import useStore from 'store';
 const MyPage = () => {
     const {detail} = useParams();
     return (
