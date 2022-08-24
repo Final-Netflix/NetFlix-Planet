@@ -71,10 +71,7 @@ const Header = ({ scroll, search, setSearch }) => {
             navigate('/');
         }
     }, [search])
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/heads/main
 
     useEffect(()=>{
         axios({
