@@ -69,7 +69,7 @@ const TopTenItems = ({ item, index }) => {
                                 <div className='c1-preview-modal bg-[#141414] shadow-md drop-shadow-lg shadow-black absolute w-full top-[-50px]' style={{ borderRadius: '4px'}}>
                                     <img className="top-backdrop-image overflow-hidden relative rounded-t" src={ "https://image.tmdb.org/t/p/w500" + backdrop } alt=""/>
                                     { logo != undefined &&
-                                    logo != '' ? <img className="top-logo-image px-[40px] max-h-32 overflow-hidden absolute bottom-[55%]" src={ "https://image.tmdb.org/t/p/w500" + logo } alt=''/> : 
+                                      logo != '' ? <img className="top-logo-image px-[40px] max-h-32 overflow-hidden absolute bottom-[55%]" src={ "https://image.tmdb.org/t/p/w500" + logo } alt=''/> : 
                                         <div className='top-logo-image px-[40px] absolute bottom-[55%] w-full text-center font-extrabold text-2xl overflow-hidden'>{ item.name }</div>
                                     }
                                     <div className='relative w-full'>
@@ -77,7 +77,7 @@ const TopTenItems = ({ item, index }) => {
                                             <div className='flex'>
                                                 <div className="ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]">
                                                     <div className="ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]">
-                                                        <button className="color_supplementary max-h-[36px] max-w-[36px] min-h-[20px] min-w-[20px] bg-white text-black border-white border-[1px] border-solid pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible" aria-label="내가 찜한 콘텐츠에 추가">
+                                                        <button className="color_supplementary_play max-h-[36px] max-w-[36px] min-h-[20px] min-w-[20px] hover:bg-[#e5e7eb] bg-white text-black border-white border-[1px] border-solid pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible" aria-label="재생">
                                                             <div className="ltr_iconWrap_iconWrapOverride_Button leading-0 block text-black cursor-pointer select-none break-words whitespace-nowrap">
                                                                 <div className="small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-black cursor-pointer select-none break-words whitespace-nowrap">
                                                                     <svg viewBox="0 0 24 24" fill="none" width="24" height="24" xmlns="http://www.w3.org/2000/svg" className="overflow-hidden h-[100%] w-[100%]">
