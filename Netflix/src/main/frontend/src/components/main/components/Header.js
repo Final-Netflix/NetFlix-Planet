@@ -51,17 +51,6 @@ const Header = ({ scroll, search, setSearch }) => {
     
     const openSearch = () => setSearchBox(!searchBox);
 
-    /* const goSearchPage = (e) => {
-        setSearch(e.target.value);
-        console.log('search 1 = '+ search);  // ok
-        if(search != ''){
-            navigate('/search' , { state : { type : search }}); // state : e.target.value
-        }
-        else{
-            navigate('/');
-        }
-    } */
-
     const goSearchPage = (e) => {
         setSearch(e.target.value)
     }
@@ -74,7 +63,6 @@ const Header = ({ scroll, search, setSearch }) => {
             navigate('/');
         }
     }, [search])
-
     
     let headerName;
 
