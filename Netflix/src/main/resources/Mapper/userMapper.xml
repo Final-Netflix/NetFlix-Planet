@@ -2,15 +2,38 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
   <mapper namespace="userSQL">
   	<select id="login" resultType="user" parameterType="java.util.Map">
   		select * from USER where user_email = #{user_id} and user_pwd = #{user_pwd}
   	</select>
+	
+  	<select id="signUpCheck" parameterType="user" resultType="String">
+		select count(*) from USER where phone=#{phone}
+	</select>
+  	<insert id="signUp" parameterType="user">
+  		insert into USER(user_email,user_pwd,authority,phone,reg_date) values(#{user_email}, #{user_pwd} ,1,#{phone}, now())
+  	</insert>
+  	<select id="emailCheck" parameterType="String" resultType="String">
+  		select count(*) from USER where user_email=#{user_email}
+	</select>
   	<select id="getProfileList" parameterType="java.util.Map" resultType="userProfile">
   		select * from USER_PROFILE where user_email=#{user_email}
   	</select>
   	<select id="getProfile" parameterType="java.util.Map" resultType="userProfile">
   		select * from USER_PROFILE where profile_id=#{profile_id}
   	</select>
+  	<select id="getProfileIdSeq" resultType="int">
+  		select max(profile_id) from USER_PROFILE;
+  	</select>
+  	<insert id="addProfile" parameterType="java.util.Map">
+  		insert into USER_PROFILE values (
+  			#{profile_id},
+  			#{profile_name},
+  			#{user_email},
+  			#{img_path},
+  			1
+  		)
+  	</insert>
   </mapper>
  

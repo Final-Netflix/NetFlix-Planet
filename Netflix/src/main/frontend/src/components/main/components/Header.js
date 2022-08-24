@@ -4,9 +4,14 @@ import edit from 'image/main/edit.png';
 import service from 'image/main/service.png';
 import user from 'image/main/user.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import TopTenItems from './TopTenItems';
 
 
 const Header = ({ scroll, search, setSearch }) => {
+
+    const qs = require('qs');
+    const [profileList, setProfileList]=useState([])
 
     const { tab } = useParams();
 
@@ -65,7 +70,10 @@ const Header = ({ scroll, search, setSearch }) => {
     const goSearchPage = (e) => {
         setSearch(e.target.value)
     }
-
+    const logoutBtn=()=>{
+        localStorage.clear();
+        window.location.href='/';
+    }
     useEffect (()=> {
         if(search != ''){
             navigate('/search' , { state : { type : search }}); // state : e.target.value
@@ -75,13 +83,46 @@ const Header = ({ scroll, search, setSearch }) => {
         }
     }, [search])
 
-    
+    useEffect(()=>{
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/getProfileList',
+            data : qs.stringify({
+                'user_email' : localStorage.getItem('user_email')
+            })
+        })
+        .then(res=>{
+            setProfileList(res.data);
+            
+        })
+        .catch(error => console.log(error));
+        
+    },[])
     let headerName;
 
     if(scroll){
         headerName='c1-header bg-[#141414] z-[10] fixed top-0 w-full h-[68px] text-[12px] text-white';
     } else {
         headerName = 'c1-header bg-gradient-to-b z-[10] from-[#141414] to-transparent absolute w-full h-[68px] text-[12px] text-white';
+    }
+    const chageProfile=(e)=>{
+        let findProfileId;
+        const target = e.target;
+        findProfileId = target.closest('.profileForm').childNodes[0].value;
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/getProfile',
+            data : qs.stringify({
+                'profile_id' : findProfileId
+            })
+        })
+        .then(res=>{
+            localStorage.setItem('profile_id',res.data.profile_id);
+            localStorage.setItem('profile_name',res.data.profile_name);
+            localStorage.setItem('img_path',res.data.img_path);
+            window.location.href='/';
+        })
+        .catch(error => console.log(error));
     }
 
     return (
@@ -170,36 +211,20 @@ const Header = ({ scroll, search, setSearch }) => {
                                 <div className='absolute right-[56px] m-[14px]' onMouseEnter={ profileIn } onMouseLeave={() => setProfile(false)}>
                                     <div className="topbar translate-x-[160px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
                                     <ul className='c1-sub-menu-list pt-[10px] py-[5px] border-[#333333] border-[1px] border-solid w-[180px] bg-[#000000]/90'>
-                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
-                                            <div className='flex'>
-                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
-                                                    <div className='c1-avatar-wrapper mr-[10px]'>
-                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
+                                        { profileList.map( (item, index) =>
+                                            <li key={ index } className='profileForm c1-sub-menu-item py-[5px] px-[10px]' >
+                                                <input type="hidden" value={item.profile_id}></input>
+                                                <div className='flex' onClick={chageProfile}>
+                                                    <div className='c1-profile-link flex hover:underline cursor-pointer'>
+                                                        <div className='c1-avatar-wrapper mr-[10px]'>
+                                                            <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src={item.img_path}></img>
+                                                        </div>
+                                                        <span className='c1-profile-name my-[10px]'>{item.profile_name}</span>
                                                     </div>
-                                                    <span className='c1-profile-name my-[10px]'>이원형</span>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
-                                            <div className='flex'>
-                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
-                                                    <div className='c1-avatar-wrapper mr-[10px]'>
-                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
-                                                    </div>
-                                                    <span className='c1-profile-name my-[10px]'>이원형</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li className='c1-sub-menu-item py-[5px] px-[10px]'>
-                                            <div className='flex'>
-                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
-                                                    <div className='c1-avatar-wrapper mr-[10px]'>
-                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src='https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229'></img>
-                                                    </div>
-                                                    <span className='c1-profile-name my-[10px]'>이원형</span>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                            )
+                                        }
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
                                                 <div className='c1-profile-link flex hover:underline cursor-pointer'>
@@ -239,11 +264,9 @@ const Header = ({ scroll, search, setSearch }) => {
                                     </ul>
                                     <ul className='c1-sub-menu-list py-[10px] border-[#333333] border-[1px] border-t-0 border-solid w-[180px] bg-[#000000]/90'>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
-                                            <Link to="/logout">
-                                                <div className='text-center hover:underline'>
-                                                    <span className='c1-profile-name my-[10px] text-[13px]'>넷플릭스에서 로그아웃</span>
-                                                </div>
-                                            </Link>
+                                            <div className='text-center hover:underline' onClick={logoutBtn}>
+                                                <span className='c1-profile-name my-[10px] text-[13px]'>넷플릭스에서 로그아웃</span>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>

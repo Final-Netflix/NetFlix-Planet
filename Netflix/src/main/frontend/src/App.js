@@ -17,13 +17,13 @@ import DetailForMovie from "components/detail/DetailForMovie";
 
 import Payment from "components/my_page/payment/Payment";
 import Login from "components/login/Login";
+import AddProfile from "components/login/AddProfile";
 
 function App() {
   const [hello, setHello] = useState('')
   const {val , valEmail , valPhone} = useStore();
 
   useEffect(() => {
-   
     axios.get('/hello')
     .then(response => setHello(response.data))
     .catch(error => console.log(error));
@@ -33,9 +33,21 @@ function App() {
     <BrowserRouter>
       <ScrollTop/>
       <Routes>
+        {
+          localStorage.getItem('profile_id')===null? 
+          <>
+          <Route path="/">
+          <Route index element={<Login/> }/>
+          </Route>
+          <Route path="/addProfile" element={<AddProfile/>}>
+          </Route>
+          </>
+        :
+
+        <>
         {/* smile */}
         <Route path="/">
-          <Route index element={ <Main/> }/>
+          <Route index element={<Main/> }/>
           <Route path=":tab" element={ <Main/> }/>
         </Route>
         <Route path="/container" element={ <MypagePassword/> }></Route>
@@ -75,6 +87,8 @@ function App() {
 
 
         <Route path="/login" element={<Login/>}/>
+        </>
+        }
       </Routes>
        	{/* <br/> */}
         {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
