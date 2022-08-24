@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserProfileDTO> getProfileList(Map<String, String> map) {
-		
 		return userDAO.getProfileList(map);
 	}
 
@@ -43,6 +42,22 @@ public class UserServiceImpl implements UserService {
 		int seq = userDAO.getProfileIdSeq()+1;
 		map.put("profile_id", seq+"");
 		return userDAO.addProfile(map);
+  }
+
+	public String signUp(UserDTO userDTO) {
+		String check = userDAO.signUpCheck(userDTO);
+		String check1 = null;
+		if(check == "1") {
+			return check="1";
+		}else {
+			userDAO.signUp(userDTO);
+			return check="0";
+		}
+	}
+
+	@Override
+	public String emailCheck(String user_email) {
+		return userDAO.emailCheck(user_email);
 	}
 
 }

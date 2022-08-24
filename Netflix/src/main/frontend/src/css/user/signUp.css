@@ -349,6 +349,21 @@
     user-select: none;
     vertical-align: middle;
 }
+#m1_appMountPoint #number_btn {
+    background-color: #e50914;
+    display: inline-block;
+    padding-top : 3px;
+    width : 50px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 3px;
+}
+#m1_appMountPoint #btn_controller {
+    text-align: center;
+    margin-top : 10px;
+}
 
 
 
@@ -664,6 +679,7 @@
 #m1_planform .m1_submitBtnContainer {
     margin-top: 24px;
 }
+
 
 
 @media only screen and (max-width: 950px) and (min-width: 601px), only screen and (min-width: 951px) {
