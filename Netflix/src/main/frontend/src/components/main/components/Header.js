@@ -211,20 +211,18 @@ const Header = ({ scroll, search, setSearch }) => {
                                 <div className='absolute right-[56px] m-[14px]' onMouseEnter={ profileIn } onMouseLeave={() => setProfile(false)}>
                                     <div className="topbar translate-x-[160px] h-0 w-0 border-[8px] border-solid border-r-transparent border-l-transparent border-t-transparent border-b-[#e5e5e5]"></div>
                                     <ul className='c1-sub-menu-list pt-[10px] py-[5px] border-[#333333] border-[1px] border-solid w-[180px] bg-[#000000]/90'>
-                                        {profileList.map(item=>
-                                        <>
-                                        <li className='profileForm c1-sub-menu-item py-[5px] px-[10px]' >
-                                            <input type="hidden" value={item.profile_id}></input>
-                                            <div className='flex' onClick={chageProfile}>
-                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
-                                                    <div className='c1-avatar-wrapper mr-[10px]'>
-                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src={item.img_path}></img>
+                                        { profileList.map( (item, index) =>
+                                            <li key={ index } className='profileForm c1-sub-menu-item py-[5px] px-[10px]' >
+                                                <input type="hidden" value={item.profile_id}></input>
+                                                <div className='flex' onClick={chageProfile}>
+                                                    <div className='c1-profile-link flex hover:underline cursor-pointer'>
+                                                        <div className='c1-avatar-wrapper mr-[10px]'>
+                                                            <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px]' src={item.img_path}></img>
+                                                        </div>
+                                                        <span className='c1-profile-name my-[10px]'>{item.profile_name}</span>
                                                     </div>
-                                                    <span className='c1-profile-name my-[10px]'>{item.profile_name}</span>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        </>
+                                            </li>
                                             )
                                         }
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
