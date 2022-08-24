@@ -25,7 +25,6 @@ const TopTen = ({ type }) => {
                 `${ URL }popular?api_key=${ KEY }&language=ko-KR&page=1`)
             ).json();
         setData(json.results.slice(0, 10));
-        // console.log(data);
         setLoading(false);
     }
 
@@ -60,12 +59,12 @@ const TopTen = ({ type }) => {
                 loading ? '' :
                 <div className="lolomoRow lolomoRow_title_card css-0" data-list-context="mostWatched">
                     <h2 className="rowHeader css-0">
-                        <span className="rowTitle css-0"><div className="row-header-title">오늘 대한민국의 TOP 10 { type==='tv' ? '시리즈' : '영화'}</div></span>
+                        <span className="rowTitle css-0"><div className="row-header-title">오늘 전세계 TOP 10 { type==='tv' ? '시리즈' : '영화'}</div></span>
                     </h2>
                     <div className="rowContainer rowContainer_title_card" id="row-1">
                         <div className="ptrack-container">
                             <div className="rowContent slider-hover-trigger-layer">
-                                <div className="slider">
+                                <div className="slider" style={{ overflow: 'visible' }}>
                                     <span onClick={ goPrevSlide } className="handle handlePrev active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-leftCaret"></b></span>
                                     <TopTenList data={ data } setData={ setData }/>
                                     <span onClick={ goNextSlide } className="handle handleNext active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>

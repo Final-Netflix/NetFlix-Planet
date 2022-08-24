@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'css/detail/video.css';
 import chat from '../../image/detail/chat.png';
 import { Link } from 'react-router-dom';
 
 const Video = () => {
+  const [isChat, setIsChat] = useState(false);
   return (
     <div>
-      <div className="watch-video" data-uia="watch-video">
-        <div className="watch-video--player-view" data-uia="watch-video-player-view-minimized">
+      <div className="watch-video flex" data-uia="watch-video">
+        <div className="watch-video--player-view" data-uia="watch-video-player-view-minimized" style={ isChat ? {width: '82%'} : {width: '100%'}}>
           <div className="active ltr-fntwn3" data-uia="player" data-videoid="81566007" tabIndex="0">
             <div className="ltr-op8orf" data-uia="video-canvas">
               <div className='relative w-[100%] h-[100%] overflow-hidden'>
@@ -27,8 +28,8 @@ const Video = () => {
                         <div className="control-medium ltr-18dhnor" role="presentation">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard">
                             <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
+                              fillRule="evenodd"
+                              clipRule="evenodd"
                               d="M24 11.0001L3.41421 11.0001L8.70711 5.70718L7.29289 4.29297L0.292892 11.293C0.105356 11.4805 0 11.7349 0 12.0001C0 12.2653 0.105356 12.5196 0.292892 12.7072L7.29289 19.7072L8.70711 18.293L3.41421 13.0001H24V11.0001Z"
                               fill="currentColor"
                             ></path>
@@ -44,8 +45,8 @@ const Video = () => {
                         <div className="control-medium ltr-18dhnor" role="presentation">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard">
                             <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
+                                fillRule="evenodd"
+                                clipRule="evenodd"
                                 d="M1 3C0.447715 3 0 3.44772 0 4V10.5714V21H2L2 11.5783C4.05836 11.6067 6.06478 11.7223 8 11.9167V14.5714C8 15.042 8.32807 15.4489 8.78794 15.5487C13.0747 16.4789 17.9011 17 23 17C23.5523 17 24 16.5523 24 16V9.42857C24 8.87629 23.5523 8.42857 23 8.42857C20.5907 8.42857 18.2474 8.30904 16 8.08326V5.42857C16 4.95801 15.6719 4.55111 15.2121 4.45132C10.9253 3.52108 6.09885 3 1 3ZM2 9.57813C4.44972 9.61098 6.83093 9.76415 9.11345 10.0248L10 10.126V11.0183V13.7591C13.6576 14.4969 17.7153 14.9341 22 14.9931V10.4219C19.5503 10.389 17.1691 10.2359 14.8866 9.97522L14 9.87399V8.98168V6.24091C10.3424 5.50309 6.2847 5.06594 2 5.00688V9.57813Z"
                                 fill="currentColor"
                             ></path>
@@ -228,8 +229,8 @@ const Video = () => {
                                             <div className="control-medium ltr-18dhnor" role="presentation">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard">
                                                     <path
-                                                        fill-rule="evenodd"
-                                                        clip-rule="evenodd"
+                                                        fillRule="evenodd"
+                                                        clipRule="evenodd"
                                                         d="M17.6427 7.43779C14.5215 4.1874 9.47851 4.1874 6.35734 7.43779C3.21422 10.711 3.21422 16.0341 6.35734 19.3074L4.91474 20.6926C1.02842 16.6454 1.02842 10.0997 4.91474 6.05254C8.823 1.98249 15.177 1.98249 19.0853 6.05254C22.9716 10.0997 22.9716 16.6454 19.0853 20.6926L17.6427 19.3074C20.7858 16.0341 20.7858 10.711 17.6427 7.43779ZM14 14C14 15.1046 13.1046 16 12 16C10.8954 16 10 15.1046 10 14C10 12.8954 10.8954 12 12 12C12.1792 12 12.3528 12.0236 12.518 12.0677L15.7929 8.79289L17.2071 10.2071L13.9323 13.482C13.9764 13.6472 14 13.8208 14 14Z"
                                                         fill="currentColor"
                                                     ></path>
@@ -243,8 +244,8 @@ const Video = () => {
                                             <div className="control-medium ltr-18dhnor" role="presentation">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard" data-uia="control-fullscreen-enter">
                                                     <path
-                                                        fill-rule="evenodd"
-                                                        clip-rule="evenodd"
+                                                        fillRule="evenodd"
+                                                        clipRule="evenodd"
                                                         d="M0 5C0 3.89543 0.895431 3 2 3H9V5H2V9H0V5ZM22 5H15V3H22C23.1046 3 24 3.89543 24 5V9H22V5ZM2 15V19H9V21H2C0.895431 21 0 20.1046 0 19V15H2ZM22 19V15H24V19C24 20.1046 23.1046 21 22 21H15V19H22Z"
                                                         fill="currentColor"
                                                     ></path>
@@ -272,13 +273,13 @@ const Video = () => {
             </div>
           </div>
         </div>
+        <div className='bg-white absolute right-0' style={ isChat ? {width: '18%'} : {width: '0%'}}>test</div>
       </div>
       <div className="visually-hidden hidden">
         <div id="standaloneAudioDescriptionAvailable">화면 해설이 제공됩니다</div>
         <div id="episodesAudioDescriptionAvailable">일부 에피소드에 화면 해설이 제공됩니다</div>
         <div id="playWithAudioDescription">화면 해설을 켠 채로 시작합니다</div>
       </div>
-
     </div>
   );
 };

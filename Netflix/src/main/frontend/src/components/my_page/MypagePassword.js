@@ -7,6 +7,7 @@ const MypagePassword = () => {
     //파란색 체크
     const changeCheck = (e)=> {
        const {checked} = e.target
+       console.log(e.target)
        setChecked(checked)
        const box = document.createElement('style')
        box.innerText=".ui-binary-input input[type=checkbox]:checked+label:after{ color: #0080ff; content: '\\e804'; font-family: nf-icon; font-size: 28px; left: -36px; top: -2px;}"
@@ -89,7 +90,7 @@ const MypagePassword = () => {
                           
                             <li data-uia="field-requireAllDevicesSignIn+wrapper" className="nfFormSpace">
                                 <div className="ui-binary-input">
-                                    <input type="checkbox" name="requireAllDevicesSignIn" id="cb_requireAllDevicesSignIn" checked={checked} onChange={changeCheck} />
+                                    <input type="checkbox" name="requireAllDevicesSignIn" id="cb_requireAllDevicesSignIn"  onChange={changeCheck} />
                                     <label className="realCheck" htmlFor="cb_requireAllDevicesSignIn" data-uia="field-requireAllDevicesSignIn+label">모든 디바이스에서 새로운 비밀번호로 다시 로그인하셔야 합니다.</label>
                                     
                                 </div>

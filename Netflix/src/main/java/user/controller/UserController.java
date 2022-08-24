@@ -1,5 +1,6 @@
 package user.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import user.bean.UserDTO;
+import user.bean.UserProfileDTO;
 
 import user.send.Request;
 import user.send.SmsResponse;
@@ -26,7 +30,7 @@ public class UserController {
 	UserService userService = null;
 	
 		
-	@PostMapping("/kingkong")
+	@PostMapping("/send-sms")
 	@ResponseBody
 	public ResponseEntity<SmsResponse> sms_sends(@ModelAttribute Request request) throws Exception {
 		System.out.println(request.getRecipientPhoneNumber());
@@ -37,10 +41,40 @@ public class UserController {
 	
 	@PostMapping("/login")
 	@ResponseBody
-	public boolean login(@RequestParam Map<String,String> map) {
-		System.out.println("1"+map);
-		//System.out.println("3"+userService.login(map));
+	public UserDTO login(@RequestParam Map<String,String> map) {
 		return userService.login(map);
+	}
+	
+	@PostMapping("/signUp")
+	@ResponseBody
+	public String signUp(@ModelAttribute UserDTO userDTO) {
+		System.out.println(userDTO);
+		String check = userService.signUp(userDTO);
+		return check;
+	}
+	@PostMapping("/emailCheck")
+	@ResponseBody
+	public String emailCheck(@RequestParam String user_email) {
+		
+		return userService.emailCheck(user_email);
+	}
+	
+
+	@PostMapping("/getProfileList")
+	@ResponseBody
+	public List<UserProfileDTO> getProfileList(@RequestParam Map<String,String> map) {
+		return userService.getProfileList(map);
+	}
+	@PostMapping("/getProfile")
+	@ResponseBody
+	public UserProfileDTO getProfile(@RequestParam Map<String,String> map) {
+		return userService.getProfile(map);
+	}
+
+	@PostMapping("/addProfile")
+	@ResponseBody
+	public UserProfileDTO addProfile(@RequestParam Map<String,String> map) {
+		return userService.addProfile(map);
 	}
 }
 

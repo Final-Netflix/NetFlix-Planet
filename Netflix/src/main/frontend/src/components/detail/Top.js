@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 
-function Top ({poster_path, title, genre_ids ,id}) {
+function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
   const [wishHover, setWishHover] = useState(false);
   const [wishDelete, setWishDelete] = useState(false);
   const [wishDeleteHover, setWishDeleteHover] = useState(false);
@@ -165,8 +165,8 @@ function Top ({poster_path, title, genre_ids ,id}) {
           {/* <img className='hidden border-0' src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title }></img> */}
         </div>
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + backdrop_path } alt={ title } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + backdrop_path } alt={ title } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
           {/* <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
           <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img> */}
         </div>
@@ -466,7 +466,8 @@ function Top ({poster_path, title, genre_ids ,id}) {
 
 Top.propTypes = {
   poster_path : PropTypes.string.isRequired,
-  title : PropTypes.string.isRequired,
+  backdrop_path: PropTypes.string.isRequired,
+  title : PropTypes.string.isRequired
 }
 
 export default Top;

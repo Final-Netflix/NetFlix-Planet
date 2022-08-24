@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 
-const About = ({name, id}) => {
+const About = () => {
+
+  const KEY = "bc61587b22cd0e5226a33d30e467d867";
+  const [credits, setCredits] = useState([]);
+
+  const getNames = async () => {
+    const json = await(
+      await fetch(
+          `https://api.themoviedb.org/3/movie/682110/credits?api_key=${ KEY }&language=ko-KR`)
+      ).json();
+    setCredits(json.cast);
+  }
+
+  useEffect(() => {
+    getNames();
+  }, [])
+
   return (
     <div className='ptrack_container block text-[#fff] text-[16px] leading-[1.4]'>
       <div className='ptrack_content block text-[#fff] text-[16px] leading-[1.4]'>
@@ -15,39 +31,13 @@ const About = ({name, id}) => {
           <div className='about_container block text-[#fff] text-[16px] leading-[1.4]'>
             <div className='previewModal_tags_person text-[14px] leading-[20px] mt-[0.5em] mr-[0.5em] mb-[0.5em] ml-0 break-words block text-[#fff]'>
               <span className='previewModal_tags_label text-[#777] text-[14px] leading-[20px] break-words'>출연:</span>
+              { credits.map ( credit =>
               <span className='tag_item text-[14px] leading-[20px] break-words'>
-                {/* <a href="#" className='text-[#fff] cursor-pointer no-underline'>
-                  에구치 타쿠야,
-                </a> */}
-                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
-                  { name },
-                </a>
-              </span>
-              {/* <span className='tag_item text-[14px] leading-[20px] break-words'>
-                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
-                  타네자키 아츠미,
-                </a>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words'>
-                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
-                  하야미 사오리,
-                </a>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words'>
-                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
-                  요시노 히로유키,
-                </a>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words'>
-                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
-                  카이다 유코,
-                </a>
-              </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words'>
-                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
-                  야마지 카즈히로
-                </a>
-              </span> */}
+                  <a href="#" className='text-[#fff] cursor-pointer no-underline'>
+                    { credit.name },
+                  </a>
+              </span> )}
+              
             </div>
             <div className='previewModal_tags_genre text-[14px] leading-[20px] mt-[0.5em] mr-[0.5em] mb-[0.5em] ml-0 break-words block text-[#fff]'>
               <span className='previewModal_tags_label text-[#777] text-[14px] leading-[20px] break-words'>장르:</span>
@@ -107,9 +97,5 @@ const About = ({name, id}) => {
     </div>
   );
 };
-
-About.propTypes = {
-  name : PropTypes.string.isRequired
-}
 
 export default About;
