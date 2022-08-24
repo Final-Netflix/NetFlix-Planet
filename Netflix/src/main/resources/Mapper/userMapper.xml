@@ -23,5 +23,17 @@
   	<select id="getProfile" parameterType="java.util.Map" resultType="userProfile">
   		select * from USER_PROFILE where profile_id=#{profile_id}
   	</select>
+  	<select id="getProfileIdSeq" resultType="int">
+  		select max(profile_id) from USER_PROFILE;
+  	</select>
+  	<insert id="addProfile" parameterType="java.util.Map">
+  		insert into USER_PROFILE values (
+  			#{profile_id},
+  			#{profile_name},
+  			#{user_email},
+  			#{img_path},
+  			1
+  		)
+  	</insert>
   </mapper>
  
