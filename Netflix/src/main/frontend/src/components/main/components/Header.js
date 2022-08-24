@@ -221,7 +221,10 @@ const Header = ({ scroll, search, setSearch }) => {
                                                     <div className='c1-avatar-wrapper mr-[10px]'>
                                                         <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ edit }></img>
                                                     </div>
-                                                    <span className='c1-profile-name my-[10px]'>프로필 관리</span>
+                                                    <Link to='/login'>
+                                                        <span className='c1-profile-name my-[10px]'>프로필 관리</span>
+
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </li>
