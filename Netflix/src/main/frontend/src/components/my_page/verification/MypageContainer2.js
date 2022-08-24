@@ -1,6 +1,37 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import axios from 'axios';
+
 
 const MypageContainer2 = ({onAdd}) => {
+
+    const axios = require('axios');
+    
+    
+    const getProfile=()=>{
+        // let findProfileId;
+        // // const target = e.target;
+        // // findProfileId = target.closest('.profileForm').childNodes[0].value;
+        // axios('http://localhost:8080/getProfile', {
+        //     method : 'post',
+        //     data : { 'profile_id' : findProfileId }
+        // })
+        // .then(res=>{
+        //     console.log(res);
+        //     localStorage.setItem('profile_id',res.data.profile_id);
+        //     localStorage.setItem('profile_name',res.data.profile_name);
+        //     localStorage.setItem('img_path',res.data.img_path);
+            
+        //   })
+        //   .catch(error => console.log(error));
+    }
+
+    useEffect(()=> {
+        getProfile();
+        
+    },[]);
+    
+
+
     const Button = ({name , method}) => {
         return <button onClick={onAdd} type='button' className='m1_select-factor-button algin-center h-[95px] bg-[#fff] box-border border-0 border-b-2 border-soild border-[#e6e6e6] flex my-auto w-[100%] cursor-pointer normal-case overflow-visible m-0 '>
                     <div className='m1_button-icon-wrapper p-[15px] my-auto'>

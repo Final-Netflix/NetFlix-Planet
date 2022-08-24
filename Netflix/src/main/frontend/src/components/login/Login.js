@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import useStores from 'hooks/useStores'
 
 const Login = () => {
+    const { authStore } = useStores();
     const qs = require('qs');
     const [idInputVal,setIdInputVal]=useState('');
     const [pwdInputVal,setPwdInputVal]=useState('');
@@ -47,6 +48,7 @@ const Login = () => {
         setRefresh(refresh+1);
     }
     useEffect(()=> {
+        console.log(authStore.logged)
         axios({
             method : 'post',
             url : 'http://localhost:8080/getProfileList',
