@@ -2,9 +2,11 @@ import create from "zustand";
 
 const useStore = create((set)=> ({
 //email change 
- val : '',
-  valEmail : ()=> set(({val : 'email'})),
- valPhone : ()=> set(({val : 'phone'})),
- onReSet :  ()=> set(({val : ''})),
+ vall : '',
+    valEmail : ()=> set(({vall : 'email'})),
+    valPhone : ()=> set(({vall : 'phone'})),
+    onReSet :  ()=> set(({vall : ''})),
+    valNum : (num)=> set(({vall: num}))
 }));
 export default useStore;
+

@@ -67,11 +67,11 @@ const Main = () => {
                     마이페이지안쪽
                 </button>
             </Link>
-            <Link to="/login">
+            {/* <Link to="/">
                 <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
                     로그인
                 </button>
-            </Link>
+            </Link> */}
         </div>
     );
 };

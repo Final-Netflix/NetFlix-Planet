@@ -5,7 +5,7 @@ const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
     const [data, setData]=useState([])
     const qs = require('qs');
     const userData = {
-        'profile_id': 3
+        'profile_id': localStorage.getItem('profile_id')
     }
     useEffect(()=> {
         axios({
