@@ -25,7 +25,10 @@ const TopTen = ({ type }) => {
                 `${ URL }popular?api_key=${ KEY }&language=ko-KR&page=1`)
             ).json();
         setData(json.results.slice(0, 10));
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/heads/main
         setLoading(false);
     }
 
