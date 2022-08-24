@@ -46,4 +46,9 @@ public class UserChatController {
 	public List<UserChatDTO> getUserChatList(@RequestParam Map<String,String> map) {
 		return userChatService.getUserChatList(map);
 	}
+	@PostMapping("/gitChatRoomMakerList")
+	@ResponseBody
+	public List<UserChatRoomDTO>gitChatRoomMakerList(@RequestParam Map<String,String> map) {
+		return userChatService.gitChatRoomMakerList(map);
+	}
 }
