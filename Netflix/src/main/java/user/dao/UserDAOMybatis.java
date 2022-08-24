@@ -47,4 +47,16 @@ public class UserDAOMybatis implements UserDAO {
 		return sqlSession.selectOne("userSQL.getProfile",map);
 	}
 
+	@Override
+	public UserProfileDTO addProfile(Map<String, String> map) {
+		sqlSession.insert("userSQL.addProfile",map);
+		return sqlSession.selectOne("userSQL.getProfile",map);
+	}
+
+	@Override
+	public int getProfileIdSeq() {
+		
+		return sqlSession.selectOne("userSQL.getProfileIdSeq");
+	}
+
 }

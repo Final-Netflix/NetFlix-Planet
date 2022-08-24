@@ -15,6 +15,8 @@ public interface UserService {
 
 	public UserProfileDTO getProfile(Map<String, String> map);
 
+	public UserProfileDTO addProfile(Map<String, String> map);
+
 	public String signUp(UserDTO userDTO);
 
 	public String emailCheck(String user_email);

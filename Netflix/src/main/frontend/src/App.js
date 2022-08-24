@@ -17,6 +17,7 @@ import DetailForMovie from "components/detail/DetailForMovie";
 
 import Payment from "components/my_page/payment/Payment";
 import Login from "components/login/Login";
+import AddProfile from "components/login/AddProfile";
 
 function App() {
   const [hello, setHello] = useState('')
@@ -34,9 +35,13 @@ function App() {
       <Routes>
         {
           localStorage.getItem('profile_id')===null? 
+          <>
           <Route path="/">
           <Route index element={<Login/> }/>
           </Route>
+          <Route path="/addProfile" element={<AddProfile/>}>
+          </Route>
+          </>
         :
 
         <>

@@ -44,27 +44,36 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     const chattingInput=(e)=>{
         setChatInput(e.target.value);
     }
+    const chatKeyDown=(e)=>{
+        if(e.keyCode === 13 && chatInput !== null){
+            sendChat();
+        }
+    }
     return (
         <div className='chatW_userChatting'>
             <div className='chatW_userChattingList overflow-scroll overflow-x-hidden'>
-                {
-                    data.map(item=>
-                        <ul>
+                <ul>
+                    {
+                        data.map(item=>
                            <li>
                                 <div className='flex'>
                                     <img src={item.img_path} className='rounded-[50%] w-[32px] h-[32px]'></img>
                                     <span>{item.profile_name}</span>
                                 </div>
-                                <span>{item.profile_id}
-                                </span>
+                                <div>
+                                    <span>
+                                        {item.content}
+                                    </span>
+                                </div>
+
 
                       		</li>
-                        </ul>
                         )
-                }
+                    }
+                </ul>
             </div>
             <div className='chatW_userChatInputForm'>
-                <input type="text" onChange={chattingInput} value={chatInput}></input>
+                <input type="text" onChange={chattingInput} value={chatInput} onKeyDown={chatKeyDown}></input>
                 <button type="button" onClick={sendChat}>
                     보내기
                 </button>

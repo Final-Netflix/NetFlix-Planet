@@ -71,6 +71,11 @@ public class UserController {
 		return userService.getProfile(map);
 	}
 
+	@PostMapping("/addProfile")
+	@ResponseBody
+	public UserProfileDTO addProfile(@RequestParam Map<String,String> map) {
+		return userService.addProfile(map);
+	}
 }
 
 
