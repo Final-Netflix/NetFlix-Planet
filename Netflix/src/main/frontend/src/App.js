@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Provider } from "mobx-react";
 import axios from "axios";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./reset.css"
@@ -18,6 +19,9 @@ import DetailForMovie from "components/detail/DetailForMovie";
 import Payment from "components/my_page/payment/Payment";
 import Login from "components/login/Login";
 
+import RootStore from "stores/RootStore";
+const rootStore = new RootStore();
+
 function App() {
   const [hello, setHello] = useState('')
   const {val , valEmail , valPhone} = useStore();
@@ -30,55 +34,57 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter>
-      <ScrollTop/>
-      <Routes>
-        {/* smile */}
-        <Route path="/">
-          <Route index element={ <Main/> }/>
-          <Route path=":tab" element={ <Main/> }/>
-        </Route>
-        <Route path="/container" element={ <MypagePassword/> }></Route>
-        {/* smile */}
+    <Provider { ...rootStore }>
+      <BrowserRouter>
+        <ScrollTop/>
+        <Routes>
+          {/* smile */}
+          <Route path="/">
+            <Route index element={ <Main/> }/>
+            <Route path=":tab" element={ <Main/> }/>
+          </Route>
+          <Route path="/container" element={ <MypagePassword/> }></Route>
+          {/* smile */}
 
-        {/* hong */}
-        <Route path="/my">
-          <Route index element={<MyPage/>}/>
-          <Route path=":detail" element={<MyPage/>}/>
-        </Route>
-        <Route path="/payment">
-          <Route index element={<Payment/>}/>
-          <Route path=":detail" element={<Payment/>}/>
-        </Route>
-        {/* login */}
-        <Route path='/signUp'>
-          <Route index element={<SignUp/>}/>
-          <Route path=":detail" element={<SignUp/>}/>
-        </Route>
-        
-        {/* hong */}
+          {/* hong */}
+          <Route path="/my">
+            <Route index element={<MyPage/>}/>
+            <Route path=":detail" element={<MyPage/>}/>
+          </Route>
+          <Route path="/payment">
+            <Route index element={<Payment/>}/>
+            <Route path=":detail" element={<Payment/>}/>
+          </Route>
+          {/* login */}
+          <Route path='/signUp'>
+            <Route index element={<SignUp/>}/>
+            <Route path=":detail" element={<SignUp/>}/>
+          </Route>
+          
+          {/* hong */}
 
-        {/* hee */}
-        <Route path="/detail" element={ <Detail /> }></Route>
-        <Route path="/detailM" element={ <DetailForMovie /> }></Route>
-        <Route path="/detail/:detail" element={ <Linked /> }></Route>
-        <Route path="/detailM/:detail" element={ <Linked /> }></Route>
-        {/* hee */}
-        
-        
-        <Route path="/service" element={ <ServiceCenter/> }></Route>
-        <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
-        <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
-
-
-        <Route path="/admin_chat" element={<AdminChat />}></Route>
+          {/* hee */}
+          <Route path="/detail" element={ <Detail /> }></Route>
+          <Route path="/detailM" element={ <DetailForMovie /> }></Route>
+          <Route path="/detail/:detail" element={ <Linked /> }></Route>
+          <Route path="/detailM/:detail" element={ <Linked /> }></Route>
+          {/* hee */}
+          
+          
+          <Route path="/service" element={ <ServiceCenter/> }></Route>
+          <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
+          <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 
 
-        <Route path="/login" element={<Login/>}/>
-      </Routes>
-       	{/* <br/> */}
-        {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
-    </BrowserRouter>
+          <Route path="/admin_chat" element={<AdminChat />}></Route>
+
+
+          <Route path="/login" element={<Login/>}/>
+        </Routes>
+          {/* <br/> */}
+          {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
+      </BrowserRouter>
+    </Provider>
   );
 }
 

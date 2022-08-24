@@ -36,7 +36,7 @@ const SignUpComponets = () => {
                     data : qs.stringify({
                         'recipientPhoneNumber' : document.getElementById(e.target.id).value ,
 						'title' : 'test',
-						'content' : '[GESE-T] \n 인증번호  ['+ verifyCode+']'
+						'content' : '[Planet] \n 인증번호  ['+ verifyCode+']'
                     })
                  }).then(function(response){
                     console.log(response);
