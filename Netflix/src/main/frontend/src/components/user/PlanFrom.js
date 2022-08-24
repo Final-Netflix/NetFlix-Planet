@@ -55,15 +55,15 @@ const PlanFrom = () => {
                             <div className="m1_planGrid__selector m1_planGrid__planSelector" role="radiogroup" aria-label="멤버십" aria-describedby="planGrid_planChoice_description" data-uia="plan-grid-plan-selector">
                                 <span className="m1_planGrid__selectorDescription" id="planGrid_planChoice_description" data-uia="plan-grid-plan-selector+description" aria-hidden="true">원하는 멤버십을 선택하세요</span>
                                 <label className="m1_planGrid__selectorChoice m1_planGrid__planChoice" htmlFor="planGrid_planChoice_0" data-uia="plan-grid-plan-selector+label-text_1_stream_name">
-                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_0" data-uia="plan-grid-plan-selector+input-text_1_stream_name" value="314001031" />
+                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_0"  value="314001031" />
                                     <span className="m1_planGrid__selectorLabel m1_planGrid__planLabel">베이식</span>
                                 </label>
                                 <label className="m1_planGrid__selectorChoice m1_planGrid__planChoice" htmlFor="planGrid_planChoice_1" data-uia="plan-grid-plan-selector+label-text_2_stream_name">
-                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_1" data-uia="plan-grid-plan-selector+input-text_2_stream_name" value="10322" />
+                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_1"  value="10322" />
                                     <span className="m1_planGrid__selectorLabel m1_planGrid__planLabel">스탠다드</span>
                                 </label>
                                 <label className="m1_planGrid__selectorChoice m1_planGrid__planChoice" htmlFor="planGrid_planChoice_2" data-uia="plan-grid-plan-selector+label-text_4_stream_name">
-                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_2"  data-uia="plan-grid-plan-selector+input-text_4_stream_name" value="10341" checked />
+                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_2"  value="10341" defaultChecked />
                                     <span className="m1_planGrid__selectorLabel m1_planGrid__planLabel">프리미엄</span>
                                 </label>
                             </div>
@@ -157,7 +157,7 @@ const PlanFrom = () => {
                     </div>
                 </div>
                 <div className="m1_submitBtnContainer">
-                    <button type="button" autocomplete="off" tabIndex="0" className="m1_nf-btn m1_nf-btn-primary m1_nf-btn-solid m1_nf-btn-oversize" data-uia="cta-plan-selection" placeholder="planSelection_button_continue">다음</button>
+                    <button type="button" autoComplete="off" tabIndex="0" className="m1_nf-btn m1_nf-btn-primary m1_nf-btn-solid m1_nf-btn-oversize" data-uia="cta-plan-selection" placeholder="planSelection_button_continue">다음</button>
                 </div>
             </div>
         </div>

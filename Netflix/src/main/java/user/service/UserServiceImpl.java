@@ -41,12 +41,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String signUp(UserDTO userDTO) {
 		String check = userDAO.signUpCheck(userDTO);
-		String check1 = null;
-		if(check == "1") {
-			return check="1";
-		}else {
+		System.out.println(check);
+		if(check == "0") {
 			userDAO.signUp(userDTO);
 			return check="0";
+		}else {
+			return check="1";
 		}
 	}
 
