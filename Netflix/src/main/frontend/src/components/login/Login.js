@@ -48,7 +48,7 @@ const Login = () => {
         setRefresh(refresh+1);
     }
     useEffect(()=> {
-        console.log(authStore.logged)
+        // console.log(authStore.logged)
         axios({
             method : 'post',
             url : 'http://localhost:8080/getProfileList',
