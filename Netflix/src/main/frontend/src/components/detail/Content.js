@@ -9,6 +9,7 @@ const Content = () => {
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
   const [episodes, setEpisodes] = useState([]);
+  const [title, setTitle] = useState(true);
 
   const getEpisodes = async () => {
     const json = await(
@@ -17,8 +18,19 @@ const Content = () => {
       ).json();
       setEpisodes(json.episodes);
   }
+
+  const getTitle = async () => {
+    const json = await(
+      await fetch(
+          `https://api.themoviedb.org/3/tv/197067?api_key=${ KEY }&language=ko-KR`)
+      ).json();
+      setTitle(json.name);
+      /* console.log('json.name = ' + json.name) */
+  }
+
   useEffect(() => {
     getEpisodes();
+    getTitle();
   }, [])
 
   const [moreContent, setMoreContent] = useState(false);
@@ -52,13 +64,16 @@ const Content = () => {
           <div className='episodeSelector_header items-baseline flex justify-between text-[#fff] text-[16px] leading-[1.4]'>
             <h3 className='section_header text-[24px] font-bold mb-[20px] mt-[48px] block text-[#fff] leading-[1.4]'>회차</h3>
             <div className='episodeSelector_dropdown text-[12px] font-semibold block text-[#fff] leading-[1.4]'></div>
-            <div className='episodeSelector_season_name text-[18px] block text-[#fff] leading-[1.4]'>SPYxFAMILY 스파이 패밀리</div>
+            <div className='episodeSelector_season_name text-[18px] block text-[#fff] leading-[1.4]'>
+              { title }
+            </div>
           </div>
           <div className='episodeSelector_container flex flex-col flex-wrap justify-start text-[#fff] text-[16px] leading-[1.4]'>
             
             <Link to='video'>
+            <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} >
             { episodes.map (episode => 
-            <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCardList border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
+            <div className='titleCardList border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>{ episode.episode_number }</div>
               <div className='titleCard_imageWrapper rounded-[4px] flex-[0_0_18%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
@@ -88,7 +103,8 @@ const Content = () => {
                   <div className='ptrack_content block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>{episode.overview}</div>
                 </p>
               </div>
-            </div>)}
+              </div>)}
+            </div>
             </Link>
 
             {/* <div onMouseEnter={playIconHoverEnter2} onMouseLeave={playIconHoverLeave2} className='titleCardList min-h-[10em] items-center border-b-[1px] border-solid border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='아내 역을 확보하라' role="button">

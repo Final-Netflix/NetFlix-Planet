@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import useStores from 'hooks/useStores'
 
 const Login = () => {
+    const { authStore } = useStores();
     const qs = require('qs');
     const [idInputVal,setIdInputVal]=useState('');
     const [pwdInputVal,setPwdInputVal]=useState('');
@@ -47,6 +48,7 @@ const Login = () => {
         setRefresh(refresh+1);
     }
     useEffect(()=> {
+        // console.log(authStore.logged)
         axios({
             method : 'post',
             url : 'http://localhost:8080/getProfileList',
@@ -108,17 +110,21 @@ const Login = () => {
                                 </Link>
                             )
                         }
-                        <Link to='addProfile'>
-                            <li className='profileForm m-[30px]'>
-                                <div className='text-white text-center'>
-                                    <img className="w-[200px] h-[200px]"/>
-                                    <div className="m-[20px]">
-                                        <span>프로필 추가</span>
+                        {
+                            profileList.length <= 4
+                            && 
+                            <Link to='addProfile'>
+                                <li className='profileForm m-[30px]'>
+                                    <div className='text-white text-center'>
+                                        <img className="w-[200px] h-[200px]"/>
+                                        <div className="m-[20px]">
+                                            <span>프로필 추가</span>
 
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </Link>
+                                </li>
+                            </Link>
+                        }
                     </ul>
                     <button onClick={logoutBtn} className="m-[30px] text-[#cccccc]">로그아웃</button>
                 </div>
@@ -136,7 +142,7 @@ const Login = () => {
                     
                     <div>
                         <button type="button" onClick={login} className='text-[#cccccc] m-[20px]'>로그인</button>
-                        <Link to ='/' className='text-[#cccccc]'><span>메인으로</span></Link>
+                        <Link to ='/signup' className='text-[#cccccc]'><span>회원가입</span></Link>
                     </div>
                 </div>
             }

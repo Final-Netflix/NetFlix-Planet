@@ -1,10 +1,7 @@
 .chatW_userChatRoom{
     width: 300px;
-    height: 600px;
-    border-radius: 10px;
+    height: 100%;
     border: solid #111111 3px;
-    position:absolute;
-    left: 80%;
     background-color: #333333;
     z-index : 999;
 }
@@ -82,9 +79,7 @@
 .chatW_listUl span{
     color: #ffffff;
 }
-.chatW_userChattingList{
-    height: 400px;
-}
+
 .chatW_userChattingList span{
     color: #dddddd;
     font-size: 18px;

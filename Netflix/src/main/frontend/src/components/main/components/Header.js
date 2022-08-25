@@ -218,12 +218,14 @@ const Header = ({ scroll, search, setSearch }) => {
                                         }
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='flex'>
-                                                <div className='c1-profile-link flex hover:underline cursor-pointer'>
-                                                    <div className='c1-avatar-wrapper mr-[10px]'>
-                                                        <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ edit }></img>
+                                                <Link to='/login'>
+                                                    <div className='c1-profile-link flex hover:underline cursor-pointer'>
+                                                        <div className='c1-avatar-wrapper mr-[10px]'>
+                                                            <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ edit }></img>
+                                                        </div>
+                                                            <span className='c1-profile-name my-[10px]'>프로필 관리</span>
                                                     </div>
-                                                    <span className='c1-profile-name my-[10px]'>프로필 관리</span>
-                                                </div>
+                                                </Link>
                                             </div>
                                         </li>
                                     </ul>

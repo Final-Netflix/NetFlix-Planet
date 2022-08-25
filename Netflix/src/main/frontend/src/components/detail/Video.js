@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import 'css/detail/video.css';
-import chat from '../../image/detail/chat.png';
+import chat from '../../image/detail/chat2.png';
 import { Link } from 'react-router-dom';
+import UserChatRoom from 'components/user_chat/UserChatRoom';
 
 const Video = () => {
+
   const [isChat, setIsChat] = useState(false);
+  const openChatting=()=>{
+    setIsChat(!isChat);
+  }
   return (
     <div>
       <div className="watch-video flex" data-uia="watch-video">
@@ -168,12 +173,12 @@ const Video = () => {
                                     </div>
                                   </div>
                                   <div className="ltr-hpbgml items-[normal] justify-end">
-                                    <div className="ltr-1i33xgl min-w-[3rem] w-[3rem]"></div>
+                                    <div className="ltr-1i33xgl min-w-[3rem] w-[2rem]"></div>
                                     <div className="medium ltr-1dcjcj4">
                                       {/* 채팅 */}
                                       <button aria-label="채팅" className="ltr-1enhvti" data-uia="control-next">
                                         <div className="control-medium ltr-18dhnor" role="presentation">
-                                          <img src = { chat } className='w-[45px] h-[39px]'></img>
+                                          <img src = { chat } className='w-[45px] h-[39px]' onClick={openChatting}></img>
                                         </div>
                                       </button>
                                     </div>
@@ -273,7 +278,11 @@ const Video = () => {
             </div>
           </div>
         </div>
-        <div className='bg-white absolute right-0' style={ isChat ? {width: '18%'} : {width: '0%'}}>test</div>
+        {/* 채팅창 */}
+        <div className='bg-white absolute right-0 h-[100%]' style={ isChat ? {width: '18%'} : {width: '0%'}}>
+          <UserChatRoom/>
+        </div>
+
       </div>
       <div className="visually-hidden hidden">
         <div id="standaloneAudioDescriptionAvailable">화면 해설이 제공됩니다</div>

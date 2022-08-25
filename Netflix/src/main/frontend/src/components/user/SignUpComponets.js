@@ -4,19 +4,20 @@ import React, {useState} from 'react';
 
 const SignUpComponets = () => {
     let checked =false;
-    let checkNumber =true;
+    let checkNumber =false;
     let checkEmail ;
     const qs = require('qs');
     let verify;
     //개인정보 수집 동의 함수
     const changeCheck = (e)=> {
         if(e.target.checked) {
-            checked =e.target.value;
+            checked =e.target.checked
             document.getElementsByClassName('m1_helper')[0].innerText= '' 
-            
+            console.log(checked)
         }else {
-            checked = e.target.value;
+            checked = e.target.checked;
             document.getElementsByClassName('m1_helper')[0].innerText= '먼저 이용 약관에 동의하셔야 합니다.'
+            console.log(checked)
         }
     } 
 
@@ -34,11 +35,10 @@ const SignUpComponets = () => {
         }
         if(confirmPwd !== pwd) {
             error[2].innerText = '비밀번호가 일치하지 않습니다.'
-        } if(confirmPwd !== pwd && pwd>=6) {
+        } if(confirmPwd === pwd && pwd>=6) {
             checkPwd = true;
         }
         if(!checkNumber) {
-            console.log('ㅎㅇㅎㅇ')
             error[4].innerText = '휴대폰 인증을 해주세요.'
         }
         if(!checked) {
@@ -46,7 +46,6 @@ const SignUpComponets = () => {
 
         }
         if(checkEmail && checkPwd && checkNumber && checked) {
-            console.log('ㅎㅇㅎㅇ')
             axios({
                 method: 'post',
                 url : 'http://localhost:8080/signUp',
@@ -86,7 +85,6 @@ const SignUpComponets = () => {
                             'user_email' : e.target.value ,
                         })
                     }).then((res)=>{
-                        console.log(res.data)
                         if(res.data===1) {
                             document.getElementsByClassName('m1_inputError')[0].style.color = 'red';
                             document.getElementsByClassName('m1_inputError')[0].innerText='중복되는 이메일입니다.'
