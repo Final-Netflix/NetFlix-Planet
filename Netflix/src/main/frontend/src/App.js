@@ -82,6 +82,7 @@ function App() {
         <Route path="/admin_chat" element={<AdminChat />}></Route>
 
         <Route path="/login" element={<Login/>}/>
+        <Route path="/addProfile" element={<AddProfile/>}/>
         </>
         }
       </Routes>

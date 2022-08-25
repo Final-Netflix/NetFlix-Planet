@@ -108,17 +108,21 @@ const Login = () => {
                                 </Link>
                             )
                         }
-                        <Link to='addProfile'>
-                            <li className='profileForm m-[30px]'>
-                                <div className='text-white text-center'>
-                                    <img className="w-[200px] h-[200px]"/>
-                                    <div className="m-[20px]">
-                                        <span>프로필 추가</span>
+                        {
+                            profileList.length <= 4
+                            && 
+                            <Link to='addProfile'>
+                                <li className='profileForm m-[30px]'>
+                                    <div className='text-white text-center'>
+                                        <img className="w-[200px] h-[200px]"/>
+                                        <div className="m-[20px]">
+                                            <span>프로필 추가</span>
 
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </Link>
+                                </li>
+                            </Link>
+                        }
                     </ul>
                     <button onClick={logoutBtn} className="m-[30px] text-[#cccccc]">로그아웃</button>
                 </div>

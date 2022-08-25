@@ -49,5 +49,10 @@ public class UserChatServiceImpl implements UserChatService {
 		return userChatDAO.getUserChatList(map);
 	}
 
+	@Override
+	public List<UserChatRoomDTO> gitChatRoomMakerList(Map<String, String> map) {
+		return userChatDAO.gitChatRoomMakerList(map);
+	}
+
 
 }

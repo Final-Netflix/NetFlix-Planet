@@ -8,8 +8,11 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     const [chatCheck,setChatCheck] = useState(1);
     setTimeout(function() {
         setChatCheck(chatCheck+1);
-      }, 2000);
-      
+    }, 1000);
+    const scrollDown=()=>{
+        const findScroll = document.getElementsByClassName('chatW_userChattingList');
+        findScroll[0].scrollTo(0,findScroll[0].scrollHeight);
+    }
     const sendChatDate = {
         'chat_room_id': chatRoomId,
         'profile_id' : localStorage.getItem('profile_id'),
@@ -24,10 +27,12 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
             method : 'post',
             url : 'http://localhost:8080/sendChat',
             data : qs.stringify(sendChatDate)
-          })
+        })
           .then()
           .catch(error => console.log(error));
-          setChatInput('');
+        setChatInput('');
+        scrollDown();
+        
     }
     useEffect(()=> {
         axios({
@@ -37,7 +42,6 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
           })
           .then(res => {
                 setData(res.data);
-                console.log(chatCheck);
             })
           .catch(error => console.log(error));
     },[chatCheck]);
@@ -45,14 +49,15 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
         setChatInput(e.target.value);
     }
     const chatKeyDown=(e)=>{
-        if(e.keyCode === 13 && chatInput !== null){
+        if(e.keyCode === 13 && chatInput !== ''){
             sendChat();
         }
     }
     return (
-        <div className='chatW_userChatting'>
-            <div className='chatW_userChattingList overflow-scroll overflow-x-hidden'>
-                <ul>
+        <div className='chatW_userChatting h-[90%]'>
+            <div className='chatW_userChattingList overflow-scroll overflow-x-hidden h-[80%]'>
+                <ul className="wh-chatListUl">
+                    
                     {
                         data.map(item=>
                            <li>
@@ -70,15 +75,17 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
                       		</li>
                         )
                     }
+                    <li className='h-[40px]'></li>
+
                 </ul>
             </div>
-            <div className='chatW_userChatInputForm'>
+            <div className='chatW_userChatInputForm ml-[20px]'>
                 <input type="text" onChange={chattingInput} value={chatInput} onKeyDown={chatKeyDown}></input>
-                <button type="button" onClick={sendChat}>
+                <button className="text-[#141414] ml-[10px] bg-[#cccccc] w-[50px] h-[25px]"type="button" onClick={sendChat}>
                     보내기
                 </button>
             </div>
-            <div><button onClick={changeChattionView}>목록</button></div>
+            <div><button className="text-[#141414] m-[20px] bg-[#cccccc] w-[50px] h-[25px]" onClick={changeChattionView}>목록</button></div>
         </div>
     );
 };
