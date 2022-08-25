@@ -5,6 +5,7 @@ import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 
 function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
+
   const [wishHover, setWishHover] = useState(false);
   const [wishDelete, setWishDelete] = useState(false);
   const [wishDeleteHover, setWishDeleteHover] = useState(false);
@@ -144,13 +145,13 @@ function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
         </div>
       </div>
       }
-      { dislikeClick && rated &&
+      {/* { dislikeClick && rated &&
       <div className="css-1ef3g7z show left-[180px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">평가함</div>
         </div>
       </div>
-      }
+      } */}
 
       <div className='c2_previewModal rounded-t-md overflow-hidden bg-[#000] cursor-pointer relative text-[#fff] text-[16px]'>
         <div className='absolute w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>

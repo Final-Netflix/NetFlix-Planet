@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'css/detail/video.css';
-import chat from '../../image/detail/chat.png';
+import chat from '../../image/detail/chat2.png';
 import { Link } from 'react-router-dom';
 import UserChatRoom from 'components/user_chat/UserChatRoom';
 
@@ -173,7 +173,7 @@ const Video = () => {
                                     </div>
                                   </div>
                                   <div className="ltr-hpbgml items-[normal] justify-end">
-                                    <div className="ltr-1i33xgl min-w-[3rem] w-[3rem]"></div>
+                                    <div className="ltr-1i33xgl min-w-[3rem] w-[2rem]"></div>
                                     <div className="medium ltr-1dcjcj4">
                                       {/* 채팅 */}
                                       <button aria-label="채팅" className="ltr-1enhvti" data-uia="control-next">

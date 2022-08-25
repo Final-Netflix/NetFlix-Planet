@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 import 'css/detail/actor.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const SearchActor = () => {
+  const location = useLocation();
+  const name = location.state.name;
+
   return (
     <div>
       <div className="focus-trap-wrapper" tabIndex="-1">
@@ -26,7 +31,7 @@ const SearchActor = () => {
                   </div>
                 </button>
                 </Link>
-                <div className="c2-css-1axxs14 text-white">에구치 타쿠야</div>
+                <div className="c2-css-1axxs14 text-white">{ name }</div>
                 <div className="gallery row-with-x-columns css-m64ku3">
                   <div></div>
                   <div className="galleryContent">
@@ -180,5 +185,9 @@ const SearchActor = () => {
     </div>
   );
 };
+
+SearchActor.propTypes = {
+  name : PropTypes.string.isRequired
+}
 
 export default SearchActor;
