@@ -11,6 +11,7 @@ import ScrollTop from "components/main/ScrollTop";
 import Linked from "components/detail/Linked";
 import SignUp from "components/user/SignUp"
 import useStore from "store";
+import $ from 'jquery';
 
 import AdminChat from "components/service_center/adminChat/AdminChat";
 import DetailForMovie from "components/detail/DetailForMovie";
