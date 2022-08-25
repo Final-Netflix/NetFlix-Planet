@@ -7,7 +7,7 @@ const MyPageSlide_Sub = (props) => {
     const location = useLocation()
     const state = location.state ? location.state : ''
 
-    console.log(state)
+    //console.log(state)
 
     return (
         <div>
