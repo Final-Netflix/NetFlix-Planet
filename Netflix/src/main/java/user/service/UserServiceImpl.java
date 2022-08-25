@@ -60,4 +60,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.emailCheck(user_email);
 	}
 
+	@Override
+	public void deleteProfile(Map<String, String> map) {
+		userDAO.deleteProfile(map);
+		
+	}
+
+	@Override
+	public void updateProfile(Map<String, String> map) {
+		userDAO.updateProfile(map);
+		
+	}
+
 }

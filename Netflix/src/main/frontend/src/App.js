@@ -18,6 +18,7 @@ import DetailForMovie from "components/detail/DetailForMovie";
 import Payment from "components/my_page/payment/Payment";
 import Login from "components/login/Login";
 import AddProfile from "components/login/AddProfile";
+import UpdateProfile from "components/login/UpdateProfile";
 
 function App() {
   const [hello, setHello] = useState('')
@@ -84,8 +85,8 @@ function App() {
 
 
         <Route path="/admin_chat" element={<AdminChat />}></Route>
-
-
+        
+        <Route path="/updateProfile" element={<UpdateProfile/>}></Route>
         <Route path="/login" element={<Login/>}/>
         <Route path="/addProfile" element={<AddProfile/>}/>
         </>

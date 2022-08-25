@@ -1,0 +1,54 @@
+.wh-placeLabel {
+    color: #8c8c8c;
+    font-size: 14px;
+    position: relative;
+    left: 20px;
+    top:10px;
+}
+.wh-nfTextField {
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    padding: 16px 20px 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
+    
+}
+.wh-nfTextField:focus ,.wh-nfTextField:active{
+    outline:none;
+}
+.wh-idpwd-inputForm{
+    border-radius: 4px;
+}
+.wh-loginBtn{
+    height: 50px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    max-width: 100%;
+    width: 100%;
+    margin: 24px 0 12px;
+    background: #e50914;
+}
+.wh1-login-content{
+    padding: 60px 68px 40px;
+}
+body, #root {
+    height: 100%;
+}
+.wh-profileUpdateForm .wh-saveBtn{
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #000;
+    font-weight: 700;
+}
+.wh-profileUpdateForm button{
+    background-color: transparent;
+    border: 1px solid grey;
+    color: grey;
+    cursor: pointer;
+    margin: 10px;
+}

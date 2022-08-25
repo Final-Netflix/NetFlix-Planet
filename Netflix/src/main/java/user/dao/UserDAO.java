@@ -25,4 +25,10 @@ public interface UserDAO {
 
 	public int getProfileIdSeq();
 
+
+	public void deleteProfile(Map<String, String> map);
+
+
+	public void updateProfile(Map<String, String> map);
+
 }
