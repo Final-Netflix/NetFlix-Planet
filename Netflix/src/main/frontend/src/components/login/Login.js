@@ -36,6 +36,7 @@ const Login = () => {
           })
           .then(res => {
             localStorage.setItem('user_email', res.data.user_email);
+            localStorage.setItem('phone',res.data.phone);
             if(localStorage.getItem('user_email')==='undefined'){
                 alert('아이디 비번확인');
                 setIsLogin(false);
@@ -86,6 +87,8 @@ const Login = () => {
             localStorage.setItem('profile_id',res.data.profile_id);
             localStorage.setItem('profile_name',res.data.profile_name);
             localStorage.setItem('img_path',res.data.img_path);
+            // 폰을 추가해주세요
+            //localStorage.setItem('phone',res.data.phone);
             window.location.href='/';
         })
         .catch(error => console.log(error));
