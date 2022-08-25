@@ -1,6 +1,120 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import useStore from 'store';
 const PlanFrom = () => {
+    const {price , setPrice} = useStore()
+    //멤버십 선택
+    const onClick=(e)=> {
+        const id = e.target.id
+        const id0 = 'planGrid_planChoice_0' ;
+        const id1 = 'planGrid_planChoice_1' ; 
+        const id2 = 'planGrid_planChoice_2' ;
+        const td = document.getElementsByClassName('m1_planGrid__cell');
+        if(id ===id0) {
+            td[1].classList.add('m1_planGrid__cell--isSelected')
+            td[5].classList.add('m1_planGrid__cell--isSelected')
+            td[9].classList.add('m1_planGrid__cell--isSelected')
+            td[13].classList.add('m1_planGrid__cell--isSelected')
+            
+
+            td[2].classList.remove('m1_planGrid__cell--isSelected')
+            td[6].classList.remove('m1_planGrid__cell--isSelected')
+            td[10].classList.remove('m1_planGrid__cell--isSelected')
+            td[14].classList.remove('m1_planGrid__cell--isSelected')
+            
+            td[3].classList.remove('m1_planGrid__cell--isSelected')
+            td[7].classList.remove('m1_planGrid__cell--isSelected')
+            td[11].classList.remove('m1_planGrid__cell--isSelected')
+            td[15].classList.remove('m1_planGrid__cell--isSelected')
+
+            setPrice(9500);
+
+            
+        }else if (id ===id1) {
+            td[2].classList.add('m1_planGrid__cell--isSelected')
+            td[6].classList.add('m1_planGrid__cell--isSelected')
+            td[10].classList.add('m1_planGrid__cell--isSelected')
+            td[14].classList.add('m1_planGrid__cell--isSelected')
+            
+
+            td[1].classList.remove('m1_planGrid__cell--isSelected')
+            td[5].classList.remove('m1_planGrid__cell--isSelected')
+            td[9].classList.remove('m1_planGrid__cell--isSelected')
+            td[13].classList.remove('m1_planGrid__cell--isSelected')
+            
+            td[3].classList.remove('m1_planGrid__cell--isSelected')
+            td[7].classList.remove('m1_planGrid__cell--isSelected')
+            td[11].classList.remove('m1_planGrid__cell--isSelected')
+            td[15].classList.remove('m1_planGrid__cell--isSelected')
+
+            setPrice(13500);
+
+        }else if (id ===id2) {
+            td[3].classList.add('m1_planGrid__cell--isSelected')
+            td[7].classList.add('m1_planGrid__cell--isSelected')
+            td[11].classList.add('m1_planGrid__cell--isSelected')
+            td[15].classList.add('m1_planGrid__cell--isSelected')
+            
+
+            td[1].classList.remove('m1_planGrid__cell--isSelected')
+            td[5].classList.remove('m1_planGrid__cell--isSelected')
+            td[9].classList.remove('m1_planGrid__cell--isSelected')
+            td[13].classList.remove('m1_planGrid__cell--isSelected')
+            
+            td[2].classList.remove('m1_planGrid__cell--isSelected')
+            td[6].classList.remove('m1_planGrid__cell--isSelected')
+            td[10].classList.remove('m1_planGrid__cell--isSelected')
+            td[14].classList.remove('m1_planGrid__cell--isSelected')
+
+            setPrice(17000);
+        
+
+        }
+    }
+    //다음버튼 누르면 결제창
+   
+   
+
+
+    const onPay = ()=> {
+        const {IMP} =window;
+        IMP.init('imp68158508');
+
+        const data = {
+            pg: 'kakaopay',                           // PG사
+            pay_method: 'card',                           // 결제수단
+            merchant_uid: `mid_${new Date().getTime()}` ,  // 주문번호
+            amount: 100,                                 // 결제금액
+            name: '플래닛 테스트 결제',
+            customer_uid: "hong_0001_0004" ,                  // 주문명
+            buyer_name: '홍길동',                           // 구매자 이름
+            buyer_tel: '01012341234',                     // 구매자 전화번호
+            buyer_email: 'example@example',               // 구매자 이메일
+            buyer_addr: '신사동 661-16',                    // 구매자 주소
+            buyer_postcode: '06018',                      // 구매자 우편번호
+        
+        };
+        
+        IMP.request_pay(data , callback);
+        
+        
+    }
+    
+    const callback = (response)=> {
+        const { success,
+                error_msg,
+                imp_uid,
+                merchant_uid,
+                pay_method,
+                paid_amount,
+                status
+        } = response;
+        if(success) {
+            alert('ㅎㅇㅎㅇ')
+        }else {
+            alert(`ㅂ2ㅂ2 : ${error_msg}`);
+        }
+    }
+    
     return (
         <div id='m1_planform' className="m1_simpleContainer" data-transitioned-child="true">
             <div className="m1_centerContainer m1_narrowCenterContainer" style={{display: 'block', transform: 'none', opacity: 1, transitionDuration: '250ms'}}>
@@ -55,15 +169,15 @@ const PlanFrom = () => {
                             <div className="m1_planGrid__selector m1_planGrid__planSelector" role="radiogroup" aria-label="멤버십" aria-describedby="planGrid_planChoice_description" data-uia="plan-grid-plan-selector">
                                 <span className="m1_planGrid__selectorDescription" id="planGrid_planChoice_description" data-uia="plan-grid-plan-selector+description" aria-hidden="true">원하는 멤버십을 선택하세요</span>
                                 <label className="m1_planGrid__selectorChoice m1_planGrid__planChoice" htmlFor="planGrid_planChoice_0" data-uia="plan-grid-plan-selector+label-text_1_stream_name">
-                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_0"  value="314001031" />
+                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_0" onClick={onClick} value="314001031" />
                                     <span className="m1_planGrid__selectorLabel m1_planGrid__planLabel">베이식</span>
                                 </label>
                                 <label className="m1_planGrid__selectorChoice m1_planGrid__planChoice" htmlFor="planGrid_planChoice_1" data-uia="plan-grid-plan-selector+label-text_2_stream_name">
-                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_1"  value="10322" />
+                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_1" onClick={onClick}  value="10322" />
                                     <span className="m1_planGrid__selectorLabel m1_planGrid__planLabel">스탠다드</span>
                                 </label>
                                 <label className="m1_planGrid__selectorChoice m1_planGrid__planChoice" htmlFor="planGrid_planChoice_2" data-uia="plan-grid-plan-selector+label-text_4_stream_name">
-                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_2"  value="10341" defaultChecked />
+                                    <input type="radio" name="planChoice" className="m1_planGrid__selectorInput m1_planGrid__planInput" id="planGrid_planChoice_2" onClick={onClick}  value="10341" defaultChecked />
                                     <span className="m1_planGrid__selectorLabel m1_planGrid__planLabel">프리미엄</span>
                                 </label>
                             </div>
@@ -157,7 +271,7 @@ const PlanFrom = () => {
                     </div>
                 </div>
                 <div className="m1_submitBtnContainer">
-                    <button type="button" autoComplete="off" tabIndex="0" className="m1_nf-btn m1_nf-btn-primary m1_nf-btn-solid m1_nf-btn-oversize" data-uia="cta-plan-selection" placeholder="planSelection_button_continue">다음</button>
+                    <button type="button" autoComplete="off"  tabIndex="0" className="m1_nf-btn m1_nf-btn-primary m1_nf-btn-solid m1_nf-btn-oversize" data-uia="cta-plan-selection" placeholder="planSelection_button_continue" onClick={onPay}>다음</button>
                 </div>
             </div>
         </div>
