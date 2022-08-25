@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./reset.css"
+
 import Main from "./components/main/Main";
 import Detail from "./components/detail/Detail";
 import MyPage from "./components/my_page/MyPage";
@@ -10,25 +9,14 @@ import MypagePassword from "components/my_page/MypagePassword";
 import ScrollTop from "components/main/ScrollTop";
 import Linked from "components/detail/Linked";
 import SignUp from "components/user/SignUp"
-import useStore from "store";
 import $ from 'jquery';
-
 import AdminChat from "components/service_center/adminChat/AdminChat";
 import DetailForMovie from "components/detail/DetailForMovie";
-
 import Payment from "components/my_page/payment/Payment";
 import Login from "components/login/Login";
 import AddProfile from "components/login/AddProfile";
 
 function App() {
-  const [hello, setHello] = useState('')
-  const {val , valEmail , valPhone} = useStore();
-
-  useEffect(() => {
-    axios.get('/hello')
-    .then(response => setHello(response.data))
-    .catch(error => console.log(error));
-  }, [])
 
   return (
     <BrowserRouter>
@@ -38,9 +26,13 @@ function App() {
           localStorage.getItem('profile_id')===null? 
           <>
           <Route path="/">
-          <Route index element={<Login/> }/>
-          </Route>
-          <Route path="/addProfile" element={<AddProfile/>}>
+          <Route index element={<Login/> }/></Route>
+          <Route path="/addProfile" element={<AddProfile/>}></Route>
+          {/* login */}
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path='/signUp'>
+            <Route index element={<SignUp/>}/>
+            <Route path=":detail" element={<SignUp/>}/>
           </Route>
           </>
         :
@@ -63,13 +55,6 @@ function App() {
           <Route index element={<Payment/>}/>
           <Route path=":detail" element={<Payment/>}/>
         </Route>
-        {/* login */}
-        <Route path='/signUp'>
-          <Route index element={<SignUp/>}/>
-          <Route path=":detail" element={<SignUp/>}/>
-        </Route>
-        
-        {/* hong */}
 
         {/* hee */}
         <Route path="/detail" element={ <Detail /> }></Route>
@@ -83,9 +68,7 @@ function App() {
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 
-
         <Route path="/admin_chat" element={<AdminChat />}></Route>
-
 
         <Route path="/login" element={<Login/>}/>
         <Route path="/addProfile" element={<AddProfile/>}/>
