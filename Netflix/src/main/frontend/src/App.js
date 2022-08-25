@@ -37,46 +37,44 @@ function App() {
           </>
         :
 
-        <>
-        {/* smile */}
-        <Route path="/">
-          <Route index element={<Main/> }/>
-          <Route path=":tab" element={ <Main/> }/>
-        </Route>
-        <Route path="/container" element={ <MypagePassword/> }></Route>
-        {/* smile */}
+          <>
+          {/* smile */}
+          <Route path="/">
+            <Route index element={<Main/> }/>
+            <Route path=":tab" element={ <Main/> }/>
+          </Route>
+          <Route path="/container" element={ <MypagePassword/> }></Route>
+          {/* smile */}
 
-        {/* hong */}
-        <Route path="/my">
-          <Route index element={<MyPage/>}/>
-          <Route path=":detail" element={<MyPage/>}/>
-        </Route>
-        <Route path="/payment">
-          <Route index element={<Payment/>}/>
-          <Route path=":detail" element={<Payment/>}/>
-        </Route>
+          {/* hong */}
+          <Route path="/my">
+            <Route index element={<MyPage/>}/>
+            <Route path=":detail" element={<MyPage/>}/>
+          </Route>
+          <Route path="/payment">
+            <Route index element={<Payment/>}/>
+            <Route path=":detail" element={<Payment/>}/>
+          </Route>
 
-        {/* hee */}
-        <Route path="/detail" element={ <Detail /> }></Route>
-        <Route path="/detailM" element={ <DetailForMovie /> }></Route>
-        <Route path="/detail/:detail" element={ <Linked /> }></Route>
-        <Route path="/detailM/:detail" element={ <Linked /> }></Route>
-        {/* hee */}
-        
-        
-        <Route path="/service" element={ <ServiceCenter/> }></Route>
-        <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
-        <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
+          {/* hee */}
+          <Route path="/detail" element={ <Detail /> }></Route>
+          <Route path="/detailM" element={ <DetailForMovie /> }></Route>
+          <Route path="/detail/:detail" element={ <Linked /> }></Route>
+          <Route path="/detailM/:detail" element={ <Linked /> }></Route>
+          {/* hee */}
+          
+          
+          <Route path="/service" element={ <ServiceCenter/> }></Route>
+          <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
+          <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 
-        <Route path="/admin_chat" element={<AdminChat />}></Route>
+          <Route path="/admin_chat" element={<AdminChat />}></Route>
 
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/addProfile" element={<AddProfile/>}/>
-        </>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/addProfile" element={<AddProfile/>}/>
+          </>
         }
       </Routes>
-       	{/* <br/> */}
-        {/*  백엔드에서 가져온 데이터입니다 : { helloo }  */}
     </BrowserRouter>
   );
 }

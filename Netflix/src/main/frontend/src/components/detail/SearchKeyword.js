@@ -2,7 +2,7 @@ import React from 'react';
 import 'css/detail/genre.css';
 import { Link, useLocation } from 'react-router-dom';
 
-const SearchGenre = () => {
+const SearchKeyword = () => {
   const location = useLocation();
   const name = location.state.name;
 
@@ -1447,4 +1447,4 @@ const SearchGenre = () => {
   );
 };
 
-export default SearchGenre;
+export default SearchKeyword;
