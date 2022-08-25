@@ -29,6 +29,7 @@ const SignUpComponets = () => {
         const phone = document.getElementById('id_phone').value
         const error = document.getElementsByClassName('m1_inputError');
         let checkPwd = false;
+        console.log('gdg')
         if(pwd.length <6) {
             error[1].innerText='6자 이상을 입력해주세요.'
         }
