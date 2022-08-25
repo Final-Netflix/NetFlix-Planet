@@ -27,7 +27,7 @@ const UserChatRoom = () => {
     const createData = {
         'chat_code': code,
         'room_title': subject,
-        'profile_id' : 3
+        'profile_id' : localStorage.getItem('profile_id')
     }
     const createChat=()=>{
         axios({
@@ -37,6 +37,7 @@ const UserChatRoom = () => {
           }).then(function(response){
             console.log(response);
           });
+          
     }
         
     const createCodeInput=(e)=>{
@@ -50,7 +51,7 @@ const UserChatRoom = () => {
         setJoinCode(e.target.value);
     }
     const joinData = {
-        'profile_id': 3,
+        'profile_id': localStorage.getItem('profile_id'),
         'chat_code' : joinCode
     }
     const joinChatRoom=()=>{
@@ -63,6 +64,8 @@ const UserChatRoom = () => {
           .catch(error => console.log(error));
     }
     const [chatRoomId, setChatRoomId] = useState('');
+    const isLogin = localStorage.getItem('isLogin');
+    console.log("isLogin | " + isLogin);
     
     return (
         <div className="chatW_userChatRoom" >

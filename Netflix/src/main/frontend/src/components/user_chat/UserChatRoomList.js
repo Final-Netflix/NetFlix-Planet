@@ -3,52 +3,80 @@ import React, { useEffect, useState } from 'react';
 
 const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
     const [data, setData]=useState([])
+    const [makerList, setMakerList]=useState([])
     const qs = require('qs');
+    const [chatCheck,setChatCheck] = useState(1);
+    setTimeout(function() {
+        setChatCheck(chatCheck+1);
+    }, 1000);
     const userData = {
-        'profile_id': 3
+        'profile_id': localStorage.getItem('profile_id')
     }
     useEffect(()=> {
         axios({
             method : 'post',
             url : 'http://localhost:8080/getListChatRoom',
             data : qs.stringify(userData)
-          })
-          .then(res => {
-                setData(res.data);
-            })
-          .catch(error => console.log(error));
-        
-    },[data]);
+        })
+        .then(res => {
+            setData(res.data);
+            
+        })
+        .catch(error => console.log(error));
+    
+       
+    },[chatCheck]);
+
+    
 
     const test = (e) => {
-        //const findId = document.querySelector('.'+e.target.className + '.chatW_nameInput').value;
-        let findId;
-        if(e.target.className !=='chatW_span'){
-            findId = e.target.childNodes[0].value;
-        }else{
-            findId = e.target.previousSibling.value;
-        }
-        //const findId= e.target.querySelector('.chatW_nameInput').value;
+        let findId = e.target.closest('.chatW_listLi').childNodes[0].value;
+       
         setChatRoomId(findId);
     }
 
     return (
         
         <div className="chatW_hatRoomListForm">
-            <span>채팅방 수  : {data.length} 개</span>
-            {
-                data.map(item=>
-                    <>
-                        <ul className='chatW_listUl'onClick={changeChattionView}>
-                            <li className='chatW_listLi' onClick={ test }>
+            <div className='mb-[30px]'>
+                <span className='text-[30px] text-[#cccccc]'>채팅방 목록</span>
+
+            </div>
+            {/* <span>채팅방 수  : {data.length} 개</span> */}
+            <ul className='chatW_listUl 'onClick={changeChattionView}>
+                <li className='flex justify-between'>
+                    <div>
+                        <span className='ml-[10px]'>채팅방 이름</span>
+
+                    </div>
+                    <div>
+                        <span>방장</span>
+                    </div>
+                </li>
+                {
+                    data.map(item=>
+                        <>
+                            <li className='chatW_listLi mt-[20px] cursor-pointer flex justify-between' onClick={ test }>
                                 <input type='hidden' className='chatW_nameInput' value={item.chat_room_id}></input>
-                                <span className='chatW_span' >{item.room_title}</span>
+                                <div>
+                                    <span className='chatW_span text-[20px] text-[#cccccc] ml-[10px]' >{item.room_title}</span>
+                                </div>
+                                <div className='flex'>
+                                    <div>
+                                        <img src={item.img_path} className="w-[20px] h-[20px] ml-[30px]"></img>
+
+                                    </div>
+                                    <div>
+                                    <span className='ml-[5px] leading-[20px]'>{item.profile_name}</span>
+
+                                    </div>
+                                </div>
                             </li>
-                        </ul>
-                    </>
-                )
-                
-            }
+                        </>
+                    )
+                    
+                }
+            </ul>
         </div>
     );
 };

@@ -39,12 +39,12 @@
   		select chat_room_id from CHAT_ROOM where CHAT_CODE = #{chat_code}
   	</select>
   	
-  	<select id="getListChatRoom" resultType="userChatRoom" parameterType="java.util.Map">
+  	<!-- <select id="getListChatRoom" resultType="userChatRoom" parameterType="java.util.Map">
   		select * from CHAT_ROOM
 			LEFT OUTER JOIN CHAT_PARTICIPANT
-    		On CHAT_PARTICIPANT.PROFILE_ID = #{profile_id}<!-- 로그인 한사람 -->
+    		On CHAT_PARTICIPANT.PROFILE_ID = #{profile_id}로그인 한사람
             where CHAT_ROOM.CHAT_ROOM_ID = CHAT_PARTICIPANT.CHAT_ROOM_ID
-  	</select>
+  	</select> -->
   	<select id="chatRoomSeq" resultType="int">
   		select max(CHAT_ROOM_ID) from CHAT_ROOM
   	</select>
@@ -68,8 +68,13 @@
   		)
   	</insert>
   	<select id="getUserChatList" resultType="userChat" parameterType="java.util.Map">
-  		select * from CHAT where chat_room_id=#{chat_room_id}
+  		select * from CHAT as a Inner Join USER_PROFILE as b on a.PROFILE_ID = b.PROFILE_ID and a.chat_Room_id = #{chat_room_id}
   		
+  	</select>
+  	<select id="getListChatRoom" resultType="userChatRoom" parameterType="java.util.Map">
+  		SELECT * FROM (select CHAT_ROOM_ID from CHAT_PARTICIPANT WHERE PROFILE_ID = #{profile_id}) P
+		LEFT JOIN CHAT_ROOM CR ON P.CHAT_ROOM_ID = CR.CHAT_ROOM_ID
+		LEFT JOIN USER_PROFILE UP ON UP.PROFILE_ID = CR.PROFILE_ID;
   	</select>
   </mapper>
  

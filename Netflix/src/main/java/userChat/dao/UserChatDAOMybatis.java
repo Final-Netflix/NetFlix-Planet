@@ -59,4 +59,10 @@ public class UserChatDAOMybatis implements UserChatDAO {
 		return sqlSession.selectList("userChatSQL.getUserChatList",map);
 	}
 
+	@Override
+	public List<UserChatRoomDTO> gitChatRoomMakerList(Map<String, String> map) {
+		
+		return sqlSession.selectList("userChatSQL.gitChatRoomMakerList",map);
+	}
+
 }
