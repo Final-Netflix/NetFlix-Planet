@@ -72,6 +72,7 @@ const Header = ({ scroll, search, setSearch }) => {
         }
     }, [search])
 
+
     useEffect(()=>{
         axios({
             method : 'post',
