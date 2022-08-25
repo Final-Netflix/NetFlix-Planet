@@ -35,5 +35,11 @@
   			1
   		)
   	</insert>
+  	<delete id="deleteProfile" parameterType="java.util.Map">
+  		delete from USER_PROFILE where profile_id = #{profile_id}
+  	</delete>
+  	<insert id="updateProfile" parameterType="java.util.Map">
+  		update USER_PROFILE set PROFILE_NAME = #{profile_name} where profile_id = #{profile_id}
+  	</insert>
   </mapper>
  
