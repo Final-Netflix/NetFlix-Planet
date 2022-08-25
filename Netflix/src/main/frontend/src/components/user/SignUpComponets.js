@@ -8,6 +8,7 @@ const SignUpComponets = () => {
     let checkEmail ;
     const qs = require('qs');
     let verify;
+    
     //개인정보 수집 동의 함수
     const changeCheck = (e)=> {
         if(e.target.checked) {
