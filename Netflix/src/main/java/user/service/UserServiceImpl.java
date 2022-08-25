@@ -47,11 +47,11 @@ public class UserServiceImpl implements UserService {
 	public String signUp(UserDTO userDTO) {
 		String check = userDAO.signUpCheck(userDTO);
 		System.out.println(check);
-		if(check == "0") {
+		if(check.equals("0")) {
 			userDAO.signUp(userDTO);
-			return check="0";
+			return "0";
 		}else {
-			return check="1";
+			return "1";
 		}
 	}
 

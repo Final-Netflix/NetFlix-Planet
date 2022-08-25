@@ -8,6 +8,9 @@ const InfoText = () => {
 
   const [movies, setMovies] = useState([]);
   const [credits, setCredits] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [keywords, setKeywords] = useState([]);
+  const [episodeCounts, setEpisodeCounts] = useState([]);
 
   const getMovies = async () => {
     const json = await(
@@ -23,10 +26,38 @@ const InfoText = () => {
       ).json();
     setCredits(json.cast);
   }
+  const getGenre = async () => {
+    const json = await(
+        await fetch(
+            `https://api.themoviedb.org/3/genre/movie/list?api_key=${ KEY }&language=ko-KR`)
+        ).json();
+      setGenres(json.genres);
+    /* console.log("hihihi | " + JSON.stringify(json)); */
+  }
+  const getKeywords = async () => {
+    const json = await(
+        await fetch(
+            `https://api.themoviedb.org/3/movie/682110/keywords?api_key=${ KEY }&language=ko-KR`)
+        ).json();
+    setKeywords(json.keywords);
+
+    /* console.log("hihihi | " + JSON.stringify(json)); */
+  }
+
+  const getEpisodeCounts = async () => {
+    const json = await(
+      await fetch(
+          `https://api.themoviedb.org/3/tv/197067?api_key=${ KEY }&language=ko-KR`)
+      ).json();
+      setEpisodeCounts(json.seasons);
+  }
 
   useEffect(() => {
     getMovies();
     getNames();
+    getGenre();
+    getKeywords();
+    getEpisodeCounts();
   }, [])
 
 
@@ -70,7 +101,11 @@ const InfoText = () => {
                         <span className='maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[16px] leading-[1.4] cursor-pointer'>15+</span>
                       </span>
                     </a>
-                    <span className='duration whitespace-nowrap mr-[0.5em] text-[#fff] text-[16px] leading-[1.4]'>에피소드 12개</span>
+                    { episodeCounts.map (episodeCount =>
+                    <span className='duration whitespace-nowrap mr-[0.5em] text-[#fff] text-[16px] leading-[1.4]'>
+                      에피소드 { episodeCount.episode_count }개
+                    </span>
+                    )}
                     <span className='player_feature_badge mr-[0.5em] border-[1px] border-solid border-[hsla(0,0%,100%,.4)] rounded-[3px] text-[hsla(0,0%,100%,.9)] text-[.7em] py-0 px-[0.5em] whitespace-nowrap leading-[1.4]'>HD</span>
                   </div>
                 </div>
@@ -83,7 +118,8 @@ const InfoText = () => {
               <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>
                 { movie.overview }
               </div>
-            </p>)}
+            </p>
+            )}
           </div>
           <div className='detailMetadata_right flex flex-col text-[#fff] text-[16px] leading-[1.4] font-sans'>
             <div className='previewModal_tags_person text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
@@ -91,12 +127,13 @@ const InfoText = () => {
               
               { credits.map (credit => 
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-              <Link to='searchActor'>
+              <Link to='searchActor' state = {{id:credit.id, name:credit.name }}>
                 <a className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  {credit.name},
+                  { credit.name },
                 </a>
               </Link>
-              </span>)}
+              </span>
+              )}
 
               <span className='tag_more text-[14px] leading-[20px] break-words font-sans'>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
@@ -109,28 +146,34 @@ const InfoText = () => {
               
               { movies.map (movie => 
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                <Link to='searchGenre'>
+                { genres.map (genre =>
+                <Link to='searchGenre' state = {{id:genre.id, name:genre.name }}>
+                
+                {
+                  movie.genre_ids ==  genre.id  &&
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  { movie.genre_ids },
+                   { genre.name },
                 </a>
+                }
+                 
                 </Link>
-              </span>)}
+                )}
+              </span>
+              )}
 
             </div>
             <div className='previewModal_tags_series text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>시리즈 특징:</span>
+              { keywords.map (keyword =>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-              <Link to='searchGenre'>
+              <Link to='searchKeyword' state = {{id:keyword.id, name:keyword.name }}>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  색다른,
+                  { keyword.name },
                 </a>
               </Link>
               </span>
-              <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
-                  흥미진진
-                </a>
-              </span>
+              )}
+              
             </div>
           </div>
         </div>
