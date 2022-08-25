@@ -88,6 +88,7 @@ function App() {
 
 
         <Route path="/login" element={<Login/>}/>
+        <Route path="/addProfile" element={<AddProfile/>}/>
         </>
         }
       </Routes>
