@@ -136,7 +136,7 @@ const Login = () => {
                     
                     <div>
                         <button type="button" onClick={login} className='text-[#cccccc] m-[20px]'>로그인</button>
-                        <Link to ='/' className='text-[#cccccc]'><span>메인으로</span></Link>
+                        <Link to ='/signup' className='text-[#cccccc]'><span>회원가입</span></Link>
                     </div>
                 </div>
             }

@@ -37,9 +37,13 @@ function App() {
           localStorage.getItem('profile_id')===null? 
           <>
           <Route path="/">
-          <Route index element={<Login/> }/>
-          </Route>
-          <Route path="/addProfile" element={<AddProfile/>}>
+          <Route index element={<Login/> }/></Route>
+          <Route path="/addProfile" element={<AddProfile/>}></Route>
+          {/* login */}
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path='/signUp'>
+            <Route index element={<SignUp/>}/>
+            <Route path=":detail" element={<SignUp/>}/>
           </Route>
           </>
         :
@@ -62,13 +66,6 @@ function App() {
           <Route index element={<Payment/>}/>
           <Route path=":detail" element={<Payment/>}/>
         </Route>
-        {/* login */}
-        <Route path='/signUp'>
-          <Route index element={<SignUp/>}/>
-          <Route path=":detail" element={<SignUp/>}/>
-        </Route>
-        
-        {/* hong */}
 
         {/* hee */}
         <Route path="/detail" element={ <Detail /> }></Route>
@@ -82,9 +79,7 @@ function App() {
         <Route path="/service/:detail" element={<ServiceCenter/>}></Route>
         <Route path="/service/:detail/:category" element={<ServiceCenter/>}></Route>
 
-
         <Route path="/admin_chat" element={<AdminChat />}></Route>
-
 
         <Route path="/login" element={<Login/>}/>
         </>
