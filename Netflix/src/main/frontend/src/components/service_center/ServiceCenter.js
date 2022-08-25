@@ -57,7 +57,7 @@ const ServiceCenter = () => {
             <div className='k1-box w-[320px] h-[500px] fixed right-0 bottom-0 '>
                 <iframe
                     className='k1-iframe h-[100%] bg-white '
-                    src={`http://localhost:5000?nickname=${'옥지'}`}
+                    src={`http://localhost:5000?nickname=${localStorage.getItem('profile_name')}`}
                 />
             </div>
             }
