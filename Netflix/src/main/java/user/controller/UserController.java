@@ -76,6 +76,19 @@ public class UserController {
 	public UserProfileDTO addProfile(@RequestParam Map<String,String> map) {
 		return userService.addProfile(map);
 	}
+	@PostMapping("/deleteProfile")
+	@ResponseBody
+	public void deleteProfile(@RequestParam Map<String,String> map) {
+		userService.deleteProfile(map);
+	}
+	@PostMapping("/updateProfile")
+	@ResponseBody
+	public void updateProfile(@RequestParam Map<String,String> map) {
+		userService.updateProfile(map);
+	}
+	
+	
+	
 }
 
 
