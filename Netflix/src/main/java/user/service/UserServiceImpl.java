@@ -60,4 +60,14 @@ public class UserServiceImpl implements UserService {
 		return userDAO.emailCheck(user_email);
 	}
 
+	@Override
+	public void insertSubscribe(Map<String, String> map) {
+		System.out.println(map);
+		//멤버십 단계 상승 시켜주기
+		userDAO.membershipUp(map);
+		//빌링키 DB에 저장하기
+		int seq= userDAO.getPayType()+1; 
+		userDAO.insertBilling(map);
+	}
+
 }

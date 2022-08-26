@@ -25,4 +25,13 @@ public interface UserDAO {
 
 	public int getProfileIdSeq();
 
+
+	public void membershipUp(Map<String, String> map);
+
+
+	public void insertBilling(Map<String, String> map);
+
+
+	public int getPayType();
+
 }

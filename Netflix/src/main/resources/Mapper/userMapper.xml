@@ -35,5 +35,14 @@
   			1
   		)
   	</insert>
+  	<update id="membershipUp" parameterType="java.util.Map">
+  		update USER set memberShip = 1 where user_email=#{user_email} 
+  	</update>
+  	<insert id="insertBilling" parameterType="java.util.Map">
+  		insert into PAY_TYPE values(#{customer_uid}, #{user_email} , )
+  	</insert>
+  	<select id="getPayType" resultType="int">
+  		select count(*) from PAY_TYPE
+  	</select>
   </mapper>
  

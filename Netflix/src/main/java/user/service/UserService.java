@@ -21,4 +21,6 @@ public interface UserService {
 
 	public String emailCheck(String user_email);
 
+	public void insertSubscribe(Map<String, String> map);
+
 }

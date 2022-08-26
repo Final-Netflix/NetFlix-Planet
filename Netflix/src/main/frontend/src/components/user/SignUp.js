@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'css/user/signUp.css'
 import SignUpComponets from './SignUpComponets';
 import { useParams } from 'react-router-dom';
@@ -7,6 +7,14 @@ import logo from 'image/main/logo.png';
 
 const SignUp = () => {
     const {detail} =useParams();
+
+    useEffect(()=>  {
+        if(sessionStorage.getItem('user_email')) {
+            document.getElementsByClassName('m1_authLinks m1_signupBasicHeader')[0].innerText = '로그아웃'
+        }else {
+            document.getElementsByClassName('m1_authLinks m1_signupBasicHeader')[0].innerText = '로그인'
+        }
+    },[])
     
     return (
         <div id="m1_appMountPoint">

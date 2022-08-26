@@ -1,7 +1,10 @@
+import axios from 'axios';
+import { application } from 'express';
 import React, { useState } from 'react';
 import useStore from 'store';
 const PlanFrom = () => {
-    const {price , setPrice} = useStore()
+    const qs = require('qs');
+    const {price , setPrice ,membership , setMembership , membershipName , setMembershipName} = useStore()
     //멤버십 선택
     const onClick=(e)=> {
         const id = e.target.id
@@ -27,8 +30,9 @@ const PlanFrom = () => {
             td[15].classList.remove('m1_planGrid__cell--isSelected')
 
             setPrice(9500);
-
-            
+            setMembership(1);
+            setMembershipName('플래닛 베이식 테스트');
+          
         }else if (id ===id1) {
             td[2].classList.add('m1_planGrid__cell--isSelected')
             td[6].classList.add('m1_planGrid__cell--isSelected')
@@ -47,7 +51,9 @@ const PlanFrom = () => {
             td[15].classList.remove('m1_planGrid__cell--isSelected')
 
             setPrice(13500);
-
+            setMembership(2);
+            setMembershipName('플래닛 스탠다드 테스트');
+          
         }else if (id ===id2) {
             td[3].classList.add('m1_planGrid__cell--isSelected')
             td[7].classList.add('m1_planGrid__cell--isSelected')
@@ -66,36 +72,30 @@ const PlanFrom = () => {
             td[14].classList.remove('m1_planGrid__cell--isSelected')
 
             setPrice(17000);
-        
-
+            setMembership(3);
+            setMembershipName('플래닛 프리미엄 테스트');
+    
         }
     }
-    //다음버튼 누르면 결제창
-   
-   
-
-
+    //다음버튼 누르면 결제창   
     const onPay = ()=> {
         const {IMP} =window;
         IMP.init('imp68158508');
-
+        
+        
         const data = {
             pg: 'kakaopay',                           // PG사
             pay_method: 'card',                           // 결제수단
             merchant_uid: `mid_${new Date().getTime()}` ,  // 주문번호
-            amount: 100,                                 // 결제금액
-            name: '플래닛 테스트 결제',
-            customer_uid: "hong_0001_0004" ,                  // 주문명
-            buyer_name: '홍길동',                           // 구매자 이름
-            buyer_tel: '01012341234',                     // 구매자 전화번호
-            buyer_email: 'example@example',               // 구매자 이메일
-            buyer_addr: '신사동 661-16',                    // 구매자 주소
-            buyer_postcode: '06018',                      // 구매자 우편번호
-        
-        };
-        
+            amount: price,                                 // 결제금액 9500 13500 17000
+            name: membershipName,                     //주문명
+            customer_uid: `billing_${sessionStorage.getItem('phone')}`,                  
+            buyer_tel: sessionStorage.getItem('phone'),
+            buyer_name : '',                     // 구매자 전화번호
+            buyer_email: sessionStorage.getItem('user_email'),               // 구매자 이메일
+           };
+
         IMP.request_pay(data , callback);
-        
         
     }
     
@@ -109,12 +109,65 @@ const PlanFrom = () => {
                 status
         } = response;
         if(success) {
-            alert('ㅎㅇㅎㅇ')
+            console.log('성공!!!' )
+            axios({
+                url : '/insertSubscribe',
+                method : 'post',
+                data : qs.stringify({
+                    'membership_id' : membership,
+                    'customer_uid' : `billing_${sessionStorage.getItem('phone')}`,
+                    'user_email' : sessionStorage.getItem('user_email')
+                })
+            })
         }else {
             alert(`ㅂ2ㅂ2 : ${error_msg}`);
         }
     }
     
+    app.post("/billings", async (req, res) => {
+        try {
+          const { customer_uid } = req.body; // req의 body에서 customer_uid 추출
+          // 인증 토큰 발급 받기
+          const getToken = await axios({
+            url: "https://api.iamport.kr/users/getToken",
+            method: "post", // POST method
+            headers: { "Content-Type": "application/json" }, // "Content-Type": "application/json"
+            data: {
+              imp_key: "1837862848311421", // REST API 키
+              imp_secret: "8W6lJn7MqHhELgvxS7IwmhhjgWxDFWRQwTtXsQ18iDpmHusNGZsTwRvIvpkfGtSOkN7f0rsGLQQmLnGv" // REST API Secret
+            }
+          });
+          const { access_token } = getToken.data.response; // 인증 토큰
+          
+          // 결제(재결제) 요청
+          const paymentResult = await axios({
+            url: 'https://api.iamport.kr/subscribe/payments/again',
+            method: "post",
+            headers: { "Authorization": access_token }, // 인증 토큰을 Authorization header에 추가
+            data: {
+              customer_uid,
+              merchant_uid: "order_monthly_0001", // 새로 생성한 결제(재결제)용 주문 번호
+              amount: 8900,
+              name: "월간 이용권 정기결제"
+            }
+          });
+          const { code, message } = paymentResult;
+          if (code === 0) { // 카드사 통신에 성공(실제 승인 성공 여부는 추가 판단이 필요함)
+            if ( paymentResult.status === "paid" ) { //카드 정상 승인
+              res.send({ ... });
+            } else { //카드 승인 실패 (예: 고객 카드 한도초과, 거래정지카드, 잔액부족 등)
+              //paymentResult.status : failed 로 수신됨
+              res.send({ ... });
+            }
+            res.send({ ... });
+          } else { // 카드사 요청에 실패 (paymentResult is null)
+            res.send({ ... });
+          }
+        } catch (e) {
+          res.status(400).send(e);
+        }
+      });
+
     return (
         <div id='m1_planform' className="m1_simpleContainer" data-transitioned-child="true">
             <div className="m1_centerContainer m1_narrowCenterContainer" style={{display: 'block', transform: 'none', opacity: 1, transitionDuration: '250ms'}}>
