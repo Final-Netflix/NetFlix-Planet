@@ -75,5 +75,15 @@ public class UserDAOMybatis implements UserDAO {
 	public int getPayType() {
 		return sqlSession.selectOne("userSQL.getPayType");
 	}
+	@Override
+	public void deleteProfile(Map<String, String> map) {
+		sqlSession.delete("userSQL.deleteProfile",map);
+		
+	}
+
+	@Override
+	public void updateProfile(Map<String, String> map) {
+		sqlSession.delete("userSQL.updateProfile",map);
+	}
 
 }

@@ -81,9 +81,24 @@ public class UserController {
 	@ResponseBody
 	public void insertSubscribe(@RequestParam Map<String, String> map) {
 		userService.insertSubscribe(map);
-		
 	}
- }
+ 
+
+	@PostMapping("/deleteProfile")
+	@ResponseBody
+	public void deleteProfile(@RequestParam Map<String,String> map) {
+		userService.deleteProfile(map);
+	}
+	@PostMapping("/updateProfile")
+	@ResponseBody
+	public void updateProfile(@RequestParam Map<String,String> map) {
+		userService.updateProfile(map);
+	}
+	
+	
+	
+}
+
 
 
 

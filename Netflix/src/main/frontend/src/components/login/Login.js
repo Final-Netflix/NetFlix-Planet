@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useStores from 'hooks/useStores'
+import '../../css/user/login.css'
+import LoginHeader from './LoginHeader';
+
 
 const Login = () => {
     const { authStore } = useStores();
@@ -33,6 +36,7 @@ const Login = () => {
           })
           .then(res => {
             localStorage.setItem('user_email', res.data.user_email);
+            localStorage.setItem('phone',res.data.phone);
             if(localStorage.getItem('user_email')==='undefined'){
                 alert('아이디 비번확인');
                 setIsLogin(false);
@@ -63,6 +67,7 @@ const Login = () => {
         .catch(error => console.log(error));
         
     },[]);
+
     useEffect(()=>{
         console.log(refresh);
     },[refresh])
@@ -82,16 +87,19 @@ const Login = () => {
             localStorage.setItem('profile_id',res.data.profile_id);
             localStorage.setItem('profile_name',res.data.profile_name);
             localStorage.setItem('img_path',res.data.img_path);
+            // 폰을 추가해주세요
+            //localStorage.setItem('phone',res.data.phone);
             window.location.href='/';
         })
         .catch(error => console.log(error));
     }
     return (
-        <div className='bg-[#141414] p-[2%] h-[100%]'>
+        <div className='bg-[#141414] h-[100%]'>
+            <LoginHeader/>
             {
                 isLogin? 
                 <div>
-                    <div><h1 className='text-[#cccccc] m-0'>프로필 선택(안나오면 새로고침)</h1></div>
+                    <div><h1 className='text-[#cccccc] m-0'>프로필 선택</h1></div>
                     
                     <ul className="display: flex">
                         {
@@ -100,7 +108,7 @@ const Login = () => {
                                     <li className='profileForm m-[30px]'>
                                         <input type="hidden" value={item.profile_id}></input>
                                         <div onClick={selectProfile} className="text-center">
-                                            <img src={item.img_path} className="w-[200px] h-[200px]"></img>
+                                            <img src={item.img_path} className="w-[200px] h-auto"></img>
                                             <div className="m-[20px]">
                                                 <span >{item.profile_name}</span>
 
@@ -129,20 +137,28 @@ const Login = () => {
                     <button onClick={logoutBtn} className="m-[30px] text-[#cccccc]">로그아웃</button>
                 </div>
                 :
-                <div>
-                    <div className='m-[20px]'>
-                        <span className='text-[#cccccc] m-[20px]'>아이디 : </span>
-                        <input className='w-[400px] h-[30px]' type="text" onChange={idInput} value={idInputVal}/>
+                <div className="wh1-login-content max-w-[450px] mx-auto">
+                    <h1 className='text-white'>로그인</h1>
+                    <div className="wh-idpwd-inputForm bg-[#333] mb-[24px]">
+                        <label placeholder>
+                            <label for="wh-id-box" className="wh-placeLabel">이메일 주소</label>
+                            <input id="wh-id-box"className='wh-nfTextField h-[50px] bg-[transparent] w-[100%] boarder-[0]' type="text" onChange={idInput} value={idInputVal}/>
+                        </label>
                     </div>
-                    <div className='m-[20px]'>
-                        <span className='text-[#cccccc] m-[20px]'>비밀번호 : </span>
-                        <input className='w-[400px] h-[30px]' type="password" onChange={pwdInput} value={pwdInputVal}/>
+                    <div className='wh-idpwd-inputForm bg-[#333]'>
+                        <label placeholder>
+                            <label for="wh-pwd-box" className="wh-placeLabel">비밀번호</label>
+    
+                        <input  id="wh-pwd-box" className='wh-nfTextField h-[50px] bg-[transparent] w-[100%] boarder-[0]' type="password" onChange={pwdInput} value={pwdInputVal}/>
+                        </label>
                     </div>
 
                     
                     <div>
+
                         <button type="button" onClick={login} className='text-[#cccccc] m-[20px]'>로그인</button>
                         <Link to ='/signup' className='text-[#cccccc]'><span>회원가입</span></Link>
+
                     </div>
                 </div>
             }

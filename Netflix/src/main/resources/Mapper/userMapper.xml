@@ -35,6 +35,7 @@
   			1
   		)
   	</insert>
+
   	<update id="membershipUp" parameterType="java.util.Map">
   		update USER set memberShip = 1 where user_email=#{user_email} 
   	</update>
@@ -44,5 +45,13 @@
   	<select id="getPayType" resultType="int">
   		select count(*) from PAY_TYPE
   	</select>
+
+  	<delete id="deleteProfile" parameterType="java.util.Map">
+  		delete from USER_PROFILE where profile_id = #{profile_id}
+  	</delete>
+  	<insert id="updateProfile" parameterType="java.util.Map">
+  		update USER_PROFILE set PROFILE_NAME = #{profile_name} where profile_id = #{profile_id}
+  	</insert>
+
   </mapper>
  

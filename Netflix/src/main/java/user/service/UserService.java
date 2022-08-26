@@ -23,4 +23,8 @@ public interface UserService {
 
 	public void insertSubscribe(Map<String, String> map);
 
+	public void deleteProfile(Map<String, String> map);
+
+	public void updateProfile(Map<String, String> map);
+
 }
