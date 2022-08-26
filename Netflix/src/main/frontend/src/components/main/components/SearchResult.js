@@ -12,10 +12,10 @@ const SearchResult = ({ search }) => { // search = 아이언맨
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
     const getSearchList = async () => {
-        const apiResult = `https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}`
+        const apiResult = `https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`
         //console.log('apiResult = ' + apiResult)
         const json = await(
-            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}`)
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`)
         ).json();
         setSearchList(json.results);
         //console.log("json.results[0].id = " + json.results[0].id)  // json.results = [object Object],[object Object]

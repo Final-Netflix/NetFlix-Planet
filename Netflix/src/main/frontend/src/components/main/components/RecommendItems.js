@@ -1,6 +1,7 @@
 import React from 'react';
 
 const RecommendItems = ({ item }) => {
+    // console.log(item);
     return (
         <div className="slider-item px-[0.2vw]" style={{width: '100%'}}>
             <div className="title-card-container css-0">
@@ -14,7 +15,7 @@ const RecommendItems = ({ item }) => {
                             <div className="boxart-size-16x9 boxart-container boxart-rounded">
                                 <img
                                     className="boxart-image boxart-image-in-padded-container"
-                                    src={ item.src }
+                                    src={ "https://image.tmdb.org/t/p/w500" + item.poster_path }
                                     alt={ item.title }
                                 />
                                 <div className="fallback-text-container" aria-hidden="true"><p className="fallback-text">{ item.title }</p></div>

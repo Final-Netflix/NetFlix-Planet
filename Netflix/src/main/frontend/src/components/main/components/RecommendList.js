@@ -50,7 +50,7 @@ const RecommendList = ({ data }) => {
             <div className="sliderContent row-with-x-columns">
                 <Slider { ...settings }>
                 {
-                    data.map(item => <RecommendItems key={ item.index } item = { item }/>)   
+                    data.map((item, index) => <RecommendItems key={ index } item = { item }/>)   
                 }
                 </Slider>
             </div>
