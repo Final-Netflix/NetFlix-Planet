@@ -18,8 +18,8 @@ const SearchResultHeaderList = ({ idx }) => { // idx = 10138
         //console.log('0번지? = ' + json.results[0].title)
   
         const arr = [];
-        for (let i=0; i<10; i++) {
-            arr.push(json.results[i].title); 
+        for (let i = 0; i < 10; i++) {
+            arr.push(json.results[i].title + " | ");
             console.log('i번지? = ' + json.results[i].title)
         }
         setContent(arr);
@@ -27,7 +27,7 @@ const SearchResultHeaderList = ({ idx }) => { // idx = 10138
     
      useEffect(() => {
         getContentList();
-    }, []);  
+    }, []);
 
     return (
         <div className="c1-search-title-header">
@@ -36,12 +36,16 @@ const SearchResultHeaderList = ({ idx }) => { // idx = 10138
                     <div className="c1-ptrack-container">
                         <div className="c1-ptrack-content">
                             <div className="c1-suggestionRailContainer">
-                                <span className="c1-suggestionsLabel text-2xl">다음과 관련된 콘텐츠:</span>
+                                <span className="c1-suggestionsLabel text-2xl mt-1">다음과 관련된 콘텐츠:</span>
                                     <div>
-                                        <ul className = "text-2xl">
-                                            {
-                                                <div>{content}</div>
-                                            }
+                                        <ul className = "c1-suggestions text-2xl text-white">
+                                            <li>
+                                                {
+                                                <div className = "mr-10">
+                                                    <a className = "c1-ptrack-content">{ content }</a>
+                                                </div>
+                                                }
+                                            </li>
                                         </ul>
                                     </div>
                             </div>
