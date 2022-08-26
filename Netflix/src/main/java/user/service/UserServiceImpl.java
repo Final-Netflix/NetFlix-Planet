@@ -61,6 +61,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void insertSubscribe(Map<String, String> map) {
+		System.out.println(map);
+		//멤버십 단계 상승 시켜주기
+		userDAO.membershipUp(map);
+		//빌링키 DB에 저장하기
+		int seq= userDAO.getPayType()+1; 
+		userDAO.insertBilling(map);
+	}
+	@Override
 	public void deleteProfile(Map<String, String> map) {
 		userDAO.deleteProfile(map);
 		
@@ -69,7 +78,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateProfile(Map<String, String> map) {
 		userDAO.updateProfile(map);
-		
+
 	}
 
 }

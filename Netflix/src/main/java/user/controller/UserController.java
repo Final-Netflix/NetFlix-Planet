@@ -76,6 +76,14 @@ public class UserController {
 	public UserProfileDTO addProfile(@RequestParam Map<String,String> map) {
 		return userService.addProfile(map);
 	}
+	
+	@PostMapping("/insertSubscribe")
+	@ResponseBody
+	public void insertSubscribe(@RequestParam Map<String, String> map) {
+		userService.insertSubscribe(map);
+	}
+ 
+
 	@PostMapping("/deleteProfile")
 	@ResponseBody
 	public void deleteProfile(@RequestParam Map<String,String> map) {
@@ -90,6 +98,7 @@ public class UserController {
 	
 	
 }
+
 
 
 
