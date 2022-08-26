@@ -61,4 +61,16 @@ public class UserDAOMybatis implements UserDAO {
 		return sqlSession.selectOne("userSQL.getProfileIdSeq");
 	}
 
+	@Override
+	public void deleteProfile(Map<String, String> map) {
+		sqlSession.delete("userSQL.deleteProfile",map);
+		
+	}
+
+	@Override
+	public void updateProfile(Map<String, String> map) {
+		sqlSession.delete("userSQL.updateProfile",map);
+		
+	}
+
 }

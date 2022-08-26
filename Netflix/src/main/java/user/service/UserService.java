@@ -21,4 +21,8 @@ public interface UserService {
 
 	public String emailCheck(String user_email);
 
+	public void deleteProfile(Map<String, String> map);
+
+	public void updateProfile(Map<String, String> map);
+
 }
