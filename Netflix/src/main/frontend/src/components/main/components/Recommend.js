@@ -1,49 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'css/main/recommend.css';
 import RecommendList from './RecommendList';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Recommend = ({ order, classification }) => {
 
     const {tab} = useParams();
-
-    const allClassification = [
-        {type: "series", title: "해외 시리즈"},
-        {type: "series", title: "한국 드라마"},
-        {type: "series", title: "전 세계 예능이 한곳에!"},
-        {type: "series", title: "범죄 시리즈"},
-        {type: "series", title: "우정에 관한 TV 코미디"},
-        {type: "series", title: "액션 & 어드벤처 시리즈"},
-        {type: "series", title: "로맨틱한 시리즈"},
-        {type: "both", title: "시청 중인 콘텐츠"},
-        {type: "both", title: "지금 뜨는 콘텐츠"},
-        {type: "both", title: "백상예술대상 수상작 & 후보작"},
-        {type: "both", title: "새로 올라온 콘텐츠"},
-        {type: "both", title: "취향저격 베스트 콘텐츠"},
-        {type: "both", title: "내가 찜한 콘텐츠"},
-        {type: "both", title: "애니"},
-        {type: "movie", title: "할리우드 영화"},
-        {type: "movie", title: "흥미진진한 영화"},
-        {type: "movie", title: "아시아 영화 & 시리즈"},
-        {type: "movie", title: "스릴러 영화"},
-        {type: "movie", title: "코미디"},
-        {type: "movie", title: "음악 & 뮤지컬"},
-        {type: "movie", title: "어워드 수상 감독"},
-        {type: "new", title: "새로운 콘텐츠"},
-        {type: "new", title: "기다림이 아깝지 않은 콘텐츠"},
-        {type: "new", title: "이번 주 공개 콘텐츠"},
-        {type: "new", title: "다음 주 공개 콘텐츠"},
-    ]
-
-    let tabClassification;
-    
-    tab === undefined ? tabClassification = allClassification.concat() : 
-    tab === 'new'     ? tabClassification = allClassification.concat() : 
-    tab === 'series'  ? tabClassification = allClassification.filter(all => all.type === 'series' || all.type === 'both') : 
-                        tabClassification = allClassification.filter(all => all.type === 'movie' || all.type === 'both');
-
-    const classificationName = tabClassification[classification].title;
-
+    const [classificationArr, setClassificationArr] = useState([]);
     const [data, setData] = useState([
         {index: 1, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABbjb31i4fAWwVXAPu6txU4VkZ1ogJJBEFx3eqps0P4i0PnJczUF189oqry1JPqWIIBH3XLu4_dF2p0h7y1agdNo4qEW-lqJxW7g.webp?r=393', title: '호텔 델루나'},
         {index: 2, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABSNrPz-rc4Xg_CEpc0ztclD1N0TvXsGPzwBsj65CTtS9nJFyz3wLGuquk0tegP4v1ra-6Hb_SiBmMJSGVVyqqMdneGNnoVKHT3M.webp?r=537', title: '달의 연인 - 보보경심 려'},
@@ -86,15 +50,60 @@ const Recommend = ({ order, classification }) => {
         {index: 39, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWtOXCugJ-96UQcdPTW46K_cZ5Zot7dKh79xscqUG_sshZXjUE-lRDJVApK5vfzt-41ARLMPsgn2ynMQdfmgmR-L2pdsUBg-QqzEpgTtv_rTf_FBZkA11c4FA3hTkVvxUdzbaSl6y6-cr6j2uLKhGqIJkXvcOTUEDTjMwAvCBprKil3dkSJWBhuvOLyIMgN7Cmor.webp?r=d99', title: '환혼'},
         {index: 40, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZn-8w0_tRX2HarOW3FtCNu1YdWxhVY0_p3QKNe5u7FLSnjCtN_lEQyJZn5ogTYwD7mjnGmiOYFod0AgfyQGRa0bA6vmAHOtX5A.webp?r=4c3', title: '마음의 소리'},
     ]);
+    const [classificationName, setClassificationName] = useState('');
+    const [videoType, setVideoType] = useState('movie');
+    
+    const KEY = "bc61587b22cd0e5226a33d30e467d867";
+    
+    let search_url;
+    let videoData;
 
     const goNextSlide = () => {
         document.getElementsByClassName("slick-next")[order].click();
     }
-
+    
     const goPrevSlide = () => {
         document.getElementsByClassName("slick-prev")[order].click();
     }
 
+    const getData = async () => {
+        const json1 = await(
+            await fetch(`${search_url}&page=1`)
+        ).json();
+        const json2 = await(
+            await fetch(`${search_url}&page=2`)
+        ).json();
+        setData(json1.results.concat(json2.results));
+    }
+
+    const getClassifications = () => {
+        axios({
+            url: 'http://localhost:8080/getClassifications',
+        }).then(res => {
+            tab === undefined && setClassificationArr(res.data);
+            tab === 'series'  && setClassificationArr(res.data.filter(data => data.classification_type === 'tv'));
+            tab === 'new'     && setClassificationArr(res.data.filter(data => data.classification_type === 'new'));
+            tab === 'movie'   && setClassificationArr(res.data.filter(data => data.classification_type === 'movie'));
+            // tab === undefined && (classificationArr = res.data);
+            // tab === 'series'  && (classificationArr = res.data.filter(data => data.classification_type === 'tv'));
+            // tab === 'new'     && (classificationArr = res.data.filter(data => data.classification_type === 'new'));
+            // tab === 'movie'   && (classificationArr = res.data.filter(data => data.classification_type === 'movie'));
+        });
+    };
+
+    useEffect(() => {
+        if(classificationArr.length != 0){
+            setClassificationName(classificationArr[classification].classification_name);
+            search_url = classificationArr[classification].search_url;
+            if(search_url.includes('tv')) {  setVideoType('tv') }
+            getData();
+        }
+    }, [classificationArr]);
+
+    useEffect(() => {
+        getClassifications();
+    }, []);
+    
     return (
         <div className="lolomoRow lolomoRow_title_card css-0" data-list-context="genre">
             <h2 className="rowHeader css-0">
@@ -109,9 +118,9 @@ const Recommend = ({ order, classification }) => {
             <div className="rowContainer rowContainer_title_card" id="row-2">
                 <div className="ptrack-container">
                     <div className="rowContent slider-hover-trigger-layer">
-                        <div className="slider">
+                        <div className="slider" style={{ padding: '0 3.2%'}}>
                             <span className="handle handlePrev active" onClick={ goPrevSlide } tabIndex="0" role="button" aria-label="이전 콘텐츠 보기"><b className="indicator-icon icon-leftCaret"></b></span>
-                            <RecommendList data={ data } setData={ setData }/>
+                            <RecommendList data={ data } setData={ setData } videoType={ videoType }/>
                             <span className="handle handleNext active" onClick={ goNextSlide } tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>
                         </div>
                     </div>

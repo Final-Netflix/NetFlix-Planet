@@ -11,8 +11,10 @@ const SearchResult = ({ search }) => { // search = 아이언맨
     const [id, setId] = useState();
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
-
+    
     const getSearchMovieList = async () => {
+        const apiResult = `https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`
+        //console.log('apiResult = ' + apiResult)
         const json = await(
             await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`)
         ).json();
