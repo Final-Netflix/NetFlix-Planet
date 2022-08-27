@@ -32,7 +32,6 @@ const InfoText = () => {
             `https://api.themoviedb.org/3/genre/movie/list?api_key=${ KEY }&language=ko-KR`)
         ).json();
       setGenres(json.genres);
-    /* console.log("hihihi | " + JSON.stringify(json)); */
   }
   const getKeywords = async () => {
     const json = await(
