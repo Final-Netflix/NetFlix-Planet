@@ -10,11 +10,11 @@ const New = () => {
         <>
             <div className='h-[75px]'></div>
             <TopTen type='tv'/>
-            <Recommend order='1' classification='21'/>
-            <Recommend order='2' classification='22'/>
+            <Recommend order='1' classification='0'/>
+            <Recommend order='2' classification='1'/>
             <TopTen type='movie'/>
-            <Recommend order='3' classification='23'/>
-            <Recommend order='4' classification='24'/>
+            <Recommend order='3' classification='2'/>
+            <Recommend order='4' classification='3'/>
         </>
     );
 };

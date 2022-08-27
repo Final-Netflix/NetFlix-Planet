@@ -1,10 +1,14 @@
 import React from 'react';
-import SearchResultItem from './SearchResultItem';
+import SearchResultMovieItem from './SearchResultMovieItem';
+import SearchResultTvItem from './SearchResultTvItem';
 
-const SearchResultList = ({ searchList }) => {
+const SearchResultList = ({ searchMovieList, searchTvList }) => {  
 
+    //console.log("searchList = " +JSON.stringify(searchList))
+    //[{"adult":false,"backdrop_path":"/7lmBufEG7P7Y1HClYK3gCxYrkgS.jpg","genre_ids":[12,28,878],"id":10138,"original_language":"en","original_title":"Iron Man 2",
+    
     return (
-        <div className="c1-galleryContent">
+        <div className="c1-galleryContent mt-3">
             <div className="c1-galleryLockups">
                 <div className="c1-rowContainer c1-rowContainer_title_card" id="row-0">
                     <div className="c1-ptrack-container">
@@ -13,8 +17,13 @@ const SearchResultList = ({ searchList }) => {
                                 <div className="c1-sliderMask c1-showPeek">
                                     <div className="c1-sliderContent c1-row-with-x-columns">
                                         {
-                                            searchList.map((searchItem, index) => { 
-                                                return <SearchResultItem key={ index } searchItem={ searchItem }/>
+                                            searchMovieList.map((movie, index) => {
+                                                return <SearchResultMovieItem key={ index } searchItem={ movie }/>
+                                            })
+                                        }
+                                        {
+                                            searchTvList.map((tv, index) => {
+                                                return <SearchResultTvItem key={ index } searchItem={ tv }/>
                                             })
                                         }
                                     </div>

@@ -5,23 +5,49 @@ import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Top () {
+function Top ({ type, value }) { //type='tv/movie' value='id'
+  console.log('top = ' + type, value);
 
   /* API */
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
-  const [movies, setMovies] = useState([]);
+  const [movieTitle, setMovieTitle] = useState(true);
+  const [movieBack_path, setMovieBack_path] = useState(true);
+  const [moviePoster_path, setMoviePoster_path] = useState(true);
+  const [tvTitle, setTvTitle] = useState(true);
+  const [tvBack_path, setTvBack_path] = useState(true);
+  const [tvPoster_path, setTvPoster_path] = useState(true);
 
+  
   const getMovies = async () => {
-    const json = await(
+    if(type==='movie') {
+      const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/search/movie?api_key=${ KEY }&query=octopus%20teacher&language=ko-KR`)
-        ).json();
-    setMovies(json.results);
+          `https://api.themoviedb.org/3/movie/${value}?api_key=${ KEY }&language=ko-KR`)
+          ).json();
+          setMovieTitle(json.title);
+          setMovieBack_path(json.backdrop_path);
+          setMoviePoster_path(json.poster_path);
+    }
   }
+  console.log(movieTitle, movieBack_path, moviePoster_path);
+      
+  const getTvs = async () => {
+    if (type==='tv') {
+      const json = await(
+          await fetch(
+              `https://api.themoviedb.org/3/tv/${value}?api_key=${ KEY }&language=ko-KR`)
+          ).json();
+          setTvTitle(json.name);
+          setTvBack_path(json.backdrop_path);
+          setTvPoster_path(json.poster_path);
+    }
+  }
+  console.log(tvTitle, tvBack_path, tvPoster_path)
 
   useEffect(() => {
     getMovies();
+    getTvs();
   }, [])
   
   /* 기능 */
@@ -117,14 +143,19 @@ function Top () {
   const qs = require('qs');
 
   const pickUp = () => {
+    const video = document.getElementById('movie.id').value
+
+
     if(!wishDelete) {
       console.log('눌러졋나')
       axios({
-        method: 'post',
-        url : 'http://localhost:8080/pickUp'
-      }).then((res)=>{
+        url: 'http://localhost:8080/pickUp',
+        data: qs.stringify({
+          'video_id' : video,
+
+        })
+      }).then(()=>{
         alert('추가되었다!')
-        console.log(res.data);
       })
     }
     setWishDelete(!wishDelete);
@@ -196,34 +227,51 @@ function Top () {
             <div className='c2_player_timedtext absolute inset-0 hidden mt-0 mr-[88.2px] mb-0 ml-[235.2px]'></div>
           </div>
         </div>
-        { movies.map (movie =>
-        <div className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
+
+        <div id={ value } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
+          {type === 'movie' && 
           <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
-          src={ "https://image.tmdb.org/t/p/w200" + movie.poster_path } alt={ movie.title }></img>
+          src={ "https://image.tmdb.org/t/p/w200" + moviePoster_path } alt={ movieTitle }></img>}
+          
+          {type === 'tv' && 
+          <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
+          src={ "https://image.tmdb.org/t/p/w200" + tvPoster_path } alt={ tvTitle }></img>}
         </div>
-        )}
         
-        { movies.map (movie => 
+        { type === 'movie' && 
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movie.backdrop_path } alt={ movie.title } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movie.backdrop_path } alt={ movie.title } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-        </div>
-        )}
+          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+        </div>}
+
+        { type === 'tv' && 
+        <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
+          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+        </div>}
         
         <div className='opacity-[1]'>
           <div className='previewModal_player_titleTreatmentWrapper opacity-[1] from-[#181818] to-[transparent 50%] bg-gradient-to-t h-[100%] absolute top-0 w-[100%]'>
             <div className='previewModal_player_titleTreatment_left bottom-[5%] left-[3em] absolute w-[40%]'>
-              { movies.map (movie => 
+                
+                { type === 'movie' && 
                 <h2 className='hidden border-0' >
-                  { movie.title }
-                </h2>
-              )}
+                  { movieTitle }
+                </h2>}
+                { type === 'tv' && 
+                <h2 className='hidden border-0' >
+                  { tvTitle }
+                </h2>}
 
-              { movies.map (movie => 
+              { type === 'movie' && 
               <h2 className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' >
-                { movie.title }
-              </h2>
-              )}
+                { movieTitle }
+              </h2>}
+              { type === 'tv' && 
+              <h2 className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' >
+                { tvTitle }
+              </h2>}
+
               {/* <img className='hidden border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
               <img className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img> */}
               <div className='buttonControls_container items-center flex mb-[1em] min-h-[2em]'>

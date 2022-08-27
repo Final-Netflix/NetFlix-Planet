@@ -3,58 +3,65 @@ import PropTypes from "prop-types";
 
 import { Link } from 'react-router-dom';
 
-const InfoText = () => {
+const InfoText = ({type, value}) => {
+  console.log('infoText = ' + type, value);
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
-  const [movies, setMovies] = useState([]);
+  const [genres, setMoviesGenre] = useState([]);
   const [credits, setCredits] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [keywords, setKeywords] = useState([]);
+  /* const [genres, setGenres] = useState([]); */
+  const [movieKeywords, setMovieKeywords] = useState([]);
+  const [tvKeywords, setTvKeywords] = useState([]);
   const [episodeCounts, setEpisodeCounts] = useState([]);
+  const [overview, setOverview] = useState(true);
 
   const getMovies = async () => {
     const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/search/movie?api_key=${ KEY }&query=octopus%20teacher&language=ko-KR`)
+          `https://api.themoviedb.org/3/${type}/${value}?api_key=${ KEY }&language=ko-KR`)
         ).json();
-    setMovies(json.results);
+    setMoviesGenre(json.genres);
+    setOverview(json.overview);
   }
   const getNames = async () => {
     const json = await(
       await fetch(
-          `https://api.themoviedb.org/3/movie/682110/credits?api_key=${ KEY }&language=ko-KR`)
+          `https://api.themoviedb.org/3/${type}/${value}/credits?api_key=${ KEY }&language=ko-KR`)
       ).json();
     setCredits(json.cast);
   }
-  const getGenre = async () => {
+  /* const getGenre = async () => {
     const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/genre/movie/list?api_key=${ KEY }&language=ko-KR`)
+            `https://api.themoviedb.org/3/genre/${type}/list?api_key=${ KEY }&language=ko-KR`)
         ).json();
       setGenres(json.genres);
-  }
+  } */
   const getKeywords = async () => {
     const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/movie/682110/keywords?api_key=${ KEY }&language=ko-KR`)
+            `https://api.themoviedb.org/3/${type}/${value}/keywords?api_key=${ KEY }&language=ko-KR`)
         ).json();
-    setKeywords(json.keywords);
+    setMovieKeywords(json.keywords);
+    setTvKeywords(json.results);
 
     /* console.log("hihihi | " + JSON.stringify(json)); */
   }
 
   const getEpisodeCounts = async () => {
-    const json = await(
-      await fetch(
-          `https://api.themoviedb.org/3/tv/197067?api_key=${ KEY }&language=ko-KR`)
-      ).json();
-      setEpisodeCounts(json.seasons);
+    if(type==='tv'){
+      const json = await(
+        await fetch(
+            `https://api.themoviedb.org/3/tv/${value}?api_key=${ KEY }&language=ko-KR`)
+        ).json();
+        setEpisodeCounts(json.seasons);
+    }
   }
 
   useEffect(() => {
     getMovies();
     getNames();
-    getGenre();
+    /* getGenre(); */
     getKeywords();
     getEpisodeCounts();
   }, [])
@@ -112,13 +119,11 @@ const InfoText = () => {
             </div>
             {/* <div className='css mb-[0.5em] flex items-center text-[#fff] text-[16px] leading-[1.4]'></div> */}
             <div className='detailMetadata_css mb-[0.5em] flex items-center text-[#fff] text-[16px] leading-[1.4]'></div>
-            { movies.map ( movie => 
             <p className='preview_modal_synopsis text-[14px] leading-[24px] mb-[0.5em] block text-[#fff] font-sans'>
               <div className='ptrack_content block text-[14px] leading-[24px] text-[#fff] font-sans'>
-                { movie.overview }
+                { overview }
               </div>
             </p>
-            )}
           </div>
           <div className='detailMetadata_right flex flex-col text-[#fff] text-[16px] leading-[1.4] font-sans'>
             <div className='previewModal_tags_person text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
@@ -143,27 +148,33 @@ const InfoText = () => {
             <div className='previewModal_tags_genre text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>장르:</span>
               
-              { movies.map (movie => 
+              { genres.map (genre => 
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
-                { genres.map (genre =>
                 <Link to='searchGenre' state = {{id:genre.id, name:genre.name }}>
                 
-                {
-                  movie.genre_ids ==  genre.id  &&
+                
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
                    { genre.name },
                 </a>
-                }
                  
                 </Link>
-                )}
               </span>
               )}
 
             </div>
             <div className='previewModal_tags_series text-[14px] leading-[20px] my-[0.5em] mr-[0.5em] ml-0 break-words text-[#fff] font-sans'>
               <span className='tags_label text-[#777] text-[14px] leading-[20px] break-words font-sans'>시리즈 특징:</span>
-              { keywords.map (keyword =>
+              {type==='movie' && movieKeywords.map (keyword =>
+              <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
+              <Link to='searchKeyword' state = {{id:keyword.id, name:keyword.name }}>
+                <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>
+                  { keyword.name },
+                </a>
+              </Link>
+              </span>
+              )}
+
+              {type==='tv' && tvKeywords.map (keyword =>
               <span className='tag_item text-[14px] leading-[20px] break-words font-sans'>
               <Link to='searchKeyword' state = {{id:keyword.id, name:keyword.name }}>
                 <a href='#' className='text-[#fff] cursor-pointer no-underline text-[14px] leading-[20px] break-words font-sans'>

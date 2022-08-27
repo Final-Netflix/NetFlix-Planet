@@ -33,9 +33,7 @@
 .c1-dvds, .c1-people, .c1-suggestions {
     line-height: 1.6;
 }
-.c1-suggestionRailContainer {
-    display: flex;
-}
+
 .c1-search .c1-gallery {
     margin-top: 0;
     padding-top: 0;
@@ -81,14 +79,14 @@
     vertical-align: sub;
     width: 1.1vw;
 }
-.c1-dvds .c1-dvdLabel, 
-.c1-dvds .c1-peopleLabel, 
-.c1-dvds .c1-suggestionsLabel, 
-.c1-people .c1-dvdLabel, 
-.c1-people .c1-peopleLabel, 
-.c1-people .c1-suggestionsLabel, 
-.c1-suggestions .c1-dvdLabel, 
-.c1-suggestions .c1-peopleLabel, 
+.c1-dvds .c1-dvdLabel,
+.c1-dvds .c1-peopleLabel,
+.c1-dvds .c1-suggestionsLabel,
+.c1-people .c1-dvdLabel,
+.c1-people .c1-peopleLabel,
+.c1-people .c1-suggestionsLabel,
+.c1-suggestions .c1-dvdLabel,
+.c1-suggestions .c1-peopleLabel,
 .c1-suggestions .c1-suggestionsLabel {
     color: grey;
     flex: 0 auto;
@@ -150,6 +148,42 @@
     vertical-align: sub;
     width: 1.1vw;
 }
+
+/* 검색 */
+
+.c1-suggestions {
+    display: flex;
+    margin: 10px 0 20px 4%;
+    overflow: hidden;
+}
+.c1-suggestionRailContainer {
+    display: flex;
+}
+.c1-dvds .dvdLabel, .dvds .peopleLabel, .dvds .suggestionsLabel, .people .dvdLabel, .people .peopleLabel, .people .suggestionsLabel, .suggestions .dvdLabel, .suggestions .peopleLabel, .suggestions .suggestionsLabel {
+    color: grey;
+    flex: 0 auto;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+.c1-suggestions ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+.c1-suggestions ul li {
+    border-right: 1px solid grey;
+    flex: 0 auto;
+    list-style: none;
+    padding: 0 0.5em;
+}
+.c1-suggestions ul li a {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: transparent;
+}
+
 @media screen and (min-width: 500px) and (max-width: 799px) {
     .c1-gallery .c1-rowContainer {
         margin-bottom: 7.5vw;

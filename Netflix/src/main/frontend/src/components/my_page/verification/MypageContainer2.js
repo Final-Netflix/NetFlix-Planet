@@ -1,6 +1,65 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
+const qs = require('qs');
+
 
 const MypageContainer2 = ({onAdd}) => {
+
+    const axios = require('axios');
+    
+    
+    // const getProfile=()=>{
+    //     const profileId = localStorage.getItem('profile_id');
+    //     axios('http://localhost:8080/getProfile', {
+    //         method : 'post',
+    //         data : qs.stringify({
+    //             'profile_id' : profileId
+    //         })
+    //     })
+    //     .then(res=>{
+    //         console.log(res);
+    //         // localStorage.setItem('profile_id',res.data.profile_id);
+    //         // localStorage.setItem('profile_name',res.data.profile_name);
+    //         // localStorage.setItem('img_path',res.data.img_path);
+            
+    //       })
+    //       .catch(error => console.log(error));
+    // }
+
+    // useEffect(()=> {
+    //     getProfile();
+        
+    // },[]);
+    const [ verify, setVerify ] = useState()
+
+    useEffect(() => {
+        onNumber();
+    }, [])
+
+    const onNumber = () => {
+        const recipientPhoneNumber = '010-3094-7984'
+
+        const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+        if(regPhone.test(recipientPhoneNumber)=== true) {
+            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+            setVerify(verifyCode);
+                
+            axios({
+                method : 'post',
+                url : 'http://localhost:8080/send-sms',
+                data : qs.stringify({
+                    'recipientPhoneNumber' : recipientPhoneNumber,
+                    'title' : 'test',
+                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
+                })
+            }).then((res) => {
+                console.log(res)
+            });
+        }
+    }
+    
+
+
     const Button = ({name , method}) => {
         return <button onClick={onAdd} type='button' className='m1_select-factor-button algin-center h-[95px] bg-[#fff] box-border border-0 border-b-2 border-soild border-[#e6e6e6] flex my-auto w-[100%] cursor-pointer normal-case overflow-visible m-0 '>
                     <div className='m1_button-icon-wrapper p-[15px] my-auto'>
@@ -55,8 +114,8 @@ const MypageContainer2 = ({onAdd}) => {
                             <span>정보를 변경하기 전에 본인 확인 절차가 필요합니다.</span>
                         </p>
                         <form className='m1_select-factor-form border-2 border-solid border-[#e6e6e6] rounded-[10px] shadow-[0_0_5px_2px_#e6e6e6] my-5 mx-auto max-w-[600px] overflow-hidden' method='post'>
-                            <Button name='문자로 코드 받기' method='010-3618-4453'/>
-                            <Button name='이메일로 코드 받기' method='wnscks19@naver.com'/>
+                            <Button name='문자로 코드 받기' method={localStorage.getItem('phone')}/>
+                            <Button name='이메일로 코드 받기' method={localStorage.getItem('user_email')}/>
                         </form>
                     </div>
                     <div className='m1_customer-service-text-container text-[14px] mt-[40px] box-border'>
