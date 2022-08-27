@@ -17,7 +17,6 @@ const Header = ({ scroll, search, setSearch }) => {
 
     const navigate = useNavigate();
     const [searchBox, setSearchBox] = useState(tab === 'search' ? true : false);
-    
     const [notice, setNotice] = useState(false);
     const [profile, setProfile] = useState(false);
     
@@ -83,10 +82,8 @@ const Header = ({ scroll, search, setSearch }) => {
         })
         .then(res=>{
             setProfileList(res.data);
-            
         })
         .catch(error => console.log(error));
-        
     },[])
 
     let headerName;
