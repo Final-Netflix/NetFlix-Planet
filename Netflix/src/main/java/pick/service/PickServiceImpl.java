@@ -12,12 +12,19 @@ public class PickServiceImpl implements PickService {
 	@Autowired
 	PickDAO pickDAO = null;
 
-
 	@Override
 	public void pickUp(PickDTO pickDTO) {
+		// TODO Auto-generated method stub
 		
-		 pickDAO.pickUp(pickDTO);
-		
-
 	}
+
+
+//	@Override
+//	public void pickUp(PickDTO pickDTO) {
+//		int seq = pickDAO.getProfileIdSeq()+1;
+//		
+//		pickDAO.pickUp(pickDTO);
+//		
+//
+//	}
 }
