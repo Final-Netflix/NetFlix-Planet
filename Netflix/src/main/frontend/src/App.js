@@ -24,7 +24,7 @@ function App() {
       <ScrollTop/>
       <Routes>
         {
-          localStorage.getItem('profile_id')===null? 
+          localStorage.getItem('profile_id') === null ? 
           <>
           <Route path="/">
           <Route index element={<Login/> }/></Route>
@@ -35,6 +35,7 @@ function App() {
             <Route index element={<SignUp/>}/>
             <Route path=":detail" element={<SignUp/>}/>
           </Route>
+          {/* <Route path="/*" element={<WarningPage/>}/> */}
           </>
         :
 
