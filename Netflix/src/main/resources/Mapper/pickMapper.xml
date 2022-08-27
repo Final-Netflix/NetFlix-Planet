@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="pickSQL">
+ 	<insert id="pickUp" parameterType="pick">
+ 		insert into PICKS (PICKS_ID, VIDEO_ID, PROFILE_ID, VIDEO_TYPE) 
+ 		values (#{picks_id}, #{video_id}, #{profile_id}, #{video_type})
+ 	</insert>
+ </mapper>
