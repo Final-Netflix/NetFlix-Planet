@@ -50,11 +50,11 @@ const Recommend = ({ order, classification }) => {
         {index: 39, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWtOXCugJ-96UQcdPTW46K_cZ5Zot7dKh79xscqUG_sshZXjUE-lRDJVApK5vfzt-41ARLMPsgn2ynMQdfmgmR-L2pdsUBg-QqzEpgTtv_rTf_FBZkA11c4FA3hTkVvxUdzbaSl6y6-cr6j2uLKhGqIJkXvcOTUEDTjMwAvCBprKil3dkSJWBhuvOLyIMgN7Cmor.webp?r=d99', title: '환혼'},
         {index: 40, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZn-8w0_tRX2HarOW3FtCNu1YdWxhVY0_p3QKNe5u7FLSnjCtN_lEQyJZn5ogTYwD7mjnGmiOYFod0AgfyQGRa0bA6vmAHOtX5A.webp?r=4c3', title: '마음의 소리'},
     ]);
-    // let classificationArr = [];
+    const [classificationName, setClassificationName] = useState('');
+    const [videoType, setVideoType] = useState('movie');
     
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     
-    let classificationName;
     let search_url;
     let videoData;
 
@@ -66,15 +66,15 @@ const Recommend = ({ order, classification }) => {
         document.getElementsByClassName("slick-prev")[order].click();
     }
 
-    // const getData = async () => {
-    //     const json1 = await(
-    //         await fetch(`${search_url}&page=1`)
-    //     ).json();
-    //     const json2 = await(
-    //         await fetch(`${search_url}&page=2`)
-    //     ).json();
-    //     setData(json1.results.concat(json2.results));
-    // }
+    const getData = async () => {
+        const json1 = await(
+            await fetch(`${search_url}&page=1`)
+        ).json();
+        const json2 = await(
+            await fetch(`${search_url}&page=2`)
+        ).json();
+        setData(json1.results.concat(json2.results));
+    }
 
     const getClassifications = () => {
         axios({
@@ -91,11 +91,14 @@ const Recommend = ({ order, classification }) => {
         });
     };
 
-    // if(classificationArr.length != 0){
-    //     classificationName = classificationArr[classification].classification_name;
-    //     search_url = classificationArr[classification].search_url;
-    //     getData();
-    // }
+    useEffect(() => {
+        if(classificationArr.length != 0){
+            setClassificationName(classificationArr[classification].classification_name);
+            search_url = classificationArr[classification].search_url;
+            if(search_url.includes('tv')) {  setVideoType('tv') }
+            getData();
+        }
+    }, [classificationArr]);
 
     useEffect(() => {
         getClassifications();
@@ -115,9 +118,9 @@ const Recommend = ({ order, classification }) => {
             <div className="rowContainer rowContainer_title_card" id="row-2">
                 <div className="ptrack-container">
                     <div className="rowContent slider-hover-trigger-layer">
-                        <div className="slider">
+                        <div className="slider" style={{ padding: '0 3.2%'}}>
                             <span className="handle handlePrev active" onClick={ goPrevSlide } tabIndex="0" role="button" aria-label="이전 콘텐츠 보기"><b className="indicator-icon icon-leftCaret"></b></span>
-                            <RecommendList data={ data } setData={ setData }/>
+                            <RecommendList data={ data } setData={ setData } videoType={ videoType }/>
                             <span className="handle handleNext active" onClick={ goNextSlide } tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>
                         </div>
                     </div>
