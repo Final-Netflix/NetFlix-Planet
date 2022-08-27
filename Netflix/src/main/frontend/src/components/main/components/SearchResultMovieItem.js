@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
-const SearchResultMovieItem = ({ searchItem }) => {
+const SearchResultMovieItem = ({ searchItem, search }) => {
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     const [backdrop, setBackdrop] = useState('');
@@ -9,7 +9,6 @@ const SearchResultMovieItem = ({ searchItem }) => {
     //console.log(searchItem)
 
     const getImage = async () => {
-        
         let backdrop = '';
         let logo = '';
 
@@ -22,30 +21,42 @@ const SearchResultMovieItem = ({ searchItem }) => {
             backdrop = json.backdrops[0].file_path;
             setBackdrop(backdrop);
         }
+        console.log(searchItem.id + " | " + backdrop);
+        
         let temp = json.logos.find((logo) => logo.iso_639_1 === 'ko');
-
+        
         if(!temp)       { temp = json.logos.find((logo) => logo.iso_639_1 === 'en');    }
         if(temp)        { logo = temp;                                            }
-                
+        
         setLogo(logo);
+        console.log(document.getElementsByClassName('searchId')[0].value)
     };
+   
     
-    useEffect(() => {
+    /* useEffect(() => {
         getImage();
-    }, []);
+    }, [search]); */
 
     if(backdrop === ''){
         return;
     }
+    useMemo /*  속성값이 변경될 경우에만 렌더링  useCallBack*/
+
     else {
         return (
             <div className="c1-slider-item">
+                <input type='hidden' className='searchId' value={ searchItem.id } />
                 <div className="c1-title-card-container css-0">
                     <div id="title-card-0-1" className="c1-title-card">
                         <div className="c1-ptrack-content">
                             <a role="link" aria-label="{state.title}" tabIndex="0" aria-hidden="false" className="c1-slider-refocus">
                                 <div className="c1-boxart-size-16x9 c1-boxart-container c1-boxart-rounded">
-                                    <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500" + backdrop } />
+                                    {
+                                        backdrop != undefined &&
+                                        <>
+                                        <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500" + backdrop } />
+                                        <input type='hidden' value={ backdrop } ></input></>
+                                    }
                                     {
                                         logo === '' ?
                                         <div className='text-white font-extrabold w-full text-2xl absolute bottom-[10%] w-[80%] text-center mx-[10%]'>{ searchItem.title }</div> :
