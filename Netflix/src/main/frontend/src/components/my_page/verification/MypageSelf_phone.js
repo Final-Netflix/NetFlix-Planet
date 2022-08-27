@@ -1,7 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import qs from 'qs';
 
 const MypageSelf_phone = ({onAddd, count}) => {
+    const [ verify, setVerify ] = useState()
+
+    useEffect(() => {
+        onNumber();
+    }, [])
     
+    const onNumber = () => {
+        const recipientPhoneNumber = '010-3094-7984'
+
+        const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+        if(regPhone.test(recipientPhoneNumber)=== true) {
+            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+            setVerify(verifyCode);
+                
+            axios({
+                method : 'post',
+                url : 'http://localhost:8080/send-sms',
+                data : qs.stringify({
+                    'recipientPhoneNumber' : recipientPhoneNumber,
+                    'title' : 'test',
+                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
+                })
+            }).then((res) => {
+                console.log(res)
+            });
+        }
+    }
     
     const Tel = ({ Ref }) => {
         const [tel, setTel] = useState('');
@@ -69,7 +97,7 @@ const MypageSelf_phone = ({onAddd, count}) => {
                         <h5 className="m1_security-check-header text-[red] text-[14px] font-black my-[.75em] mx-[.25em] box-border tracking-normal"><span id="" >보안 확인</span></h5>
                         <h1 className="m1_action-headline text-[#000] text-[36px] font-extrabold mt-[5px] mx-auto mb-[10px] mid:text-[2.15em] mid:mt-0 mid:mx-0 mid:mb-[.55em] " ><span id="">등록된 전화번호로 문자를 보내드렸습니다</span></h1>
                         <p className="m1_explanation-text text-[#4d4d4d] text-[20px] mb-[8px] mt-[10px]" >
-                            <span id="" ><span className="m1_explanation-bold font-extrabold">010-3618-4453</span>번으로 보내드린 코드를 입력해 주세요. 계정 보호를 위해 협조해 주셔서 감사합니다.</span>
+                            <span id="" ><span className="m1_explanation-bold font-extrabold">{localStorage.getItem('phone')}</span>번으로 보내드린 코드를 입력해 주세요. 계정 보호를 위해 협조해 주셔서 감사합니다.</span>
                         </p>
                         <form className="m1_mfa-challenge-otp-form"  method="POST">
                             <div className="m1_pin-input-container border-[none] mt-0 mx-0 mb-[40px] align-middle inline-block whitespace-nowrap  ">

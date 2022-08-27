@@ -51,7 +51,7 @@ const MypageContainer = () => {
                                 </div>
                                 <div className='w-full mb-7'>
                                     <div className="flex justify-between w-full">
-                                        <div className="pt-6 font-bold">1006pp@naver.com</div>
+                                        <div className="pt-6 font-bold">{localStorage.getItem('user_email')}</div>
                                         <button>
                                             <Link to='mfa' onClick={valEmail}><div className="pt-6 pl-90 text-end text-blue-500">이메일 변경</div></Link>
                                         </button>
@@ -63,7 +63,7 @@ const MypageContainer = () => {
                                         </button>
                                     </div>
                                     <div className="flex justify-between">
-                                        <div className="pt-5 text-neutral-500">전화번호 : 010-1234-5678</div>
+                                        <div className="pt-5 text-neutral-500">전화번호 : {localStorage.getItem('phone')}</div>
                                         <button>
                                             <Link to='mfa' onClick={valPhone}><div className="pl-90 pt-5 text-end text-blue-500">휴대폰 번호 변경</div></Link>
                                         </button>

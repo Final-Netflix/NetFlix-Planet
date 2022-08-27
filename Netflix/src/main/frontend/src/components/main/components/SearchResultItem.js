@@ -7,12 +7,13 @@ const SearchResultItem = ({ searchItem }) => {
     const [logo, setLogo] = useState({});
 
     const getImage = async () => {
+        
         let backdrop;
         let logo;
 
         const json = await(
             await fetch(
-                `https://api.themoviedb.org/3/movie/${ searchItem.id }/images?api_key=${ KEY }`) 
+                `https://api.themoviedb.org/3/movie/${ searchItem.id }/images?api_key=${ KEY }`)
                 ).json();
                 
         backdrop = json.backdrops[0];
@@ -24,7 +25,7 @@ const SearchResultItem = ({ searchItem }) => {
         
         setBackdrop(backdrop);
         setLogo(logo);
-        console.log(logo);
+        //console.log("logo = " + JSON.stringify(logo));
     };
     
     useEffect(() => {
@@ -44,11 +45,11 @@ const SearchResultItem = ({ searchItem }) => {
                             className="c1-slider-refocus"
                         >
                         <div className="c1-boxart-size-16x9 c1-boxart-container c1-boxart-rounded">
-                            <img className='w-full rounded' src = {"https://image.tmdb.org/t/p/w500" + backdrop.file_path } /> 
+                            <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500" + backdrop.file_path } />
                             {
-                                logo === undefined ? 
+                                logo === undefined ?
                                 <div className='text-white font-extrabold'>{ searchItem.title }</div> :
-                                <img className='w-full rounded' src = {"https://image.tmdb.org/t/p/w500" + logo.file_path } /> 
+                                <img className='w-full rounded absolute top-[62%] ' src = {"https://image.tmdb.org/t/p/w500" + logo.file_path } /> 
                             }
                         </div>
                         <div className="c1-ptrack-content"></div>

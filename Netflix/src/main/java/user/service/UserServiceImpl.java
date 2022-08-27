@@ -47,17 +47,38 @@ public class UserServiceImpl implements UserService {
 	public String signUp(UserDTO userDTO) {
 		String check = userDAO.signUpCheck(userDTO);
 		System.out.println(check);
-		if(check == "0") {
+		if(check.equals("0")) {
 			userDAO.signUp(userDTO);
-			return check="0";
+			return "0";
 		}else {
-			return check="1";
+			return "1";
 		}
 	}
 
 	@Override
 	public String emailCheck(String user_email) {
 		return userDAO.emailCheck(user_email);
+	}
+
+	@Override
+	public void insertSubscribe(Map<String, String> map) {
+		System.out.println(map);
+		//멤버십 단계 상승 시켜주기
+		userDAO.membershipUp(map);
+		//빌링키 DB에 저장하기
+		int seq= userDAO.getPayType()+1; 
+		userDAO.insertBilling(map);
+	}
+	@Override
+	public void deleteProfile(Map<String, String> map) {
+		userDAO.deleteProfile(map);
+		
+	}
+
+	@Override
+	public void updateProfile(Map<String, String> map) {
+		userDAO.updateProfile(map);
+
 	}
 
 }

@@ -22,9 +22,11 @@ const AddProfile = () => {
     const [profileName , setProfileName] = useState();
     const [imgList, setImgList] = useState(true);
     const [selectImg , setSelectImg] = useState(imgDataSrc[0].img);
+    const [isGetProfile,setIsGetProfile] = useState(localStorage.getItem('profile_id')===null);
     const nameInput=(e)=>{
         setProfileName(e.target.value);
     }
+
     const addProfileBtn= ()=>{
         axios({
             method : 'post',
@@ -53,6 +55,7 @@ const AddProfile = () => {
     }
     return (
         <div>
+
             <div>
                 <h1>프로필 추가</h1>
             </div>
@@ -68,13 +71,14 @@ const AddProfile = () => {
                             <img src={selectImg}
                             className="w-[200px] h-[200px]" onClick={changeImge}></img>
                         </div>
+
                         <div>
                             <input type="text" placeholder="이름" className='bg-[#666] h-[36px] w-[326px]' onChange={nameInput} value={profileName}></input>
                         </div>
-                    </div>
-                    <div>
-                        <button className='w-[70px] h-[50px] border' onClick={addProfileBtn}>다음</button>
-                        <button className='w-[70px] h-[50px] border m-[20px]'>취소</button>
+                        <div>
+                            <button className='w-[70px] h-[50px] border' onClick={addProfileBtn}>다음</button>
+                            <button className='w-[70px] h-[50px] border m-[20px]'>취소</button>
+                        </div>
                     </div>
                 </>
                 :
