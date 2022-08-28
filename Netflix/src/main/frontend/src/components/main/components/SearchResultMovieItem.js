@@ -33,15 +33,17 @@ const SearchResultMovieItem = ({ searchItem, search }) => {
     };
    
     
-    /* useEffect(() => {
+     useEffect(() => {
         getImage();
-    }, [search]); */
+    }, [search]); 
+
+    
+
 
     if(backdrop === ''){
         return;
     }
-    useMemo /*  속성값이 변경될 경우에만 렌더링  useCallBack*/
-
+    
     else {
         return (
             <div className="c1-slider-item">
