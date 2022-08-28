@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import membershipImg from '../../image/my_page/membershipImg.png';
 import slideDownButton from '../../image/my_page/slideDownButton.png';
@@ -7,8 +7,10 @@ import MyPageSlide_Sub from './MyPageSlide_Sub';
 import save from '../../image/my_page/save.png';
 import MypageFooter from './MyPageFooter';
 import useStore from 'store';
+import axios from 'axios';
 
 const MypageContainer = () => {
+    const qs = require('qs');
     const {valEmail , valPhone} = useStore();
     const [isShow1, setIsShow1] = useState(false)
     const [isShow2, setIsShow2] = useState(false)
@@ -27,6 +29,20 @@ const MypageContainer = () => {
     const onToggle4 = () => {
         setIsShow4(!isShow4)
     }
+    useEffect(()=>{
+        console.log('웰컴')
+        axios({
+            method : 'post' ,
+            url : 'http://localhost:8080/getInfo',
+            data : qs.stringify({
+                'user_email' : localStorage.getItem('user_email')
+            })
+            
+        
+        }).then(res=>{
+            console.log('ㅎㅇㅎㅇ')
+        })
+    } ,[])
 
     return (
         <div className = "m2_container">

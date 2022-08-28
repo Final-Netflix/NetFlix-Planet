@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -93,6 +94,29 @@ public class UserController {
 	@ResponseBody
 	public void updateProfile(@RequestParam Map<String,String> map) {
 		userService.updateProfile(map);
+	}
+	
+	@PostMapping("/getInfo")
+	@ResponseBody
+	public Map<String, String> getInfo(@RequestParam String user_email) {
+		
+		//계정 정보 불러오기
+		Map<String , String> map = userService.getUSER(user_email);
+		//결제 정보 불러오기 
+		String priceMethod = userService.priceMethod(user_email);
+	//	map.put("priceMethod", priceMethod);
+		//멤버십 정보 불러오기
+		System.out.println(map);
+	//	int i = userService.getMembership(user_email);
+	//	System.out.println(i);
+//		if(i==1) {
+//			map.put("membership", "베이식");
+//		}else if(i==2) {
+//			map.put("membership", "스탠다드");
+//		}else{
+//			map.put("membership", "프리미엄");
+//		}
+		return map;
 	}
 	
 	

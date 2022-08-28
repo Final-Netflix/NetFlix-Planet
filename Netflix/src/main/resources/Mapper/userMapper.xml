@@ -40,18 +40,27 @@
   		update USER set memberShip = 1 where user_email=#{user_email} 
   	</update>
   	<insert id="insertBilling" parameterType="java.util.Map">
-  		insert into PAY_TYPE values(#{customer_uid}, #{user_email} , )
+  		insert into PAY_TYPE(card_number , user_email , card_company) values(#{customer_uid}, #{user_email} , '카카오');
   	</insert>
-  	<select id="getPayType" resultType="int">
-  		select count(*) from PAY_TYPE
-  	</select>
-
+  	
   	<delete id="deleteProfile" parameterType="java.util.Map">
   		delete from USER_PROFILE where profile_id = #{profile_id}
   	</delete>
   	<insert id="updateProfile" parameterType="java.util.Map">
   		update USER_PROFILE set PROFILE_NAME = #{profile_name} where profile_id = #{profile_id}
   	</insert>
+  	<!-- my page main 정보 불러오기 -->
+  	<select id="getUSER" parameterType="String" resultType="java.util.Map">
+  	 select * from USER where user_email =#{user_email}
+  	</select>
+  	<select id="priceMethod" parameterType="String" resultType="String">
+  	select card_company from PAY_TYPE where user_email=#{user_email}
+  	</select>
+  	<select id="getMembership" parameterType="String" resultType="int">
+  	select membership_id from USER where user_email=#{user_email}
+  	</select>
+  	
+  	
 
   </mapper>
  

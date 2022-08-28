@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { application } from 'express';
 import React, { useState } from 'react';
 import useStore from 'store';
 const PlanFrom = () => {
@@ -118,55 +117,15 @@ const PlanFrom = () => {
                     'customer_uid' : `billing_${sessionStorage.getItem('phone')}`,
                     'user_email' : sessionStorage.getItem('user_email')
                 })
+            }).then(()=>{
+                window.location.href ="/";
             })
         }else {
             alert(`ㅂ2ㅂ2 : ${error_msg}`);
         }
     }
     
-    app.post("/billings", async (req, res) => {
-        try {
-          const { customer_uid } = req.body; // req의 body에서 customer_uid 추출
-          // 인증 토큰 발급 받기
-          const getToken = await axios({
-            url: "https://api.iamport.kr/users/getToken",
-            method: "post", // POST method
-            headers: { "Content-Type": "application/json" }, // "Content-Type": "application/json"
-            data: {
-              imp_key: "1837862848311421", // REST API 키
-              imp_secret: "8W6lJn7MqHhELgvxS7IwmhhjgWxDFWRQwTtXsQ18iDpmHusNGZsTwRvIvpkfGtSOkN7f0rsGLQQmLnGv" // REST API Secret
-            }
-          });
-          const { access_token } = getToken.data.response; // 인증 토큰
-          
-          // 결제(재결제) 요청
-          const paymentResult = await axios({
-            url: 'https://api.iamport.kr/subscribe/payments/again',
-            method: "post",
-            headers: { "Authorization": access_token }, // 인증 토큰을 Authorization header에 추가
-            data: {
-              customer_uid,
-              merchant_uid: "order_monthly_0001", // 새로 생성한 결제(재결제)용 주문 번호
-              amount: 8900,
-              name: "월간 이용권 정기결제"
-            }
-          });
-          const { code, message } = paymentResult;
-          if (code === 0) { // 카드사 통신에 성공(실제 승인 성공 여부는 추가 판단이 필요함)
-            if ( paymentResult.status === "paid" ) { //카드 정상 승인
-              res.send({ ... });
-            } else { //카드 승인 실패 (예: 고객 카드 한도초과, 거래정지카드, 잔액부족 등)
-              //paymentResult.status : failed 로 수신됨
-              res.send({ ... });
-            }
-            res.send({ ... });
-          } else { // 카드사 요청에 실패 (paymentResult is null)
-            res.send({ ... });
-          }
-        } catch (e) {
-          res.status(400).send(e);
-        }
-      });
+   
 
     return (
         <div id='m1_planform' className="m1_simpleContainer" data-transitioned-child="true">

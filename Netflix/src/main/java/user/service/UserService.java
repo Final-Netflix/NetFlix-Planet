@@ -27,4 +27,10 @@ public interface UserService {
 
 	public void updateProfile(Map<String, String> map);
 
+	public Map<String, String> getUSER(String user_email);
+
+	public String priceMethod(String user_email);
+
+	public int getMembership(String user_email);
+
 }
