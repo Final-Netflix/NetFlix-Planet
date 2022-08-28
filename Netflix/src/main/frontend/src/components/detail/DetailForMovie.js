@@ -51,35 +51,14 @@ const DetailForMovie = () => {
       {/* <Main /> */}
       <div className='c2_focus_trap_wrapper h-[100%] w-[100%] box-border flex justify-center left-0 absolute top-0 will-change-scroll break-keep-all'>
         <div className='c2_dialog mt-[30px] left-auto origin-[50%_12.5%] top-[2em] w-[848px] opacity-100 mb-[2em] transform-none min-w-0 z-[2] bg-transparent rounded-[6px] text-[#fff] text-[16px] will-change-transform'>
-        { 
-          loading ? <h1>Loading... </h1> :
-          <div>{ movies.map (movie =>
-                <Top
-                    key={ movie.id }
-                    poster_path={ movie.poster_path }
-                    backdrop_path= { movie.backdrop_path }
-                    title={ movie.title }
-                />) } 
-          </div>
-        }
+        
+          <Top/>
+        
           <div className='c2_previewModal_info opacity-[1] bg-[#181818] relative block text-[#fff] text-[16px] leading-[1.4]'>
             <div className='c2_detail_modal_container py-0 px-[3em] block text-[#fff] text-[16px] leading-[1.4]'>
 
             <InfoText />
-                
-              {
-                <div>{ movies.map (movie =>
-                      <MoreLikeThis 
-                      key={ movie.id }
-                      poster_path={ movie.poster_path }
-                      title={ movie.title }
-                      overview={ movie.overview }
-                      genre_ids={ movie.genre_ids }
-                      />)
-                      }
-                </div>
-              }
-              
+            <MoreLikeThis />
             <About/>
                       
             </div>

@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 
 import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
+function Top () {
 
+  /* API */
+  const KEY = "bc61587b22cd0e5226a33d30e467d867";
+
+  const [movies, setMovies] = useState([]);
+
+  const getMovies = async () => {
+    const json = await(
+        await fetch(
+            `https://api.themoviedb.org/3/search/movie?api_key=${ KEY }&query=octopus%20teacher&language=ko-KR`)
+        ).json();
+    setMovies(json.results);
+  }
+
+  useEffect(() => {
+    getMovies();
+  }, [])
+  
+  /* 기능 */
   const [wishHover, setWishHover] = useState(false);
   const [wishDelete, setWishDelete] = useState(false);
   const [wishDeleteHover, setWishDeleteHover] = useState(false);
@@ -94,6 +113,23 @@ function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
     setAudioMute(!audioMute);
   }
 
+  /* DB */
+  const qs = require('qs');
+
+  const pickUp = () => {
+    if(!wishDelete) {
+      console.log('눌러졋나')
+      axios({
+        method: 'post',
+        url : 'http://localhost:3000/pickUp'
+      }).then((res)=>{
+        alert('추가되었다!')
+        console.log(res.data);
+      })
+    }
+    setWishDelete(!wishDelete);
+  }
+
   return (
 
     <div>
@@ -160,22 +196,34 @@ function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
             <div className='c2_player_timedtext absolute inset-0 hidden mt-0 mr-[88.2px] mb-0 ml-[235.2px]'></div>
           </div>
         </div>
+        { movies.map (movie =>
         <div className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
-          {/* <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABXQhM9UIOiaYmBg96LoJL9C-yj7Vx6_8dPdHVvyCMpRv2UP1PQOJgLBcCFDngWDhXJ5leiW1SGSTEZge7mTxo0IP95RlwnmKzkE4sZJ90_L5nLX41LHU8MJAgdWgjZGeu62W35r2E7ziLxDN0QbBG4DBmpUGBGY9witDoj6gEykXyXwAJ2rNvGiNxYuvxyzt0lRQE_WwDyUZeCtglbin4o1pnEp8gEtSLE1QRsJHY6YEryjBRskBxELAoeZMEQAfrPZ5LnQj9WeP7WCKJOQKPi83u5lBy57ThjIvhT4rwjwVeBxMJxxHQ6Rlbo-pP5mQW_tLMuq3dpVQaY33ePcHCADYSgDltvFrSVOREUd10GxinWhkDu-FSm9ch3A1C6E4NXBD1vkWm7su5ISbxbnZTHG6bZuuc9dbQWPs5SwC-4s4f44.webp?r=4a8'></img> */}
-          <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title }></img>
-          {/* <img className='hidden border-0' src={ "https://image.tmdb.org/t/p/w200" + poster_path } alt={ title }></img> */}
+          <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
+          src={ "https://image.tmdb.org/t/p/w200" + movie.poster_path } alt={ movie.title }></img>
         </div>
+        )}
+        
+        { movies.map (movie => 
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w500" + backdrop_path } alt={ title } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w500" + backdrop_path } alt={ title } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          {/* <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZbVJV4TTlebZXyVIz1uynnmoRh_7Cp0L1vSHyJ_4yQtglDKpKcdhFL7LIq5DO9i7apdvdUBHWeuKHpJw1hcS31L_0UoF6QJ80i6.webp?r=450' aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img> */}
+          <img src={ "https://image.tmdb.org/t/p/w500" + movie.backdrop_path } alt={ movie.title } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + movie.backdrop_path } alt={ movie.title } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
         </div>
+        )}
+        
         <div className='opacity-[1]'>
           <div className='previewModal_player_titleTreatmentWrapper opacity-[1] from-[#181818] to-[transparent 50%] bg-gradient-to-t h-[100%] absolute top-0 w-[100%]'>
             <div className='previewModal_player_titleTreatment_left bottom-[5%] left-[3em] absolute w-[40%]'>
-              <h2 className='hidden border-0' >{ title }</h2>
-              <h2 className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' >{ title }</h2>
+              { movies.map (movie => 
+                <h2 className='hidden border-0' >
+                  { movie.title }
+                </h2>
+              )}
+
+              { movies.map (movie => 
+              <h2 className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' >
+                { movie.title }
+              </h2>
+              )}
               {/* <img className='hidden border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
               <img className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img> */}
               <div className='buttonControls_container items-center flex mb-[1em] min-h-[2em]'>
@@ -196,7 +244,7 @@ function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     {/* 추가버튼 */}
                     <button className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible' 
-                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={wishDeleteHandler}>
+                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={pickUp}>
                       <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap' onMouseLeave={wishDeleteLeave}>
                         <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
@@ -465,10 +513,10 @@ function Top ({poster_path, backdrop_path, title, genre_ids ,id}) {
   );
 };
 
-Top.propTypes = {
+/* Top.propTypes = {
   poster_path : PropTypes.string.isRequired,
   backdrop_path: PropTypes.string.isRequired,
   title : PropTypes.string.isRequired
 }
-
+ */
 export default Top;

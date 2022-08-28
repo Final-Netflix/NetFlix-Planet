@@ -71,7 +71,7 @@ const Content = () => {
           <div className='episodeSelector_container flex flex-col flex-wrap justify-start text-[#fff] text-[16px] leading-[1.4]'>
             
             <Link to='video'>
-            <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} >
+          <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} >
             { episodes.map (episode => 
             <div className='titleCardList border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>{ episode.episode_number }</div>
@@ -103,8 +103,9 @@ const Content = () => {
                   <div className='ptrack_content block text-[#d2d2d2] text-[14px] leading-[20px] cursor-pointer'>{episode.overview}</div>
                 </p>
               </div>
-              </div>)}
             </div>
+            )}
+          </div>
             </Link>
 
             {/* <div onMouseEnter={playIconHoverEnter2} onMouseLeave={playIconHoverLeave2} className='titleCardList min-h-[10em] items-center border-b-[1px] border-solid border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='아내 역을 확보하라' role="button">

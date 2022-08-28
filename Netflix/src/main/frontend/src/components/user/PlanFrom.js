@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import useStore from 'store';
+
 const PlanFrom = () => {
     const qs = require('qs');
     const {price , setPrice ,membership , setMembership , membershipName , setMembershipName} = useStore()
@@ -16,7 +17,6 @@ const PlanFrom = () => {
             td[5].classList.add('m1_planGrid__cell--isSelected')
             td[9].classList.add('m1_planGrid__cell--isSelected')
             td[13].classList.add('m1_planGrid__cell--isSelected')
-            
 
             td[2].classList.remove('m1_planGrid__cell--isSelected')
             td[6].classList.remove('m1_planGrid__cell--isSelected')
@@ -37,7 +37,6 @@ const PlanFrom = () => {
             td[6].classList.add('m1_planGrid__cell--isSelected')
             td[10].classList.add('m1_planGrid__cell--isSelected')
             td[14].classList.add('m1_planGrid__cell--isSelected')
-            
 
             td[1].classList.remove('m1_planGrid__cell--isSelected')
             td[5].classList.remove('m1_planGrid__cell--isSelected')
@@ -58,7 +57,6 @@ const PlanFrom = () => {
             td[7].classList.add('m1_planGrid__cell--isSelected')
             td[11].classList.add('m1_planGrid__cell--isSelected')
             td[15].classList.add('m1_planGrid__cell--isSelected')
-            
 
             td[1].classList.remove('m1_planGrid__cell--isSelected')
             td[5].classList.remove('m1_planGrid__cell--isSelected')
@@ -124,9 +122,6 @@ const PlanFrom = () => {
             alert(`ㅂ2ㅂ2 : ${error_msg}`);
         }
     }
-    
-   
-
     return (
         <div id='m1_planform' className="m1_simpleContainer" data-transitioned-child="true">
             <div className="m1_centerContainer m1_narrowCenterContainer" style={{display: 'block', transform: 'none', opacity: 1, transitionDuration: '250ms'}}>
@@ -287,7 +282,6 @@ const PlanFrom = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 

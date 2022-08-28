@@ -29,7 +29,6 @@ public class UserController {
 	
 	@Autowired
 	UserService userService = null;
-	
 		
 	@PostMapping("/send-sms")
 	@ResponseBody
@@ -37,7 +36,6 @@ public class UserController {
 		System.out.println(request.getRecipientPhoneNumber());
 		SmsResponse data = smsService.sendSms(request.getRecipientPhoneNumber(), request.getContent());
         return ResponseEntity.ok().body(data);
-		
 	}
 	
 	@PostMapping("/login")
@@ -53,19 +51,19 @@ public class UserController {
 		String check = userService.signUp(userDTO);
 		return check;
 	}
+	
 	@PostMapping("/emailCheck")
 	@ResponseBody
 	public String emailCheck(@RequestParam String user_email) {
-		
 		return userService.emailCheck(user_email);
-	}
-	
+	}	
 
 	@PostMapping("/getProfileList")
 	@ResponseBody
 	public List<UserProfileDTO> getProfileList(@RequestParam Map<String,String> map) {
 		return userService.getProfileList(map);
 	}
+	
 	@PostMapping("/getProfile")
 	@ResponseBody
 	public UserProfileDTO getProfile(@RequestParam Map<String,String> map) {
@@ -84,12 +82,12 @@ public class UserController {
 		userService.insertSubscribe(map);
 	}
  
-
 	@PostMapping("/deleteProfile")
 	@ResponseBody
 	public void deleteProfile(@RequestParam Map<String,String> map) {
 		userService.deleteProfile(map);
 	}
+	
 	@PostMapping("/updateProfile")
 	@ResponseBody
 	public void updateProfile(@RequestParam Map<String,String> map) {
@@ -99,7 +97,6 @@ public class UserController {
 	@PostMapping("/getInfo")
 	@ResponseBody
 	public Map<String, String> getInfo(@RequestParam String user_email) {
-		
 		//계정 정보 불러오기
 		Map<String , String> map = userService.getUSER(user_email);
 		//결제 정보 불러오기 
@@ -118,9 +115,7 @@ public class UserController {
 //		}
 		return map;
 	}
-	
-	
-	
+
 }
 
 

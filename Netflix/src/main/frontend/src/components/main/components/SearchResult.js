@@ -5,35 +5,42 @@ import SearchResultHeaderList from './SearchResultHeaderList';
 
 const SearchResult = ({ search }) => { // search = 아이언맨
     
-    const [searchList, setSearchList] = useState([]);
+    const [searchMovieList, setSearchMovieList] = useState([]);
+    const [searchTvList, setSearchTvList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [id, setId] = useState();
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
-
-    const getSearchList = async () => {
-        const apiResult = `https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}`
+    
+    const getSearchMovieList = async () => {
+        const apiResult = `https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`
         //console.log('apiResult = ' + apiResult)
         const json = await(
-            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}`)
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`)
         ).json();
-        setSearchList(json.results);
-        //console.log("json.results[0].id = " + json.results[0].id)  // json.results = [object Object],[object Object]
+        setSearchMovieList(json.results);
+        if(json.results[0] != undefined) { setId(json.results[0].id); }
+    }
+
+    const getSearchTvList = async () => {
+        const json = await(
+            await fetch(`https://api.themoviedb.org/3/search/tv?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`)
+        ).json();
+        setSearchTvList(json.results);
         setLoading(false);
-        setId(json.results[0].id);
-        //console.log('id = ' + id)
     }
 
      useEffect(() => {
-        getSearchList();
+        getSearchMovieList();
+        getSearchTvList();
     }, [search]);
 
     return (
         <div className="c1-mainView">
             { loading ? '' :
                 <div className="c1-gallery c1-row-with-x-columns c1-search relative top-[5vw]">
-                    <SearchResultHeaderList idx = { id } searchList = { searchList } />
-                    <SearchResultList searchList={ searchList }/>
+                    <SearchResultHeaderList idx = { id } searchList = { searchMovieList } />
+                    <SearchResultList searchMovieList={ searchMovieList } searchTvList={ searchTvList }/>
                 </div>
             }
         </div>
