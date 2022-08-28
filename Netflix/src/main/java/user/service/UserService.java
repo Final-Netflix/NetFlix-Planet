@@ -27,4 +27,10 @@ public interface UserService {
 
 	public void updateProfile(Map<String, String> map);
 
+	public UserDTO findPwd(Map<String, String> map);
+
+	public void updatePwd(Map<String, String> map);
+
+	public List<UserDTO> findEmail(Map<String, String> map);
+
 }
