@@ -41,5 +41,14 @@
   	<insert id="updateProfile" parameterType="java.util.Map">
   		update USER_PROFILE set PROFILE_NAME = #{profile_name} where profile_id = #{profile_id}
   	</insert>
+  	<select id="findPwd" parameterType="java.util.Map" resultType="user">
+  		select * from USER where user_email=#{user_email}
+  	</select>
+  	<update id="updatePwd" parameterType="java.util.Map">
+  		update USER set user_pwd = #{user_pwd} where user_email = #{user_email}
+  	</update>
+  	<select id="findEmail" parameterType="java.util.Map" resultType="user">
+  		select * from USER where phone='010-5032-3368'
+  	</select>
   </mapper>
  
