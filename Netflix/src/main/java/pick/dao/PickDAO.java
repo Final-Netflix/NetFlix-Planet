@@ -8,4 +8,8 @@ public interface PickDAO {
 
 	public String getPicksID();
 
+	public void delPickUp(PickDTO pickDTO);
+
+	public int getPickUp(PickDTO pickDTO);
+
 }

@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from "prop-types";
 
 import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Top ({ type, value }) { //type='tv/movie' value='id'
-  // console.log('top = ' + type, value);
-
+function Top ({ type, id }) { //type='tv/movie' value='id'
   /* API */
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
@@ -17,7 +14,6 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   const [tvTitle, setTvTitle] = useState(true);
   const [tvBack_path, setTvBack_path] = useState(true);
   const [tvPoster_path, setTvPoster_path] = useState(true);
-
   
   const getMovies = async () => {
     if(type==='movie') {
@@ -30,7 +26,6 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
           setMoviePoster_path(json.poster_path);
     }
   }
-  // console.log(movieTitle, movieBack_path, moviePoster_path);
       
   const getTvs = async () => {
     if (type==='tv') {
@@ -43,7 +38,23 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
           setTvPoster_path(json.poster_path);
     }
   }
-  // console.log(tvTitle, tvBack_path, tvPoster_path)
+
+  const getPicks = () => {
+    axios({
+      url: 'http://localhost:8080/getPickUp',
+      data: qs.stringify({
+        'video_id' : id,
+        'video_type': type,
+        'profile_id': localStorage.getItem('profile_id')
+      })
+    }).then((res)=>{
+      let isPickUp = res.data;
+      console.log(isPickUp);
+      if(isPickUp){
+        setWishDelete(!wishDelete);
+      }
+    })
+  };
 
   useEffect(() => {
     getMovies();
@@ -75,6 +86,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   //찜한 콘텐츠 삭제
   const wishDeleteHandler = () => {
     setWishDelete(!wishDelete);
+    pickUp();
   }
   const wishDeleteEnter = () => {
     setWishDeleteHover(true);
@@ -150,7 +162,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
         url: 'http://localhost:8080/addPickUp',
         method: 'post',
         data: qs.stringify({
-          'video_id' : value,
+          'video_id' : id,
           'video_type': type,
           'profile_id': localStorage.getItem('profile_id')
         })
@@ -163,7 +175,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
         url: 'http://localhost:8080/delPickUp',
         method: 'post',
         data: qs.stringify({
-          'video_id' : value,
+          'video_id' : id,
           'video_type': type,
           'profile_id': localStorage.getItem('profile_id')
         })

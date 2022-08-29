@@ -6,4 +6,8 @@ public interface PickService {
 
 	public void addPickUp(PickDTO pickDTO);
 
+	public void delPickUp(PickDTO pickDTO);
+
+	public String getPickUp(PickDTO pickDTO);
+
 }

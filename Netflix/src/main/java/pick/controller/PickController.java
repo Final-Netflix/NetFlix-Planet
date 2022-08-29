@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,5 +25,17 @@ public class PickController {
 	@ResponseBody
 	public void addPickUp(@ModelAttribute PickDTO pickDTO) {
 		pickService.addPickUp(pickDTO);
+	}
+	
+	@PostMapping("/delPickUp")
+	@ResponseBody
+	public void delPickUp(@ModelAttribute PickDTO pickDTO) {
+		pickService.delPickUp(pickDTO);
+	}
+	
+	@GetMapping("getPickUp")
+	@ResponseBody
+	public String getPickUp(@ModelAttribute PickDTO pickDTO) {
+		return pickService.getPickUp(pickDTO);
 	}
 }
