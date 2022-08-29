@@ -5,29 +5,40 @@ import useStore from 'store';
 
 const MypageContainer2 = ({setCount, count}) => {
     const qs = require('qs');
-    const {user_email , user_phone , verify, setVerify} = useStore();
+    const {user_email , user_phone ,setVerify} = useStore();
     const phone = (num)=>{
         return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
     }
     const onPhone = () => {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/send-sms',
+            data : qs.stringify({
+                'recipientPhoneNumber' : user_phone,
+                'title' : 'test',
+                'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
+            })
+        }).then((res) => {
+            console.log("문자성공")
             setCount(count+1)
-            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-            setVerify(verifyCode);
-                
-            axios({
-                method : 'post',
-                url : 'http://localhost:8080/send-sms',
-                data : qs.stringify({
-                    'recipientPhoneNumber' : user_phone,
-                    'title' : 'test',
-                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
-                })
-            }).then((res) => {
-                console.log(res)
-            });
-        }
-        const onEmail = ()=> {
-            setCount(count+1)
+        });
+    }
+    const onEmail = ()=> {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/send-email',
+            data : qs.stringify({
+                'verify' : verifyCode,
+            })
+        }).then(()=>{
+                setCount(count+1)
+                console.log("이메일성공")
+            })
         }
     
     

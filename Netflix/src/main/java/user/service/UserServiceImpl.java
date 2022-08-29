@@ -69,6 +69,8 @@ public class UserServiceImpl implements UserService {
 		//멤버십 단계 상승 시켜주기
 		userDAO.membershipUp(map);
 		//빌링키 DB에 저장하기
+		int i = userDAO.getPaySeq();
+		map.put("seq", ""+i);
 		userDAO.insertBilling(map);
 	}
 	@Override

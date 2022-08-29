@@ -38,8 +38,15 @@ public class UserController {
 	@ResponseBody
 	public ResponseEntity<SmsResponse> sms_sends(@ModelAttribute Request request) throws Exception {
 		System.out.println(request.getRecipientPhoneNumber());
-		SmsResponse data = smsService.sendSms(request.getRecipientPhoneNumber(), request.getContent());
-        return ResponseEntity.ok().body(data);
+//		SmsResponse data = smsService.sendSms(request.getRecipientPhoneNumber(), request.getContent());
+//        return ResponseEntity.ok().body(data);
+		return null;
+	}
+	@PostMapping("/send-email")
+	@ResponseBody
+	public void send_email(@RequestParam Map<String , String> map) {
+		System.out.println(map);
+		
 	}
 	
 	@PostMapping("/login")

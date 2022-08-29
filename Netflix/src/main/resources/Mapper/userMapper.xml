@@ -24,7 +24,7 @@
   		select * from USER_PROFILE where profile_id=#{profile_id}
   	</select>
   	<select id="getProfileIdSeq" resultType="int">
-  		select count(*) from USER_PROFILE;
+  		select max(profile_id) from USER_PROFILE;
   	</select>
   	<insert id="addProfile" parameterType="java.util.Map">
   		insert into USER_PROFILE values (
@@ -32,15 +32,18 @@
   			#{profile_name},
   			#{user_email},
   			#{img_path},
-  			1
+  			0
   		)
   	</insert>
 
   	<update id="membershipUp" parameterType="java.util.Map">
-  		update USER set memberShip = 1 where user_email=#{user_email} 
+  		update USER set membership_id =#{membership_id}  where user_email=#{user_email} 
   	</update>
+  	<select id="getPaySeq">
+  		select count(*) from PAY_TYPE;
+  	</select>
   	<insert id="insertBilling" parameterType="java.util.Map">
-  		insert into PAY_TYPE(card_number , user_email , card_company) values(#{customer_uid}, #{user_email} , '카카오');
+  		insert into PAY_TYPE values(#{seq},#{customer_uid}, #{user_email} , '카카오');
   	</insert>
   	
   	<delete id="deleteProfile" parameterType="java.util.Map">
