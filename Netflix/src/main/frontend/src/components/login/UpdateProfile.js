@@ -13,7 +13,7 @@ const UpdateProfile = () => {
     useEffect(()=> {
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getProfileList',
+            url : '/getProfileList',
             data : qs.stringify({
                 'user_email' : localStorage.getItem('user_email')
             })
@@ -34,7 +34,7 @@ const UpdateProfile = () => {
         findProfileId = target.closest('.profileForm').childNodes[0].value;
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getProfile',
+            url : '/getProfile',
             data : qs.stringify({
                 'profile_id' : findProfileId
             })
@@ -53,7 +53,7 @@ const UpdateProfile = () => {
     const delectProfileBtn =() =>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/deleteProfile',
+            url : '/deleteProfile',
             data : qs.stringify({
                 'profile_id' : profileId
             })
@@ -68,7 +68,7 @@ const UpdateProfile = () => {
     const updateProfilBtn = ()=>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/updateProfile',
+            url : '/updateProfile',
             data : qs.stringify({
                 'profile_id' : profileId,
                 'profile_name' : profileName

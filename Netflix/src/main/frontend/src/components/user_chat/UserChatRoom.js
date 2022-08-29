@@ -32,7 +32,7 @@ const UserChatRoom = () => {
     const createChat=()=>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/createChatRoom',
+            url : '/createChatRoom',
             data : qs.stringify(createData),
           }).then(function(response){
             console.log(response);
@@ -57,7 +57,7 @@ const UserChatRoom = () => {
     const joinChatRoom=()=>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/joinChatRoom',
+            url : '/joinChatRoom',
             data : qs.stringify(joinData),
           })
           .then()

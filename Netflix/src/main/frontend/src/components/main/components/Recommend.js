@@ -78,7 +78,7 @@ const Recommend = ({ order, classification }) => {
 
     const getClassifications = () => {
         axios({
-            url: 'http://localhost:8080/getClassifications',
+            url: '/getClassifications',
         }).then(res => {
             tab === undefined && setClassificationArr(res.data);
             tab === 'series'  && setClassificationArr(res.data.filter(data => data.classification_type === 'tv'));

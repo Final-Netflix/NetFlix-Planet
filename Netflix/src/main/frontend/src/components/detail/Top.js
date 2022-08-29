@@ -39,9 +39,17 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
     }
   }
 
+  useEffect(() => {
+    getMovies();
+    getTvs();
+    getPicks();
+    getLikes();
+  }, []);
+  
   const getPicks = () => {
     axios({
-      url: 'http://localhost:8080/getPickUp',
+      url: '/getPickUp',
+      method: 'post',
       data: qs.stringify({
         'video_id' : id,
         'video_type': type,
@@ -49,17 +57,98 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
       })
     }).then((res)=>{
       let isPickUp = res.data;
-      console.log(isPickUp);
       if(isPickUp){
         setWishDelete(!wishDelete);
       }
     })
   };
 
-  useEffect(() => {
-    getMovies();
-    getTvs();
-  }, [])
+  const getLikes = () => {
+    axios({
+      url: '/getLike',
+      method: 'post',
+      data: qs.stringify({
+        'video_id' : id,
+        'video_type': type,
+        'profile_id': localStorage.getItem('profile_id')
+      })
+    }).then((res)=>{
+      let likeNum = res.data;
+      if(likeNum != 0){
+        setIsLiked(true);
+        if(likeNum == 1){
+          setDislikeClick(true);
+        }
+        else if(likeNum == 2){
+          setLikeClick(true);
+        }
+        else if(likeNum == 3) {
+          setBestClick(true);
+        }
+      }
+    })
+  }
+
+  const pickUp = () => {
+    if(!wishDelete) {
+      axios({
+        url: '/addPickUp',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        // alert('찜한 목록에 추가되었습니다.')
+      })
+    }
+    else{
+      axios({
+        url: '/delPickUp',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        // alert('찜한 목록에서 삭제하였습니다.')
+      })
+    }
+    setWishDelete(!wishDelete);
+  }
+
+  const like = (likeNum) => {
+    if(isLiked){ // 평가 취소
+      axios({
+        url: '/delLike',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id'),
+          'like_type': likeNum
+        })
+      }).then(()=>{
+        // alert('취소 완료!');
+      })
+    }
+    else { // 평가!
+      axios({
+        url: '/addLike',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id'),
+          'like_type': likeNum
+        })
+      }).then(()=>{
+        // alert('평가 완료!');
+      })
+    }
+  }
   
   /* 기능 */
   const [wishHover, setWishHover] = useState(false);
@@ -73,6 +162,7 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
   const [likeClick, setLikeClick] = useState(false);
   const [dislikeClick, setDislikeClick] = useState(false);
   const [bestClick, setBestClick] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const [rated, setRated] = useState(false);
 
   /* 찜 */
@@ -125,17 +215,42 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
   const bestDetailHoverLeave = () => {
     setBestDetailHover(false);
   }
+
   //좋아요 활성화
   const likeActive=()=>{
-    setLikeClick(!likeClick);
+    if(isLiked && likeClick){
+      setLikeClick(!likeClick);
+      setIsLiked(false);
+    }
+    else if(!isLiked && !likeClick){
+      setLikeClick(!likeClick);
+      setIsLiked(true);
+    }
+    like(2);
   }
   //싫어요 활성화
   const dislikeActive=()=>{
-    setDislikeClick(!dislikeClick);
+    if(isLiked && dislikeClick){
+      setDislikeClick(!dislikeClick);
+      setIsLiked(false);
+    }
+    else if(!isLiked && !dislikeClick){
+      setDislikeClick(!dislikeClick);
+      setIsLiked(true);
+    }
+    like(1);
   }
   //최고예요 활성화
   const bestActive=()=>{
-    setBestClick(!bestClick);
+    if(isLiked && bestClick){
+      setBestClick(!bestClick);
+      setIsLiked(false);
+    }
+    else if(!isLiked && !bestClick){
+      setBestClick(!bestClick);
+      setIsLiked(true);
+    }
+    like(3);
   }
 
   //평가함
@@ -153,38 +268,6 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
 
   /* DB */
   const qs = require('qs');
-
-  const pickUp = () => {
-    // const video = document.getElementById('movie.id').value
-
-    if(!wishDelete) {
-      axios({
-        url: 'http://localhost:8080/addPickUp',
-        method: 'post',
-        data: qs.stringify({
-          'video_id' : id,
-          'video_type': type,
-          'profile_id': localStorage.getItem('profile_id')
-        })
-      }).then(()=>{
-        alert('찜한 목록에 추가되었습니다.')
-      })
-    }
-    else{
-      axios({
-        url: 'http://localhost:8080/delPickUp',
-        method: 'post',
-        data: qs.stringify({
-          'video_id' : id,
-          'video_type': type,
-          'profile_id': localStorage.getItem('profile_id')
-        })
-      }).then(()=>{
-        alert('찜한 목록에서 삭제하였습니다.')
-      })
-    }
-    setWishDelete(!wishDelete);
-  }
 
   return (
 
@@ -207,7 +290,7 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
         </div>
       </div>
       }
-      { likeDetailHover &&
+      { (!isLiked && likeDetailHover) &&
       <div className='block break-words text-[1vw]'>
         <div className="css-1ef3g7z show left-[233px] top-[322px]">
           <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
@@ -216,34 +299,27 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
         </div>
       </div>
       } 
-      { dislikeDetailHover &&
+      { (!isLiked && dislikeDetailHover) &&
       <div className="css-1ef3g7z show left-[156px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">맘에 안 들어요</div>
         </div>
       </div>
       }
-      { bestDetailHover &&
+      { (!isLiked && bestDetailHover) &&
       <div className="css-1ef3g7z show left-[276px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">최고예요</div>
           </div>
       </div>
       }
-      { likeClick && rated &&
+      { (isLiked && likeHover) &&
       <div className="css-1ef3g7z show left-[233px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">평가함</div>
         </div>
       </div>
       }
-      {/* { dislikeClick && rated &&
-      <div className="css-1ef3g7z show left-[180px] top-[322px]">
-        <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
-          <div className="css-1th9py block">평가함</div>
-        </div>
-      </div>
-      } */}
 
       <div className='c2_previewModal rounded-t-md overflow-hidden bg-[#000] cursor-pointer relative text-[#fff] text-[16px]'>
         <div className='absolute w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
@@ -353,16 +429,33 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
                 {/* <div className='css'> */}
                   <div>
                     <div className='ltr_componentStyles m-[0.25em] relative z-[1] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                      <button onMouseOver={likeHoverEnter} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
-                      {/* <button onMouseOver={likeHoverEnter} onMouseLeave={likeHoverLeave} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'> */}
-                        <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
-                          <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
-                              <path fillRule="evenodd" clipRule="evenodd" d="M10.696 8.7732C10.8947 8.45534 11 8.08804 11 7.7132V4H11.8377C12.7152 4 13.4285 4.55292 13.6073 5.31126C13.8233 6.22758 14 7.22716 14 8C14 8.58478 13.8976 9.1919 13.7536 9.75039L13.4315 11H14.7219H17.5C18.3284 11 19 11.6716 19 12.5C19 12.5929 18.9917 12.6831 18.976 12.7699L18.8955 13.2149L19.1764 13.5692C19.3794 13.8252 19.5 14.1471 19.5 14.5C19.5 14.8529 19.3794 15.1748 19.1764 15.4308L18.8955 15.7851L18.976 16.2301C18.9917 16.317 19 16.4071 19 16.5C19 16.9901 18.766 17.4253 18.3994 17.7006L18 18.0006L18 18.5001C17.9999 19.3285 17.3284 20 16.5 20H14H13H12.6228C11.6554 20 10.6944 19.844 9.77673 19.5382L8.28366 19.0405C7.22457 18.6874 6.11617 18.5051 5 18.5001V13.7543L7.03558 13.1727C7.74927 12.9688 8.36203 12.5076 8.75542 11.8781L10.696 8.7732ZM10.5 2C9.67157 2 9 2.67157 9 3.5V7.7132L7.05942 10.8181C6.92829 11.0279 6.72404 11.1817 6.48614 11.2497L4.45056 11.8313C3.59195 12.0766 3 12.8613 3 13.7543V18.5468C3 19.6255 3.87447 20.5 4.95319 20.5C5.87021 20.5 6.78124 20.6478 7.65121 20.9378L9.14427 21.4355C10.2659 21.8094 11.4405 22 12.6228 22H13H14H16.5C18.2692 22 19.7319 20.6873 19.967 18.9827C20.6039 18.3496 21 17.4709 21 16.5C21 16.4369 20.9983 16.3742 20.995 16.3118C21.3153 15.783 21.5 15.1622 21.5 14.5C21.5 13.8378 21.3153 13.217 20.995 12.6883C20.9983 12.6258 21 12.5631 21 12.5C21 10.567 19.433 9 17.5 9H15.9338C15.9752 8.6755 16 8.33974 16 8C16 6.98865 15.7788 5.80611 15.5539 4.85235C15.1401 3.09702 13.5428 2 11.8377 2H10.5Z" fill="currentColor"></path>
-                            </svg>
+                      {
+                        !isLiked ? 
+                        <button onMouseOver={likeHoverEnter} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
+                          <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                            <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
+                                <path fillRule="evenodd" clipRule="evenodd" d="M10.696 8.7732C10.8947 8.45534 11 8.08804 11 7.7132V4H11.8377C12.7152 4 13.4285 4.55292 13.6073 5.31126C13.8233 6.22758 14 7.22716 14 8C14 8.58478 13.8976 9.1919 13.7536 9.75039L13.4315 11H14.7219H17.5C18.3284 11 19 11.6716 19 12.5C19 12.5929 18.9917 12.6831 18.976 12.7699L18.8955 13.2149L19.1764 13.5692C19.3794 13.8252 19.5 14.1471 19.5 14.5C19.5 14.8529 19.3794 15.1748 19.1764 15.4308L18.8955 15.7851L18.976 16.2301C18.9917 16.317 19 16.4071 19 16.5C19 16.9901 18.766 17.4253 18.3994 17.7006L18 18.0006L18 18.5001C17.9999 19.3285 17.3284 20 16.5 20H14H13H12.6228C11.6554 20 10.6944 19.844 9.77673 19.5382L8.28366 19.0405C7.22457 18.6874 6.11617 18.5051 5 18.5001V13.7543L7.03558 13.1727C7.74927 12.9688 8.36203 12.5076 8.75542 11.8781L10.696 8.7732ZM10.5 2C9.67157 2 9 2.67157 9 3.5V7.7132L7.05942 10.8181C6.92829 11.0279 6.72404 11.1817 6.48614 11.2497L4.45056 11.8313C3.59195 12.0766 3 12.8613 3 13.7543V18.5468C3 19.6255 3.87447 20.5 4.95319 20.5C5.87021 20.5 6.78124 20.6478 7.65121 20.9378L9.14427 21.4355C10.2659 21.8094 11.4405 22 12.6228 22H13H14H16.5C18.2692 22 19.7319 20.6873 19.967 18.9827C20.6039 18.3496 21 17.4709 21 16.5C21 16.4369 20.9983 16.3742 20.995 16.3118C21.3153 15.783 21.5 15.1622 21.5 14.5C21.5 13.8378 21.3153 13.217 20.995 12.6883C20.9983 12.6258 21 12.5631 21 12.5C21 10.567 19.433 9 17.5 9H15.9338C15.9752 8.6755 16 8.33974 16 8C16 6.98865 15.7788 5.80611 15.5539 4.85235C15.1401 3.09702 13.5428 2 11.8377 2H10.5Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
                           </div>
-                        </div>
-                      </button>
+                        </button> :
+                        <button onMouseOver={likeHoverEnter} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[#000] border-[#fff] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
+                          <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                            <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap">
+                                <path
+                                  fillRule="evenodd"
+                                  clipRule="evenodd"
+                                  d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+                                  fill="currentColor"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </button>
+                        
+                      }
                       {/* 평가하기 */}
                       { likeHover &&
                       <div onMouseLeave={likeHoverLeave} className='thumbs_selection_overlay_container opacity-[1] translate-x-[-50%] translate-y-[-50%] translate-z-[0px] scale-[1] ml-[0.1rem] mt-[-0.1rem] absolute top-[50%] left-[50%] transition-opacity-[0.1s] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>

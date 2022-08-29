@@ -50,7 +50,7 @@ const SignUpComponets = () => {
         if(checkEmail && checkPwd && checkNumber && checked) {
             axios({
                 method: 'post',
-                url : 'http://localhost:8080/signUp',
+                url : '/signUp',
                 data : qs.stringify({
                     'user_email' : email ,
                     'user_pwd' : pwd ,
@@ -85,7 +85,7 @@ const SignUpComponets = () => {
                 if(regEmail.test(e.target.value)===true) {
                     axios({
                         method: 'post',
-                        url : 'http://localhost:8080/emailCheck',
+                        url : '/emailCheck',
                         data : qs.stringify({
                             'user_email' : e.target.value ,
                         })
@@ -124,7 +124,7 @@ const SignUpComponets = () => {
                  
                 axios({
                     method : 'post',
-                    url : 'http://localhost:8080/send-sms',
+                    url : '/send-sms',
                     data : qs.stringify({
                         'recipientPhoneNumber' : document.getElementById('id_phone').value ,
                         'title' : 'test',

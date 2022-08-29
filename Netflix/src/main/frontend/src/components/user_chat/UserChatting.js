@@ -25,7 +25,7 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     const sendChat=()=>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/sendChat',
+            url : '/sendChat',
             data : qs.stringify(sendChatDate)
         })
           .then()
@@ -37,7 +37,7 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     useEffect(()=> {
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getUserChatList',
+            url : '/getUserChatList',
             data : qs.stringify(chatListDate)
           })
           .then(res => {

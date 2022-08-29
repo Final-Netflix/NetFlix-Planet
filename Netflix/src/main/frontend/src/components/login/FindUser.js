@@ -56,7 +56,7 @@ const FindUser = () => {
             
         axios({
             method : 'post',
-            url : 'http://localhost:8080/send-sms',
+            url : '/send-sms',
             data : qs.stringify({
                 'recipientPhoneNumber' : phoneInputVal ,
                 'title' : 'test',
@@ -71,7 +71,7 @@ const FindUser = () => {
         if(phoneCode==sendCode){
             axios({
                 method : 'post',
-                url : 'http://localhost:8080/findEmail',
+                url : '/findEmail',
                 data : qs.stringify({
                     'phone' : phoneInputVal
                 })
@@ -92,7 +92,7 @@ const FindUser = () => {
         if(regEmail.test(emailInputVal)===true){
             axios({
                 method : 'post',
-                url : 'http://localhost:8080/findPwd',
+                url : '/findPwd',
                 data : qs.stringify({
                     'user_email' : emailInputVal
                 })

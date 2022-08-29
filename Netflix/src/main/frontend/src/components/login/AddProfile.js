@@ -16,7 +16,7 @@ const AddProfile = () => {
     const addProfileBtn= ()=>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/addProfile',
+            url : '/addProfile',
             data : qs.stringify({
                 'img_path' : selectImg,
                 'user_email' : localStorage.getItem('user_email'),
