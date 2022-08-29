@@ -5,7 +5,7 @@ import SearchGenre from './SearchGenre';
 import SearchKeyword from './SearchKeyword';
 import Video from './Video';
 
-const Linked = () => {
+const Linked = ({type, value}) => {
   const {detail} = useParams();
 
   return (
@@ -13,7 +13,7 @@ const Linked = () => {
       {detail === 'searchActor' && <SearchActor />}
       {detail === 'searchGenre' && <SearchGenre />}
       {detail === 'searchKeyword' && <SearchKeyword />}
-      {detail === 'video' && <Video />}
+      {detail === 'video' && <Video type={type} value={value}/>}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import APITest from './APITest';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -30,6 +30,19 @@ const Main = () => {
         }
     }
 
+    const navigate = useNavigate();
+
+    const key = 'bc61587b22cd0e5226a33d30e467d867';
+    const tvId = '197067';
+    const movieId = '682110';
+
+    const goTv = () => {
+        navigate(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${key}&language=ko-KR`)
+    }
+    const goMovie = () => {
+        navigate(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=ko-KR`)
+    }
+
     return (
         <div className={ tab === 'search' ? 'bg-[#141414] absolute w-full' : 'bg-[#141414]'}>
             <div className={ scroll ? 'bg-[#141414] z-[1]' : 'z-[1]'}>
@@ -47,11 +60,22 @@ const Main = () => {
 
             {/* <APITest/> */}
 
-            <Link to="/detail">
+            <Link to="/detailMain">
     	        <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
         	        Detail
 	            </button>
             </Link>
+            <Link to="/detailMain" state={{tvId:tvId}}>
+                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]" onClick={goTv}>
+        	        tv
+	            </button>
+            </Link>
+            <Link to="/detailMain" state={{movieId:movieId}}>
+                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]" onClick={goMovie} value={movieId}>
+        	        movie
+	            </button>
+            </Link>
+
             <Link to="/my">
             	<button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
 					마이페이지

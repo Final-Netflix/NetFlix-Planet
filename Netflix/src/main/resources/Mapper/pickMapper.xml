@@ -8,4 +8,7 @@
  		insert into PICKS (PICKS_ID, VIDEO_ID, PROFILE_ID, VIDEO_TYPE) 
  		values (#{picks_id}, #{video_id}, #{profile_id}, #{video_type})
  	</insert>
+ 	<select id="getProfileIdSeq" resultType="int">
+  		select max(picks_id) from PICKS;
+  	</select>
  </mapper>
