@@ -53,4 +53,7 @@ public interface UserDAO {
 	public int getMembership(String user_email);
 
 
+	public int getPaySeq();
+
+
 }

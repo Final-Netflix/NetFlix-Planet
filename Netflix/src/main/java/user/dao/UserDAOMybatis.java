@@ -116,4 +116,9 @@ public class UserDAOMybatis implements UserDAO {
 		return sqlSession.selectList("userSQL.findEmail",map);
 	}
 
+	@Override
+	public int getPaySeq() {
+		return sqlSession.selectOne("userSQL.getPaySeq");
+	}
+
 }

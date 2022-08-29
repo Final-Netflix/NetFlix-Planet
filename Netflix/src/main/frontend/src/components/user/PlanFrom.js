@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useStore from 'store';
 
 const PlanFrom = () => {
@@ -74,6 +74,11 @@ const PlanFrom = () => {
     
         }
     }
+    useEffect(()=> {
+        setPrice(17000);
+        setMembership(3);
+        setMembershipName('플래닛 프리미엄 테스트');
+    },[])
     //다음버튼 누르면 결제창   
     const onPay = ()=> {
         const {IMP} =window;
