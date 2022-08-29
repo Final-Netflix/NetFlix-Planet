@@ -12,6 +12,7 @@ const Verification = () => {
         setCount(count+1)
     }
     const onAddd = ()=> {
+        console.log(vall)
         if(vall === 'email') {
             setCount(count+1);
         }else if(vall === 'phone') {

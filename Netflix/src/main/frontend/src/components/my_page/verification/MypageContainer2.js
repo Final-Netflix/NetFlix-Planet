@@ -1,5 +1,7 @@
+
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import React from 'react';
 import useStore from 'store';
 
 
@@ -64,8 +66,8 @@ const MypageContainer2 = ({setCount, count}) => {
                 </button>
     }
     return (
-        <div className='m1_bd small:mt-5 small:mx-[30px] bg-[#f3f3f3] small:mb-0 mt-3 mx-0 mb-0 p-0 tracking-normal font-sans text-[#333] text-[16px] cursor-default  break-[keep-all]' style={{wordBreak : 'keep-all' , direction : 'ltr'}}>
-            <div className='m1_responsive-account-container mid:text-[1em] mid:max-w-[1024px] mid:w-[95%] block my-0 mx-auto min-h-[400px] min-w-[300px] relative' style={{overflowWrap:'anywhere'}}>
+        <div className='m1_bd small:mt-5 small:mx-[30px] bg-[#f3f3f3] small:mb-0 mt-3 mx-0 mb-0 p-0 tracking-normal font-sans text-[#333] text-[16px] cursor-default  break-[keep-all]' style={{ wordBreak: 'keep-all', direction: 'ltr' }}>
+            <div className='m1_responsive-account-container mid:text-[1em] mid:max-w-[1024px] mid:w-[95%] block my-0 mx-auto min-h-[400px] min-w-[300px] relative' style={{ overflowWrap: 'anywhere' }}>
                 <div className='m1_mfa-challenge-container mt-[50px] mx-auto mb-0 max-w-[684px] box-border text-center'>
                     <div>
                         <svg viewBox="0 0 64 76" className="m1_icon-shield h-[100px] mx-auto mb-[10px]">
@@ -89,7 +91,7 @@ const MypageContainer2 = ({setCount, count}) => {
                         <form className='m1_select-factor-form border-2 border-solid border-[#e6e6e6] rounded-[10px] shadow-[0_0_5px_2px_#e6e6e6] my-5 mx-auto max-w-[600px] overflow-hidden' method='post'>
                             <Button what={phone(user_phone)} name='문자로 코드 받기' method={onPhone}/>
                             <Button what={user_email} name='이메일로 코드 받기' method={onEmail}/>
-                        </form>
+                       </form>
                     </div>
                     <div className='m1_customer-service-text-container text-[14px] mt-[40px] box-border'>
                         <span>
@@ -98,7 +100,7 @@ const MypageContainer2 = ({setCount, count}) => {
                         </span>
                     </div>
                     <span className='none'></span>
-                </div>  
+                </div>
             </div>
         </div>
     );

@@ -97,9 +97,23 @@ public class UserDAOMybatis implements UserDAO {
 
 	@Override
 	public int getMembership(String user_email) {
-		
 		return sqlSession.selectOne("userSQL.getMembership", user_email); 
+	}
+	@Override
+	public UserDTO findPwd(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("userSQL.findPwd",map);
+	}
+
+	@Override
+	public void updatePwd(Map<String, String> map) {
+		sqlSession.update("userSQL.updatePwd",map);
 		
+	}
+
+	@Override
+	public List<UserDTO> findEmail(Map<String, String> map) {
+		return sqlSession.selectList("userSQL.findEmail",map);
 	}
 
 }

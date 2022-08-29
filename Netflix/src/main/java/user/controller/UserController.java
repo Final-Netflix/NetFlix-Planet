@@ -20,6 +20,7 @@ import user.bean.UserProfileDTO;
 import user.send.Request;
 import user.send.SmsResponse;
 import user.send.SmsService;
+import user.service.MailServiceImpl;
 import user.service.UserService;
 
 @Controller
@@ -27,6 +28,8 @@ import user.service.UserService;
 public class UserController {
 	@Autowired
 	SmsService smsService;
+	@Autowired
+	MailServiceImpl mailServiceImpl ;
 	
 	@Autowired
 	UserService userService = null;
@@ -42,6 +45,7 @@ public class UserController {
 	@PostMapping("/login")
 	@ResponseBody
 	public UserDTO login(@RequestParam Map<String,String> map) {
+		
 		return userService.login(map);
 	}
 	
@@ -94,7 +98,6 @@ public class UserController {
 	public void updateProfile(@RequestParam Map<String,String> map) {
 		userService.updateProfile(map);
 	}
-	
 	@PostMapping("/getInfo")
 	@ResponseBody
 	public Map<String, Object> getInfo(@RequestParam String user_email) {
@@ -121,8 +124,27 @@ public class UserController {
 		return map;
 	}
 
+	@PostMapping("/findPwd")
+	@ResponseBody
+	public Map<String,Object> findPwd(@RequestParam Map<String,String> map) {
+		Map<String,Object> sendMap = new HashMap<String,Object>();
+		sendMap.put("userDTO", userService.findPwd(map));
+		sendMap.put("email_code", mailServiceImpl.sendSimpleMessage(map));
+		
+		return sendMap;
+	}
+	
+	@PostMapping("/updatePwd")
+	@ResponseBody
+	public void updatePwd(@RequestParam Map<String,String> map) {
+		userService.updatePwd(map);
+	}
+	@PostMapping("/findEmail")
+	@ResponseBody
+	public List<UserDTO> findEmail(@RequestParam Map<String,String> map) {
+		return userService.findEmail(map);
+	}
+
 }
-
-
 
 
