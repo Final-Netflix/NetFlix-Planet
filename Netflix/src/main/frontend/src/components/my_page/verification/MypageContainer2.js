@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import useStore from 'store';
-const qs = require('qs');
 
 
 const MypageContainer2 = ({setCount, count}) => {
+    const qs = require('qs');
     const {user_email , user_phone , verify, setVerify} = useStore();
     const phone = (num)=>{
         return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
