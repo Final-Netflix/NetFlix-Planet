@@ -25,4 +25,8 @@ public interface UserChatDAO {
 	public List<UserChatDTO> getUserChatList(Map<String, String> map);
 
 	public List<UserChatRoomDTO> gitChatRoomMakerList(Map<String, String> map);
+
+	public UserChatRoomDTO creatorCheck(Map<String, String> map);
+
+	public void updateChatRoom(Map<String, String> map);
 }

@@ -285,7 +285,7 @@ const Video = () => {
         </div>
         {/* 채팅창 */}
         <div className='bg-white absolute right-0 h-[100%]' style={ isChat ? {width: '18%'} : {width: '0%'}}>
-          <UserChatRoom/>
+          <UserChatRoom id={id}/>
         </div>
 
       </div>

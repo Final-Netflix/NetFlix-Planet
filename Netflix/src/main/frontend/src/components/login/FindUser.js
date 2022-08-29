@@ -109,7 +109,7 @@ const FindUser = () => {
     }
     }
     return (
-        <div className='bg-[#141414] h-[100%]'>
+        <div className='bg-[#141414] h-[auto]'>
             <LoginHeader/>
             <div className="wh1-login-content max-w-[450px] mx-auto">
             {
@@ -130,8 +130,8 @@ const FindUser = () => {
                 :
                 <>
                 
-                <h1 className='text-white' onClick={findMenuBtn} style={isFindMenu ? {color : 'white'}:{color : '#333333'}}>아이디 찾기</h1>
-                <h1 className='text-white' onClick={findMenuBtn} style={!isFindMenu ? {color : 'white'}:{color : '#333333'}}>비밀번호 찾기</h1>
+                <h1 className='text-white hover:cursor-pointer' onClick={findMenuBtn} style={isFindMenu ? {color : 'white'}:{color : '#333333'}}>아이디 찾기</h1>
+                <h1 className='text-white hover:cursor-pointer' onClick={findMenuBtn} style={!isFindMenu ? {color : 'white'}:{color : '#333333'}}>비밀번호 찾기</h1>
                 {
                     isFindMenu?
                     <>
@@ -171,15 +171,17 @@ const FindUser = () => {
             </>
             }
             <div>
-
-            
+                
                 <ul className='h-[100px]'>
                     {
                         findUserList.map((item,index)=>{ 
                             return (
-                                <li>
-                                <h1 className='text-white'>{item.user_email}</h1>
-                                </li>
+                                <div>
+                                    <h1 className='text-white'>가입하신 아이디</h1>
+                                    <li>
+                                    <h1 className='text-white'>{item.user_email}</h1>
+                                    </li>
+                                </div>
                                 )
                         })
                     }

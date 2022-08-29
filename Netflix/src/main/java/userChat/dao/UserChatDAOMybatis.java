@@ -65,4 +65,16 @@ public class UserChatDAOMybatis implements UserChatDAO {
 		return sqlSession.selectList("userChatSQL.gitChatRoomMakerList",map);
 	}
 
+	@Override
+	public UserChatRoomDTO creatorCheck(Map<String, String> map) {
+		
+		return sqlSession.selectOne("userChatSQL.creatorCheck",map);
+	}
+
+	@Override
+	public void updateChatRoom(Map<String, String> map) {
+		sqlSession.update("userChatSQL.updateChatRoom",map);
+		
+	}
+
 }

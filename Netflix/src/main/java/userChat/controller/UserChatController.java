@@ -51,4 +51,14 @@ public class UserChatController {
 	public List<UserChatRoomDTO>gitChatRoomMakerList(@RequestParam Map<String,String> map) {
 		return userChatService.gitChatRoomMakerList(map);
 	}
+	@PostMapping("/creatorCheck")
+	@ResponseBody
+	public UserChatRoomDTO creatorCheck(@RequestParam Map<String,String> map) {
+		return userChatService.creatorCheck(map);
+	}
+	@PostMapping("/updateChatRoom")
+	@ResponseBody
+	public void updateChatRoom(@RequestParam Map<String,String> map) {
+		 userChatService.updateChatRoom(map);
+	}
 }

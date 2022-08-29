@@ -65,5 +65,17 @@ public class UserChatServiceImpl implements UserChatService {
 		return userChatDAO.gitChatRoomMakerList(map);
 	}
 
+	@Override
+	public UserChatRoomDTO creatorCheck(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return userChatDAO.creatorCheck(map);
+	}
+
+	@Override
+	public void updateChatRoom(Map<String, String> map) {
+		userChatDAO.updateChatRoom(map);
+		
+	}
+
 
 }

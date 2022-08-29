@@ -20,7 +20,6 @@ const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
         })
         .then(res => {
             setData(res.data);
-            
         })
         .catch(error => console.log(error));
     

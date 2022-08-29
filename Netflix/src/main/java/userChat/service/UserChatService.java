@@ -20,4 +20,8 @@ public interface UserChatService {
 
 	public List<UserChatRoomDTO> gitChatRoomMakerList(Map<String, String> map);
 
+	public UserChatRoomDTO creatorCheck(Map<String, String> map);
+
+	public void updateChatRoom(Map<String, String> map);
+
 }
