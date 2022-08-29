@@ -17,7 +17,14 @@ public class UserChatServiceImpl implements UserChatService {
 	
 	@Override
 	public void createChatRoom(Map<String,String> map) {
-		int chatRoomSeq = userChatDAO.chatRoomSeq()+1;
+		
+		String chatRoomSeq = userChatDAO.chatRoomSeq();
+
+		if(chatRoomSeq == null) {
+			chatRoomSeq = "1";
+		}else {
+			chatRoomSeq= Integer.parseInt(chatRoomSeq)+1 +"";
+		}
 		map.put("seq",chatRoomSeq+"");
 		
 		userChatDAO.createChatRoom(map);
@@ -37,8 +44,12 @@ public class UserChatServiceImpl implements UserChatService {
 
 	@Override
 	public void sendChat(Map<String, String> map) {
-		int chatSeq = userChatDAO.chatSeq()+1;
-		
+		String chatSeq = userChatDAO.chatSeq();
+		if(chatSeq ==null) {
+			chatSeq = "1";
+		}else {
+			chatSeq = Integer.parseInt(chatSeq)+1+"";
+		}
 		map.put("seq",chatSeq+"");
 		userChatDAO.sendChat(map);
 		

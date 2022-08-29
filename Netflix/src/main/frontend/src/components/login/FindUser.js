@@ -14,7 +14,7 @@ const FindUser = () => {
     const [emailCode,setEmailCode] = useState('');
     const [userEmail,setUserEmail]=useState();
     const [phoneCode,setPhoneCode]=useState();
-    const [findUserList,setFindUserList] =useState([]);
+    const [findUserList,setFindUserList] = useState([]);
     const findMenuBtn=()=>{
         setIsFindMenu(!isFindMenu);
     }
@@ -53,7 +53,7 @@ const FindUser = () => {
         var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
         verify = verifyCode;
         setSendCode(verify);
-            
+        console.log(verifyCode);
         axios({
             method : 'post',
             url : 'http://localhost:8080/send-sms',
@@ -78,7 +78,7 @@ const FindUser = () => {
             }).then(res=>{
                     console.log(res.data[0]);
                     setFindUserList(res.data);
-                    console.log(findUserList);
+                    console.log(findUserList)
                 
             }).catch(error => console.log(error));
             
@@ -170,23 +170,21 @@ const FindUser = () => {
                 </div>
             </>
             }
-                <ul>
-                    <li>
-                    <span>왜안화</span>
-                    </li>
+            <div>
+
+            
+                <ul className='h-[100px]'>
                     {
-                        findUserList.map(item=>{
-
-                            <li>
-                                
-                                {item.user_email}
+                        findUserList.map((item,index)=>{ 
+                            return (
+                                <li>
                                 <h1 className='text-white'>{item.user_email}</h1>
-                                <h1 className='text-white'>{item.phone}</h1>
-
-                            </li>
+                                </li>
+                                )
                         })
                     }
                 </ul>
+            </div>
             </div>
         </div>
     );

@@ -41,11 +41,11 @@ public class UserChatDAOMybatis implements UserChatDAO {
 	}
 
 	@Override
-	public int chatRoomSeq() {
+	public String chatRoomSeq() {
 		return sqlSession.selectOne("userChatSQL.chatRoomSeq");
 	}
 	@Override
-	public int chatSeq() {
+	public String chatSeq() {
 		return sqlSession.selectOne("userChatSQL.chatSeq");
 	}
 

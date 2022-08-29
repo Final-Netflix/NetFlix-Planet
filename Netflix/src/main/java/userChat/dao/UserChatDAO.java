@@ -16,9 +16,9 @@ public interface UserChatDAO {
 
 	public List<UserChatRoomDTO> getListChatRoom(Map<String, String> map);
 
-	public int chatRoomSeq();
+	public String chatRoomSeq();
 	
-	public int chatSeq();
+	public String chatSeq();
 
 	public void sendChat(Map<String, String> map);
 

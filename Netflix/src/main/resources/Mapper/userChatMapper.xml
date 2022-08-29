@@ -16,7 +16,7 @@
 				room_title
 			)values
 			(
-				#{seq}+1,
+				#{seq},
 				#{chat_code},
 				#{profile_id},
 				null,
@@ -45,10 +45,10 @@
     		On CHAT_PARTICIPANT.PROFILE_ID = #{profile_id}로그인 한사람
             where CHAT_ROOM.CHAT_ROOM_ID = CHAT_PARTICIPANT.CHAT_ROOM_ID
   	</select> -->
-  	<select id="chatRoomSeq" resultType="int">
+  	<select id="chatRoomSeq" resultType="String">
   		select max(CHAT_ROOM_ID) from CHAT_ROOM
   	</select>
-  	<select id="chatSeq" resultType="int">
+  	<select id="chatSeq" resultType="String">
   		select max(CHAT_ID) from CHAT
   	</select>
   	<insert id="sendChat" parameterType="java.util.Map">
