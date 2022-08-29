@@ -5,7 +5,7 @@ import useStore from 'store';
 
 const MypageContainer2 = ({setCount, count}) => {
     const qs = require('qs');
-    const {user_email , user_phone ,setVerify} = useStore();
+    const {user_email , user_phone ,setVerify ,setIsVerify} = useStore();
     const phone = (num)=>{
         return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
     }
@@ -22,7 +22,7 @@ const MypageContainer2 = ({setCount, count}) => {
                 'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
             })
         }).then((res) => {
-            console.log("문자성공")
+            setIsVerify('phone')
             setCount(count+1)
         });
     }
@@ -34,10 +34,12 @@ const MypageContainer2 = ({setCount, count}) => {
             url : 'http://localhost:8080/send-email',
             data : qs.stringify({
                 'verify' : verifyCode,
+                'user_email' : user_email,
             })
         }).then(()=>{
-                setCount(count+1)
-                console.log("이메일성공")
+            setIsVerify('email');    
+            setCount(count+1)
+                
             })
         }
     

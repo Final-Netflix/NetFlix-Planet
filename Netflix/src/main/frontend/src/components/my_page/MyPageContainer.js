@@ -38,7 +38,7 @@ const MypageContainer = () => {
     useEffect(()=>{
         axios({
             method : 'post' ,
-            url : 'http://localhost:8080/getInfo',
+            url : '/getInfo',
             data : qs.stringify({
                 'user_email' : localStorage.getItem('user_email')
             })

@@ -9,7 +9,8 @@ const SignUp = () => {
     const {detail} =useParams();
 
     const sessionOut = (e)=> {
-        sessionStorage.clear()
+        localStorage.clear()
+        window.location.href = '/'
     }
     
     return (
@@ -22,7 +23,7 @@ const SignUp = () => {
                             <span className="m1_screen-reader-text">Netflix</span>
                         </a>
                         {
-                            sessionStorage.getItem('user_email') ? 
+                            localStorage.getItem('user_email') ? 
                             <a className="m1_authLinks m1_signupBasicHeader m1_onboarding-header" onClick={sessionOut}>로그아웃</a>
                             :
                             <a href="/login" className="m1_authLinks m1_signupBasicHeader m1_onboarding-header" data-uia="header-login-link">로그인</a>

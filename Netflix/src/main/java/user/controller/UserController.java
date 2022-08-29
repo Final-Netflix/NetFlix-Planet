@@ -45,7 +45,8 @@ public class UserController {
 	@PostMapping("/send-email")
 	@ResponseBody
 	public void send_email(@RequestParam Map<String , String> map) {
-		System.out.println(map);
+		mailServiceImpl.sendCheckEmail(map);
+		
 		
 	}
 	
@@ -150,6 +151,12 @@ public class UserController {
 	@ResponseBody
 	public List<UserDTO> findEmail(@RequestParam Map<String,String> map) {
 		return userService.findEmail(map);
+	}
+	@PostMapping("/changeEmail")
+	@ResponseBody
+	public int changeEmail(@RequestParam Map<String, String> map) {
+		int i = userService.changeEmail(map);
+		return 0;
 	}
 
 }
