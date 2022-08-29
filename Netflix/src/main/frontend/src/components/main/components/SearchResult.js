@@ -3,7 +3,7 @@ import 'css/main/searchResult.css';
 import SearchResultList from './SearchResultList';
 import SearchResultHeaderList from './SearchResultHeaderList';
 
-const SearchResult = ({ search }) => { // search = 아이언맨
+const SearchResult = ({ search, setSearch }) => { // search = 아이언맨
     
     const [searchMovieList, setSearchMovieList] = useState([]);
     const [searchTvList, setSearchTvList] = useState([]);
@@ -33,14 +33,18 @@ const SearchResult = ({ search }) => { // search = 아이언맨
      useEffect(() => {
         getSearchMovieList();
         getSearchTvList();
+      /*  return () => {
+        getSearchMovieList();
+        getSearchTvList();
+       } */
     }, [search]);
 
     return (
         <div className="c1-mainView">
             { loading ? '' :
                 <div className="c1-gallery c1-row-with-x-columns c1-search relative top-[5vw]">
-                    <SearchResultHeaderList idx = { id } searchList = { searchMovieList } />
-                    <SearchResultList searchMovieList={ searchMovieList } searchTvList={ searchTvList }/>
+                    <SearchResultHeaderList idx = { id } searchList = { searchMovieList } setSearch={ setSearch }/>
+                    <SearchResultList searchMovieList={ searchMovieList } searchTvList={ searchTvList } search={ search } />
                 </div>
             }
         </div>

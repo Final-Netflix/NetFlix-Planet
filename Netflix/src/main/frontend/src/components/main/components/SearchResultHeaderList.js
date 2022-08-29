@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SearchResultHeaderItem from './SearchResultHeaderItem';
 
-const SearchResultHeaderList = ({ idx }) => { // idx = 10138
+const SearchResultHeaderList = ({ idx, setSearch, search }) => { // idx = 10138
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
-    const [content, setContent] = useState();
-     
-      const getContentList = async () => {
+    const [contentArr, setContentArr] = useState();
+
+    const getContentList = async () => {
         const apiResult = `https://api.themoviedb.org/3/movie/${idx}/similar?api_key=bc61587b22cd0e5226a33d30e467d867&language=ko-KR`
         const json = await(
             await fetch(apiResult)
@@ -14,19 +15,21 @@ const SearchResultHeaderList = ({ idx }) => { // idx = 10138
         //console.log('1번지? = ' + json.results[1].title)
         //console.log('0번지? = ' + json.results[0].title)
 
-        const arr = []; // 
-        for (let i = 0; i < 10; i++) { 
-            arr.push(json.results[i].title + " | ");
-
+        const arr = [];
+        
+        for (let i = 0; i < 10; i++) {
+            arr.push(json.results[i]);
         }
-        setContent(arr);
+        setContentArr(arr);
     }
-
-    console.log(content)
 
      useEffect(() => {
         getContentList();
     }, []);
+
+   /*  const handleClick = () => {
+        naviagate('/search', {state : {type : } })
+    } */
 
     if( idx != ''){
         return (
@@ -40,11 +43,12 @@ const SearchResultHeaderList = ({ idx }) => { // idx = 10138
                                     <div>
                                         <ul className = "c1-suggestions text-2xl text-white">
                                             <li>
-                                                {
                                                 <div className = "mr-10">
-                                                    <button className = "c1-ptrack-content">{ content }</button> 
-                                                </div>
+                                                {
+                                                    contentArr != undefined &&
+                                                    contentArr.map((content, index) => <SearchResultHeaderItem key={ index } content={ content } search={ search } setSearch={ setSearch }/>)
                                                 }
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>

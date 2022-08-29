@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const SearchResultTvItem = ({ searchItem }) => {
+const SearchResultTvItem = ({ searchItem, search }) => {
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     const [backdrop, setBackdrop] = useState('');
@@ -31,7 +31,7 @@ const SearchResultTvItem = ({ searchItem }) => {
     
     useEffect(() => {
         getImage();
-    }, []);
+    }, [search]);
 
     if(backdrop === ''){
         return;
