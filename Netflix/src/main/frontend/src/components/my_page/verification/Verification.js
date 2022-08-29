@@ -6,21 +6,21 @@ import MypageContainer2 from './MypageContainer2';
 import MypageSelf_phone from './MypageSelf_phone';
 
 const Verification = () => {
-    const {val} = useStore();
+    const {vall} = useStore();
     const[count , setCount] = useState(0)
     const onAdd = ()=> {
         setCount(count+1)
     }
     const onAddd = ()=> {
-        if(val === 'email') {
+        if(vall === 'email') {
             setCount(count+1);
-        }else if(val === 'phone') {
+        }else if(vall === 'phone') {
             setCount(count+2);
         }
     }
     return (
         <div>
-            {count === 0 && <MypageContainer2 count={count} onAdd={onAdd}/>}
+            {count === 0 && <MypageContainer2 setCount={setCount} count={count} onAdd={onAdd}/>}
             {count === 1 && <MypageSelf_phone count={count} onAddd={onAddd}/>}
             {count === 2 && <MyPageChangeEmail/>}
             {count === 3 && <Mypagephone/>}

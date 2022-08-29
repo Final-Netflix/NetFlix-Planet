@@ -24,7 +24,7 @@
   		select * from USER_PROFILE where profile_id=#{profile_id}
   	</select>
   	<select id="getProfileIdSeq" resultType="int">
-  		select max(profile_id) from USER_PROFILE;
+  		select count(*) from USER_PROFILE;
   	</select>
   	<insert id="addProfile" parameterType="java.util.Map">
   		insert into USER_PROFILE values (
@@ -50,7 +50,7 @@
   		update USER_PROFILE set PROFILE_NAME = #{profile_name} where profile_id = #{profile_id}
   	</insert>
   	<!-- my page main 정보 불러오기 -->
-  	<select id="getUSER" parameterType="String" resultType="java.util.Map">
+  	<select id="getUSER" parameterType="String" resultType="user">
   	 select * from USER where user_email =#{user_email}
   	</select>
   	<select id="priceMethod" parameterType="String" resultType="String">

@@ -57,7 +57,6 @@ public class UserDAOMybatis implements UserDAO {
 
 	@Override
 	public int getProfileIdSeq() {
-		
 		return sqlSession.selectOne("userSQL.getProfileIdSeq");
 	}
 
@@ -87,7 +86,7 @@ public class UserDAOMybatis implements UserDAO {
 	}
 
 	@Override
-	public Map<String, String> getUSER(String user_email) {
+	public UserDTO getUSER(String user_email) {
 		return sqlSession.selectOne("userSQL.getUSER" , user_email);
 	}
 

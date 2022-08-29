@@ -8,10 +8,13 @@ import save from '../../image/my_page/save.png';
 import MypageFooter from './MyPageFooter';
 import useStore from 'store';
 import axios from 'axios';
+import { map } from 'jquery';
+import { list } from 'postcss';
 
 const MypageContainer = () => {
     const qs = require('qs');
-    const {valEmail , valPhone} = useStore();
+    const {valEmail , valPhone , user_email , user_phone ,user_membership , setUserEmail , setUserPhone , setUsermembership} = useStore();
+    const [profiles , setProfiles] = useState([]);
     const [isShow1, setIsShow1] = useState(false)
     const [isShow2, setIsShow2] = useState(false)
     const [isShow3, setIsShow3] = useState(false)
@@ -29,8 +32,10 @@ const MypageContainer = () => {
     const onToggle4 = () => {
         setIsShow4(!isShow4)
     }
+    const phone = (num)=>{
+        return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
+    }
     useEffect(()=>{
-        console.log('웰컴')
         axios({
             method : 'post' ,
             url : 'http://localhost:8080/getInfo',
@@ -40,7 +45,14 @@ const MypageContainer = () => {
             
         
         }).then(res=>{
-            console.log('ㅎㅇㅎㅇ')
+            const userDTO = res.data.userDTO ;
+            setUserEmail(userDTO.user_email);
+           
+            setUserPhone(userDTO.phone);
+            setUsermembership(res.data.membership);
+            setProfiles(res.data.list);
+            
+
         })
     } ,[])
 
@@ -52,12 +64,7 @@ const MypageContainer = () => {
                         <img className="mt-5 justify-start w-[35px] h-[40px]" src={ membershipImg }/>
                         <h3 className="mt-8 ml-3 text-zinc-600 font-bold text-lg">멤버십 시작 : 2022년 8월</h3>
                     </div>
-
-                    <div className = "flex w-[100%] pt-7 pb-4 pl-5 rounded-md bg-green-500 z-0">
-                        <img src = { save } className = "w-[45px]"></img>
-                        <div className = " w-[100%] pt-1 text-xl">프로필 이메일이 변경되었습니다.</div>
-                    </div>
-
+     
                     <div className="w-full pb-20">
                         <div className="border-solid mt-9 border-t-[1px] h-9 border-zinc-700 w-full">
                             <div className="flex justify-start w-full">
@@ -67,7 +74,7 @@ const MypageContainer = () => {
                                 </div>
                                 <div className='w-full mb-7'>
                                     <div className="flex justify-between w-full">
-                                        <div className="pt-6 font-bold">{localStorage.getItem('user_email')}</div>
+                                        <div className="pt-6 font-bold">{user_email}</div>
                                         <button>
                                             <Link to='mfa' onClick={valEmail}><div className="pt-6 pl-90 text-end text-blue-500">이메일 변경</div></Link>
                                         </button>
@@ -79,7 +86,7 @@ const MypageContainer = () => {
                                         </button>
                                     </div>
                                     <div className="flex justify-between">
-                                        <div className="pt-5 text-neutral-500">전화번호 : {localStorage.getItem('phone')}</div>
+                                        <div className="pt-5 text-neutral-500">전화번호 : {phone(user_phone)}</div>
                                         <button>
                                             <Link to='mfa' onClick={valPhone}><div className="pl-90 pt-5 text-end text-blue-500">휴대폰 번호 변경</div></Link>
                                         </button>
@@ -112,12 +119,12 @@ const MypageContainer = () => {
                             </div>
                             <div className="border-solid mt-5 border-t-[1px] h-2 border-zinc-700"></div>
 
-                            <div className="flex justify-start w-full mb-4">
+                            <div className="flex justify-start w-full mb-2">
 
-                                <div className="text-zinc-500 text-xl pb-5 pt-5">멤버십 상세정보</div>
-                                <div className="pt-6 ml-[19%] font-bold">베이식</div>
+                                <div className="text-zinc-500 text-xl pb-5 pt-5 w-[300px]">멤버십 상세정보</div>
+                                <div className="pt-6 w-[100px] font-bold">{user_membership}</div>
                                 <button>
-                                    <Link to='changePlan'><div className="ml-[523px] text-blue-500">멤버십 변경</div></Link>
+                                    <Link to='changePlan'><div className="ml-[540px] text-blue-500">멤버십 변경</div></Link>
                                 </button>
 
                             </div>
@@ -127,73 +134,27 @@ const MypageContainer = () => {
                             <div className='m2_user_profile flex justify-between w-full'>
                                 <div className=" text-zinc-500 text-xl pb-5 w-[270px]">프로필 & 자녀 보호 설정</div>
                                     <div className = "w-[80%] m2_user">
-                                        <div className="flex flex-wrap ml-[10%] w-[100%]">
-                                            <img
-                                                className="w-14 rounded-md"
-                                                src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABR2_CnwLC_fGf1EGaAxpU3cAzAwjj4q3yVg_n99iZREET5eSWAZ_B0kemHB5GOEPXtk7ekGULELzDrWZk4WCAULubeSwxTg_UQ.png?r=229"
-                                            />
-
-                                            <div className="pt-3 pl-5">
-                                                <h3 className="font-bold pb-2">박어른</h3>
-                                                <div className="text-gray-600 text-xs">모든 관람등급</div>
-                                            </div>
-                                            <button className="ml-[68%] flex justify-end" onClick = { onToggle1 }>
-                                                {isShow1 ? <img src={slideUpButton} className=" w-8 h-7"/> : <img src={slideDownButton} className="w-8 h-7" />}
-                                            </button>
-                                        </div>
-
-                                        <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
-                                        { isShow1? <MyPageSlide_Sub/>: ''}
-
-                                        <div className="flex flex-wrap ml-[10%] w-[100%]">
-                                            <img
-                                                className="w-14 rounded-md"
-                                                src="https://occ-0-325-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABULvkIoX3Lsmb1j9ZGivfBory3qQ5p32A0lWmVmbGm2v2zJdJTNE3XCnqRbKOXhjcJsQijTuPlPo5QDZXjto885KBMbGWkheqg.png?r=1d4"
-                                            />
-                                            <div className="pt-3 pl-5">
-                                                <h3 className="font-bold pb-2">이어른</h3>
-                                                <div className="text-gray-600 text-xs">모든 관람등급</div>
-                                            </div>
-                                            <button className="ml-[68%]" onClick = { onToggle2 }>
-                                                {isShow2 ? <img src={slideUpButton} className= "w-8 h-7" /> : <img src={slideDownButton} className="w-8 h-7" />}
-                                            </button>
-                                        </div>
-                                        <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
-                                        { isShow2 ? <MyPageSlide_Sub/> : ''}
-                                        <div className="flex flex-wrap ml-[10%]  w-[100%]">
-                                            <img
-                                                className="w-14 rounded-md"
-                                                src="https://occ-0-325-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABZgyZnNWMWbC0ToPJh3fckR_pd-zegBVlQ4CexqZz1pg6MzPqliR7LNySvHgpmKWgiIXzKKk7AyXS_A58rPBfItSuWoPMgBVaQ.png?r=bd7"
-                                            />
-                                            <div className="pt-3 pl-5 ">
-                                                <h3 className="font-bold pb-2">김어른</h3>
-                                                <div className="text-gray-600 text-xs">모든 관람등급</div>
-                                            </div>
-                                            <button className="ml-[68%]" onClick = { onToggle3 }>
-                                                { isShow3 ? <img src={  slideUpButton } className="w-8 h-7" /> :<img src= { slideDownButton } className="w-8 h-7" />}
-                                            </button>
-                                        </div>
-
-                                    <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
-                                    { isShow3 ? <MyPageSlide_Sub/> : ''}
-
-                                    <div className="flex flex-wrap ml-[10%] w-[100%]">
-                                            <img
-                                                className="w-14 rounded-md"
-                                                src="https://occ-0-325-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABWG8kTfZ7jmDE0Q7j3amzJqHSu8-xZtnJ6JBhMqFIWA9GBXI8rVc-25IaVNxHfGAKx29HifG2wwygT7ogbGM9KShYBKyOGrYDg.png?r=11f"
-                                            />
-                                        <div className="pt-3 pl-5 ">
-                                            <h3 className="font-bold pb-2">키즈당</h3>
-                                            <div className="text-gray-600 text-xs">12+ 등급 이하</div>
-                                        </div>
-                                        <button className="ml-[68%] relative " onClick = { onToggle4 }>
-                                            { isShow4 ? <img src={  slideUpButton } className="w-8 h-7" /> :<img src= { slideDownButton } className="w-8 h-7" />}
-                                        </button>
+                                        {profiles && profiles.map((item,index)=>{
+                                            return (
+                                            <>
+                                                <div className="flex flex-wrap ml-[50px]  w-[880px]" key={index}>
+                                                    <img
+                                                        className="w-14 rounded-md"
+                                                        src={item.img_path}
+                                                    />
+                                                    <div className="pt-3 pl-5">
+                                                        <h3 className="font-bold pb-2">{item.profile_name}</h3>
+                                                        <div className="text-gray-600 text-xs">모든 관람등급</div>
+                                                    </div>
+                                                    <button className="ml-[68%] flex justify-end" onClick = { onToggle1 }>
+                                                        {isShow1 ? <img src={slideUpButton} className=" w-8 h-7"/> : <img src={slideDownButton} className="w-8 h-7" />}
+                                                    </button>
+                                                </div>
+                                                <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
+                                                { isShow1? <MyPageSlide_Sub/>: ''}                                            
+                                            </>
+                                        )})}
                                     </div>
-
-                                    <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
-                                    { isShow4 ? <MyPageSlide_Sub/> : '' }
-                                </div>
                             </div>
                         <MypageFooter/>
                         </div>

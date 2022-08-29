@@ -33,7 +33,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserProfileDTO getProfile(Map<String, String> map) {
-		// TODO Auto-generated method stub
 		return userDAO.getProfile(map);
 	}
 
@@ -81,7 +80,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Map<String, String> getUSER(String user_email) {
+	public UserDTO getUSER(String user_email) {
 
 		return userDAO.getUSER(user_email);
 	}
