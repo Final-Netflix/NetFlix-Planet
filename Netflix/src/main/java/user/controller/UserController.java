@@ -91,9 +91,8 @@ public class UserController {
 	@ResponseBody
 	public void updateProfile(@RequestParam Map<String,String> map) {
 		userService.updateProfile(map);
+
 	}	
 }
-
-
 
 
