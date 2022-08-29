@@ -5,8 +5,6 @@ import service from 'image/main/service.png';
 import user from 'image/main/user.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import TopTenItems from './TopTenItems';
-
 
 const Header = ({ scroll, search, setSearch }) => {
 
