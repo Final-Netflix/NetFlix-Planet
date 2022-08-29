@@ -39,8 +39,11 @@
   	<update id="membershipUp" parameterType="java.util.Map">
   		update USER set membership_id =#{membership_id}  where user_email=#{user_email} 
   	</update>
-  	<select id="getPaySeq">
+  	<select id="getPaySeq" resultType="int">
   		select count(*) from PAY_TYPE;
+  	</select>
+  	<select id="getPaySeq1" resultType="int">
+  		select max(pay_type_id) from PAY_TYPE;
   	</select>
   	<insert id="insertBilling" parameterType="java.util.Map">
   		insert into PAY_TYPE values(#{seq},#{customer_uid}, #{user_email} , '카카오');
@@ -73,6 +76,9 @@
   	</update>
   	<select id="findEmail" parameterType="java.util.Map" resultType="user">
   		select * from USER where phone='010-5032-3368'
+  	</select>
+  	<select id="changeEmail" parameterType="java.util.Map">
+  		update USER set user_email=#{user_email} where user_email =#{user_email1}
   	</select>
 
   </mapper>

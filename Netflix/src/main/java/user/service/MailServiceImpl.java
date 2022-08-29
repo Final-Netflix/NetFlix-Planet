@@ -37,5 +37,15 @@ public class MailServiceImpl implements MailService{
 		System.out.println("비번찾기 인증번호 : " + checkNum);
 		return checkNum;
 	}
+	
+	public void sendCheckEmail(Map<String , String> map) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		System.out.println(map);
+        message.setTo(map.get("user_email"));
+        message.setSubject("Planet 본인확인  인증번호입니다.");
+        message.setText("인증번호는 " + map.get("verify") +" 입니다.");
+        emailSender.send(message);
+        
+	}
 
 }

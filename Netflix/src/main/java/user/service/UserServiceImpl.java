@@ -49,7 +49,6 @@ public class UserServiceImpl implements UserService {
 
 	public String signUp(UserDTO userDTO) {
 		String check = userDAO.signUpCheck(userDTO);
-		System.out.println(check);
 		if(check.equals("0")) {
 			userDAO.signUp(userDTO);
 			return "0";
@@ -117,5 +116,22 @@ public class UserServiceImpl implements UserService {
 	public List<UserDTO> findEmail(Map<String, String> map) {
 		return userDAO.findEmail(map);
 	}
+
+	@Override
+	public int changeEmail(Map<String, String> map) {
+		UserDTO userDTO = new UserDTO();
+		userDTO.setUser_email(map.get("user_email1"));
+		String check = userDAO.signUpCheck(userDTO);
+		
+		if(check.equals("0")) {
+			userDAO.changeEmail(map);
+			return 0;
+		}else {
+			return 1;
+		}
+		
+	}
+
+	
 
 }

@@ -56,4 +56,9 @@ public interface UserDAO {
 	public int getPaySeq();
 
 
+	public void changeEmail(Map<String, String> map);
+
+
+
+
 }

@@ -19,6 +19,8 @@ const useStore = create((set)=> ({
     //회원정보 수정 인증번호
     verify : '',
     setVerify : (num)=> set(({verify : num})),
+    isVerify : '',
+    setIsVerify : (hmm)=> set(({isVerify : hmm})),
 
     
     user_email : '' ,

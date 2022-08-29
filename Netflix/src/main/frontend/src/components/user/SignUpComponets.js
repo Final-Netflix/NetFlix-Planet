@@ -59,8 +59,8 @@ const SignUpComponets = () => {
             }).then((res)=>{
                 if(res.data===0) {
                     //자동으로 로그인 처리를 하게 값을 담는다.
-                    sessionStorage.setItem("user_email", email)
-                    sessionStorage.setItem("phone", phone)
+                    localStorage.setItem("user_email", email)
+                    localStorage.setItem("phone", phone)
                     window.location.href = "/signup/planform"
                 }else {
                     alert('이미 가입한 회원입니다. 로그인해주세요.')
