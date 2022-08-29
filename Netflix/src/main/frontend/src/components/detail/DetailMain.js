@@ -13,8 +13,8 @@ const DetailMain = () => {
   
   return (
     <div>
-      {movieId === undefined && <Detail type='tv' value={ tvId } />}
-      {tvId === undefined && <DetailForMovie type='movie' value={ movieId } />}
+      {movieId === undefined && <Detail type='tv' id={ tvId } />}
+      {tvId === undefined && <DetailForMovie type='movie' id={ movieId } />}
     </div>
   );
 };
