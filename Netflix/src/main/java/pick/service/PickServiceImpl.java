@@ -25,4 +25,17 @@ public class PickServiceImpl implements PickService {
 		pickDTO.setPicks_id(seq);
 		pickDAO.addPickUp(pickDTO);
 	}
+
+	@Override
+	public void delPickUp(PickDTO pickDTO) {
+		pickDAO.delPickUp(pickDTO);
+	}
+
+	@Override
+	public String getPickUp(PickDTO pickDTO) {
+		int isExist = pickDAO.getPickUp(pickDTO);
+		System.out.println(pickDTO);
+		System.out.println("number of pickUp | " + isExist);
+		return "true";
+	}
 }
