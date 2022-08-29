@@ -1,11 +1,13 @@
 package pick.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import pick.bean.PickDTO;
@@ -18,9 +20,9 @@ public class PickController {
 	@Autowired
 	PickService pickService = null;
 	
-	@GetMapping("/pickUp")
+	@PostMapping("/addPickUp")
 	@ResponseBody
-	public void pickUp() {
-		pickService.pickUp(null);
+	public void addPickUp(@ModelAttribute PickDTO pickDTO) {
+		pickService.addPickUp(pickDTO);
 	}
 }

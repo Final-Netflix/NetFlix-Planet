@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Top ({ type, value }) { //type='tv/movie' value='id'
-  console.log('top = ' + type, value);
+  // console.log('top = ' + type, value);
 
   /* API */
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
@@ -30,7 +30,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
           setMoviePoster_path(json.poster_path);
     }
   }
-  console.log(movieTitle, movieBack_path, moviePoster_path);
+  // console.log(movieTitle, movieBack_path, moviePoster_path);
       
   const getTvs = async () => {
     if (type==='tv') {
@@ -43,7 +43,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
           setTvPoster_path(json.poster_path);
     }
   }
-  console.log(tvTitle, tvBack_path, tvPoster_path)
+  // console.log(tvTitle, tvBack_path, tvPoster_path)
 
   useEffect(() => {
     getMovies();
@@ -143,19 +143,32 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   const qs = require('qs');
 
   const pickUp = () => {
-    const video = document.getElementById('movie.id').value
-
+    // const video = document.getElementById('movie.id').value
 
     if(!wishDelete) {
-      console.log('눌러졋나')
       axios({
-        url: 'http://localhost:8080/pickUp',
+        url: 'http://localhost:8080/addPickUp',
+        method: 'post',
         data: qs.stringify({
-          'video_id' : video,
-
+          'video_id' : value,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
         })
       }).then(()=>{
-        alert('추가되었다!')
+        alert('찜한 목록에 추가되었습니다.')
+      })
+    }
+    else{
+      axios({
+        url: 'http://localhost:8080/delPickUp',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : value,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        alert('찜한 목록에서 삭제하였습니다.')
       })
     }
     setWishDelete(!wishDelete);

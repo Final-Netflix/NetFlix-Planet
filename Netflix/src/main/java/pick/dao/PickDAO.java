@@ -4,6 +4,8 @@ import pick.bean.PickDTO;
 
 public interface PickDAO {
 
-	public void pickUp(PickDTO pickDTO);
+	public void addPickUp(PickDTO pickDTO);
+
+	public String getPicksID();
 
 }
