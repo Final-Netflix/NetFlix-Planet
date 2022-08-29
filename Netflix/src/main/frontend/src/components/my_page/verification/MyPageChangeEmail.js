@@ -35,7 +35,7 @@ const MyPageChangeEmail = () => {
                             <div data-uia="field-currentEmail+container" className="m1_nfInput">
                                 <div className="m1_nfInputPlacement">
                                     <label className="m1_input_id" placeholder="currentEmail">
-                                        <input type="text" data-uia="field-currentEmail" name="currentEmail" className="m1_nfTextField m1_hasText" id="id_currentEmail" value="wnscks20@naver.com" tabIndex="0" autoComplete="off" disabled dir="ltr" />
+                                        <input type="text" data-uia="field-currentEmail" name="currentEmail" className="m1_nfTextField m1_hasText" id="id_currentEmail" value={localStorage.getItem('user_email')} tabIndex="0" autoComplete="off" disabled dir="ltr" />
                                         <label htmlFor="id_currentEmail" className="m1_placeLabel">현재 이메일</label>
                                     </label>
                                 </div>

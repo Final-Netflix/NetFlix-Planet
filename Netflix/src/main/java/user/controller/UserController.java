@@ -96,7 +96,6 @@ public class UserController {
 	@ResponseBody
 	public void updateProfile(@RequestParam Map<String,String> map) {
 		userService.updateProfile(map);
-
 	}
 	
 	@PostMapping("/findPwd")
@@ -120,7 +119,5 @@ public class UserController {
 		return userService.findEmail(map);
 	}
 }
-
-
 
 

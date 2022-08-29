@@ -5,15 +5,18 @@ import qs from 'qs';
 const MypageSelf_phone = ({onAddd, count}) => {
     const [ verify, setVerify ] = useState()
 
+    let checkNumber =false;
+
     useEffect(() => {
         onNumber();
     }, [])
     
     const onNumber = () => {
-        const recipientPhoneNumber = '010-3094-7984'
+        const recipientPhoneNumber = localStorage.getItem('phone');
+        console.log(recipientPhoneNumber);
 
         const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-        if(regPhone.test(recipientPhoneNumber)=== true) {
+        {
             var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
             setVerify(verifyCode);
                 
@@ -30,6 +33,23 @@ const MypageSelf_phone = ({onAddd, count}) => {
             });
         }
     }
+
+    //인증번호 비교하기
+    const onBlur=(e)=> {
+        if(e.target.id ==='id_number') {
+            console.log("2 | " + verify);
+            if(verify === parseInt(e.target.value)) {
+                alert('인증완료')
+                checkNumber= true;
+                document.getElementById(e.target.id).disabled =true;
+            }else{
+                console.log(verify)
+                console.log(e.target.value)
+                alert('인증번호가 일치하지 않습니다.')
+            }
+        }
+    }
+
     
     const Tel = ({ Ref }) => {
         const [tel, setTel] = useState('');
@@ -108,7 +128,7 @@ const MypageSelf_phone = ({onAddd, count}) => {
                                 <Tel/>
                                 <Tel/>
                             </div>
-                            <button id="btn-continue" type="button" autoComplete="off" onClick={onAddd}  tabIndex="0" className="m1_nf-btn nf-btn-secondary nf-btn-solid nf-btn-oversize  bg-[#737373] text-[15px] max-w-[500px] min-w-[110px] min-h-[60px] py-[0.75rem] px-[25.333333px] text-[#fff] w-[80%] rounded-[4px]" style={{color : 'white' , cursor : 'default'}} placeholder="">
+                            <button id="btn-continue" type="button" autoComplete="off" onClick={() => onAddd('email')}  tabIndex="0" className="m1_nf-btn nf-btn-secondary nf-btn-solid nf-btn-oversize  bg-[#737373] text-[15px] max-w-[500px] min-w-[110px] min-h-[60px] py-[0.75rem] px-[25.333333px] text-[#fff] w-[80%] rounded-[4px]" style={{color : 'white' , cursor : 'default'}} placeholder="">
                                 코드를 입력해 계속 진행
                             </button>
                         </form>
