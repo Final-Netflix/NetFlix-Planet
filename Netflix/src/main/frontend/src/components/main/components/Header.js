@@ -257,7 +257,7 @@ const Header = ({ scroll, search, setSearch }) => {
                                     <ul className='c1-sub-menu-list py-[10px] border-[#333333] border-[1px] border-t-0 border-solid w-[180px] bg-[#000000]/90'>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
                                             <div className='text-center hover:underline' onClick={logoutBtn}>
-                                                <span className='c1-profile-name my-[10px] text-[13px]'>넷플릭스에서 로그아웃</span>
+                                                <span className='c1-profile-name hover:cursor-pointer my-[10px] text-[13px]'>넷플릭스에서 로그아웃</span>
                                             </div>
                                         </li>
                                     </ul>

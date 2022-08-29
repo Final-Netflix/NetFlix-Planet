@@ -14,7 +14,7 @@ const FindUser = () => {
     const [emailCode,setEmailCode] = useState('');
     const [userEmail,setUserEmail]=useState();
     const [phoneCode,setPhoneCode]=useState();
-    const [findUserList,setFindUserList] =useState([]);
+    const [findUserList,setFindUserList] = useState([]);
     const findMenuBtn=()=>{
         setIsFindMenu(!isFindMenu);
     }
@@ -53,7 +53,7 @@ const FindUser = () => {
         var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
         verify = verifyCode;
         setSendCode(verify);
-            
+        console.log(verifyCode);
         axios({
             method : 'post',
             url : 'http://localhost:8080/send-sms',
@@ -78,7 +78,7 @@ const FindUser = () => {
             }).then(res=>{
                     console.log(res.data[0]);
                     setFindUserList(res.data);
-                    console.log(findUserList);
+                    console.log(findUserList)
                 
             }).catch(error => console.log(error));
             
@@ -109,7 +109,7 @@ const FindUser = () => {
     }
     }
     return (
-        <div className='bg-[#141414] h-[100%]'>
+        <div className='bg-[#141414] h-[auto]'>
             <LoginHeader/>
             <div className="wh1-login-content max-w-[450px] mx-auto">
             {
@@ -130,8 +130,8 @@ const FindUser = () => {
                 :
                 <>
                 
-                <h1 className='text-white' onClick={findMenuBtn} style={isFindMenu ? {color : 'white'}:{color : '#333333'}}>아이디 찾기</h1>
-                <h1 className='text-white' onClick={findMenuBtn} style={!isFindMenu ? {color : 'white'}:{color : '#333333'}}>비밀번호 찾기</h1>
+                <h1 className='text-white hover:cursor-pointer' onClick={findMenuBtn} style={isFindMenu ? {color : 'white'}:{color : '#333333'}}>아이디 찾기</h1>
+                <h1 className='text-white hover:cursor-pointer' onClick={findMenuBtn} style={!isFindMenu ? {color : 'white'}:{color : '#333333'}}>비밀번호 찾기</h1>
                 {
                     isFindMenu?
                     <>
@@ -170,23 +170,23 @@ const FindUser = () => {
                 </div>
             </>
             }
-                <ul>
-                    <li>
-                    <span>왜안화</span>
-                    </li>
+            <div>
+                
+                <ul className='h-[100px]'>
                     {
-                        findUserList.map(item=>{
-
-                            <li>
-                                
-                                {item.user_email}
-                                <h1 className='text-white'>{item.user_email}</h1>
-                                <h1 className='text-white'>{item.phone}</h1>
-
-                            </li>
+                        findUserList.map((item,index)=>{ 
+                            return (
+                                <div>
+                                    <h1 className='text-white'>가입하신 아이디</h1>
+                                    <li>
+                                    <h1 className='text-white'>{item.user_email}</h1>
+                                    </li>
+                                </div>
+                                )
                         })
                     }
                 </ul>
+            </div>
             </div>
         </div>
     );

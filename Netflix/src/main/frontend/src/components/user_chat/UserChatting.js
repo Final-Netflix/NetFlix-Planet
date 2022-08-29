@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const UserChatting = ({chatRoomId,changeChattionView}) => {
+const UserChatting = ({chatRoomId,changeChattionView,id}) => {
     const qs = require('qs');
     const [data, setData]=useState([]);
     const [chatInput, setChatInput]=useState('');
@@ -16,7 +16,8 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
     const sendChatDate = {
         'chat_room_id': chatRoomId,
         'profile_id' : localStorage.getItem('profile_id'),
-        'content' : chatInput
+        'content' : chatInput,
+        'video_id' : id
     }
     const chatListDate = {
         'chat_room_id': chatRoomId,
@@ -34,6 +35,31 @@ const UserChatting = ({chatRoomId,changeChattionView}) => {
         scrollDown();
         
     }
+    /* 무비 아이디를 넣을 준비 */
+    useEffect(()=> {
+        axios({
+            method : 'post',
+            url : '/creatorCheck',
+            data : qs.stringify(sendChatDate)
+        })
+        .then(res => {
+            
+            if(res.data.profile_id==localStorage.getItem('profile_id')){
+                axios({
+                    method : 'post',
+                    url : '/updateChatRoom',
+                    data : qs.stringify(sendChatDate)
+                })
+                .then(res => {
+
+                })
+                .catch(error => console.log(error));
+            }
+        })
+        .catch(error => console.log(error));
+    
+       
+    },[]);
     useEffect(()=> {
         axios({
             method : 'post',
