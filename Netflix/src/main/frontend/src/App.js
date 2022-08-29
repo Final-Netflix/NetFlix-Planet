@@ -16,6 +16,9 @@ import Payment from "components/my_page/payment/Payment";
 import Login from "components/login/Login";
 import AddProfile from "components/login/AddProfile";
 import UpdateProfile from "components/login/UpdateProfile";
+import FindUser from 'components/login/FindUser';
+import ChangePwd from 'components/login/ChangePwd';
+import DetailMain from 'components/detail/DetailMain';
 
 function App() {
 
@@ -31,11 +34,15 @@ function App() {
           <Route path="/addProfile" element={<AddProfile/>}></Route>
           {/* login */}
           <Route path="/login" element={<Login/>}></Route>
+          <Route path="/findUser" element={<FindUser/>}/>
           <Route path='/signUp'>
             <Route index element={<SignUp/>}/>
             <Route path=":detail" element={<SignUp/>}/>
           </Route>
+
           {/* <Route path="/*" element={<WarningPage/>}/> */}
+		  <Route path="/changePwd" element={<ChangePwd/>}/>
+
           </>
         :
 
@@ -59,10 +66,10 @@ function App() {
           </Route>
 
           {/* hee */}
-          <Route path="/detail" element={ <Detail /> }></Route>
-          <Route path="/detailM" element={ <DetailForMovie /> }></Route>
-          <Route path="/detail/:detail" element={ <Linked /> }></Route>
-          <Route path="/detailM/:detail" element={ <Linked /> }></Route>
+          <Route path="/detailMain" element={ <DetailMain /> }></Route>
+          {/* <Route path="/detailM" element={ <DetailForMovie /> }></Route> */}
+          <Route path="/detailMain/:detail" element={ <Linked /> }></Route>
+          {/* <Route path="/detailM/:detail" element={ <Linked /> }></Route> */}
           {/* hee */}
           
           
@@ -75,6 +82,8 @@ function App() {
 	    <Route path="/updateProfile" element={<UpdateProfile/>}></Route>
 	    <Route path="/login" element={<Login/>}/>
 	    <Route path="/addProfile" element={<AddProfile/>}/>
+	    
+      
 	    </>
 
         }

@@ -328,6 +328,10 @@
 .boxart-rounded {
   border-radius: 0.2vw;
 }
+.boxart-rounded:hover {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 .boxart-rounded .fallback-text-container {
   border-radius: 4px;
 }

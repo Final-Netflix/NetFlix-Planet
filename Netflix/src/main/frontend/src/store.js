@@ -15,6 +15,18 @@ const useStore = create((set)=> ({
     setMembership : (member)=> set(({membership: member})),
     membershipName : '',
     setMembershipName : (membershipNam) =>set(({membershipName : membershipNam})),
-}));
+
+    //회원정보 수정 인증번호
+    verify : '',
+    setVerify : (num)=> set(({verify : num})),
+
+    
+    user_email : '' ,
+    user_phone: '' ,
+    user_membership : '',
+    setUserEmail : (email) => set(({user_email : email})), 
+    setUserPhone : (phone) => set(({user_phone : phone})),
+    setUsermembership : (membership) => set(({user_membership : membership}))
+    }));
 export default useStore;
 

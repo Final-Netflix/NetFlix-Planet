@@ -35,5 +35,22 @@ public interface UserDAO {
 
 	public void updateProfile(Map<String, String> map);
 
+	public UserDTO findPwd(Map<String, String> map);
+
+
+	public void updatePwd(Map<String, String> map);
+
+
+	public List<UserDTO> findEmail(Map<String, String> map);
+	
+
+	public UserDTO getUSER(String user_email);
+
+
+	public String priceMethod(String user_email);
+
+
+	public int getMembership(String user_email);
+
 
 }

@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import user.bean.UserDTO;
+
 import user.bean.UserProfileDTO;
 import user.dao.UserDAO;
 
@@ -18,7 +20,9 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO = null;
 	@Autowired
 	private HttpSession session;
-	
+	@Autowired
+	JavaMailSender mailSender;
+    
 	@Override
 	public UserDTO login(Map<String, String> map) {
 		UserDTO userDTO = new UserDTO();
@@ -33,7 +37,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserProfileDTO getProfile(Map<String, String> map) {
-		// TODO Auto-generated method stub
 		return userDAO.getProfile(map);
 	}
 
@@ -66,7 +69,6 @@ public class UserServiceImpl implements UserService {
 		//멤버십 단계 상승 시켜주기
 		userDAO.membershipUp(map);
 		//빌링키 DB에 저장하기
-		int seq= userDAO.getPayType()+1; 
 		userDAO.insertBilling(map);
 	}
 	@Override
@@ -79,6 +81,39 @@ public class UserServiceImpl implements UserService {
 	public void updateProfile(Map<String, String> map) {
 		userDAO.updateProfile(map);
 
+	}
+
+	@Override
+	public UserDTO getUSER(String user_email) {
+
+		return userDAO.getUSER(user_email);
+	}
+
+	@Override
+	public String priceMethod(String user_email) {
+		return userDAO.priceMethod(user_email);
+	}
+
+	@Override
+	public int getMembership(String user_email) {
+		return userDAO.getMembership(user_email);
+	}
+
+	@Override
+	public UserDTO findPwd(Map<String, String> map) {
+		
+		return userDAO.findPwd(map);
+	}
+
+	@Override
+	public void updatePwd(Map<String, String> map) {
+		userDAO.updatePwd(map);
+		
+	}
+
+	@Override
+	public List<UserDTO> findEmail(Map<String, String> map) {
+		return userDAO.findEmail(map);
 	}
 
 }

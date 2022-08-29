@@ -157,7 +157,7 @@
 }
 .slider .sliderMask .sliderContent .slider-item:hover {
     transform: scale(1.5);
-    z-index: 2;
+    z-index: 999;
 }
 .slider .sliderMask .sliderContent .slider-item .c1-preview-modal
 {

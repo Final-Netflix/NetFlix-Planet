@@ -1,13 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useStores from 'hooks/useStores'
 import '../../css/user/login.css'
 import LoginHeader from './LoginHeader';
 
 
 const Login = () => {
-    const { authStore } = useStores();
     const qs = require('qs');
     const [idInputVal,setIdInputVal]=useState('');
     const [pwdInputVal,setPwdInputVal]=useState('');
@@ -157,7 +155,8 @@ const Login = () => {
                     <div>
 
                         <button type="button" onClick={login} className='text-[#cccccc] m-[20px]'>로그인</button>
-                        <Link to ='/signup' className='text-[#cccccc]'><span>회원가입</span></Link>
+                        <Link to ='/signup' className='text-[#cccccc] m-[20px]'><span>회원가입</span></Link>
+                        <Link to ='/findUser' className='text-[#cccccc]'><span>아이디/비밀번호 찾기</span></Link>
 
                     </div>
                 </div>

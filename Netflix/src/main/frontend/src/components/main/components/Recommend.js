@@ -80,6 +80,7 @@ const Recommend = ({ order, classification }) => {
         axios({
             url: 'http://localhost:8080/getClassifications',
         }).then(res => {
+            console.log(res.data);
             tab === undefined && setClassificationArr(res.data);
             tab === 'series'  && setClassificationArr(res.data.filter(data => data.classification_type === 'tv'));
             tab === 'new'     && setClassificationArr(res.data.filter(data => data.classification_type === 'new'));
@@ -95,7 +96,9 @@ const Recommend = ({ order, classification }) => {
         if(classificationArr.length != 0){
             setClassificationName(classificationArr[classification].classification_name);
             search_url = classificationArr[classification].search_url;
-            if(search_url.includes('tv')) {  setVideoType('tv') }
+            if(search_url != null){
+                if(search_url.includes('tv')) {  setVideoType('tv') }
+            }
             getData();
         }
     }, [classificationArr]);
