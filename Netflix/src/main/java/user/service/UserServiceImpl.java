@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserProfileDTO getProfile(Map<String, String> map) {
-		// TODO Auto-generated method stub
 		return userDAO.getProfile(map);
 	}
 
@@ -70,7 +69,6 @@ public class UserServiceImpl implements UserService {
 		//멤버십 단계 상승 시켜주기
 		userDAO.membershipUp(map);
 		//빌링키 DB에 저장하기
-		int seq= userDAO.getPayType()+1; 
 		userDAO.insertBilling(map);
 	}
 	@Override
@@ -83,6 +81,22 @@ public class UserServiceImpl implements UserService {
 	public void updateProfile(Map<String, String> map) {
 		userDAO.updateProfile(map);
 
+	}
+
+	@Override
+	public UserDTO getUSER(String user_email) {
+
+		return userDAO.getUSER(user_email);
+	}
+
+	@Override
+	public String priceMethod(String user_email) {
+		return userDAO.priceMethod(user_email);
+	}
+
+	@Override
+	public int getMembership(String user_email) {
+		return userDAO.getMembership(user_email);
 	}
 
 	@Override
@@ -101,5 +115,5 @@ public class UserServiceImpl implements UserService {
 	public List<UserDTO> findEmail(Map<String, String> map) {
 		return userDAO.findEmail(map);
 	}
-	
+
 }

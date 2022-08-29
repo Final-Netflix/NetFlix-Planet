@@ -8,13 +8,9 @@ import logo from 'image/main/logo.png';
 const SignUp = () => {
     const {detail} =useParams();
 
-    useEffect(()=>  {
-        if(sessionStorage.getItem('user_email')) {
-            document.getElementsByClassName('m1_authLinks m1_signupBasicHeader')[0].innerText = '로그아웃'
-        }else {
-            document.getElementsByClassName('m1_authLinks m1_signupBasicHeader')[0].innerText = '로그인'
-        }
-    },[])
+    const sessionOut = (e)=> {
+        sessionStorage.clear()
+    }
     
     return (
         <div id="m1_appMountPoint">
@@ -25,7 +21,12 @@ const SignUp = () => {
                             <img className="m1_svg-icon m1_svg-icon-netflix-logo" src={ logo } alt=''></img>
                             <span className="m1_screen-reader-text">Netflix</span>
                         </a>
-                        <a href="/login" className="m1_authLinks m1_signupBasicHeader m1_onboarding-header" data-uia="header-login-link">로그인</a>
+                        {
+                            sessionStorage.getItem('user_email') ? 
+                            <a className="m1_authLinks m1_signupBasicHeader m1_onboarding-header" onClick={sessionOut}>로그아웃</a>
+                            :
+                            <a href="/login" className="m1_authLinks m1_signupBasicHeader m1_onboarding-header" data-uia="header-login-link">로그인</a>
+                        }
                     </div>
                     { detail ? '': <SignUpComponets/>}
                     { detail==='planform' && <PlanFrom/> }

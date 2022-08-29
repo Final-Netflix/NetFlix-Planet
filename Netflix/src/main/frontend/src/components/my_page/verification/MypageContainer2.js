@@ -1,48 +1,67 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import useStore from 'store';
 
-const MypageContainer2 = ({ onAdd }) => {
-    const { valEmail } = useStore();
 
-    const Button = ({ name, method }) => {
-        return (
+const MypageContainer2 = ({setCount, count}) => {
+    const qs = require('qs');
+    const {user_email , user_phone , verify, setVerify} = useStore();
+    const phone = (num)=>{
+        return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
+    }
+    const onPhone = () => {
+            setCount(count+1)
+            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+            setVerify(verifyCode);
+                
+            axios({
+                method : 'post',
+                url : 'http://localhost:8080/send-sms',
+                data : qs.stringify({
+                    'recipientPhoneNumber' : user_phone,
+                    'title' : 'test',
+                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
+                })
+            }).then((res) => {
+                console.log(res)
+            });
+        }
+        const onEmail = ()=> {
+            setCount(count+1)
+        }
+    
+    
 
-            <button
-                onClick={() => {
-                    valEmail();
-                    onAdd();
-                }}
-                type='button'
-                className='m1_select-factor-button algin-center h-[95px] bg-[#fff] box-border border-0 border-b-2 border-soild border-[#e6e6e6] flex my-auto w-[100%] cursor-pointer normal-case overflow-visible m-0'
-            >
-                <div className='m1_button-icon-wrapper p-[15px] my-auto'>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chat  text-[#e50914] w-[38px]">
-                        <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M18 3C21.3137 3 24 5.68629 24 9V11C24 14.3137 21.3137 17 18 17V20C18 20.3688 17.797 20.7077 17.4719 20.8817C17.1467 21.0557 16.7522 21.0366 16.4453 20.8321L11.7049 17.6718C11.0479 17.2338 10.2758 17 9.48612 17H6C2.68629 17 0 14.3137 0 11V9C0 5.68629 2.68629 3 6 3H18ZM22 9C22 6.79086 20.2091 5 18 5H6C3.79086 5 2 6.79086 2 9V11C2 13.2091 3.79086 15 6 15H9.48612C10.6707 15 11.8287 15.3506 12.8143 16.0077L16 18.1315V16V15H17H18C20.2091 15 22 13.2091 22 11V9ZM6 12C7.10457 12 8 11.1046 8 10C8 8.89543 7.10457 8 6 8C4.89543 8 4 8.89543 4 10C4 11.1046 4.89543 12 6 12ZM12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12ZM20 10C20 11.1046 19.1046 12 18 12C16.8954 12 16 11.1046 16 10C16 8.89543 16.8954 8 18 8C19.1046 8 20 8.89543 20 10Z"
-                            fill="currentColor"
-                        ></path>
-                    </svg>
-                </div>
-                <div className='m1_factor-button-text-wrapper text-center grow-[2] pt-[30px] px-[10px] h-[85px]'>
-                    <span className='m1_factor-button-primary-text small:text-[20px] block text-[18px] font-extrabold text-left box-border mb-[4px] '>
-                        <span>{name}</span>
-                    </span>
-                    <span className='m1_factor-button-secondary-text text-[14px] block text-left '>{method}</span>
-                </div>
-                <div className='m1_button-icon-wrapper p-[15px] my-auto'>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chevron-next text-[#b3b3b3] w-[32px] ">
-                        <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M7.29297 19.2928L14.5859 12L7.29297 4.70706L8.70718 3.29285L16.7072 11.2928C16.8947 11.4804 17.0001 11.7347 17.0001 12C17.0001 12.2652 16.8947 12.5195 16.7072 12.7071L8.70718 20.7071L7.29297 19.2928Z"
-                            fill="currentColor"
-                        ></path>
-                    </svg>
-                </div>
-            </button>
-        )
+
+    const Button = ({what, name , method}) => {
+        return <button onClick={method} type='button' className='m1_select-factor-button algin-center h-[95px] bg-[#fff] box-border border-0 border-b-2 border-soild border-[#e6e6e6] flex my-auto w-[100%] cursor-pointer normal-case overflow-visible m-0 '>
+                    <div className='m1_button-icon-wrapper p-[15px] my-auto'>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chat  text-[#e50914] w-[38px]">
+                            <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M18 3C21.3137 3 24 5.68629 24 9V11C24 14.3137 21.3137 17 18 17V20C18 20.3688 17.797 20.7077 17.4719 20.8817C17.1467 21.0557 16.7522 21.0366 16.4453 20.8321L11.7049 17.6718C11.0479 17.2338 10.2758 17 9.48612 17H6C2.68629 17 0 14.3137 0 11V9C0 5.68629 2.68629 3 6 3H18ZM22 9C22 6.79086 20.2091 5 18 5H6C3.79086 5 2 6.79086 2 9V11C2 13.2091 3.79086 15 6 15H9.48612C10.6707 15 11.8287 15.3506 12.8143 16.0077L16 18.1315V16V15H17H18C20.2091 15 22 13.2091 22 11V9ZM6 12C7.10457 12 8 11.1046 8 10C8 8.89543 7.10457 8 6 8C4.89543 8 4 8.89543 4 10C4 11.1046 4.89543 12 6 12ZM12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12ZM20 10C20 11.1046 19.1046 12 18 12C16.8954 12 16 11.1046 16 10C16 8.89543 16.8954 8 18 8C19.1046 8 20 8.89543 20 10Z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </div>
+                    <div className='m1_factor-button-text-wrapper text-center grow-[2] pt-[30px] px-[10px] h-[85px]'>
+                        <span className='m1_factor-button-primary-text small:text-[20px] block text-[18px] font-extrabold text-left box-border mb-[4px] '>
+                            <span>{name}</span>
+                        </span>
+                        <span className='m1_factor-button-secondary-text text-[14px] block text-left '>{what}</span>
+                    </div>
+                    <div className='m1_button-icon-wrapper p-[15px] my-auto'>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chevron-next text-[#b3b3b3] w-[32px] ">
+                            <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                d="M7.29297 19.2928L14.5859 12L7.29297 4.70706L8.70718 3.29285L16.7072 11.2928C16.8947 11.4804 17.0001 11.7347 17.0001 12C17.0001 12.2652 16.8947 12.5195 16.7072 12.7071L8.70718 20.7071L7.29297 19.2928Z"
+                                fill="currentColor"
+                            ></path>
+                        </svg>
+                    </div>
+                </button>
     }
     return (
         <div className='m1_bd small:mt-5 small:mx-[30px] bg-[#f3f3f3] small:mb-0 mt-3 mx-0 mb-0 p-0 tracking-normal font-sans text-[#333] text-[16px] cursor-default  break-[keep-all]' style={{ wordBreak: 'keep-all', direction: 'ltr' }}>
@@ -68,9 +87,9 @@ const MypageContainer2 = ({ onAdd }) => {
                             <span>정보를 변경하기 전에 본인 확인 절차가 필요합니다.</span>
                         </p>
                         <form className='m1_select-factor-form border-2 border-solid border-[#e6e6e6] rounded-[10px] shadow-[0_0_5px_2px_#e6e6e6] my-5 mx-auto max-w-[600px] overflow-hidden' method='post'>
-                            <Button name='문자로 코드 받기' method={localStorage.getItem('phone')} />
-                            <Button name='이메일로 코드 받기' method={localStorage.getItem('user_email')} />
-                        </form>
+                            <Button what={phone(user_phone)} name='문자로 코드 받기' method={onPhone}/>
+                            <Button what={user_email} name='이메일로 코드 받기' method={onEmail}/>
+                       </form>
                     </div>
                     <div className='m1_customer-service-text-container text-[14px] mt-[40px] box-border'>
                         <span>

@@ -115,12 +115,13 @@ const PlanFrom = () => {
                     'customer_uid' : `billing_${sessionStorage.getItem('phone')}`,
                     'user_email' : sessionStorage.getItem('user_email')
                 })
+            }).then(()=>{
+                window.location.href ="/";
             })
         }else {
             alert(`ㅂ2ㅂ2 : ${error_msg}`);
         }
     }
-    
     return (
         <div id='m1_planform' className="m1_simpleContainer" data-transitioned-child="true">
             <div className="m1_centerContainer m1_narrowCenterContainer" style={{display: 'block', transform: 'none', opacity: 1, transitionDuration: '250ms'}}>

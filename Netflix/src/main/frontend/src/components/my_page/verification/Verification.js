@@ -21,7 +21,7 @@ const Verification = () => {
     }
     return (
         <div>
-            {count === 0 && <MypageContainer2 count={count} onAdd={onAdd}/>}
+            {count === 0 && <MypageContainer2 setCount={setCount} count={count} onAdd={onAdd}/>}
             {count === 1 && <MypageSelf_phone count={count} onAddd={onAddd}/>}
             {count === 2 && <MyPageChangeEmail/>}
             {count === 3 && <Mypagephone/>}
