@@ -58,10 +58,12 @@ const Header = ({ scroll, search, setSearch }) => {
     const goSearchPage = (e) => {
         setSearch(e.target.value)
     }
+    
     const logoutBtn=()=>{
         localStorage.clear();
         window.location.href='/';
     }
+    
     useEffect (()=> {
         if(search != ''){
             navigate('/search' , { state : { type : search }}); // state : e.target.value
@@ -141,7 +143,7 @@ const Header = ({ scroll, search, setSearch }) => {
                                                 </path>
                                             </svg>
                                             <label id="c1-searchInput-label" className='hidden'>검색</label> 
-                                            <input type='text' id="c1-searchInput" name="c1-searchInput" placeholder='제목, 사람, 장르' value={ search } onChange = {goSearchPage}  maxLength='80' className='c1-focus-visible outline-none bg-transparent border-none text-white inline-block text-[14px] py-[7px] pl-[14px] pr-[7px] w-[212px]' style={{opacity: 1, transitionDuration: '300ms'}}></input>
+                                            <input type='text' id="c1-searchInput" name="c1-searchInput" placeholder='제목, 사람, 장르' value={ search } onChange = { goSearchPage }  maxLength='80' className='c1-focus-visible outline-none bg-transparent border-none text-white inline-block text-[14px] py-[7px] pl-[14px] pr-[7px] w-[212px]' style={{opacity: 1, transitionDuration: '300ms'}}></input>
                                         </div>
                                     : 
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="c1-search-icon" onClick={ openSearch }>

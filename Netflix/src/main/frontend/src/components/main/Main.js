@@ -54,7 +54,7 @@ const Main = () => {
             {tab === 'movie' && <View/>}
             {tab === 'new' && <New/>}
             {tab === 'like' && <Like/>}
-            {tab === 'search' && <SearchResult search={ search }/>}
+            {tab === 'search' && <SearchResult search={ search } setSearch={ setSearch }/>}
 
             <Footer/>
 

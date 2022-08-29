@@ -4,6 +4,10 @@ import pick.bean.PickDTO;
 
 public interface PickService {
 
-	public void pickUp(PickDTO pickDTO);
+	public void addPickUp(PickDTO pickDTO);
+
+	public void delPickUp(PickDTO pickDTO);
+
+	public String getPickUp(PickDTO pickDTO);
 
 }

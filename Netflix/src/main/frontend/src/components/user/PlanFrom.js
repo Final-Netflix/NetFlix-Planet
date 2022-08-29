@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useStore from 'store';
 
 const PlanFrom = () => {
@@ -74,6 +74,11 @@ const PlanFrom = () => {
     
         }
     }
+    useEffect(()=> {
+        setPrice(17000);
+        setMembership(3);
+        setMembershipName('플래닛 프리미엄 테스트');
+    },[])
     //다음버튼 누르면 결제창   
     const onPay = ()=> {
         const {IMP} =window;
@@ -86,10 +91,10 @@ const PlanFrom = () => {
             merchant_uid: `mid_${new Date().getTime()}` ,  // 주문번호
             amount: price,                                 // 결제금액 9500 13500 17000
             name: membershipName,                     //주문명
-            customer_uid: `billing_${sessionStorage.getItem('phone')}`,                  
-            buyer_tel: sessionStorage.getItem('phone'),
+            customer_uid: `billing_${localStorage.getItem('phone')}`,                  
+            buyer_tel: localStorage.getItem('phone'),
             buyer_name : '',                     // 구매자 전화번호
-            buyer_email: sessionStorage.getItem('user_email'),               // 구매자 이메일
+            buyer_email: localStorage.getItem('user_email'),               // 구매자 이메일
            };
 
         IMP.request_pay(data , callback);
@@ -112,8 +117,8 @@ const PlanFrom = () => {
                 method : 'post',
                 data : qs.stringify({
                     'membership_id' : membership,
-                    'customer_uid' : `billing_${sessionStorage.getItem('phone')}`,
-                    'user_email' : sessionStorage.getItem('user_email')
+                    'customer_uid' : `billing_${localStorage.getItem('phone')}`,
+                    'user_email' : localStorage.getItem('user_email')
                 })
             }).then(()=>{
                 window.location.href ="/";

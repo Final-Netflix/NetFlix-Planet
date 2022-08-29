@@ -5,29 +5,42 @@ import useStore from 'store';
 
 const MypageContainer2 = ({setCount, count}) => {
     const qs = require('qs');
-    const {user_email , user_phone , verify, setVerify} = useStore();
+    const {user_email , user_phone ,setVerify ,setIsVerify} = useStore();
     const phone = (num)=>{
         return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
     }
     const onPhone = () => {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/send-sms',
+            data : qs.stringify({
+                'recipientPhoneNumber' : user_phone,
+                'title' : 'test',
+                'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
+            })
+        }).then((res) => {
+            setIsVerify('phone')
             setCount(count+1)
-            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-            setVerify(verifyCode);
+        });
+    }
+    const onEmail = ()=> {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/send-email',
+            data : qs.stringify({
+                'verify' : verifyCode,
+                'user_email' : user_email,
+            })
+        }).then(()=>{
+            setIsVerify('email');    
+            setCount(count+1)
                 
-            axios({
-                method : 'post',
-                url : 'http://localhost:8080/send-sms',
-                data : qs.stringify({
-                    'recipientPhoneNumber' : user_phone,
-                    'title' : 'test',
-                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
-                })
-            }).then((res) => {
-                console.log(res)
-            });
-        }
-        const onEmail = ()=> {
-            setCount(count+1)
+            })
         }
     
     

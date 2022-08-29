@@ -26,7 +26,7 @@ const Login = () => {
         
         axios({
             method : 'post',
-            url : 'http://localhost:8080/login',
+            url : '/login',
             data : qs.stringify({
                 'user_id' : idInputVal,
                 'user_pwd' : pwdInputVal
