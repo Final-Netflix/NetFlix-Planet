@@ -1,12 +1,10 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
 const SearchResultMovieItem = ({ searchItem, search }) => {
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     const [backdrop, setBackdrop] = useState('');
     const [logo, setLogo] = useState({});
-
-    //console.log(searchItem)
 
     const getImage = async () => {
         let backdrop = '';
@@ -29,21 +27,37 @@ const SearchResultMovieItem = ({ searchItem, search }) => {
         if(temp)        { logo = temp;                                            }
         
         setLogo(logo);
-        console.log(document.getElementsByClassName('searchId')[0].value)
+        console.log(document.getElementsByClassName('searchId')[0].value) // 10138
     };
-   
-    
      useEffect(() => {
         getImage();
-    }, [search]); 
+        return () => {
+            getImage()
+            console.log('clean up')
+        }
+   }, [search]);  
 
-    
-
-
+  /*  function image() {
+       const [search, setSearch] = useState('')
+       const latestSearch  = useRef(search)
+       getImage();
+       useEffect (() => {
+         latestCount.current = count;
+         setTimeout(() => {
+           console.log(`You clicked ${latestCount.current} times`);
+         }, 3000)
+       })
+     }  */
+    /* const [show, setShow] = useState(false);
+    useEffect(() => {
+        let timer = setTimeout(() => setShow(true), 1000);
+        return () => {
+            clearTimeout(timer);
+          };
+        }, []); */
     if(backdrop === ''){
         return;
     }
-    
     else {
         return (
             <div className="c1-slider-item">
@@ -56,8 +70,8 @@ const SearchResultMovieItem = ({ searchItem, search }) => {
                                     {
                                         backdrop != undefined &&
                                         <>
-                                        <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500" + backdrop } />
-                                        <input type='hidden' value={ backdrop } ></input></>
+                                        <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500" + backdrop }/>
+                                        <input type='hidden' value={ backdrop }></input></>
                                     }
                                     {
                                         logo === '' ?

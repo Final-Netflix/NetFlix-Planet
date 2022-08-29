@@ -33,6 +33,10 @@ const SearchResult = ({ search, setSearch }) => { // search = 아이언맨
      useEffect(() => {
         getSearchMovieList();
         getSearchTvList();
+      /*  return () => {
+        getSearchMovieList();
+        getSearchTvList();
+       } */
     }, [search]);
 
     return (
