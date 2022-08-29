@@ -44,4 +44,16 @@ public interface UserDAO {
 	public List<UserDTO> findEmail(Map<String, String> map);
 	
 
+	public UserDTO getUSER(String user_email);
+
+
+	public String priceMethod(String user_email);
+
+
+	public int getMembership(String user_email);
+
+
+	public int getPaySeq();
+
+
 }

@@ -18,6 +18,7 @@ import AddProfile from "components/login/AddProfile";
 import UpdateProfile from "components/login/UpdateProfile";
 import FindUser from 'components/login/FindUser';
 import ChangePwd from 'components/login/ChangePwd';
+import DetailMain from 'components/detail/DetailMain';
 
 function App() {
 
@@ -65,10 +66,10 @@ function App() {
           </Route>
 
           {/* hee */}
-          <Route path="/detail" element={ <Detail /> }></Route>
-          <Route path="/detailM" element={ <DetailForMovie /> }></Route>
-          <Route path="/detail/:detail" element={ <Linked /> }></Route>
-          <Route path="/detailM/:detail" element={ <Linked /> }></Route>
+          <Route path="/detailMain" element={ <DetailMain /> }></Route>
+          {/* <Route path="/detailM" element={ <DetailForMovie /> }></Route> */}
+          <Route path="/detailMain/:detail" element={ <Linked /> }></Route>
+          {/* <Route path="/detailM/:detail" element={ <Linked /> }></Route> */}
           {/* hee */}
           
           

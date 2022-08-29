@@ -1,13 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useStores from 'hooks/useStores'
 import '../../css/user/login.css'
 import LoginHeader from './LoginHeader';
 
 
 const Login = () => {
-    const { authStore } = useStores();
     const qs = require('qs');
     const [idInputVal,setIdInputVal]=useState('');
     const [pwdInputVal,setPwdInputVal]=useState('');

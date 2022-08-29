@@ -57,7 +57,6 @@ public class UserDAOMybatis implements UserDAO {
 
 	@Override
 	public int getProfileIdSeq() {
-		
 		return sqlSession.selectOne("userSQL.getProfileIdSeq");
 	}
 
@@ -87,6 +86,20 @@ public class UserDAOMybatis implements UserDAO {
 	}
 
 	@Override
+	public UserDTO getUSER(String user_email) {
+		return sqlSession.selectOne("userSQL.getUSER" , user_email);
+	}
+
+	@Override
+	public String priceMethod(String user_email) {
+		return sqlSession.selectOne("userSQL.priceMethod" , user_email);
+	}
+
+	@Override
+	public int getMembership(String user_email) {
+		return sqlSession.selectOne("userSQL.getMembership", user_email); 
+	}
+	@Override
 	public UserDTO findPwd(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("userSQL.findPwd",map);
@@ -101,6 +114,11 @@ public class UserDAOMybatis implements UserDAO {
 	@Override
 	public List<UserDTO> findEmail(Map<String, String> map) {
 		return sqlSession.selectList("userSQL.findEmail",map);
+	}
+
+	@Override
+	public int getPaySeq() {
+		return sqlSession.selectOne("userSQL.getPaySeq");
 	}
 
 }

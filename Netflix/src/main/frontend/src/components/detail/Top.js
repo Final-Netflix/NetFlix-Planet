@@ -5,23 +5,49 @@ import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Top () {
+function Top ({ type, value }) { //type='tv/movie' value='id'
+  // console.log('top = ' + type, value);
 
   /* API */
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
-  const [movies, setMovies] = useState([]);
+  const [movieTitle, setMovieTitle] = useState(true);
+  const [movieBack_path, setMovieBack_path] = useState(true);
+  const [moviePoster_path, setMoviePoster_path] = useState(true);
+  const [tvTitle, setTvTitle] = useState(true);
+  const [tvBack_path, setTvBack_path] = useState(true);
+  const [tvPoster_path, setTvPoster_path] = useState(true);
 
+  
   const getMovies = async () => {
-    const json = await(
+    if(type==='movie') {
+      const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/search/movie?api_key=${ KEY }&query=octopus%20teacher&language=ko-KR`)
-        ).json();
-    setMovies(json.results);
+          `https://api.themoviedb.org/3/movie/${ id }?api_key=${ KEY }&language=ko-KR`)
+          ).json();
+          setMovieTitle(json.title);
+          setMovieBack_path(json.backdrop_path);
+          setMoviePoster_path(json.poster_path);
+    }
   }
+  // console.log(movieTitle, movieBack_path, moviePoster_path);
+      
+  const getTvs = async () => {
+    if (type==='tv') {
+      const json = await(
+          await fetch(
+              `https://api.themoviedb.org/3/tv/${ id }?api_key=${ KEY }&language=ko-KR`)
+          ).json();
+          setTvTitle(json.name);
+          setTvBack_path(json.backdrop_path);
+          setTvPoster_path(json.poster_path);
+    }
+  }
+  // console.log(tvTitle, tvBack_path, tvPoster_path)
 
   useEffect(() => {
     getMovies();
+    getTvs();
   }, [])
   
   /* 기능 */
@@ -117,14 +143,32 @@ function Top () {
   const qs = require('qs');
 
   const pickUp = () => {
+    // const video = document.getElementById('movie.id').value
+
     if(!wishDelete) {
-      console.log('눌러졋나')
       axios({
+        url: 'http://localhost:8080/addPickUp',
         method: 'post',
-        url : 'http://localhost:3000/pickUp'
-      }).then((res)=>{
-        alert('추가되었다!')
-        console.log(res.data);
+        data: qs.stringify({
+          'video_id' : value,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        alert('찜한 목록에 추가되었습니다.')
+      })
+    }
+    else{
+      axios({
+        url: 'http://localhost:8080/delPickUp',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : value,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        alert('찜한 목록에서 삭제하였습니다.')
       })
     }
     setWishDelete(!wishDelete);
@@ -196,34 +240,51 @@ function Top () {
             <div className='c2_player_timedtext absolute inset-0 hidden mt-0 mr-[88.2px] mb-0 ml-[235.2px]'></div>
           </div>
         </div>
-        { movies.map (movie =>
-        <div className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
+
+        <div id={ id } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
+          {type === 'movie' && 
           <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
-          src={ "https://image.tmdb.org/t/p/w200" + movie.poster_path } alt={ movie.title }></img>
+          src={ "https://image.tmdb.org/t/p/w200" + moviePoster_path } alt={ movieTitle }></img>}
+          
+          {type === 'tv' && 
+          <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
+          src={ "https://image.tmdb.org/t/p/w200" + tvPoster_path } alt={ tvTitle }></img>}
         </div>
-        )}
         
-        { movies.map (movie => 
+        { type === 'movie' && 
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movie.backdrop_path } alt={ movie.title } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movie.backdrop_path } alt={ movie.title } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-        </div>
-        )}
+          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+        </div>}
+
+        { type === 'tv' && 
+        <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
+          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+        </div>}
         
         <div className='opacity-[1]'>
           <div className='previewModal_player_titleTreatmentWrapper opacity-[1] from-[#181818] to-[transparent 50%] bg-gradient-to-t h-[100%] absolute top-0 w-[100%]'>
             <div className='previewModal_player_titleTreatment_left bottom-[5%] left-[3em] absolute w-[40%]'>
-              { movies.map (movie => 
+                
+                { type === 'movie' && 
                 <h2 className='hidden border-0' >
-                  { movie.title }
-                </h2>
-              )}
+                  { movieTitle }
+                </h2>}
+                { type === 'tv' && 
+                <h2 className='hidden border-0' >
+                  { tvTitle }
+                </h2>}
 
-              { movies.map (movie => 
+              { type === 'movie' && 
               <h2 className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' >
-                { movie.title }
-              </h2>
-              )}
+                { movieTitle }
+              </h2>}
+              { type === 'tv' && 
+              <h2 className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' >
+                { tvTitle }
+              </h2>}
+
               {/* <img className='hidden border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
               <img className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img> */}
               <div className='buttonControls_container items-center flex mb-[1em] min-h-[2em]'>
@@ -244,7 +305,7 @@ function Top () {
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     {/* 추가버튼 */}
                     <button className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible' 
-                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={pickUp}>
+                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={wishDeleteHandler}>
                       <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap' onMouseLeave={wishDeleteLeave}>
                         <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
@@ -259,8 +320,8 @@ function Top () {
                       { wishDelete &&
                       <button className="color-supplementary absolute max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[#000] border-white border-[2px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible" 
                               aria-label="내가 찜한 콘텐츠에서 삭제" data-uia="add-to-my-list-added" type="button" onMouseEnter={wishDeleteEnter} onMouseLeave={wishDeleteLeave}>
-                        <div class="ltr-1ksxkn9 leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap">
-                          <div class="small ltr-18dhnor h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap" role="presentation">
+                        <div className="ltr-1ksxkn9 leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap">
+                          <div className="small ltr-18dhnor h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap" role="presentation">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap">
                               <path
                                 fillRule="evenodd"
@@ -442,10 +503,10 @@ function Top () {
                             <div className='ltr_toolTipWrapper my-0 mx-[0.2rem] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                               <button onMouseOver={bestDetailHoverEnter} onMouseLeave={bestDetailHoverLeave} onClick={bestActive} aria-label='최고예요로 평가하기' className='ButtonColorStatesCss max-h-[42px] max-w-[42px] items-center appearance-none flex justify-center opacity-[1] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap border-none bg-transparent font-[inherit] p-0 cursor-pointer text-[rgb(169,169,169)] outline-none rounded-[50%] w-[3.2rem] h-[3.2rem] min-w-[inherit] min-h-[inherit] overflow-visible'>
                                 
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard relative text-[#fff]"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 2V5.76393C13.5 6.07442 13.4277 6.38065 13.2889 6.65836L12.7708 7.69437C12.6876 7.22319 12.5917 6.77987 12.5006 6.39344C12.31 5.5852 11.9615 4.87278 11.5 4.2696V1.5C11.5 0.671574 12.1716 0 13 0H14.3377C16.0428 0 17.6401 1.09702 18.0539 2.85235C18.2788 3.80611 18.5 4.98865 18.5 6C18.5 6.33974 18.4752 6.6755 18.4338 7H20C21.933 7 23.5 8.567 23.5 10.5C23.5 10.5631 23.4983 10.6258 23.495 10.6883C23.8153 11.217 24 11.8378 24 12.5C24 13.1622 23.8153 13.783 23.495 14.3118C23.4983 14.3742 23.5 14.4369 23.5 14.5C23.5 15.4709 23.1039 16.3496 22.467 16.9827C22.2319 18.6873 20.7692 20 19 20H17.7925C17.9004 19.6191 17.9683 19.2213 17.9913 18.8115C18.1119 18.5513 18.2129 18.2801 18.2922 18H19C19.8284 18 20.4999 17.3285 20.5 16.5001L20.5 16.0006L20.8994 15.7006C21.266 15.4253 21.5 14.9901 21.5 14.5C21.5 14.4071 21.4917 14.317 21.476 14.2301L21.3955 13.7851L21.6764 13.4308C21.8794 13.1748 22 12.8529 22 12.5C22 12.1471 21.8794 11.8252 21.6764 11.5692L21.3955 11.2149L21.476 10.7699C21.4917 10.6831 21.5 10.5929 21.5 10.5C21.5 9.67157 20.8284 9 20 9H17.2219H15.9315L16.2536 7.75039C16.3976 7.1919 16.5 6.58478 16.5 6C16.5 5.22716 16.3233 4.22758 16.1073 3.31126C15.9285 2.55292 15.2152 2 14.3377 2H13.5ZM6 9.76393V6H6.83772C7.71518 6 8.42852 6.55292 8.60729 7.31126C8.82331 8.22758 9 9.22716 9 10C9 10.5848 8.89755 11.1919 8.75359 11.7504L8.43147 13H9.72193H12.5C13.3284 13 14 13.6716 14 14.5C14 14.5929 13.9917 14.6831 13.976 14.7699L13.8955 15.2149L14.1764 15.5692C14.3794 15.8252 14.5 16.1471 14.5 16.5C14.5 16.8529 14.3794 17.1748 14.1764 17.4308L13.8955 17.7851L13.976 18.2301C13.9917 18.317 14 18.4071 14 18.5C14 18.9901 13.766 19.4253 13.3994 19.7006L13 20.0006L13 20.5001C12.9999 21.3285 12.3284 22 11.5 22H9H8H7.90394C6.78317 22 5.67407 21.7724 4.64392 21.3309L3.82098 20.9782C3.24116 20.7297 2.62633 20.576 2 20.5219V15.618L2.85093 15.1926C3.43151 14.9023 3.90228 14.4315 4.19257 13.8509L5.78885 10.6584C5.92771 10.3806 6 10.0744 6 9.76393ZM5.5 4C4.67157 4 4 4.67157 4 5.5V9.76393L2.40372 12.9565C2.30695 13.15 2.15003 13.307 1.9565 13.4037L1.10557 13.8292C0.428005 14.168 0 14.8605 0 15.618V21.0086C0 21.8323 0.667718 22.5 1.49139 22.5C2.02143 22.5 2.54595 22.6077 3.03314 22.8165L3.85608 23.1691C5.13519 23.7173 6.51232 24 7.90394 24H8H9H11.5C13.2692 24 14.7319 22.6873 14.967 20.9827C15.6039 20.3496 16 19.4709 16 18.5C16 18.4369 15.9983 18.3742 15.995 18.3118C16.3153 17.783 16.5 17.1622 16.5 16.5C16.5 15.8378 16.3153 15.217 15.995 14.6883C15.9983 14.6258 16 14.5631 16 14.5C16 12.567 14.433 11 12.5 11H10.9338C10.9752 10.6755 11 10.3397 11 10C11 8.98865 10.7788 7.80611 10.5539 6.85235C10.1401 5.09702 8.54284 4 6.83772 4H5.5Z" fill="currentColor"></path>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard relative text-[#fff]"><path fillRule="evenodd" clipRule="evenodd" d="M13.5 2V5.76393C13.5 6.07442 13.4277 6.38065 13.2889 6.65836L12.7708 7.69437C12.6876 7.22319 12.5917 6.77987 12.5006 6.39344C12.31 5.5852 11.9615 4.87278 11.5 4.2696V1.5C11.5 0.671574 12.1716 0 13 0H14.3377C16.0428 0 17.6401 1.09702 18.0539 2.85235C18.2788 3.80611 18.5 4.98865 18.5 6C18.5 6.33974 18.4752 6.6755 18.4338 7H20C21.933 7 23.5 8.567 23.5 10.5C23.5 10.5631 23.4983 10.6258 23.495 10.6883C23.8153 11.217 24 11.8378 24 12.5C24 13.1622 23.8153 13.783 23.495 14.3118C23.4983 14.3742 23.5 14.4369 23.5 14.5C23.5 15.4709 23.1039 16.3496 22.467 16.9827C22.2319 18.6873 20.7692 20 19 20H17.7925C17.9004 19.6191 17.9683 19.2213 17.9913 18.8115C18.1119 18.5513 18.2129 18.2801 18.2922 18H19C19.8284 18 20.4999 17.3285 20.5 16.5001L20.5 16.0006L20.8994 15.7006C21.266 15.4253 21.5 14.9901 21.5 14.5C21.5 14.4071 21.4917 14.317 21.476 14.2301L21.3955 13.7851L21.6764 13.4308C21.8794 13.1748 22 12.8529 22 12.5C22 12.1471 21.8794 11.8252 21.6764 11.5692L21.3955 11.2149L21.476 10.7699C21.4917 10.6831 21.5 10.5929 21.5 10.5C21.5 9.67157 20.8284 9 20 9H17.2219H15.9315L16.2536 7.75039C16.3976 7.1919 16.5 6.58478 16.5 6C16.5 5.22716 16.3233 4.22758 16.1073 3.31126C15.9285 2.55292 15.2152 2 14.3377 2H13.5ZM6 9.76393V6H6.83772C7.71518 6 8.42852 6.55292 8.60729 7.31126C8.82331 8.22758 9 9.22716 9 10C9 10.5848 8.89755 11.1919 8.75359 11.7504L8.43147 13H9.72193H12.5C13.3284 13 14 13.6716 14 14.5C14 14.5929 13.9917 14.6831 13.976 14.7699L13.8955 15.2149L14.1764 15.5692C14.3794 15.8252 14.5 16.1471 14.5 16.5C14.5 16.8529 14.3794 17.1748 14.1764 17.4308L13.8955 17.7851L13.976 18.2301C13.9917 18.317 14 18.4071 14 18.5C14 18.9901 13.766 19.4253 13.3994 19.7006L13 20.0006L13 20.5001C12.9999 21.3285 12.3284 22 11.5 22H9H8H7.90394C6.78317 22 5.67407 21.7724 4.64392 21.3309L3.82098 20.9782C3.24116 20.7297 2.62633 20.576 2 20.5219V15.618L2.85093 15.1926C3.43151 14.9023 3.90228 14.4315 4.19257 13.8509L5.78885 10.6584C5.92771 10.3806 6 10.0744 6 9.76393ZM5.5 4C4.67157 4 4 4.67157 4 5.5V9.76393L2.40372 12.9565C2.30695 13.15 2.15003 13.307 1.9565 13.4037L1.10557 13.8292C0.428005 14.168 0 14.8605 0 15.618V21.0086C0 21.8323 0.667718 22.5 1.49139 22.5C2.02143 22.5 2.54595 22.6077 3.03314 22.8165L3.85608 23.1691C5.13519 23.7173 6.51232 24 7.90394 24H8H9H11.5C13.2692 24 14.7319 22.6873 14.967 20.9827C15.6039 20.3496 16 19.4709 16 18.5C16 18.4369 15.9983 18.3742 15.995 18.3118C16.3153 17.783 16.5 17.1622 16.5 16.5C16.5 15.8378 16.3153 15.217 15.995 14.6883C15.9983 14.6258 16 14.5631 16 14.5C16 12.567 14.433 11 12.5 11H10.9338C10.9752 10.6755 11 10.3397 11 10C11 8.98865 10.7788 7.80611 10.5539 6.85235C10.1401 5.09702 8.54284 4 6.83772 4H5.5Z" fill="currentColor"></path>
                                 {/* 최고예요 누른 상태 */}
                                 { bestClick &&
-                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard absolute text-[#fff]"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.313 2.50407L17.407 3.25579C17.4688 3.75001 17.4688 4.24999 17.407 4.74421L17.125 7H21.5C22.3284 7 23 7.67157 23 8.5C23 9.02174 22.7336 9.48127 22.3295 9.75H22.5C23.3284 9.75 24 10.4216 24 11.25C24 11.9804 23.478 12.5888 22.7867 12.7226C23.2148 12.9868 23.5 13.4601 23.5 14C23.5 14.8284 22.8284 15.5 22 15.5H21.6181C21.8556 15.7654 22 16.1158 22 16.5C22 17.3284 21.3284 18 20.5 18H20H17.9195C17.9722 17.7585 18 17.5075 18 17.25C18 16.2903 17.6138 15.4209 16.9883 14.7886C16.996 14.6934 17 14.5972 17 14.5C17 12.567 15.433 11 13.5 11H11.3906L11.3915 10.9923C11.4739 10.3333 11.4739 9.66668 11.3915 9.00772L11.2976 8.256L10.0645 8.41013L11.2976 8.256C11.2865 8.16745 11.2731 8.0797 11.2574 7.99281C11.519 7.83232 11.7422 7.61247 11.9074 7.34813L13.848 4.2432C13.9473 4.08427 14 3.90062 14 3.7132V0.47644C14 0.21331 14.2133 0 14.4764 0C15.9181 0 17.1342 1.07353 17.313 2.50407ZM9.31301 8.50407L9.40697 9.25579C9.46875 9.75001 9.46875 10.25 9.40697 10.7442L9.125 13H13.5C14.3284 13 15 13.6716 15 14.5C15 15.0217 14.7336 15.4813 14.3294 15.75H14.5C15.3284 15.75 16 16.4216 16 17.25C16 17.9804 15.478 18.5888 14.7867 18.7226C15.2147 18.9868 15.5 19.4601 15.5 20C15.5 20.8284 14.8284 21.5 14 21.5H13.6181C13.8556 21.7654 14 22.1158 14 22.5C14 23.3284 13.3284 24 12.5 24H12H9H8.01556C6.69475 24 5.39679 23.6553 4.25 23L4.07684 22.9011C3.04352 22.3106 1.874 22 0.683874 22C0.306181 22 0 21.6938 0 21.3161V15.7543C0 15.3078 0.295977 14.9154 0.725279 14.7928L2.76086 14.2112C3.23665 14.0752 3.64516 13.7677 3.90742 13.3481L5.848 10.2432C5.94733 10.0843 6 9.90062 6 9.7132V6.47644C6 6.21331 6.21331 6 6.47644 6C7.91812 6 9.13419 7.07353 9.31301 8.50407Z" fill="currentColor"></path></svg>
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard absolute text-[#fff]"><path fillRule="evenodd" clipRule="evenodd" d="M17.313 2.50407L17.407 3.25579C17.4688 3.75001 17.4688 4.24999 17.407 4.74421L17.125 7H21.5C22.3284 7 23 7.67157 23 8.5C23 9.02174 22.7336 9.48127 22.3295 9.75H22.5C23.3284 9.75 24 10.4216 24 11.25C24 11.9804 23.478 12.5888 22.7867 12.7226C23.2148 12.9868 23.5 13.4601 23.5 14C23.5 14.8284 22.8284 15.5 22 15.5H21.6181C21.8556 15.7654 22 16.1158 22 16.5C22 17.3284 21.3284 18 20.5 18H20H17.9195C17.9722 17.7585 18 17.5075 18 17.25C18 16.2903 17.6138 15.4209 16.9883 14.7886C16.996 14.6934 17 14.5972 17 14.5C17 12.567 15.433 11 13.5 11H11.3906L11.3915 10.9923C11.4739 10.3333 11.4739 9.66668 11.3915 9.00772L11.2976 8.256L10.0645 8.41013L11.2976 8.256C11.2865 8.16745 11.2731 8.0797 11.2574 7.99281C11.519 7.83232 11.7422 7.61247 11.9074 7.34813L13.848 4.2432C13.9473 4.08427 14 3.90062 14 3.7132V0.47644C14 0.21331 14.2133 0 14.4764 0C15.9181 0 17.1342 1.07353 17.313 2.50407ZM9.31301 8.50407L9.40697 9.25579C9.46875 9.75001 9.46875 10.25 9.40697 10.7442L9.125 13H13.5C14.3284 13 15 13.6716 15 14.5C15 15.0217 14.7336 15.4813 14.3294 15.75H14.5C15.3284 15.75 16 16.4216 16 17.25C16 17.9804 15.478 18.5888 14.7867 18.7226C15.2147 18.9868 15.5 19.4601 15.5 20C15.5 20.8284 14.8284 21.5 14 21.5H13.6181C13.8556 21.7654 14 22.1158 14 22.5C14 23.3284 13.3284 24 12.5 24H12H9H8.01556C6.69475 24 5.39679 23.6553 4.25 23L4.07684 22.9011C3.04352 22.3106 1.874 22 0.683874 22C0.306181 22 0 21.6938 0 21.3161V15.7543C0 15.3078 0.295977 14.9154 0.725279 14.7928L2.76086 14.2112C3.23665 14.0752 3.64516 13.7677 3.90742 13.3481L5.848 10.2432C5.94733 10.0843 6 9.90062 6 9.7132V6.47644C6 6.21331 6.21331 6 6.47644 6C7.91812 6 9.13419 7.07353 9.31301 8.50407Z" fill="currentColor"></path></svg>
                                 }
                                 </svg>
                               </button>

@@ -1,67 +1,51 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-const qs = require('qs');
+import useStore from 'store';
 
 
-const MypageContainer2 = ({onAdd}) => {
-
-    const axios = require('axios');
-    
-    
-    // const getProfile=()=>{
-    //     const profileId = localStorage.getItem('profile_id');
-    //     axios('http://localhost:8080/getProfile', {
-    //         method : 'post',
-    //         data : qs.stringify({
-    //             'profile_id' : profileId
-    //         })
-    //     })
-    //     .then(res=>{
-    //         console.log(res);
-    //         // localStorage.setItem('profile_id',res.data.profile_id);
-    //         // localStorage.setItem('profile_name',res.data.profile_name);
-    //         // localStorage.setItem('img_path',res.data.img_path);
-            
-    //       })
-    //       .catch(error => console.log(error));
-    // }
-
-    // useEffect(()=> {
-    //     getProfile();
-        
-    // },[]);
-    const [ verify, setVerify ] = useState()
-
-    useEffect(() => {
-        onNumber();
-    }, [])
-
-    const onNumber = () => {
-        const recipientPhoneNumber = '010-3094-7984'
-
-        const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-        if(regPhone.test(recipientPhoneNumber)=== true) {
-            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-            setVerify(verifyCode);
-                
-            axios({
-                method : 'post',
-                url : 'http://localhost:8080/send-sms',
-                data : qs.stringify({
-                    'recipientPhoneNumber' : recipientPhoneNumber,
-                    'title' : 'test',
-                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
-                })
-            }).then((res) => {
-                console.log(res)
-            });
-        }
+const MypageContainer2 = ({setCount, count}) => {
+    const qs = require('qs');
+    const {user_email , user_phone ,setVerify} = useStore();
+    const phone = (num)=>{
+        return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
     }
+    const onPhone = () => {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/send-sms',
+            data : qs.stringify({
+                'recipientPhoneNumber' : user_phone,
+                'title' : 'test',
+                'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
+            })
+        }).then((res) => {
+            console.log("문자성공")
+            setCount(count+1)
+        });
+    }
+    const onEmail = ()=> {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        axios({
+            method : 'post',
+            url : 'http://localhost:8080/send-email',
+            data : qs.stringify({
+                'verify' : verifyCode,
+            })
+        }).then(()=>{
+                setCount(count+1)
+                console.log("이메일성공")
+            })
+        }
+    
     
 
 
-    const Button = ({name , method}) => {
-        return <button onClick={onAdd} type='button' className='m1_select-factor-button algin-center h-[95px] bg-[#fff] box-border border-0 border-b-2 border-soild border-[#e6e6e6] flex my-auto w-[100%] cursor-pointer normal-case overflow-visible m-0 '>
+    const Button = ({what, name , method}) => {
+        return <button onClick={method} type='button' className='m1_select-factor-button algin-center h-[95px] bg-[#fff] box-border border-0 border-b-2 border-soild border-[#e6e6e6] flex my-auto w-[100%] cursor-pointer normal-case overflow-visible m-0 '>
                     <div className='m1_button-icon-wrapper p-[15px] my-auto'>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chat  text-[#e50914] w-[38px]">
                             <path
@@ -76,7 +60,7 @@ const MypageContainer2 = ({onAdd}) => {
                         <span className='m1_factor-button-primary-text small:text-[20px] block text-[18px] font-extrabold text-left box-border mb-[4px] '>
                             <span>{name}</span>
                         </span>
-                        <span className='m1_factor-button-secondary-text text-[14px] block text-left '>{method}</span>
+                        <span className='m1_factor-button-secondary-text text-[14px] block text-left '>{what}</span>
                     </div>
                     <div className='m1_button-icon-wrapper p-[15px] my-auto'>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="button-icon icon-chevron-next text-[#b3b3b3] w-[32px] ">
@@ -91,8 +75,8 @@ const MypageContainer2 = ({onAdd}) => {
                 </button>
     }
     return (
-        <div className='m1_bd small:mt-5 small:mx-[30px] bg-[#f3f3f3] small:mb-0 mt-3 mx-0 mb-0 p-0 tracking-normal font-sans text-[#333] text-[16px] cursor-default  break-[keep-all]' style={{wordBreak : 'keep-all' , direction : 'ltr'}}>
-            <div className='m1_responsive-account-container mid:text-[1em] mid:max-w-[1024px] mid:w-[95%] block my-0 mx-auto min-h-[400px] min-w-[300px] relative' style={{overflowWrap:'anywhere'}}>
+        <div className='m1_bd small:mt-5 small:mx-[30px] bg-[#f3f3f3] small:mb-0 mt-3 mx-0 mb-0 p-0 tracking-normal font-sans text-[#333] text-[16px] cursor-default  break-[keep-all]' style={{ wordBreak: 'keep-all', direction: 'ltr' }}>
+            <div className='m1_responsive-account-container mid:text-[1em] mid:max-w-[1024px] mid:w-[95%] block my-0 mx-auto min-h-[400px] min-w-[300px] relative' style={{ overflowWrap: 'anywhere' }}>
                 <div className='m1_mfa-challenge-container mt-[50px] mx-auto mb-0 max-w-[684px] box-border text-center'>
                     <div>
                         <svg viewBox="0 0 64 76" className="m1_icon-shield h-[100px] mx-auto mb-[10px]">
@@ -114,9 +98,9 @@ const MypageContainer2 = ({onAdd}) => {
                             <span>정보를 변경하기 전에 본인 확인 절차가 필요합니다.</span>
                         </p>
                         <form className='m1_select-factor-form border-2 border-solid border-[#e6e6e6] rounded-[10px] shadow-[0_0_5px_2px_#e6e6e6] my-5 mx-auto max-w-[600px] overflow-hidden' method='post'>
-                            <Button name='문자로 코드 받기' method={localStorage.getItem('phone')}/>
-                            <Button name='이메일로 코드 받기' method={localStorage.getItem('user_email')}/>
-                        </form>
+                            <Button what={phone(user_phone)} name='문자로 코드 받기' method={onPhone}/>
+                            <Button what={user_email} name='이메일로 코드 받기' method={onEmail}/>
+                       </form>
                     </div>
                     <div className='m1_customer-service-text-container text-[14px] mt-[40px] box-border'>
                         <span>
@@ -125,7 +109,7 @@ const MypageContainer2 = ({onAdd}) => {
                         </span>
                     </div>
                     <span className='none'></span>
-                </div>  
+                </div>
             </div>
         </div>
     );

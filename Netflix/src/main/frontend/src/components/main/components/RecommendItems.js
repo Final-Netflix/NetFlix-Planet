@@ -51,7 +51,7 @@ const RecommendItems = ({ item, videoType }) => {
                             data-ui-tracking-context="%7B%22list_id%22:%22GPS_90F9E094223E8D90D5C76CD4CFEC43-4E5206F4B5E7E3-586DC3E6C4_p_1659925287943%22,%22location%22:%22homeScreen%22,%22rank%22:0,%22request_id%22:%22aed62872-bf6e-41a6-9966-b6233cee2505-303244450%22,%22row%22:2,%22track_id%22:259700348,%22video_id%22:81193309,%22image_key%22:%22sdp%7Cac678091-3843-11ea-9475-0e1387033224%7Cko%7CnVi%7C81193314%22,%22supp_video_id%22:1,%22lolomo_id%22:%22GPS_90F9E094223E8D90D5C76CD4CFEC43_p_1659925287943%22,%22maturityMisMatchEdgy%22:false,%22maturityMisMatchNonEdgy%22:false,%22appView%22:%22boxArt%22,%22usePresentedEvent%22:true%7D"
                             data-tracking-uuid="ad0a79c6-30de-49bd-b98f-1f88b09ec9a2"
                         >
-                            <a href="/watch/81193309?tctx=2%2C0%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="{ item.title }" tabIndex="0" aria-hidden="false" className="slider-refocus">
+                            <a href="/watch/81193309?tctx=2%2C0%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="{ item.title }" tabIndex="0" aria-hidden="false" className="slider-refocus rounded">
                                 <div className="boxart-size-16x9 boxart-container boxart-rounded">
                                     {
                                         (backdrop === '' || backdrop === undefined) ?
@@ -65,7 +65,7 @@ const RecommendItems = ({ item, videoType }) => {
                                     }
                                     <div className="fallback-text-container" aria-hidden="true"><p className="fallback-text">{ item.title || item.name }</p></div>
                                 </div>
-                                <div className='c1-preview-modal relative w-full'>
+                                <div className='c1-preview-modal relative w-full rounded pb-[5px] bg-[#141414] z-[20]' style={{ position: 'absolute'}}>
                                     <div className="buttonControls_container items-center flex mb-[1em] mx-2 min-h-[2em] mt-[1em] justify-between">
                                         <div className='flex'>
                                             <div className="ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]">

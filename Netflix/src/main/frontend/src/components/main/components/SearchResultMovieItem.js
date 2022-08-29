@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 
-const SearchResultMovieItem = ({ searchItem }) => {
+const SearchResultMovieItem = ({ searchItem, search }) => {
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     const [backdrop, setBackdrop] = useState('');
     const [logo, setLogo] = useState({});
 
-    //console.log(searchItem)
-
     const getImage = async () => {
-        
         let backdrop = '';
         let logo = '';
 
@@ -22,30 +19,60 @@ const SearchResultMovieItem = ({ searchItem }) => {
             backdrop = json.backdrops[0].file_path;
             setBackdrop(backdrop);
         }
+        console.log(searchItem.id + " | " + backdrop);
+        
         let temp = json.logos.find((logo) => logo.iso_639_1 === 'ko');
-
+        
         if(!temp)       { temp = json.logos.find((logo) => logo.iso_639_1 === 'en');    }
         if(temp)        { logo = temp;                                            }
-                
+        
         setLogo(logo);
+        console.log(document.getElementsByClassName('searchId')[0].value) // 10138
     };
-    
-    useEffect(() => {
+     useEffect(() => {
         getImage();
-    }, []);
+        return () => {
+            getImage()
+            console.log('clean up')
+        }
+   }, [search]);  
 
+  /*  function image() {
+       const [search, setSearch] = useState('')
+       const latestSearch  = useRef(search)
+       getImage();
+       useEffect (() => {
+         latestCount.current = count;
+         setTimeout(() => {
+           console.log(`You clicked ${latestCount.current} times`);
+         }, 3000)
+       })
+     }  */
+    /* const [show, setShow] = useState(false);
+    useEffect(() => {
+        let timer = setTimeout(() => setShow(true), 1000);
+        return () => {
+            clearTimeout(timer);
+          };
+        }, []); */
     if(backdrop === ''){
         return;
     }
     else {
         return (
             <div className="c1-slider-item">
+                <input type='hidden' className='searchId' value={ searchItem.id } />
                 <div className="c1-title-card-container css-0">
                     <div id="title-card-0-1" className="c1-title-card">
                         <div className="c1-ptrack-content">
                             <a role="link" aria-label="{state.title}" tabIndex="0" aria-hidden="false" className="c1-slider-refocus">
                                 <div className="c1-boxart-size-16x9 c1-boxart-container c1-boxart-rounded">
-                                    <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500" + backdrop } />
+                                    {
+                                        backdrop != undefined &&
+                                        <>
+                                        <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500" + backdrop }/>
+                                        <input type='hidden' value={ backdrop }></input></>
+                                    }
                                     {
                                         logo === '' ?
                                         <div className='text-white font-extrabold w-full text-2xl absolute bottom-[10%] w-[80%] text-center mx-[10%]'>{ searchItem.title }</div> :

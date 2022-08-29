@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useStore from 'store';
 
 const PlanFrom = () => {
@@ -74,6 +74,11 @@ const PlanFrom = () => {
     
         }
     }
+    useEffect(()=> {
+        setPrice(17000);
+        setMembership(3);
+        setMembershipName('플래닛 프리미엄 테스트');
+    },[])
     //다음버튼 누르면 결제창   
     const onPay = ()=> {
         const {IMP} =window;
@@ -115,12 +120,13 @@ const PlanFrom = () => {
                     'customer_uid' : `billing_${sessionStorage.getItem('phone')}`,
                     'user_email' : sessionStorage.getItem('user_email')
                 })
+            }).then(()=>{
+                window.location.href ="/";
             })
         }else {
             alert(`ㅂ2ㅂ2 : ${error_msg}`);
         }
     }
-    
     return (
         <div id='m1_planform' className="m1_simpleContainer" data-transitioned-child="true">
             <div className="m1_centerContainer m1_narrowCenterContainer" style={{display: 'block', transform: 'none', opacity: 1, transitionDuration: '250ms'}}>

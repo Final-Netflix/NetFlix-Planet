@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,8 +38,15 @@ public class UserController {
 	@ResponseBody
 	public ResponseEntity<SmsResponse> sms_sends(@ModelAttribute Request request) throws Exception {
 		System.out.println(request.getRecipientPhoneNumber());
-		SmsResponse data = smsService.sendSms(request.getRecipientPhoneNumber(), request.getContent());
-        return ResponseEntity.ok().body(data);
+//		SmsResponse data = smsService.sendSms(request.getRecipientPhoneNumber(), request.getContent());
+//        return ResponseEntity.ok().body(data);
+		return null;
+	}
+	@PostMapping("/send-email")
+	@ResponseBody
+	public void send_email(@RequestParam Map<String , String> map) {
+		System.out.println(map);
+		
 	}
 	
 	@PostMapping("/login")
@@ -96,9 +104,33 @@ public class UserController {
 	@ResponseBody
 	public void updateProfile(@RequestParam Map<String,String> map) {
 		userService.updateProfile(map);
-
 	}
-	
+	@PostMapping("/getInfo")
+	@ResponseBody
+	public Map<String, Object> getInfo(@RequestParam String user_email) {
+		Map<String , Object> map = new HashMap<>();
+		//계정 정보 불러오기
+		UserDTO userDTO = userService.getUSER(user_email);
+		map.put("userDTO", userDTO);
+		//결제 정보 불러오기 
+		String priceMethod = userService.priceMethod(user_email);
+		map.put("priceMethod", priceMethod);
+		//멤버십 정보 불러오기
+		int i = userService.getMembership(user_email);
+		if(i==1) {
+			map.put("membership", "베이식");
+		}else if(i==2) {
+			map.put("membership", "스탠다드");
+		}else{
+			map.put("membership", "프리미엄");
+		}
+		Map<String, String> map1 = new HashMap<>();
+		map1.put("user_email", user_email);
+		List<UserProfileDTO> list=userService.getProfileList(map1);
+		map.put("list", list);
+		return map;
+	}
+
 	@PostMapping("/findPwd")
 	@ResponseBody
 	public Map<String,Object> findPwd(@RequestParam Map<String,String> map) {
@@ -119,8 +151,7 @@ public class UserController {
 	public List<UserDTO> findEmail(@RequestParam Map<String,String> map) {
 		return userService.findEmail(map);
 	}
+
 }
-
-
 
 

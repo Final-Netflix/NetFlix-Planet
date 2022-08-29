@@ -32,26 +32,38 @@
   			#{profile_name},
   			#{user_email},
   			#{img_path},
-  			1
+  			0
   		)
   	</insert>
 
   	<update id="membershipUp" parameterType="java.util.Map">
-  		update USER set memberShip = 1 where user_email=#{user_email} 
+  		update USER set membership_id =#{membership_id}  where user_email=#{user_email} 
   	</update>
-  	<insert id="insertBilling" parameterType="java.util.Map">
-  		insert into PAY_TYPE values(#{customer_uid}, #{user_email} , )
-  	</insert>
-  	<select id="getPayType" resultType="int">
-  		select count(*) from PAY_TYPE
+  	<select id="getPaySeq">
+  		select count(*) from PAY_TYPE;
   	</select>
-
+  	<insert id="insertBilling" parameterType="java.util.Map">
+  		insert into PAY_TYPE values(#{seq},#{customer_uid}, #{user_email} , '카카오');
+  	</insert>
+  	
   	<delete id="deleteProfile" parameterType="java.util.Map">
   		delete from USER_PROFILE where profile_id = #{profile_id}
   	</delete>
   	<insert id="updateProfile" parameterType="java.util.Map">
   		update USER_PROFILE set PROFILE_NAME = #{profile_name} where profile_id = #{profile_id}
   	</insert>
+  	<!-- my page main 정보 불러오기 -->
+  	<select id="getUSER" parameterType="String" resultType="user">
+  	 select * from USER where user_email =#{user_email}
+  	</select>
+  	<select id="priceMethod" parameterType="String" resultType="String">
+  	select card_company from PAY_TYPE where user_email=#{user_email}
+  	</select>
+  	<select id="getMembership" parameterType="String" resultType="int">
+  	select membership_id from USER where user_email=#{user_email}
+  	</select>
+  	
+  	
 
   	<select id="findPwd" parameterType="java.util.Map" resultType="user">
   		select * from USER where user_email=#{user_email}
