@@ -1,27 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
+import imgSrc from '../../stores/profile';
 /* 나중에 프로필 데이터 따로하면됨 */
 const AddProfile = () => {
-    const imgDataSrc = [
-        {
-            img : 'https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABTEYr5GclkFvWr7UwFeZpOL1oyV7oD98NciCdYxbhh88KEKn5uB_EcZ6Q_dIG9zNfu-4RvoOWfrLxyPODLCeMAdgsKe1W5JLoXos.png?r=a4b',
-        },
-        {
-            img : 'https://blog.kakaocdn.net/dn/ysA4t/btrc8hIfQ4T/GWoni2RRLFjXHy5Yk0i6Pk/img.jpg',
     
-        },
-        {
-            img : 'https://mblogthumb-phinf.pstatic.net/MjAxOTA1MjNfODMg/MDAxNTU4NTc0NzQzMTI4.YrKo9ZSND_xMZmtLIlZP8MT0gr2KmyhGOrFIBSyug9gg.-9HqEbVEXdmcRXHv3dHqc3IRaBHn9SpE1d8BzwRV8Lgg.JPEG.photinazzang/EE54334A-52E1-473C-96EA-6E03DEFB4153.jpeg?type=w800',
-        },
-        {
-            img : 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABY5cwIbM7shRfcXmfQg98cqMqiZZ8sReZnj4y_keCAHeXmG_SoqLD8SXYistPtesdqIjcsGE-tHO8RR92n7NyxZpqcFS80YfbRFz.png?r=229'
-        }
-    ]
     const qs = require('qs');
     const [profileName , setProfileName] = useState();
     const [imgList, setImgList] = useState(true);
-    const [selectImg , setSelectImg] = useState(imgDataSrc[0].img);
+    const [selectImg , setSelectImg] = useState(imgSrc[0].imgSrc);
     const [isGetProfile,setIsGetProfile] = useState(localStorage.getItem('profile_id')===null);
     const nameInput=(e)=>{
         setProfileName(e.target.value);
@@ -50,21 +36,20 @@ const AddProfile = () => {
         setImgList(!imgList);
     }
     const changeImge=()=>{
-        console.log(imgDataSrc[0].img);
         setImgList(!imgList);
     }
     return (
-        <div>
+        <div className='bg-[#141414] h-[100%]'>
 
             <div>
-                <h1>프로필 추가</h1>
+                <h1 className='text-white m-[0]'>프로필 추가</h1>
             </div>
 
             {
                 imgList?
                 <>
                 <div>
-                    <h2>넷플렉스 하려면 프로필 추가하세요</h2>
+                    <h2 className='text-white'>넷플렉스 하려면 프로필 추가하세요</h2>
                 </div>
                     <div className='flex'>
                         <div>
@@ -74,23 +59,23 @@ const AddProfile = () => {
 
                         <div>
                             <input type="text" placeholder="이름" className='bg-[#666] h-[36px] w-[326px]' onChange={nameInput} value={profileName}></input>
-                        </div>
-                        <div>
-                            <button className='w-[70px] h-[50px] border' onClick={addProfileBtn}>다음</button>
-                            <button className='w-[70px] h-[50px] border m-[20px]'>취소</button>
+                            <div>
+                                <button className='w-[70px] h-[50px] border bg-white' onClick={addProfileBtn}>다음</button>
+                                <button className='w-[70px] h-[50px] border m-[20px] bg-white'>취소</button>
+                            </div>
                         </div>
                     </div>
                 </>
                 :
                 <>
                 <div>
-                    <h2>프로필에 사용할 이미지를 클릭하세요</h2>
+                    <h2 className='text-white'>프로필에 사용할 이미지를 클릭하세요</h2>
                 </div>
                     <ul className='flex'>
                         {
-                            imgDataSrc.map((item, index)=>
+                            imgSrc.map((item, index)=>
                                 <li>
-                                    <img src={item.img} key={index} className="w-[200px] h-[200px]" onClick={mainImgselect}></img>
+                                    <img src={item.imgSrc} key={index} className="w-[200px] h-[200px]" onClick={mainImgselect}></img>
                                 </li>
                         )
                             

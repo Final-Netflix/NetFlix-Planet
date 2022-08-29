@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import user.bean.UserDTO;
+
 import user.bean.UserProfileDTO;
 import user.dao.UserDAO;
 
@@ -18,7 +20,9 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO = null;
 	@Autowired
 	private HttpSession session;
-	
+	@Autowired
+	JavaMailSender mailSender;
+    
 	@Override
 	public UserDTO login(Map<String, String> map) {
 		UserDTO userDTO = new UserDTO();
@@ -81,4 +85,21 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public UserDTO findPwd(Map<String, String> map) {
+		
+		return userDAO.findPwd(map);
+	}
+
+	@Override
+	public void updatePwd(Map<String, String> map) {
+		userDAO.updatePwd(map);
+		
+	}
+
+	@Override
+	public List<UserDTO> findEmail(Map<String, String> map) {
+		return userDAO.findEmail(map);
+	}
+	
 }
