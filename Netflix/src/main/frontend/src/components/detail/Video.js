@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import 'css/detail/video.css';
 import chat from '../../image/detail/chat2.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import UserChatRoom from 'components/user_chat/UserChatRoom';
 
 const Video = () => {
+  const location = useLocation();
+  const id = location.state.id;
+
+  console.log(id);
 
   const [isChat, setIsChat] = useState(false);
   const openChatting=()=>{
     setIsChat(!isChat);
   }
+
   return (
     <div>
       <div className="watch-video flex" data-uia="watch-video">

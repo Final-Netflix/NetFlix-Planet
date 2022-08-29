@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from "prop-types";
 
 import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Top ({ type, value }) { //type='tv/movie' value='id'
-  console.log('top = ' + type, value);
-
+function Top ({ type, id }) { //type='tv/movie' value='id'
   /* API */
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
@@ -17,33 +14,47 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   const [tvTitle, setTvTitle] = useState(true);
   const [tvBack_path, setTvBack_path] = useState(true);
   const [tvPoster_path, setTvPoster_path] = useState(true);
-
   
   const getMovies = async () => {
     if(type==='movie') {
       const json = await(
         await fetch(
-          `https://api.themoviedb.org/3/movie/${value}?api_key=${ KEY }&language=ko-KR`)
+          `https://api.themoviedb.org/3/movie/${ id }?api_key=${ KEY }&language=ko-KR`)
           ).json();
           setMovieTitle(json.title);
           setMovieBack_path(json.backdrop_path);
           setMoviePoster_path(json.poster_path);
     }
   }
-  console.log(movieTitle, movieBack_path, moviePoster_path);
       
   const getTvs = async () => {
     if (type==='tv') {
       const json = await(
           await fetch(
-              `https://api.themoviedb.org/3/tv/${value}?api_key=${ KEY }&language=ko-KR`)
+              `https://api.themoviedb.org/3/tv/${ id }?api_key=${ KEY }&language=ko-KR`)
           ).json();
           setTvTitle(json.name);
           setTvBack_path(json.backdrop_path);
           setTvPoster_path(json.poster_path);
     }
   }
-  console.log(tvTitle, tvBack_path, tvPoster_path)
+
+  const getPicks = () => {
+    axios({
+      url: 'http://localhost:8080/getPickUp',
+      data: qs.stringify({
+        'video_id' : id,
+        'video_type': type,
+        'profile_id': localStorage.getItem('profile_id')
+      })
+    }).then((res)=>{
+      let isPickUp = res.data;
+      console.log(isPickUp);
+      if(isPickUp){
+        setWishDelete(!wishDelete);
+      }
+    })
+  };
 
   useEffect(() => {
     getMovies();
@@ -75,6 +86,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   //찜한 콘텐츠 삭제
   const wishDeleteHandler = () => {
     setWishDelete(!wishDelete);
+    pickUp();
   }
   const wishDeleteEnter = () => {
     setWishDeleteHover(true);
@@ -143,19 +155,32 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   const qs = require('qs');
 
   const pickUp = () => {
-    const video = document.getElementById('movie.id').value
-
+    // const video = document.getElementById('movie.id').value
 
     if(!wishDelete) {
-      console.log('눌러졋나')
       axios({
-        url: 'http://localhost:8080/pickUp',
+        url: 'http://localhost:8080/addPickUp',
+        method: 'post',
         data: qs.stringify({
-          'video_id' : video,
-
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
         })
       }).then(()=>{
-        alert('추가되었다!')
+        alert('찜한 목록에 추가되었습니다.')
+      })
+    }
+    else{
+      axios({
+        url: 'http://localhost:8080/delPickUp',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        alert('찜한 목록에서 삭제하였습니다.')
       })
     }
     setWishDelete(!wishDelete);
@@ -228,7 +253,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
           </div>
         </div>
 
-        <div id={ value } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
+        <div id={ id } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
           {type === 'movie' && 
           <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
           src={ "https://image.tmdb.org/t/p/w200" + moviePoster_path } alt={ movieTitle }></img>}
@@ -292,7 +317,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     {/* 추가버튼 */}
                     <button className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible' 
-                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={pickUp}>
+                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={wishDeleteHandler}>
                       <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap' onMouseLeave={wishDeleteLeave}>
                         <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>

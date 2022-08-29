@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import { Link } from 'react-router-dom';
 
-const InfoText = ({type, value}) => {
-  console.log('infoText = ' + type, value);
+const InfoText = ({type, id}) => {
+  console.log('infoText = ' + type, id);
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
   const [genres, setMoviesGenre] = useState([]);
@@ -18,7 +18,7 @@ const InfoText = ({type, value}) => {
   const getMovies = async () => {
     const json = await(
         await fetch(
-          `https://api.themoviedb.org/3/${type}/${value}?api_key=${ KEY }&language=ko-KR`)
+          `https://api.themoviedb.org/3/${type}/${id}?api_key=${ KEY }&language=ko-KR`)
         ).json();
     setMoviesGenre(json.genres);
     setOverview(json.overview);
@@ -26,7 +26,7 @@ const InfoText = ({type, value}) => {
   const getNames = async () => {
     const json = await(
       await fetch(
-          `https://api.themoviedb.org/3/${type}/${value}/credits?api_key=${ KEY }&language=ko-KR`)
+          `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${ KEY }&language=ko-KR`)
       ).json();
     setCredits(json.cast);
   }
@@ -40,7 +40,7 @@ const InfoText = ({type, value}) => {
   const getKeywords = async () => {
     const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/${type}/${value}/keywords?api_key=${ KEY }&language=ko-KR`)
+            `https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${ KEY }&language=ko-KR`)
         ).json();
     setMovieKeywords(json.keywords);
     setTvKeywords(json.results);
@@ -52,7 +52,7 @@ const InfoText = ({type, value}) => {
     if(type==='tv'){
       const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/tv/${value}?api_key=${ KEY }&language=ko-KR`)
+            `https://api.themoviedb.org/3/tv/${id}?api_key=${ KEY }&language=ko-KR`)
         ).json();
         setEpisodeCounts(json.seasons);
     }

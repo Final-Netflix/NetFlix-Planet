@@ -13,18 +13,29 @@ public class PickServiceImpl implements PickService {
 	PickDAO pickDAO = null;
 
 	@Override
-	public void pickUp(PickDTO pickDTO) {
-		// TODO Auto-generated method stub
-		
+	public void addPickUp(PickDTO pickDTO) {
+		String current = pickDAO.getPicksID();
+		int seq;
+		if(current == null) {
+			seq = 1;
+		}
+		else {
+			seq = Integer.parseInt(current)+1;
+		}
+		pickDTO.setPicks_id(seq);
+		pickDAO.addPickUp(pickDTO);
 	}
 
+	@Override
+	public void delPickUp(PickDTO pickDTO) {
+		pickDAO.delPickUp(pickDTO);
+	}
 
-//	@Override
-//	public void pickUp(PickDTO pickDTO) {
-//		int seq = pickDAO.getProfileIdSeq()+1;
-//		
-//		pickDAO.pickUp(pickDTO);
-//		
-//
-//	}
+	@Override
+	public String getPickUp(PickDTO pickDTO) {
+		int isExist = pickDAO.getPickUp(pickDTO);
+		System.out.println(pickDTO);
+		System.out.println("number of pickUp | " + isExist);
+		return "true";
+	}
 }

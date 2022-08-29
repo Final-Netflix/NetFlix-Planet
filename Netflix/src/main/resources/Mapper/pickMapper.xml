@@ -4,11 +4,21 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="pickSQL">
- 	<insert id="pickUp" parameterType="pick">
+ 	
+ 	<insert id="addPickUp" parameterType="pick">
  		insert into PICKS (PICKS_ID, VIDEO_ID, PROFILE_ID, VIDEO_TYPE) 
  		values (#{picks_id}, #{video_id}, #{profile_id}, #{video_type})
  	</insert>
- 	<select id="getProfileIdSeq" resultType="int">
+ 	
+ 	<select id="getPicksID" resultType="String">
   		select max(picks_id) from PICKS;
+  	</select>
+  	
+  	<delete id="delPickUp" parameterType="pick">
+  		delete from PICKS WHERE VIDEO_ID=#{video_id} AND PROFILE_ID=#{profile_id} AND VIDEO_TYPE=#{video_type}
+  	</delete>
+  	
+  	<select id="getPickUp" parameterType="pick" resultType="Integer">
+  		select count(*) from PICKS where VIDEO_ID=#{video_id} AND PROFILE_ID=#{profile_id} AND VIDEO_TYPE=#{video_type}
   	</select>
  </mapper>
