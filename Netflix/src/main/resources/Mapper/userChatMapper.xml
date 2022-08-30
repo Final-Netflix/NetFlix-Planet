@@ -35,6 +35,9 @@
 		  				#{profile_id}
 		  			)
   	</insert>
+  	<select id="userChatIsChatRoom" resultType="userChatRoom" parameterType="java.util.Map">
+  		select * from CHAT_ROOM where chat_code = #{chat_code}
+  	</select>
   	<select id="getChatRoomId" resultType="String" parameterType="java.util.Map">
   		select chat_room_id from CHAT_ROOM where CHAT_CODE = #{chat_code}
   	</select>
