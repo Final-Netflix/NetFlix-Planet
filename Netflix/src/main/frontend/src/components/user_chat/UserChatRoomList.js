@@ -15,12 +15,11 @@ const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
     useEffect(()=> {
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getListChatRoom',
+            url : '/getListChatRoom',
             data : qs.stringify(userData)
         })
         .then(res => {
             setData(res.data);
-            
         })
         .catch(error => console.log(error));
     
@@ -43,7 +42,7 @@ const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
 
             </div>
             {/* <span>채팅방 수  : {data.length} 개</span> */}
-            <ul className='chatW_listUl 'onClick={changeChattionView}>
+            <ul className='chatW_listUl'>
                 <li className='flex justify-between'>
                     <div>
                         <span className='ml-[10px]'>채팅방 이름</span>
@@ -52,6 +51,11 @@ const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
                     <div>
                         <span>방장</span>
                     </div>
+                </li>
+            </ul>
+            <ul className='chatW_listUl 'onClick={changeChattionView}>
+                <li className='flex justify-between'>
+                    
                 </li>
                 {
                     data.map(item=>

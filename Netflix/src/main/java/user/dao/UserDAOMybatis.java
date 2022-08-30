@@ -131,4 +131,14 @@ public class UserDAOMybatis implements UserDAO {
 		sqlSession.selectOne("userSQL.changeEmail" , map);
 	}
 
+	@Override
+	public int checkPhone(UserDTO userDTO) {
+		return sqlSession.selectOne("userSQL.checkPhone", userDTO);
+	}
+
+	@Override
+	public void changePhone(UserDTO userDTO) {
+		sqlSession.update("userSQL.changePhone" , userDTO);
+	}
+
 }

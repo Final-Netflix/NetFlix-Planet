@@ -13,7 +13,7 @@ const MypageSelf_phone = ({onAddd, count}) => {
         if(isVerify==='email') {
             document.getElementsByClassName('m1_explanation-bold')[0].innerText= user_email;
             document.getElementById('m1_sendMethod').innerText= '등록된 이메일로 메일을 보내드렸습니다.'
-        }else if(isVerify='phone'){
+        }else if(isVerify==='phone'){
             document.getElementsByClassName('m1_explanation-bold')[0].innerText= phone(user_phone);
             document.getElementById('m1_sendMethod').innerText= '등록된 전화번호로 문자를 보내드렸습니다.'
 

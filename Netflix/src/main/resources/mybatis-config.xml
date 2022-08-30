@@ -11,6 +11,7 @@
 		<typeAlias type="pick.bean.PickDTO" alias="pick"/>
 		<typeAlias type="classification.bean.ClassificationDTO" alias="classification"/>
 		<typeAlias type="watch.bean.WatchDTO" alias="watch"/>
+		<typeAlias type="likes.bean.LikesDTO" alias="likes"/>
 	</typeAliases>
 	
 	<mappers>

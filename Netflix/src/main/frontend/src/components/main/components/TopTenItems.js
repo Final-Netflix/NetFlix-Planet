@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const icons = [
     {index: 0, view: '-20 0 70 154', path: 'M35.377 152H72V2.538L2 19.362v30.341l33.377-8.459V152z'},
@@ -14,15 +14,17 @@ const icons = [
     {index: 9, view: '-5 0 140 154', path: 'M34.757 151.55h35.869V2.976L2 19.687v30.14l32.757-8.41v110.132zm105.53 3.45c12.394 0 23.097-3.12 32.163-9.353 9.093-6.25 16.11-15.047 21.066-26.43C198.5 107.766 201 94.196 201 78.5c0-15.698-2.5-29.266-7.484-40.716-4.955-11.384-11.973-20.18-21.066-26.431C163.384 5.119 152.681 2 140.287 2c-12.393 0-23.096 3.12-32.162 9.353-9.093 6.25-16.11 15.047-21.066 26.43-4.984 11.45-7.484 25.02-7.484 40.717 0 15.698 2.5 29.266 7.484 40.716 4.955 11.384 11.973 20.18 21.066 26.431 9.066 6.234 19.769 9.353 32.162 9.353zm0-31.368c-7.827 0-13.942-4.147-18.15-12.178-4.053-7.736-6.047-18.713-6.047-32.954s1.994-25.218 6.047-32.954c4.208-8.03 10.323-12.178 18.15-12.178 7.827 0 13.943 4.147 18.15 12.178 4.053 7.736 6.048 18.713 6.048 32.954s-1.995 25.218-6.047 32.954c-4.208 8.03-10.324 12.178-18.15 12.178z'}
 ];
 
-const TopTenItems = ({ item, index }) => {
+const TopTenItems = ({ item, index, genres }) => {
 
     const { tab } = useParams();
+    const navigate = useNavigate();
     
     const icon = icons.find(icon => icon.index === index);
 
     const [backdrop, setBackdrop] = useState('');
     const [logo, setLogo] = useState('');
     const [loading, setLoading] = useState(true);
+    const [korGenre, setKorGenre] = useState(true);
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     let imageURL;
@@ -48,8 +50,25 @@ const TopTenItems = ({ item, index }) => {
         }
     }
 
+    const getKorGenre = () => {
+        let genreTemp = [];
+        console.log(genres);
+        item.genre_ids.map((genre_id) => genreTemp = genreTemp.concat(genres.find((genre) =>  genre.id === genre_id )));
+        setKorGenre(genreTemp);
+    }
+
+    const goDetailPage = () => {
+        if(tab === 'movie'){
+            navigate('/detailMain', {state : { movieId: item.id }});
+        }
+        else{
+            navigate('/detailMain', {state : { tvId: item.id }});
+        }
+    }
+
     useEffect(() => {
         getImage();
+        getKorGenre();
         setLoading(false);
     }, []);
 
@@ -117,7 +136,7 @@ const TopTenItems = ({ item, index }) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div onClick={ goDetailPage }>
                                                 <div className="ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]">
                                                     <div className="ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]">
                                                         <button className="color_supplementary max-h-[36px] max-w-[36px] min-h-[20px] min-w-[20px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[1px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible" aria-label="내가 찜한 콘텐츠에 추가">
@@ -137,27 +156,36 @@ const TopTenItems = ({ item, index }) => {
                                         <div className="detailMetadata_info my-[0.8em] mx-4 block text-[#fff] text-[6px] leading-[1.4]">
                                             <div className="block text-[#fff] text-[6px] leading-[1.4]">
                                                 <div className="videoMetadata_container items-center text-[#fff] flex flex-wrap justify-start text-[6px] leading-[1.4]">
-                                                    <div className="videoMetadata_first_line mt-[0.25em] mr-[0.5em] mb-[0.25em] ml-0 max-w-[100%] block text-[#fff] text-[6px] leading-[1.4]">
+                                                    <div className="videoMetadata_first_line mt-[0.25em] mr-[1em] mb-[0.25em] ml-0 max-w-[100%] block text-[#fff] text-[6px] leading-[1.4]">
                                                         <span className="match_score_wrapper text-[#fff] text-[6px] leading-[1.4]">
                                                             <div className="show_match_score flex text-[#fff] text-[6px] leading-[1.4]">
-                                                                <span className="match_score text-[#46d369] whitespace-[unset] max-w-[300px] opacity-[1] inline-block font-bold text-[6px] leading-[1.4]">98%일치</span>
+                                                                <span className="match_score text-[#46d369] whitespace-[unset] max-w-[300px] opacity-[1] inline-block font-bold text-[6px] leading-[1.4]">평점: { item.vote_average }</span>
                                                             </div>
                                                         </span>
                                                     </div>
                                                     <div className="videoMetadata_second_line items-center flex flex-wrap text-[#fff] text-[6px] leading-[1.4]">
                                                         <span className="maturity_rating inline-block text-[#fff] text-[6px] leading-[1.4] cursor-pointer">
-                                                            <span className="maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[6px] leading-[1.4] cursor-pointer">15+</span>
+                                                            <span className="maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[6px] leading-[1.4] cursor-pointer">{ item.original_language }</span>
                                                         </span>
-                                                        <span className="duration whitespace-nowrap mr-[0.5em] text-[#fff] ml-2 text-[6px] leading-[1.4]">에피소드 12개</span>
+                                                        <span className="duration whitespace-nowrap mr-[0.5em] text-[#fff] ml-2 text-[6px] leading-[1.4]">추천수: { item.vote_count }</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='c1-preview-keyword mx-4 mt-[0.8em] mb-[0.5vw]'>
                                             <ul className='flex text-white text-[4px]'>
-                                                <li className='text-[4px]'>긴장감 넘치는</li>
-                                                <li className='text-[4px] flex'><div className='rounded-[50%] my-[5px] ml-4 mr-1 bg-white w-1 h-1'></div>스릴러</li>
-                                                <li className='text-[4px] flex'><div className='rounded-[50%] my-[5px] ml-4 mr-1 bg-white w-1 h-1'></div>숨막히는</li>
+                                                {
+                                                    korGenre != undefined &&
+                                                    korGenre.map((genre, index) => {
+                                                        console.log(genre);
+                                                        return <li key={ index } className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>
+                                                        {/* { genre.name } */} hihi
+                                                        </li>
+                                                    })
+                                                }
+                                                {/* <li className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>스릴러</li>
+                                                <li className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>스릴러</li>
+                                                <li className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>숨막히는</li> */}
                                             </ul>
                                         </div>
                                     </div>
