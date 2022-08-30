@@ -1,5 +1,7 @@
 package pick.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +38,10 @@ public class PickServiceImpl implements PickService {
 		int isExist = pickDAO.getPickUp(pickDTO);
 		if(isExist == 0) 	{	return "false";		}
 		else 				{	return "true";		}
+	}
+
+	@Override
+	public List<PickDTO> getMyPickList(String profile_id) {
+		return pickDAO.getMyPickList(profile_id);
 	}
 }

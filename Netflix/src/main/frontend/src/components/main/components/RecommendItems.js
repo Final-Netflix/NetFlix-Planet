@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const RecommendItems = ({ item, videoType, genres }) => {
+const RecommendItems = ({ item, videoType, genres  }) => {
 
     const navigate = useNavigate();
     const [backdrop, setBackdrop] = useState('');
@@ -15,6 +15,7 @@ const RecommendItems = ({ item, videoType, genres }) => {
     else                   { imageURL = `https://api.themoviedb.org/3/movie/${ item.id }/`  }
 
     const getImage = async() => {
+        console.log('아이템 빰')
         if(item.id != undefined && backdrop === ''){
             const json = await(
                 await fetch(
@@ -33,16 +34,9 @@ const RecommendItems = ({ item, videoType, genres }) => {
         }
     }
 
-    // const getKorGenre = () => {
-        // let genreTemp = [];
-        // if(item.genres_ids != undefined){
-        //     item.genre_ids.map((genre_id) => genreTemp = genreTemp.concat(genres.find((genre) =>  genre.id === genre_id )));
-        //     setKorGenre(genreTemp);
-        // }
-    // }
-
     const goDetailPage = () => {
         if(videoType === 'movie'){
+            console.log(item.id);
             navigate('/detailMain', {state : { movieId: item.id }});
         }
         else{
@@ -52,7 +46,6 @@ const RecommendItems = ({ item, videoType, genres }) => {
 
     useEffect(() => {
         getImage();
-        // getKorGenre();
         setLoading(false);
     }, []);
 
@@ -154,7 +147,7 @@ const RecommendItems = ({ item, videoType, genres }) => {
                                                 </div>
                                                 <div className="videoMetadata_second_line items-center flex flex-wrap text-[#fff] text-[6px] leading-[1.4]">
                                                     <span className="maturity_rating inline-block text-[#fff] text-[6px] leading-[1.4] cursor-pointer">
-                                                        <span className="maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[6px] leading-[1.4] cursor-pointer">KO</span>
+                                                        <span className="maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[6px] leading-[1.4] cursor-pointer">{ item.original_language }</span>
                                                     </span>
                                                     <span className="duration whitespace-nowrap mr-[0.5em] text-[#fff] ml-2 text-[6px] leading-[1.4]">추천수: { item.vote_count }</span>
                                                 </div>

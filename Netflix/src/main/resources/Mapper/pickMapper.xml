@@ -21,4 +21,8 @@
   	<select id="getPickUp" parameterType="pick" resultType="Integer">
   		select count(*) from PICKS where VIDEO_ID=#{video_id} AND PROFILE_ID=#{profile_id} AND VIDEO_TYPE=#{video_type}
   	</select>
+  	
+  	<select id="getMyPickList" parameterType="String" resultType="pick">
+  		select * from PICKS where PROFILE_ID=${profile_id}
+  	</select>
  </mapper>

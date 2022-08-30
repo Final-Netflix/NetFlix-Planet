@@ -27,7 +27,18 @@ public class UserChatDAOMybatis implements UserChatDAO {
 
 	@Override
 	public void joinChatRoom(Map<String, String> map) {
-		sqlSession.insert("userChatSQL.joinChatRoom",map);
+
+		List<UserChatRoomDTO> list = sqlSession.selectList("userChatSQL.userChatIsChatRoom", map);
+		UserChatRoomDTO ucr = sqlSession.selectOne("userChatSQL.userChatIsChatRoom", map);
+		
+		if(ucr == null) {
+			System.err.println("없는코드");
+		}else if(list.get(0).getChat_code()==null){
+			System.err.println("없는코드");
+			
+		}else {
+			sqlSession.insert("userChatSQL.joinChatRoom",map);			
+		}
 	}
 
 	@Override

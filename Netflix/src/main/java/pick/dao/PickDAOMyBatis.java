@@ -1,5 +1,7 @@
 package pick.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,6 +34,11 @@ public class PickDAOMyBatis implements PickDAO {
 	@Override
 	public int getPickUp(PickDTO pickDTO) {
 		return sqlSession.selectOne("pickSQL.getPickUp", pickDTO);
+	}
+
+	@Override
+	public List<PickDTO> getMyPickList(String profile_id) {
+		return sqlSession.selectList("pickSQL.getMyPickList", profile_id);
 	}
 
 }

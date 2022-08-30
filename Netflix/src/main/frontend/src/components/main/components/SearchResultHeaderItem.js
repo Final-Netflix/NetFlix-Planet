@@ -6,9 +6,8 @@ const SearchResultHeaderItem = ({ content, setSearch, search }) => {
     const navigate = useNavigate();
 
     const goSearchPage = (e) => {
-        setSearch(e.target.value)
+        setSearch(e.target.textContent) // e.target.value = 
     }
-
     useEffect (()=> {
         if(search != ''){
             navigate('/search' , { state : { type : search }}); // state : e.target.value
@@ -19,9 +18,12 @@ const SearchResultHeaderItem = ({ content, setSearch, search }) => {
     }, [search])
 
     return (
-        <button type = "button" value={ content.title } className = "c1-ptrack-content float-left mr-3 hover:text-red-500" onClick={ goSearchPage }>
-            { content.title + " | " }
+        <>
+        <button type = "button" value={ content.title } className = "c1-ptrack-content float-left mr-3 ">
+            <span onClick={ goSearchPage } className = "hover:text-red-500">{ content.title } </span>
+            <span className = "hover:text-white"> |</span>
         </button>
+        </>
     );
 };
 

@@ -150,6 +150,7 @@ public class UserController {
 	public List<UserDTO> findEmail(@RequestParam Map<String,String> map) {
 		return userService.findEmail(map);
 	}
+
 	@PostMapping("/changeEmail")
 	@ResponseBody
 	public int changeEmail(@RequestParam Map<String, String> map) {
@@ -164,6 +165,15 @@ public class UserController {
 		return i;
 	}
 
+	
+	@PostMapping("/myPageUpdatePwd")
+	@ResponseBody
+	public void myPageUpdatePwd(@RequestParam Map<String, String> map) {
+		System.out.println(map.toString());
+//		userService.findPassWord(map);
+		
+		userService.myPageUpdatePwd(map);
+	}
 }
 
 
