@@ -88,7 +88,7 @@ const Special = () => {
                                             </div>
                                             </div>
                                             <div className="c1-special-button w-[1rem]"></div>
-                                            <Link to='video' state={ tab === 'movie' ? { id:'0', type:'movie' } : { id:'93097', type:'tv' }}><span className="c1-special-button-text text-black">재생</span></Link>
+                                            <Link to='/detailMain/video' state={ tab === 'movie' ? { id:'0', type:'movie' } : { id:'93097', type:'tv' }}><span className="c1-special-button-text text-black">재생</span></Link>
                                         </button>
                                         </a>
                                         <button className="color-secondary hasLabel hasIcon c1-special-button-layout" data-uia="billboard-more-info" type="button">

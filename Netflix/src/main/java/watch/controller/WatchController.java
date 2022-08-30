@@ -14,8 +14,9 @@ import watch.service.WatchService;
 @Controller
 @CrossOrigin(origins = "http://localhost:3000")
 public class WatchController {
+	
 	@Autowired
-	WatchService watchService = null;
+	private WatchService watchService = null;
 	
 	@PostMapping("/addWatches")
 //	@GetMapping("addWatches")
