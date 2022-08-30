@@ -1,7 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Others = () => {
+
+  const KEY = "bc61587b22cd0e5226a33d30e467d867";
+
+  const [ex1, setEx1] = useState(true);
+  const [ex1_title, setEx1_title] = useState(true);
+  const [ex2, setEx2] = useState(true);
+  const [ex2_title, setEx2_title] = useState(true);
+  
   const [playIconHover, setPlayIconHover] = useState(false);
+
+  const getEx1 = async () => {
+    const json = await(
+        await fetch(
+            `https://api.themoviedb.org/3/movie/961484?api_key=${ KEY }&language=ko-KR`)
+        ).json();
+      setEx1(json.backdrop_path);
+      setEx1_title(json.title);
+  }
+  const getEx2 = async () => {
+    const json = await(
+        await fetch(
+            `https://api.themoviedb.org/3/movie/676705?api_key=${ KEY }&language=ko-KR`)
+        ).json();
+      setEx2(json.backdrop_path);
+      setEx2_title(json.title);
+  }
+  useEffect(() => {
+    getEx1();
+    getEx2();
+  }, [])
 
   /* 재생버튼 */
   const playIconHoverEnter = () => {
@@ -23,7 +52,7 @@ const Others = () => {
               <div className='titleCard_imageWrapper max-h-[70%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <img className='block w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
-                  src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABW-ixG_b6TOBDvjD2Am7vy6gLiWukcu4enVp0Q8HnSzDXcv0OdJb9AssSQIS-VFdGSnd7i8jd5C0hkQosqsnAG_otWPhg5TR9VZyyoBhxpTtRVdy5it3n8U0.webp?r=d63' alt='Season 1 Trailer: SPYxFAMILY 스파이 패밀리'></img>
+                  src={ "https://image.tmdb.org/t/p/w200" + ex1 } alt={ ex1_title }></img>
                 </div>
                 {/* play icon */}
                 <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCard_playIcon bg-none items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
@@ -36,7 +65,7 @@ const Others = () => {
               </div>
               <div className='titleCard_metadataWrapper bg-inherit min-h-[100%] block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 <div className='titleCard_title p-[1em] block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                  <span className='titleCard_title_text text-[#fff] leading-[1.4] text-[1em] font-bold cursor-pointer'>Season 1 Trailer: SPYxFAMILY 스파이 패밀리</span>
+                  <span className='titleCard_title_text text-[#fff] leading-[1.4] text-[1em] font-bold cursor-pointer'>Trailer: { ex1_title }</span>
                 </div>
               </div>
             </div>
@@ -44,7 +73,7 @@ const Others = () => {
               <div className='titleCard_imageWrapper max-h-[70%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <img className='block w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
-                  src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABW-ixG_b6TOBDvjD2Am7vy6gLiWukcu4enVp0Q8HnSzDXcv0OdJb9AssSQIS-VFdGSnd7i8jd5C0hkQosqsnAG_otWPhg5TR9VZyyoBhxpTtRVdy5it3n8U0.webp?r=d63' alt='Season 1 Trailer: SPYxFAMILY 스파이 패밀리'></img>
+                  src={ "https://image.tmdb.org/t/p/w200" + ex2 } alt={ ex2_title }></img>
                 </div>
                 <div className='titleCard_playIcon bg-none items-center bottom-0 flex justify-center left-0 opacity-0 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <svg className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]' xmlns='http://www.w3.org/2000/svg'>
@@ -54,7 +83,7 @@ const Others = () => {
               </div>
               <div className='titleCard_metadataWrapper bg-inherit min-h-[100%] block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 <div className='titleCard_title p-[1em] block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                  <span className='titleCard_title_text text-[#fff] leading-[1.4] text-[1em] font-bold cursor-pointer'>Season 1 Trailer: SPYxFAMILY 스파이 패밀리</span>
+                  <span className='titleCard_title_text text-[#fff] leading-[1.4] text-[1em] font-bold cursor-pointer'>Trailer: { ex2_title }</span>
                 </div>
               </div>
             </div>

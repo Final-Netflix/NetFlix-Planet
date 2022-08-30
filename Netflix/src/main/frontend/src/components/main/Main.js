@@ -29,6 +29,23 @@ const Main = () => {
         }
     }
 
+<<<<<<< HEAD
+    const navigate = useNavigate();
+
+    const key = 'bc61587b22cd0e5226a33d30e467d867';
+    const tvId = '197067';
+    /* const movieId = '682110'; */
+    const movieId = '619803';
+
+    const goTv = () => {
+        navigate(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${key}&language=ko-KR`)
+    }
+    const goMovie = () => {
+        navigate(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=ko-KR`)
+    }
+
+=======
+>>>>>>> b9cef09520b583ce022be454aea1bce6a02ab937
     return (
         <div className={ tab === 'search' ? 'bg-[#141414] absolute w-full' : 'bg-[#141414]'}>
             <div className={ scroll ? 'bg-[#141414] z-[1]' : 'z-[1]'}>
