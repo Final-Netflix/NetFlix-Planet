@@ -86,7 +86,6 @@ const Header = ({ scroll, search, setSearch }) => {
         }
     }
 
-    
     useEffect (()=> {
         if(search != ''){
             navigate('/search' , { state : { type : search }}); // state : e.target.value
@@ -95,7 +94,6 @@ const Header = ({ scroll, search, setSearch }) => {
             navigate('/');
         }
     }, [search])
-
 
     useEffect(()=>{
         axios({
