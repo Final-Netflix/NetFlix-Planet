@@ -22,16 +22,17 @@ const MyPageChangeEmail = () => {
             method : 'post',
             url : '/changeEmail',
             data : qs.stringify({
-                'user_email' : newEmail ,
-                'user_email1' : user_email
+                'user_email1' : newEmail ,
+                'user_email' : user_email
             })
         }).then(res=>{
             if(res.data ===1) {
-                document.querySelector('.m1_change-email-form .inputError').innerText ='이미 사용 중인 이메일 주소입니다. 현재 회원님의 다른 넷플릭스 계정에 동일한 이메일 주소를 사용 중이십니다.';
+                document.getElementsByClassName('m1_inputError')[0].style.visibility ='visible'
+                document.querySelector('.m1_change-email-form .m1_inputError').innerText ='이미 사용 중인 이메일 주소입니다. 현재 회원님의 다른 넷플릭스 계정에 동일한 이메일 주소를 사용 중이십니다.';
                 document.getElementById('id_newEmail').focus();
             }else {
                 localStorage.setItem("user_email" , newEmail)
-                window.location.href = "/my"
+                window.location.href = "/my/successEmail"
             }
         })
     }

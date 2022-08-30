@@ -78,8 +78,14 @@
   		select * from USER where phone='010-5032-3368'
   	</select>
   	<select id="changeEmail" parameterType="java.util.Map">
-  		update USER set user_email=#{user_email} where user_email =#{user_email1}
+  		update USER set user_email=#{user_email1} where user_email =#{user_email}
   	</select>
+  	<select id="checkPhone" parameterType="user" resultType="int">
+  		select count(*) from USER where phone=#{phone}
+  	</select>
+  	<update id="changePhone" parameterType="user">
+  		update USER set phone=#{phone} where user_email=#{user_email}
+  	</update>
 
   </mapper>
  

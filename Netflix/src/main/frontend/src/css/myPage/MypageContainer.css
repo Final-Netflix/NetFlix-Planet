@@ -339,9 +339,6 @@ ul.m1_structural {
     margin: 0;
     padding: 0;
 }
-ul.m1_structural li {
-    margin-bottom: 30px;
-}
 ul.m1_structural li.m1_country-code {
     border: 1px solid #b3b3b3;
     border-radius: 2px 0 0 2px;

@@ -59,6 +59,12 @@ public interface UserDAO {
 	public void changeEmail(Map<String, String> map);
 
 
+	public int checkPhone(UserDTO userDTO);
+
+
+	public void changePhone(UserDTO userDTO);
+
+
 
 
 }

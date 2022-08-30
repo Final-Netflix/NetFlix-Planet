@@ -42,6 +42,8 @@ public interface UserService {
 
 	public int changeEmail(Map<String, String> map);
 
+	public int changePhone(UserDTO userDTO);
+
 
 
 
