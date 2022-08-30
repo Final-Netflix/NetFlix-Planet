@@ -324,12 +324,13 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
       <div className='c2_previewModal rounded-t-md overflow-hidden bg-[#000] cursor-pointer relative text-[#fff] text-[16px]'>
         <div className='absolute w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
           <div id='81593318' className='relative w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
-            {/* <video src='blob:https://www.netflix.com/f882d0a2-b791-4023-842a-059fea5d8ab6' className='absolute w-[100%] h-[100%] object-cover inline-block align-baseline'></video> {/* video 실행 안됨  */}
+            <video autoPlay muted src={`https://firebasestorage.googleapis.com/v0/b/planet-e9df3.appspot.com/o/${type}%2F${type}-${id}.mp4?alt=media`} className='absolute w-[100%] h-[100%] object-cover inline-block align-baseline'></video>
             <div className='c2_player_timedtext absolute inset-0 hidden mt-0 mr-[88.2px] mb-0 ml-[235.2px]'></div>
           </div>
         </div>
+        
 
-        <div id={ id } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
+        {/* <div id={ id } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
           {type === 'movie' && 
           <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
           src={ "https://image.tmdb.org/t/p/w200" + moviePoster_path } alt={ movieTitle }></img>}
@@ -337,20 +338,19 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
           {type === 'tv' && 
           <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
           src={ "https://image.tmdb.org/t/p/w200" + tvPoster_path } alt={ tvTitle }></img>}
-        </div>
+        </div> */}
         
         { type === 'movie' && 
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          {/* <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img> */}
         </div>}
 
         { type === 'tv' && 
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          {/* <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img> */}
         </div>}
-        
         <div className='opacity-[1]'>
           <div className='previewModal_player_titleTreatmentWrapper opacity-[1] from-[#181818] to-[transparent 50%] bg-gradient-to-t h-[100%] absolute top-0 w-[100%]'>
             <div className='previewModal_player_titleTreatment_left bottom-[5%] left-[3em] absolute w-[40%]'>
@@ -376,6 +376,7 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
               {/* <img className='hidden border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
               <img className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img> */}
               <div className='buttonControls_container items-center flex mb-[1em] min-h-[2em]'>
+              <Link to='video' state={{ id:id, type:type }}>
                 <a href='#' className='m-[0.25em] text-[#fff] cursor-pointer no-underline bg-transparent'>
                   <button className='playButton hover:bg-[#e5e7eb] max-h-[42px] min-h-[32px] pl-[2rem] pr-[2.4rem] bg-white text-black items-center appearance-none border-0 rounded-[4px] cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap overflow-visible'>
                     <div className='ltr_iconWrap leading-[0] block'>
@@ -389,6 +390,8 @@ function Top ({ type, id }) { //type='tv/movie' value='id'
                     <span className='ltr_textCss font-sans block text-[1.6rem] font-bold leading-[2.4rem] text-black cursor-pointer select-none break-words whitespace-nowrap'>재생</span>
                   </button>
                 </a>
+              </Link>
+
                 <div className='ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     {/* 추가버튼 */}

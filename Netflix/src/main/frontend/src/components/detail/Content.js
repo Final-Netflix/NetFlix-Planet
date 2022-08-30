@@ -3,6 +3,7 @@ import 'css/detail/content.css';
 import { Link } from 'react-router-dom';
 
 import PropTypes from "prop-types";
+import axios from 'axios';
 
 const Content = ({ type, id }) => {
 
@@ -20,7 +21,7 @@ const Content = ({ type, id }) => {
       setEpisodes(json.episodes);
     }
   }
-
+  
   const getTitle = async () => {
     const json = await(
       await fetch(
@@ -34,6 +35,25 @@ const Content = ({ type, id }) => {
     getEpisodes();
     getTitle();
   }, [])
+
+  /* DB */
+  const qs = require('qs');
+
+  const addWatches = () => {
+    console.log('제바르ㅡ')
+    axios({
+      url: 'http://localhost:8080/addWatches',
+      method: 'post',
+      data: qs.stringify({
+        'video_id' : id,
+        'profile_id' : localStorage.getItem('profile_id'),
+        'stop_time' : null,
+        'video_type' : type
+      })
+    }).then(()=>{
+      alert('슝슝')
+    })
+  }
 
   const [moreContent, setMoreContent] = useState(false);
   const [playIconHover, setPlayIconHover] = useState(false);
@@ -72,9 +92,9 @@ const Content = ({ type, id }) => {
           </div>
           <div className='episodeSelector_container flex flex-col flex-wrap justify-start text-[#fff] text-[16px] leading-[1.4]'>
             
-            <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} >
             { episodes.map (episode => 
-            <Link to='video' state={{ id:episode.id }}>
+            <Link to='video' state={{ id:episode.id, type:type }} onClick={ addWatches }>
+            <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} >
             <div className='titleCardList border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>{ episode.episode_number }</div>
               <div className='titleCard_imageWrapper rounded-[4px] flex-[0_0_18%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
@@ -106,9 +126,9 @@ const Content = ({ type, id }) => {
                 </p>
               </div>
             </div>
+            </div>
             </Link>
             )}
-            </div>
 
             {/* <div onMouseEnter={playIconHoverEnter2} onMouseLeave={playIconHoverLeave2} className='titleCardList min-h-[10em] items-center border-b-[1px] border-solid border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='아내 역을 확보하라' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>2</div>

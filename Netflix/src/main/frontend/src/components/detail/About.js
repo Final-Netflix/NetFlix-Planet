@@ -1,50 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const About = () => {
+const About = ({ type, id }) => {
 
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
-  const [movies, setMovies] = useState([]);
+  const [movieTitle, setMovieTitle] = useState(true);
+  const [tvTitle, setTvTitle] = useState(true);
+
   const [credits, setCredits] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [keywords, setKeywords] = useState([]);
+  const [genres, setMoviesGenre] = useState([]);
+  const [movieKeywords, setMovieKeywords] = useState([]);
+  const [tvKeywords, setTvKeywords] = useState([]);
 
   const getMovies = async () => {
+    if(type==='movie') {
     const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/search/movie?api_key=${ KEY }&query=octopus%20teacher&language=ko-KR`)
+            `https://api.themoviedb.org/3/movie/${ id }?api_key=${ KEY }&query=octopus%20teacher&language=ko-KR`)
         ).json();
-    setMovies(json.results);
+        setMovieTitle(json.title);
+        setMoviesGenre(json.genres);
+    }
+  }
+  const getTvs = async () => {
+    if (type==='tv') {
+      const json = await(
+          await fetch(
+              `https://api.themoviedb.org/3/tv/${ id }?api_key=${ KEY }&language=ko-KR`)
+          ).json();
+          setTvTitle(json.name);
+    }
   }
   const getNames = async () => {
     const json = await(
       await fetch(
-          `https://api.themoviedb.org/3/movie/682110/credits?api_key=${ KEY }&language=ko-KR`)
+          `https://api.themoviedb.org/3/${ type }/${ id }/credits?api_key=${ KEY }&language=ko-KR`)
       ).json();
     setCredits(json.cast);
   }
-  const getGenre = async () => {
+  /* const getGenre = async () => {
     const json = await(
         await fetch(
             `https://api.themoviedb.org/3/genre/movie/list?api_key=${ KEY }&language=ko-KR`)
         ).json();
       setGenres(json.genres);
-  }
+  } */
   const getKeywords = async () => {
     const json = await(
         await fetch(
-            `https://api.themoviedb.org/3/movie/682110/keywords?api_key=${ KEY }&language=ko-KR`)
+            `https://api.themoviedb.org/3/${ type }/${ id }/keywords?api_key=${ KEY }&language=ko-KR`)
         ).json();
-    setKeywords(json.keywords);
+      setMovieKeywords(json.keywords);
+      setTvKeywords(json.results);
 
     /* console.log("hihihi | " + JSON.stringify(json)); */
   }
 
   useEffect(() => {
     getMovies();
+    getTvs();
     getNames();
-    getGenre();
+    /* getGenre(); */
     getKeywords();
   }, [])
 
@@ -54,11 +71,14 @@ const About = () => {
         <div className='about_wrapper bg-[#181818] pb-[2em] block text-[#fff] text-[16px] leading-[1.4]'>
           <div className='about_header block text-[#fff] text-[16px] leading-[1.4]'>
             <h3 className='section_header font-normal text-[24px] mb-[20px] mt-[48px] block text-[#fff] leading-[1.4]'>
-              { movies.map (movie =>
+              { type === 'movie' &&
               <strong className='font-bold text-[24px] leading-[1.4]'>
-                { movie.title }
-              </strong>
-              )}
+                { movieTitle }
+              </strong>}
+              { type === 'tv' &&
+              <strong className='font-bold text-[24px] leading-[1.4]'>
+                { tvTitle }
+              </strong>}
               &nbsp;상세 정보
             </h3>
           </div>
@@ -76,20 +96,15 @@ const About = () => {
             <div className='previewModal_tags_genre text-[14px] leading-[20px] mt-[0.5em] mr-[0.5em] mb-[0.5em] ml-0 break-words block text-[#fff]'>
               <span className='previewModal_tags_label text-[#777] text-[14px] leading-[20px] break-words'>장르:</span>
               
-              { movies.map (movie => 
-              <span className='tag_item text-[14px] leading-[20px] break-words'>
               { genres.map (genre =>
+              <span className='tag_item text-[14px] leading-[20px] break-words'>
                 <Link to='searchGenre' state = {{id:genre.id, name:genre.name }}>
                 
-                {
-                  movie.genre_ids ==  genre.id  &&
                 <a href="#" className='text-[#fff] cursor-pointer no-underline'>
                   { genre.name },
                 </a>
-                }
 
               </Link>
-              )}
               </span>
               )}
             </div>
@@ -97,7 +112,15 @@ const About = () => {
             <div className='previewModal_tags_series text-[14px] leading-[20px] mt-[0.5em] mr-[0.5em] mb-[0.5em] ml-0 break-words block text-[#fff]'>
               <span className='previewModal_tags_label text-[#777] text-[14px] leading-[20px] break-words'>시리즈 특징:</span>
               
-              { keywords.map (keyword =>
+              {type==='movie' && movieKeywords.map (keyword =>
+              <span className='tag_item text-[14px] leading-[20px] break-words'>
+                <a href="#" className='text-[#fff] cursor-pointer no-underline'>
+                { keyword.name },
+                </a>
+              </span>
+              )}
+
+              {type==='tv' && tvKeywords.map (keyword =>
               <span className='tag_item text-[14px] leading-[20px] break-words'>
                 <a href="#" className='text-[#fff] cursor-pointer no-underline'>
                 { keyword.name },
