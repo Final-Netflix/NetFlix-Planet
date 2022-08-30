@@ -83,15 +83,18 @@ const AddProfile = () => {
                     <ul className='className="display: flex justify-center"'>
                         {
                             imgSrc.map((item, index)=>
-                                <li>
-                                    <img src={item.imgSrc} key={index} className="w-[200px] h-[200px]" onClick={mainImgselect}></img>
-                                </li>
+                                    <li>
+                                        <div className='w-[200px] h-[200px]'>
+                                            <img src={item.imgSrc} key={index} className="w-[200px] h-[200px]" onClick={mainImgselect}></img>
+                                        </div>
+                                    </li>
                         )
                             
                         }   
                     </ul>
-                    <div>
-                        <button>이미지 저장</button><button onClick={()=>{setImgList(!imgList)}}>취소</button>
+                    <div className='flex text-center justify-center m-[50px] font-bold'>
+                        {/* <button className='text-[white] text-[16px] mr-[20px] hover:underline' >이미지 저장</button> */}
+                        <button className='text-[white] text-[16px] hover:underline'onClick={()=>{setImgList(!imgList)}}>취소</button>
                     </div>
                 </>
             }
