@@ -75,7 +75,7 @@
   		update USER set user_pwd = #{user_pwd} where user_email = #{user_email}
   	</update>
   	<select id="findEmail" parameterType="java.util.Map" resultType="user">
-  		select * from USER where phone='010-5032-3368'
+  		select * from USER where phone=#{phone}
   	</select>
   	<select id="changeEmail" parameterType="java.util.Map">
   		update USER set user_email=#{user_email} where user_email =#{user_email1}

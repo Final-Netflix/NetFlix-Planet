@@ -4,7 +4,7 @@ import '../../css/userChat/userChat.css';
 import axios from 'axios';
 import UserChatting from './UserChatting';
 
-const UserChatRoom = () => {
+const UserChatRoom = ({id}) => {
     const[chattingView, setChattingView] = useState(true);
     const[createVisible,setCreateVisible] = useState(true);
     const[joinVisible,setJoinVisible] = useState(true);
@@ -13,10 +13,12 @@ const UserChatRoom = () => {
         setChattingView(!chattingView)
     }
     const openCreate=()=>{
+        
         setCreateVisible(!createVisible);
         setMenuVisible(!menuVisible);
     }
     const openJoin=()=>{
+        
         setJoinVisible(!joinVisible);
         setMenuVisible(!menuVisible);
     }
@@ -34,10 +36,13 @@ const UserChatRoom = () => {
             method : 'post',
             url : '/createChatRoom',
             data : qs.stringify(createData),
-          }).then(function(response){
+        }).then(function(response){
             console.log(response);
-          });
-          
+        });
+        document.getElementById('creSubjectInput').value='';
+        
+        document.getElementById('creCodeInput').value='';
+
     }
         
     const createCodeInput=(e)=>{
@@ -55,6 +60,7 @@ const UserChatRoom = () => {
         'chat_code' : joinCode
     }
     const joinChatRoom=()=>{
+        
         axios({
             method : 'post',
             url : '/joinChatRoom',
@@ -98,11 +104,11 @@ const UserChatRoom = () => {
                                 <div className='chatW_inputFormSide'>
                                     <div className='chatW_inputForm'>
                                         <span>코드입력</span>
-                                        <input type="text" onChange={createCodeInput}/>
+                                        <input type="text" id="creCodeInput"onChange={createCodeInput}/>
                                     </div>
                                     <div className='chatW_inputForm'>
                                         <span>제목입력</span>
-                                        <input type="text" onChange={createSubjectInput}/>
+                                        <input type="text" id="creSubjectInput" onChange={createSubjectInput}/>
                                     </div>
                                 </div>
                                 <div className='chatW_miniBtnForm'>
@@ -139,7 +145,7 @@ const UserChatRoom = () => {
                             <>
                                 <div className='chatW_inputForm'>
                                     <span>코드입력</span>
-                                    <input type="text" onChange={joinCodeInput}></input>
+                                    <input type="text" id="joinCodeInput" onChange={joinCodeInput}></input>
                                 </div>
                                 <div className='chatW_miniBtnForm'>
                                 
@@ -161,13 +167,13 @@ const UserChatRoom = () => {
                 
                 <div className='chatW_userChattingForm'>
                     
-                            <UserChatRoomList setChatRoomId={ setChatRoomId } changeChattionView = {changeChattionView}/>
+                            <UserChatRoomList id={id} setChatRoomId={ setChatRoomId } changeChattionView = {changeChattionView}/>
                             
                     
                 </div>
             </div>
             :
-            <UserChatting chatRoomId={chatRoomId} changeChattionView = {changeChattionView}/>
+            <UserChatting id={id} chatRoomId={chatRoomId} changeChattionView = {changeChattionView}/>
             }
         </div>
     );

@@ -52,3 +52,9 @@ body, #root {
     cursor: pointer;
     margin: 10px;
 }
+.wh_profileAddForm{
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: space-around;
+    flex-wrap: wrap;
+}

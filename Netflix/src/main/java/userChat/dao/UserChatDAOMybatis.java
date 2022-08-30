@@ -41,11 +41,11 @@ public class UserChatDAOMybatis implements UserChatDAO {
 	}
 
 	@Override
-	public int chatRoomSeq() {
+	public String chatRoomSeq() {
 		return sqlSession.selectOne("userChatSQL.chatRoomSeq");
 	}
 	@Override
-	public int chatSeq() {
+	public String chatSeq() {
 		return sqlSession.selectOne("userChatSQL.chatSeq");
 	}
 
@@ -63,6 +63,18 @@ public class UserChatDAOMybatis implements UserChatDAO {
 	public List<UserChatRoomDTO> gitChatRoomMakerList(Map<String, String> map) {
 		
 		return sqlSession.selectList("userChatSQL.gitChatRoomMakerList",map);
+	}
+
+	@Override
+	public UserChatRoomDTO creatorCheck(Map<String, String> map) {
+		
+		return sqlSession.selectOne("userChatSQL.creatorCheck",map);
+	}
+
+	@Override
+	public void updateChatRoom(Map<String, String> map) {
+		sqlSession.update("userChatSQL.updateChatRoom",map);
+		
 	}
 
 }
