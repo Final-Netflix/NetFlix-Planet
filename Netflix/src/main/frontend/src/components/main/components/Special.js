@@ -1,9 +1,19 @@
 import React from 'react';
 import 'css/main/special.css';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const Special = () => {
     const { tab } = useParams();
+    const navigate = useNavigate();
+
+    const goDetailPage = () => {
+        if(tab === 'movie'){
+            navigate('/detailMain', {state : { movieId: '755566' }});
+        }
+        else{
+            navigate('/detailMain', {state : { tvId: '93097' }});
+        }
+    }
 
     return (
         <div className='relative top-0 z-[0] w-full font-[.75vw]'>
@@ -78,7 +88,7 @@ const Special = () => {
                                             </div>
                                             </div>
                                             <div className="c1-special-button w-[1rem]"></div>
-                                            <span className="c1-special-button-text">재생</span>
+                                            <Link to='video' state={ tab === 'movie' ? { id:'0', type:'movie' } : { id:'93097', type:'tv' }}><span className="c1-special-button-text text-black">재생</span></Link>
                                         </button>
                                         </a>
                                         <button className="color-secondary hasLabel hasIcon c1-special-button-layout" data-uia="billboard-more-info" type="button">
@@ -90,7 +100,7 @@ const Special = () => {
                                                 </div>
                                             </div>
                                             <div className="c1-special-button w-[1rem]"></div>
-                                            <span className="c1-special-button-text">상세 정보</span>
+                                            <span className="c1-special-button-text" onClick={ goDetailPage }>상세 정보</span>
                                         </button>
                                     </div>
                                 </div>
