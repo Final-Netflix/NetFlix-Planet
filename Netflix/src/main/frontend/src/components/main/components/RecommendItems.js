@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const RecommendItems = ({ item, videoType, genres }) => {
+const RecommendItems = ({ item, videoType, genres  }) => {
 
     const navigate = useNavigate();
     const [backdrop, setBackdrop] = useState('');
@@ -15,6 +15,7 @@ const RecommendItems = ({ item, videoType, genres }) => {
     else                   { imageURL = `https://api.themoviedb.org/3/movie/${ item.id }/`  }
 
     const getImage = async() => {
+        console.log('아이템 빰')
         if(item.id != undefined && backdrop === ''){
             const json = await(
                 await fetch(

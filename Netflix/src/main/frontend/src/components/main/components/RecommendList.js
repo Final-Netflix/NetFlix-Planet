@@ -51,7 +51,8 @@ const RecommendList = ({ data, videoType, genres }) => {
                 <Slider { ...settings }>
                 {
                     data.map((item, index) => 
-                        <RecommendItems key={ index } item={ item } videoType={ videoType } genres={ genres }/>
+                        { 
+                        return <RecommendItems  key={ index } item={ item } videoType={ videoType } genres={ genres }/>}
                     )   
                 }
                 </Slider>

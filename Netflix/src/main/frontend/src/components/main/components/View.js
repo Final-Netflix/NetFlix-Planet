@@ -23,7 +23,7 @@ const View = () => {
         let arr = [];
         let i = 0;
 
-        while (i < 9) {    
+        while (i < 4) {    
             let n = Math.floor(Math.random() * classificationNum);
             if (!sameNum(n)) {      
                 arr.push(n);
@@ -51,11 +51,11 @@ const View = () => {
             <Recommend order='2' classification = { recommendArr[1] }/>
             <Recommend order='3' classification = { recommendArr[2] }/>
             <Recommend order='4' classification = { recommendArr[3] }/>
-            <Recommend order='5' classification = { recommendArr[4] }/>
+            {/* <Recommend order='5' classification = { recommendArr[4] }/>
             <Recommend order='6' classification = { recommendArr[5] }/>
             <Recommend order='7' classification = { recommendArr[6] }/>
             <Recommend order='8' classification = { recommendArr[7] }/>
-            <Recommend order='9' classification = { recommendArr[8] }/>
+            <Recommend order='9' classification = { recommendArr[8] }/> */}
         </div>
     );
 };
