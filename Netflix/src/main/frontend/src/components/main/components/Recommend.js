@@ -52,11 +52,12 @@ const Recommend = ({ order, classification }) => {
     ]);
     const [classificationName, setClassificationName] = useState('');
     const [videoType, setVideoType] = useState('movie');
+    const [genres, setGenres] = useState([]);
     
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
-    
+
+    let GenreURL = 'https://api.themoviedb.org/3/genre/movie/list?api_key=bc61587b22cd0e5226a33d30e467d867&language=ko-KR';
     let search_url;
-    let videoData;
 
     const goNextSlide = () => {
         document.getElementsByClassName("slick-next")[order].click();
@@ -76,18 +77,21 @@ const Recommend = ({ order, classification }) => {
         setData(json1.results.concat(json2.results));
     }
 
+    const getGenres = async () => {
+        const json = await(
+            await fetch(GenreURL)
+        ).json();
+        setGenres(json.genres);
+    }
+
     const getClassifications = () => {
         axios({
-            url: 'http://localhost:8080/getClassifications',
+            url: '/getClassifications',
         }).then(res => {
             tab === undefined && setClassificationArr(res.data);
             tab === 'series'  && setClassificationArr(res.data.filter(data => data.classification_type === 'tv'));
             tab === 'new'     && setClassificationArr(res.data.filter(data => data.classification_type === 'new'));
             tab === 'movie'   && setClassificationArr(res.data.filter(data => data.classification_type === 'movie'));
-            // tab === undefined && (classificationArr = res.data);
-            // tab === 'series'  && (classificationArr = res.data.filter(data => data.classification_type === 'tv'));
-            // tab === 'new'     && (classificationArr = res.data.filter(data => data.classification_type === 'new'));
-            // tab === 'movie'   && (classificationArr = res.data.filter(data => data.classification_type === 'movie'));
         });
     };
 
@@ -95,8 +99,12 @@ const Recommend = ({ order, classification }) => {
         if(classificationArr.length != 0){
             setClassificationName(classificationArr[classification].classification_name);
             search_url = classificationArr[classification].search_url;
-            if(search_url.includes('tv')) {  setVideoType('tv') }
+            if(search_url.includes('tv')) {  
+                setVideoType('tv') 
+                GenreURL = 'https://api.themoviedb.org/3/genre/tv/list?api_key=bc61587b22cd0e5226a33d30e467d867&language=ko-KR';
+            }
             getData();
+            getGenres();
         }
     }, [classificationArr]);
 
@@ -120,7 +128,7 @@ const Recommend = ({ order, classification }) => {
                     <div className="rowContent slider-hover-trigger-layer">
                         <div className="slider" style={{ padding: '0 3.2%'}}>
                             <span className="handle handlePrev active" onClick={ goPrevSlide } tabIndex="0" role="button" aria-label="이전 콘텐츠 보기"><b className="indicator-icon icon-leftCaret"></b></span>
-                            <RecommendList data={ data } setData={ setData } videoType={ videoType }/>
+                            <RecommendList data={ data } setData={ setData } videoType={ videoType } genres={ genres }/>
                             <span className="handle handleNext active" onClick={ goNextSlide } tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>
                         </div>
                     </div>

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import imgSrc from '../../stores/profile';
+import LoginHeader from './LoginHeader';
+import '../../css/user/login.css';
 /* 나중에 프로필 데이터 따로하면됨 */
 const AddProfile = () => {
     
@@ -12,11 +14,13 @@ const AddProfile = () => {
     const nameInput=(e)=>{
         setProfileName(e.target.value);
     }
-
+    const cancle=()=>{
+        window.location.href='/'
+    }
     const addProfileBtn= ()=>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/addProfile',
+            url : '/addProfile',
             data : qs.stringify({
                 'img_path' : selectImg,
                 'user_email' : localStorage.getItem('user_email'),
@@ -40,38 +44,38 @@ const AddProfile = () => {
     }
     return (
         <div className='bg-[#141414] h-[100%]'>
-
-            <div>
+            <LoginHeader/>
+            <div className="display: flex justify-center">
                 <h1 className='text-white m-[0]'>프로필 추가</h1>
             </div>
 
             {
                 imgList?
                 <>
-                <div>
+                <div className="display: flex justify-center">
                     <h2 className='text-white'>넷플렉스 하려면 프로필 추가하세요</h2>
                 </div>
-                    <div className='flex'>
-                        <div>
-                            <img src={selectImg}
-                            className="w-[200px] h-[200px]" onClick={changeImge}></img>
-                        </div>
+                <div className="wh_profileAddForm display: flex justify-center">
 
-                        <div>
-                            <input type="text" placeholder="이름" className='bg-[#666] h-[36px] w-[326px]' onChange={nameInput} value={profileName}></input>
-                            <div>
-                                <button className='w-[70px] h-[50px] border bg-white' onClick={addProfileBtn}>다음</button>
-                                <button className='w-[70px] h-[50px] border m-[20px] bg-white'>취소</button>
-                            </div>
+                    <div className='mt-[30px]'>
+                        <input type="text" placeholder="이름" className='bg-[#666] h-[36px] w-[326px]' onChange={nameInput} value={profileName}></input>
+                        <div className="display: flex justify-center">
+                            <button className='w-[70px] h-[50px] border m-[20px] bg-white' onClick={addProfileBtn}>다음</button>
+                            <button className='w-[70px] h-[50px] border m-[20px] bg-white' onClick={cancle}>취소</button>
                         </div>
                     </div>
+                    <div className="display: flex justify-center mt-[30px]">
+                        <img src={selectImg}
+                        className="w-[200px] h-[200px]" onClick={changeImge}></img>
+                    </div>
+                </div>
                 </>
                 :
                 <>
                 <div>
                     <h2 className='text-white'>프로필에 사용할 이미지를 클릭하세요</h2>
                 </div>
-                    <ul className='flex'>
+                    <ul className='className="display: flex justify-center"'>
                         {
                             imgSrc.map((item, index)=>
                                 <li>

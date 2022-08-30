@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"userChat.*","user.*","classification.*", "pick.*"})
+@ComponentScan(basePackages = {"userChat.*","user.*","classification.*", "pick.*", "likes.*"})
 @SpringBootApplication
 public class NetflixApplication {
 
