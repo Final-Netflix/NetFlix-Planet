@@ -57,12 +57,14 @@ const Header = ({ scroll, search, setSearch }) => {
 
     const goSearchPage = (e) => {
         setSearch(e.target.value)
+        
     }
     
     const logoutBtn=()=>{
         localStorage.clear();
         window.location.href='/';
     }
+
     
     useEffect (()=> {
         if(search != ''){
@@ -115,12 +117,16 @@ const Header = ({ scroll, search, setSearch }) => {
         .catch(error => console.log(error));
     }
 
+    const searchInputReset = () => {
+        setSearch('')
+    }
+
     return (
         <div className={ headerName }>
             <div className='c1-header-container h-full flex pl-[37px] pr-[37px] justify-between items-center z-[10]'>
                 <div>
                     <div className='flex'>
-                        <Link to='/'><div><img className='w-40' src={ logo }/></div></Link>
+                        <Link to='/'><div onClick = { searchInputReset }><img className='w-40' src={ logo } /></div></Link>
                         <ul className='m-0 p-0 flex items-center tracking-normal'>
                             <li className='ml-[18px]'><Link to="/">홈</Link></li>
                             <li className='ml-[18px]'><Link to="/series">시리즈</Link></li>

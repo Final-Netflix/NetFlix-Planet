@@ -5,31 +5,27 @@ import SearchResultHeaderItem from './SearchResultHeaderItem';
 const SearchResultHeaderList = ({ idx, setSearch, search }) => { // idx = 10138
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
-    const [contentArr, setContentArr] = useState();
+    const [contentArr, setContentArr] = useState([]);
 
     const getContentList = async () => {
         const apiResult = `https://api.themoviedb.org/3/movie/${idx}/similar?api_key=bc61587b22cd0e5226a33d30e467d867&language=ko-KR`
         const json = await(
             await fetch(apiResult)
         ).json();
-        //console.log('1번지? = ' + json.results[1].title)
-        //console.log('0번지? = ' + json.results[0].title)
 
         const arr = [];
         
         for (let i = 0; i < 10; i++) {
             arr.push(json.results[i]);
         }
-        setContentArr(arr);
+        setContentArr((prev) => arr);
     }
+    useEffect(() => {
+    },[contentArr])
 
      useEffect(() => {
         getContentList();
-    }, []);
-
-   /*  const handleClick = () => {
-        naviagate('/search', {state : {type : } })
-    } */
+    }, [idx]);
 
     if( idx != ''){
         return (
