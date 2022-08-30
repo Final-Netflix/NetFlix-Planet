@@ -2,8 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import MyPageNewProfileEmail from './MyPageNewProfileEmail';
 
-const MyPageSlide_Sub = (props) => {
-
+const MyPageSlide_Sub = ({profile_id}) => {
+    console.log(profile_id)
     const location = useLocation()
     const state = location.state ? location.state : ''
 
@@ -50,7 +50,7 @@ const MyPageSlide_Sub = (props) => {
                     
                     <li className="m2_list1 flex justify-between w-full">
                         <div className="pl-[20%] pt-8 pb-7">시청기록</div>
-                        <Link to = "/my/watchRecord">
+                        <Link to = "/my/watchRecord" state={{ profile_id: profile_id}}>
                             <button className="flex justify-end w-full text-blue-500 pt-8">보기</button>
                         </Link>
                     </li>
@@ -58,7 +58,7 @@ const MyPageSlide_Sub = (props) => {
 
                     <li className="m2_list1 flex justify-between w-full">
                         <div className="pl-[20%] pt-8 pb-7">평가한 콘텐츠</div>
-                        <Link to = "/my/evaluationContent">
+                        <Link to="/my/evaluationContent" state={{ profile_id: profile_id}}>
                             <button className="flex justify-end w-full text-blue-500 pt-8">보기</button>
                         </Link>
                     </li>

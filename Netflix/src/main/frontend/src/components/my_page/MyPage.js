@@ -16,6 +16,7 @@ import EvaluationContent from './EvaluationContent';
 import ProfileLock_Sub from './ProfileLock_Sub';
 import SuccessEmail from './SuccessEmail';
 import SuccessPhone from './SuccessPhone';
+import SuccessPwd from './SuccessPwd';
 const MyPage = () => {
     const {detail} = useParams();
     return (
@@ -34,6 +35,7 @@ const MyPage = () => {
 				{detail === 'playSetting' && <PlaySetting/>}
 				{detail === 'successEmail' && <SuccessEmail/>}
 				{detail === 'successPhone' && <SuccessPhone/>}
+				{detail === 'successPwd' && <SuccessPwd/>}
 
 				{detail === 'changePwd' && <MypagePassword/>}
 				{detail === 'changePlan' && <MypageMemberShip/>}

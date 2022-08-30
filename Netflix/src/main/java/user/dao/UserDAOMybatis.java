@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import likes.bean.LikesDTO;
 import user.bean.UserDTO;
 import user.bean.UserProfileDTO;
 
@@ -147,8 +148,29 @@ public class UserDAOMybatis implements UserDAO {
 	}
 
 	@Override
-	public List<UserDTO> findPassWord(Map<String, String> map) {
+	public UserDTO findPassWord(Map<String, String> map) {
 		return sqlSession.selectOne("userSQL.findPassWord",map);
+	}
+
+	@Override
+	public List<LikesDTO> getContent(String profile_id) {
+		return sqlSession.selectList("userSQL.getContent" , profile_id);
+	}
+
+	@Override
+	public int checkLike(LikesDTO likesDTO) {
+		return sqlSession.selectOne("userSQL.checkLike" , likesDTO);
+	}
+
+	@Override
+	public void changeLike(LikesDTO likesDTO) {
+		sqlSession.update("userSQL.changeLike", likesDTO);
+		
+	}
+
+	@Override
+	public void deleteLike(LikesDTO likesDTO) {
+		sqlSession.delete("userSQL.deleteLike" , likesDTO);
 	}
 
 }

@@ -95,6 +95,17 @@
 	<select id="findPassWord" parameterType="java.util.Map" resultType="user">
   		select user_pwd from USER where user_email = #{user_email}
   	</select>
-
+	<select id="getContent" parameterType="String" resultType="likes">
+		select * from LIKES where profile_id=#{profile_id}
+	</select>
+	<select id="checkLike" parameterType="likes" resultType="int">
+		select like_type from LIKES where profile_id=#{profile_id} and video_id=#{video_id}
+	</select>
+	<update id="changeLike" parameterType="likes">
+		update LIKES set like_type=#{like_type} where profile_id=#{profile_id} and video_id=#{video_id}
+	</update>
+	<delete id="deleteLike" parameterType="likes">
+		delete from LIKES where profile_id=#{profile_id} and video_id=#{video_id}
+	</delete>
   </mapper>
  

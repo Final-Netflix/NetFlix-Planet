@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import likes.bean.LikesDTO;
 import user.bean.UserDTO;
 import user.bean.UserProfileDTO;
 
@@ -168,11 +169,31 @@ public class UserController {
 	
 	@PostMapping("/myPageUpdatePwd")
 	@ResponseBody
-	public void myPageUpdatePwd(@RequestParam Map<String, String> map) {
-		System.out.println(map.toString());
-//		userService.findPassWord(map);
+	public int myPageUpdatePwd(@RequestParam Map<String, String> map) {
+		System.out.println(map);
+		UserDTO userDTO =userService.findPassWord(map);
+		if(map.get("user_pwd").equals(userDTO.getUser_pwd())) {
+			userService.myPageUpdatePwd(map);
+			System.out.println("안녕");
+			return 0;
+		}else {
+			System.out.println("잘가");
+			return 1;
+		}
 		
-		userService.myPageUpdatePwd(map);
+	}
+	@PostMapping("/getContent")
+	@ResponseBody
+	public List<LikesDTO> getContent(@RequestParam String profile_id) {
+		List<LikesDTO> list = userService.getContent(profile_id);
+		
+		return list;
+	}
+	@PostMapping("/changeLike")
+	@ResponseBody
+	public void changeLike(@ModelAttribute LikesDTO likesDTO) {
+		System.out.println(likesDTO);
+		userService.changeLike(likesDTO);
 	}
 }
 

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import likes.bean.LikesDTO;
+
 import org.springframework.mail.javamail.JavaMailSender;
 
 import user.bean.UserDTO;
@@ -151,8 +154,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserDTO> findPassWord(Map<String, String> map) {
-		return userDAO.findPassWord(map);
+	public UserDTO findPassWord(Map<String, String> map) {
+			
+		return  userDAO.findPassWord(map);
+	}
+
+	@Override
+	public List<LikesDTO> getContent(String profile_id) {
+		List<LikesDTO> list = userDAO.getContent(profile_id);
+		return list;
+	}
+
+	@Override
+	public void changeLike(LikesDTO likesDTO) {
+		//먼저 내가 똑같은 걸 눌렀는지 확인하기 
+		int check = userDAO.checkLike(likesDTO);
+		if(check ==likesDTO.getLike_type()) {
+			//지우기
+			userDAO.deleteLike(likesDTO);
+		}else {
+			//업데이트 하기
+			userDAO.changeLike(likesDTO);
+		}
 	}
 
 }
