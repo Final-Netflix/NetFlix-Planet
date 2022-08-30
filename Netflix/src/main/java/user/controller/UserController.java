@@ -37,10 +37,8 @@ public class UserController {
 	@PostMapping("/send-sms")
 	@ResponseBody
 	public ResponseEntity<SmsResponse> sms_sends(@ModelAttribute Request request) throws Exception {
-		System.out.println(request.getRecipientPhoneNumber());
-//		SmsResponse data = smsService.sendSms(request.getRecipientPhoneNumber(), request.getContent());
-//        return ResponseEntity.ok().body(data);
-		return null;
+		SmsResponse data = smsService.sendSms(request.getRecipientPhoneNumber(), request.getContent());
+        return ResponseEntity.ok().body(data);
 	}
 	@PostMapping("/send-email")
 	@ResponseBody
@@ -156,7 +154,14 @@ public class UserController {
 	@ResponseBody
 	public int changeEmail(@RequestParam Map<String, String> map) {
 		int i = userService.changeEmail(map);
-		return 0;
+		return i;
+	}
+	@PostMapping("changePhone")
+	@ResponseBody
+	public int changePhone(@ModelAttribute UserDTO userDTO) {
+		System.out.println(userDTO); 
+		int i = userService.changePhone(userDTO);
+		return i;
 	}
 
 }
