@@ -58,7 +58,12 @@ const TopTenItems = ({ item, index, genres }) => {
     }
 
     const goDetailPage = () => {
-        alert('가자! | ' + tab + " | " + item.id);
+        if(tab === 'movie'){
+            navigate('/detailMain', {state : { movieId: item.id }});
+        }
+        else{
+            navigate('/detailMain', {state : { tvId: item.id }});
+        }
     }
 
     useEffect(() => {

@@ -7,7 +7,6 @@ import MoreLikeThis from './MoreLikeThis';
 import Top from './Top';
 
 const DetailForMovie = ({ type, id }) => {
-  
 
   return (
     <div>
