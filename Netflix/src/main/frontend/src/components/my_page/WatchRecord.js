@@ -7,15 +7,14 @@ const WatchRecord = () => {
 
     return (
         <div>
-            <MyPageHeader/>
-            <div className = "m-[20px] p-0 block w-full min-h-[1000px] max-w-[1248px] mx-auto min-w-[740px]">
+            <div className = "m1_bd m-[20px] p-0 block w-full min-h-[1000px] max-w-[1248px] mx-auto min-w-[740px]" style={{margin : 'auto'}}>
                 <div className = "px-[5%] min-h-[400px] min-w-[400px] m-auto block relative w-[100%]">
                     <div className = "flex justify-start w-[100%]">
                         <div className = "text-[#333] text-4xl mb-100 mt-2 relative w-[70%]">정수 프로필의 시청 기록</div>
                         <div className = "flex justify-end relative text-lg mt-4 ml-14 w-[100%]">
-                            <a href = "#" className = "text-black">보고있는 콘텐츠</a>
+                            <a href = "/my/watchRecord" className = "text-black">보고있는 콘텐츠</a>
                             <div className = "ml-3 mr-3">|</div>
-                            <a className = "text-black">평가</a>
+                            <a  href="/my/evaluationContent"className = "text-black">평가</a>
                         </div>
                         <img className = "rounded w-[50px] h-[50px] ml-10" src = "https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABQraYEep-xEIjH8un2d94vqdnSOy6XOgdstZB4LNWxH02R2Lr61kagmfitUGDi9oBzVvLrMd23CUeWAi1b0VTiprSmqigKI.png?r=229"></img>
                     </div>
@@ -96,7 +95,6 @@ const WatchRecord = () => {
                         </div>    
                     </div>
                 </div>        
-             <MypageFooter/>
         </div>
     );
 };

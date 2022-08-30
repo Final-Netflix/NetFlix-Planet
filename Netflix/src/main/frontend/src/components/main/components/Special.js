@@ -3,6 +3,8 @@ import 'css/main/special.css';
 import { useParams } from 'react-router-dom';
 
 const Special = () => {
+    const { tab } = useParams();
+
     return (
         <div className='relative top-0 z-[0] w-full font-[.75vw]'>
             <span className="block relative z-[1]">
@@ -11,7 +13,11 @@ const Special = () => {
                         <div>
                             <div className="z-[2] full-screen bottom-0 left-0 right-0 top-0 absolute">
                                 <div className="c1-hero-image-wrapper bottom-0 left-0 right-0 top-0 absolute">
-                                    <img className="c1-static-image z-[5]" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABbH6veKSImlLn0AJn8mHjMxH_U_kp2zji5Ws1ZntZ9sy94JXkPK0mUhZZ8PpkrYeOO-Tx_lT6W3ZdSnHY5-kY6tp17sH3PYOYSgU.webp?r=844" alt="" />
+                                    {
+                                        tab === 'movie' ?
+                                        <img className="c1-static-image z-[5]" src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABeEAMcyM-GIgq6UAP9wHfbEqtFjQN4ge3XI5HMr_zE7znwgmbmBssMPM93hso7DeGHieXBTfwI8jhytUQv7gm96JKGgDwD2COs0q.webp?r=75d" alt="" /> : 
+                                        <img className="c1-static-image z-[5]" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABbH6veKSImlLn0AJn8mHjMxH_U_kp2zji5Ws1ZntZ9sy94JXkPK0mUhZZ8PpkrYeOO-Tx_lT6W3ZdSnHY5-kY6tp17sH3PYOYSgU.webp?r=844" alt="" />
+                                    }
                                     <div className="c1-trailer-vignette left-0 absolute right-0 z-[8]"></div>
                                     <div className="c1-hero-vignette left-0 absolute right-0 z-[8]"></div>
                                     <div className="c1-embedded-components relative z-10"></div>
@@ -39,7 +45,11 @@ const Special = () => {
                                 <div className="logo-and-text">
                                     <div className="titleWrapper" style={{transformOrigin:'left bottom', transform:'scale(1) translate3d(0px, 0px, 0px)', transitionDuration:'1300ms', transitionDelay:'0ms'}}>
                                         <div className="c1-billboard-title">
-                                        <img alt="동백꽃 필 무렵" className="title-logo" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSyPa0C67xQMR05YG0aeRP5SNNvBdpFPt5RPlhhFC6kdiu2WujPPQOBQSmYf3afEa7AW2GwlbBuYkgMpW4S0HCydrAp2fI5pD-p1_JJ0Y4Gj.webp?r=ae8" title="동백꽃 필 무렵" />
+                                            {
+                                                tab === 'movie' ?
+                                                <img alt="데이 시프트" className="title-logo" src="https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABfJXe9XrlgfGe0nOqgF178pcc1nRwBm1qcjGLB3HEf0wPihxQHqXV606K_M8QYoDSvYGstM-tCrvsLAux73Jr_NhJKl7NyN9YeIqrqsfQ09BqIPSwPhPpQBp5-X38ikctgOLGdcsVLCqt8GLHzBYzZNheiYbnGdT1rqKBazB3FhMez5Jk-T5vQ.webp?r=7f1" title="데이 시프트" />:
+                                                <img alt="동백꽃 필 무렵" className="title-logo" src="https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABSyPa0C67xQMR05YG0aeRP5SNNvBdpFPt5RPlhhFC6kdiu2WujPPQOBQSmYf3afEa7AW2GwlbBuYkgMpW4S0HCydrAp2fI5pD-p1_JJ0Y4Gj.webp?r=ae8" title="동백꽃 필 무렵" />
+                                            }
                                         </div>
                                     </div>
                                     <div className="info-wrapper" style={{transform: 'translate3d(0px, 0px, 0px)', transitionDuration:'1300ms', transitionDelay: '0ms', opacity: '1'}}>
@@ -47,7 +57,12 @@ const Special = () => {
                                         <div className="episode-title-container"></div>
                                         <div className="synopsis-fade-container">
                                             <div className="synopsis no-supplemental">
-                                            <div className="ptrack-content" data-ui-tracking-context="%7B%22evidenceKey%22:%22web_synopsis%7C81030241_INFORMATIVE%7Cko%7C_IFD_%22,%22video_id%22:1,%22track_id%22:254015180,%22request_id%22:%22aba3f3bc-7a36-42a3-b026-23b23b29dedb-254957602%22,%22list_id%22:%22GPS_96C5ED18C072934A21339FA7EE6B1C-332B50E1F27340-8F71DCC590_p_1659875873618%22,%22row%22:0,%22rank%22:0,%22appView%22:%22synopsisEvidence%22,%22usePresentedEvent%22:true%7D" data-tracking-uuid="6db1ab2e-966a-4c19-b6b5-0ff4909c7116">천진하지만 강단 있는 싱글 맘 동백. 씩씩하게 살고 싶지만, 세상의 편견이 여전히 힘들다. 이런 그녀를 찾아온 설렘, 어쩌면 사랑. 이제부터, 조금 더 용감해져도 될까.</div>
+                                                <div className="ptrack-content" data-ui-tracking-context="%7B%22evidenceKey%22:%22web_synopsis%7C81030241_INFORMATIVE%7Cko%7C_IFD_%22,%22video_id%22:1,%22track_id%22:254015180,%22request_id%22:%22aba3f3bc-7a36-42a3-b026-23b23b29dedb-254957602%22,%22list_id%22:%22GPS_96C5ED18C072934A21339FA7EE6B1C-332B50E1F27340-8F71DCC590_p_1659875873618%22,%22row%22:0,%22rank%22:0,%22appView%22:%22synopsisEvidence%22,%22usePresentedEvent%22:true%7D" data-tracking-uuid="6db1ab2e-966a-4c19-b6b5-0ff4909c7116">
+                                                    { tab === 'movie' ? 
+                                                        'LA에 사는 남자. 일주일 안에 딸의 교육비와 치아 교정비를 마련해야 한다. 가족을 위해 목숨 걸고 일하러 가는 이 남자의 직업은 뱀파이어 사냥꾼!':
+                                                        '천진하지만 강단 있는 싱글 맘 동백. 씩씩하게 살고 싶지만, 세상의 편견이 여전히 힘들다. 이런 그녀를 찾아온 설렘, 어쩌면 사랑. 이제부터, 조금 더 용감해져도 될까.'
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                         </div>

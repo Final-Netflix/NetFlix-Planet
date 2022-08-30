@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RecommendItems from './RecommendItems';
 
-const RecommendList = ({ data, videoType }) => {
+const RecommendList = ({ data, videoType, genres }) => {
     let settings = {
         dots: true,
         infinite: true,
@@ -50,7 +50,9 @@ const RecommendList = ({ data, videoType }) => {
             <div className="sliderContent row-with-x-columns">
                 <Slider { ...settings }>
                 {
-                    data.map((item, index) => <RecommendItems key={ index } item={ item } videoType={ videoType }/>)   
+                    data.map((item, index) => 
+                        <RecommendItems key={ index } item={ item } videoType={ videoType } genres={ genres }/>
+                    )   
                 }
                 </Slider>
             </div>

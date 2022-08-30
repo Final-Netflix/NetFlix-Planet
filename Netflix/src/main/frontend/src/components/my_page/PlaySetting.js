@@ -7,8 +7,7 @@ const PlaySetting = () => {
 
     return (
         <div>
-             <MyPageHeader/>
-            <div className = "m-[20px] p-0 block">
+            <div className = "m1_bd m-[20px] p-0 block">
                 <div className = "px-[20%] min-h-[400px] min-w-[300px] m-auto block relative w-[90%]">
                     <div className = "flex justify-start ">
                     <div className = "text-[#333] w-[90%] text-4xl mb-100">재생 설정</div>
@@ -59,7 +58,6 @@ const PlaySetting = () => {
                     </Link>
                 </div>
             </div>        
-             <MypageFooter/>
         </div>
     );
 };

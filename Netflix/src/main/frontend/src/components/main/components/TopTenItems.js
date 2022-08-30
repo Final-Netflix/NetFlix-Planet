@@ -52,7 +52,6 @@ const TopTenItems = ({ item, index, genres }) => {
 
     const getKorGenre = () => {
         let genreTemp = [];
-        console.log(genres);
         item.genre_ids.map((genre_id) => genreTemp = genreTemp.concat(genres.find((genre) =>  genre.id === genre_id )));
         setKorGenre(genreTemp);
     }
@@ -177,15 +176,11 @@ const TopTenItems = ({ item, index, genres }) => {
                                                 {
                                                     korGenre != undefined &&
                                                     korGenre.map((genre, index) => {
-                                                        console.log(genre);
                                                         return <li key={ index } className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>
-                                                        {/* { genre.name } */} hihi
+                                                        { genre.name }
                                                         </li>
                                                     })
                                                 }
-                                                {/* <li className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>스릴러</li>
-                                                <li className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>스릴러</li>
-                                                <li className='text-[4px] flex mr-2'><div className='rounded-[50%] my-[5px] mr-1 bg-white w-1 h-1'></div>숨막히는</li> */}
                                             </ul>
                                         </div>
                                     </div>

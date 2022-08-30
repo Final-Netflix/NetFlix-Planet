@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const RecommendItems = ({ item, videoType }) => {
+const RecommendItems = ({ item, videoType, genres }) => {
 
+    const navigate = useNavigate();
     const [backdrop, setBackdrop] = useState('');
     const [logo, setLogo] = useState('');
     const [loading, setLoading] = useState(true);
@@ -14,7 +16,6 @@ const RecommendItems = ({ item, videoType }) => {
 
     const getImage = async() => {
         if(item.id != undefined && backdrop === ''){
-            // console.log("do | " + item.id + " | " + backdrop + " | ");
             const json = await(
                 await fetch(
                     `${ imageURL }images?api_key=${ KEY }`
@@ -32,10 +33,28 @@ const RecommendItems = ({ item, videoType }) => {
         }
     }
 
+    // const getKorGenre = () => {
+        // let genreTemp = [];
+        // if(item.genres_ids != undefined){
+        //     item.genre_ids.map((genre_id) => genreTemp = genreTemp.concat(genres.find((genre) =>  genre.id === genre_id )));
+        //     setKorGenre(genreTemp);
+        // }
+    // }
+
+    const goDetailPage = () => {
+        if(videoType === 'movie'){
+            navigate('/detailMain', {state : { movieId: item.id }});
+        }
+        else{
+            navigate('/detailMain', {state : { tvId: item.id }});
+        }
+    }
+
     useEffect(() => {
         getImage();
+        // getKorGenre();
         setLoading(false);
-    })
+    }, []);
 
     return (
         <div className="slider-item px-[0.2vw]" style={{width: '100%'}}>
@@ -46,12 +65,8 @@ const RecommendItems = ({ item, videoType }) => {
                 <input type='hidden' className='video_type' value={ videoType || '' }></input>
                 <div className="title-card-container css-0 hover:shadow-md hover:drop-shadow-lg hover:shadow-black">
                     <div id="title-card-2-0" className="title-card">
-                        <div
-                            className="ptrack-content"
-                            data-ui-tracking-context="%7B%22list_id%22:%22GPS_90F9E094223E8D90D5C76CD4CFEC43-4E5206F4B5E7E3-586DC3E6C4_p_1659925287943%22,%22location%22:%22homeScreen%22,%22rank%22:0,%22request_id%22:%22aed62872-bf6e-41a6-9966-b6233cee2505-303244450%22,%22row%22:2,%22track_id%22:259700348,%22video_id%22:81193309,%22image_key%22:%22sdp%7Cac678091-3843-11ea-9475-0e1387033224%7Cko%7CnVi%7C81193314%22,%22supp_video_id%22:1,%22lolomo_id%22:%22GPS_90F9E094223E8D90D5C76CD4CFEC43_p_1659925287943%22,%22maturityMisMatchEdgy%22:false,%22maturityMisMatchNonEdgy%22:false,%22appView%22:%22boxArt%22,%22usePresentedEvent%22:true%7D"
-                            data-tracking-uuid="ad0a79c6-30de-49bd-b98f-1f88b09ec9a2"
-                        >
-                            <a href="/watch/81193309?tctx=2%2C0%2C%2C%2C%2C%2C%2C%2C" role="link" aria-label="{ item.title }" tabIndex="0" aria-hidden="false" className="slider-refocus rounded">
+                        <div className="ptrack-content" >
+                            <a href="#" role="link" aria-label="{ item.title }" tabIndex="0" aria-hidden="false" className="slider-refocus rounded">
                                 <div className="boxart-size-16x9 boxart-container boxart-rounded">
                                     {
                                         (backdrop === '' || backdrop === undefined) ?
@@ -111,7 +126,7 @@ const RecommendItems = ({ item, videoType }) => {
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]">
+                                            <div className="ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]" onClick={ goDetailPage }>
                                                 <div className="ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]">
                                                     <button className="color_supplementary max-h-[36px] max-w-[36px] min-h-[20px] min-w-[20px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[1px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible" aria-label="내가 찜한 콘텐츠에 추가">
                                                         <div className="ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap">
@@ -141,17 +156,13 @@ const RecommendItems = ({ item, videoType }) => {
                                                     <span className="maturity_rating inline-block text-[#fff] text-[6px] leading-[1.4] cursor-pointer">
                                                         <span className="maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[6px] leading-[1.4] cursor-pointer">KO</span>
                                                     </span>
-                                                    <span className="duration whitespace-nowrap mr-[0.5em] text-[#fff] ml-2 text-[6px] leading-[1.4]">에피소드 12개</span>
+                                                    <span className="duration whitespace-nowrap mr-[0.5em] text-[#fff] ml-2 text-[6px] leading-[1.4]">추천수: { item.vote_count }</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='c1-preview-keyword mx-4 mt-[0.8em] mb-[0.5vw]'>
-                                        <ul className='flex text-white text-[4px]'>
-                                            <li className='text-[4px]'>긴장감 넘치는</li>
-                                            <li className='text-[4px] flex'><div className='rounded-[50%] my-[5px] ml-4 mr-1 bg-white w-1 h-1'></div>스릴러</li>
-                                            <li className='text-[4px] flex'><div className='rounded-[50%] my-[5px] ml-4 mr-1 bg-white w-1 h-1'></div>숨막히는</li>
-                                        </ul>
+                                        
                                     </div>
                                 </div>
                             </a>

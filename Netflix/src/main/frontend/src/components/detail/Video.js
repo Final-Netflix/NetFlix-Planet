@@ -16,11 +16,18 @@ const Video = () => {
   console.log('타입 = ' + type)
 
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
-  const [title, setTitle] = useState(true);
+  const [title, setTitle] = useState(true);                                                                                                                                                                                                                                                                                                                                                                                                                                                         
   const [tvETitle, setTvETitle] = useState([]);
   const [tvTitle, setTvTitle] = useState(true);
+  const [video, setVideo] = useState(true);
 
-
+  /* const getVideo = async () => {
+    const json = await(
+      await fetch(
+          `https://firebasestorage.googleapis.com/v0/b/planet-e9df3.appspot.com/o/${type}%2F${type}-${id}.mp4?alt=media`)
+      ).json();
+      setVideo();
+  } */
   const getTitle = async () => {
     if (type === 'movie'){
     const json = await(
@@ -54,6 +61,7 @@ const Video = () => {
     getTitle();
     /* getTvTitle(); */
     getTvs();
+    /* getVideo(); */
   }, [])
 console.log(title);
 
@@ -61,6 +69,67 @@ console.log(title);
   const openChatting=()=>{
     setIsChat(!isChat);
   }
+
+  /* 기능 */
+  var play_video = document.getElementById("video");
+  
+  const [play, setPlay] = useState(false);
+  
+  const playVideo = () => {
+    play_video.play();
+   /*  playTime1 = Math.floor(play_video.currentTime);
+    total1 = Math.floor(play_video.duration); */
+    setPlay(!play);
+    
+  }
+  const pauseVideo = () => {
+    play_video.pause();
+    setPlay(!play);
+  }
+  
+  const [playTime, setPlayTime] = useState('');
+  const [chatCheck,setChatCheck] = useState(1);
+  const [total, setTotal] = useState('');
+    
+  setTimeout(function() {
+      setChatCheck(chatCheck+1);
+  }, 500);
+
+/*   useEffect(()=> {
+
+    let playTime1;
+    let total1;
+
+    playTime1 = Math.floor(play_video.currentTime);
+    setPlayTime(playTime1);
+      
+  }, [chatCheck]); */
+  
+  useEffect(() => {
+    if(play_video != undefined){
+      let playTime1;
+     // playTime1 = Math.floor(play_video.currentTime);
+      playTime1 = play_video.currentTime;
+      //const seconds = ('0' + playTime.getSeconds()).slice(-2);
+      setPlayTime(parseInt(playTime1));
+
+      let total = Math.floor(play_video.duration);
+      setTotal(total);
+
+      document.getElementById("test").style.width=(playTime/total * 100)+'%';
+      document.getElementById("circle").style.left=(playTime/total * 100)+'%';
+    }
+  },[chatCheck])
+
+    
+
+  /* const playHandler = () => {
+    setPlay(!play);
+  } */
+  /* const pauseHandler = () => {
+    setPause(!pause);
+  } */
+
 
   return (
     <div>
@@ -70,7 +139,8 @@ console.log(title);
             <div className="ltr-op8orf" data-uia="video-canvas">
               <div className='relative w-[100%] h-[100%] overflow-hidden'>
                 <div className='relative w-[100%] h-[100%] overflow-hidden' id="81566007">
-                  {/* <video src="blob:https://www.netflix.com/e5669d38-4bf8-404c-8a6d-9ae2ee9ac43f" tabIndex="-1" className='h-[100%] w-[1200px]'></video> */}
+                  <video id="video"
+                  src={`https://firebasestorage.googleapis.com/v0/b/planet-e9df3.appspot.com/o/${type}%2F${type}-${id}.mp4?alt=media`} tabIndex="-1" className='h-[100%] w-[1200px]'></video>
                   <div className="player-timedtext hidden [direction: ltr]"></div>
                 </div>
               </div>
@@ -124,8 +194,8 @@ console.log(title);
                               <div className="ltr-hpbgml items-center flex-grow-[1] justify-[normal]">
                                   <div aria-orientation="horizontal" className="medium ltr-13q34j2" data-uia="timeline" max="4626663" min="0" role="slider" tabIndex="-1">
                                       <div data-uia="timeline-bar" className="ltr-lbmpgb">
-                                          <div className="ltr-xd82k2 w-[80px]"></div>
-                                          <div className="ltr-1c4ubff w-[50px]"></div>
+                                          {/* <div className="ltr-xd82k2"></div> */}
+                                          <div className="ltr-1c4ubff w-[50px]" id="test"></div>
                                           <div
                                               aria-label="재생 시간 표시줄"
                                               aria-valuemax="4626663"
@@ -135,23 +205,25 @@ console.log(title);
                                               data-uia="timeline-knob"
                                               tabIndex="0"
                                               className="ltr-uwc8j6"
+                                              id="circle"
                                           ></div>
                                       </div>
                                   </div>
                               </div>
                               <div className="ltr-6alejv items-center justify-center">
-                                <span className="ltr-jgzoky" data-uia="controls-time-remaining">1:16:32</span>
+                                <span className="ltr-jgzoky" data-uia="controls-time-remaining">{parseInt(playTime/60)+":"+playTime%60}/{parseInt(total/60)+":"+total%60}</span>
                               </div>
                           </div>
                           <div className="ltr-1i33xgl h-[3rem] min-h-[3rem] min-w-[100%] w-[100%]"></div>
                           <div className="ltr-1bt0omd">
                               <div className="ltr-1i33xgl items-[normal] justify-[normal]">
                                   <div className="ltr-hpbgml items-[normal] justify-[normal]">
-                                      <div className="medium ltr-1dcjcj4">
+                                        {play ? 
+                                      <div className="medium ltr-1dcjcj4" style={{position: "relative", zIndex: 10}}>
                                           {/* 일시정지 버튼 */}
-                                          <button aria-label="일시정지" className="ltr-1enhvti" data-uia="control-play-pause-pause">
+                                          <button onClick={pauseVideo} /* style={pause ? {visibility: 'hidden'} : {visibility: 'visible'}} */ id="pauseButton" aria-label="일시정지" className="ltr-1enhvti"  data-uia="control-play-pause-pause">
                                               <div className="control-medium ltr-18dhnor" role="presentation">
-                                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="svg-icon-nfplayerPause">
+                                                  <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="svg-icon-nfplayerPause">
                                                       <path
                                                           fillRule="evenodd"
                                                           clipRule="evenodd"
@@ -161,15 +233,19 @@ console.log(title);
                                                   </svg>
                                               </div>
                                           </button>
-                                          {/* 재생버튼
-                                          <button aria-label="재생" class="ltr-1enhvti" data-uia="control-play-pause-play">
+                                      </div>
+                                      :
+                                      <div className="medium ltr-1dcjcj4" style={{position: "relative", zIndex: 10}}>
+                                          {/* 재생버튼 */}
+                                            <button onClick={playVideo} /* style={play ? {visibility: 'hidden'} : {visibility: 'visible'}} */ id="playButton" aria-label="재생" class="ltr-1enhvti" data-uia="control-play-pause-play">
                                             <div class="control-medium ltr-18dhnor" role="presentation">
                                               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon-nfplayerPlay">
                                                 <path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path>
                                               </svg>
                                             </div>
-                                          </button> */}
+                                          </button>
                                       </div>
+                                      }
                                       <div className="ltr-1i33xgl min-w-[3rem] w-[3rem]"></div>
                                       <div className="medium ltr-1dcjcj4">
                                           <button aria-label="뒤로 가기" className="ltr-1enhvti" data-uia="control-back10">
