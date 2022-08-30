@@ -3,6 +3,7 @@ import logo from 'image/main/logo.png';
 import edit from 'image/main/edit.png';
 import service from 'image/main/service.png';
 import user from 'image/main/user.png';
+import chat from 'image/detail/chat2.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -17,6 +18,8 @@ const Header = ({ scroll, search, setSearch }) => {
     const [searchBox, setSearchBox] = useState(tab === 'search' ? true : false);
     const [notice, setNotice] = useState(false);
     const [profile, setProfile] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [isOpenChat, setIsOpenChat] = useState(false);
     
     let noticeTimer;
     let profileTimer;
@@ -55,12 +58,32 @@ const Header = ({ scroll, search, setSearch }) => {
 
     const goSearchPage = (e) => {
         setSearch(e.target.value)
-        
+    }
+
+    const openChat = () => {
+        setIsOpenChat(true);
     }
     
     const logoutBtn=()=>{
         localStorage.clear();
         window.location.href='/';
+    }
+    
+    useEffect(() => {
+        window.addEventListener(
+            "message",
+            (e) => message(e),
+            false
+        );
+        return(() => {
+            window.removeEventListener("message", (e) => message(e), false)
+        })
+    }, []);
+
+    const message = (e) => {
+        if (e.origin === "http://localhost:5000" && e.data.message) {
+            setIsOpenChat(false)
+        }
     }
 
     
@@ -86,6 +109,10 @@ const Header = ({ scroll, search, setSearch }) => {
             setProfileList(res.data);
         })
         .catch(error => console.log(error));
+
+        if(localStorage.getItem('user_email') === 'admin@planet.com'){
+            setIsAdmin(true);
+        }
     },[])
 
     let headerName;
@@ -257,6 +284,29 @@ const Header = ({ scroll, search, setSearch }) => {
                                                 </Link>
                                             </div>
                                         </li>
+                                        {
+                                            isAdmin &&
+                                            <li className='c1-sub-menu-item py-[5px] px-[10px]' onClick={ openChat }>
+                                                <div className='flex'>
+                                                    {
+                                                        isOpenChat && 
+                                                        <div className='k1-box w-[320px] h-[500px] fixed right-0 bottom-0 '>
+                                                            <iframe
+                                                                className='k1-iframe h-[100%] bg-white '
+                                                                src={`http://localhost:5000?nickname=${localStorage.getItem('profile_name')}`}
+                                                            />
+                                                        </div>
+                                                    }
+                                                    
+                                                    <div className='c1-profile-link flex hover:underline cursor-pointer'>
+                                                        <div className='c1-avatar-wrapper mr-[10px]'>
+                                                            <img className='c1-profile-icon rounded-[4px] w-[32px] h-[32px] p-[5px]' src={ chat }></img>
+                                                        </div>
+                                                        <span className='c1-profile-name my-[10px]'>1:1 문의 채팅 관리</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
                                     </ul>
                                     <ul className='c1-sub-menu-list py-[10px] border-[#333333] border-[1px] border-t-0 border-solid w-[180px] bg-[#000000]/90'>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
