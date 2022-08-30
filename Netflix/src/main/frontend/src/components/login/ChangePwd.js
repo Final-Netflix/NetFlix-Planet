@@ -25,7 +25,7 @@ const ChangePwd = () => {
         
             axios({
                 method : 'post',
-                url : 'http://localhost:8080/updatePwd',
+                url : '/updatePwd',
                 data : qs.stringify({
                     'user_email' : localStorage.getItem('up_user_email'),
                     'user_pwd' : pwdInput

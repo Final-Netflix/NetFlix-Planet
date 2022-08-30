@@ -15,7 +15,7 @@ const MypageContainer2 = ({setCount, count}) => {
         
         axios({
             method : 'post',
-            url : 'http://localhost:8080/send-sms',
+            url : '/send-sms',
             data : qs.stringify({
                 'recipientPhoneNumber' : user_phone,
                 'title' : 'test',
@@ -31,7 +31,7 @@ const MypageContainer2 = ({setCount, count}) => {
         setVerify(verifyCode);
         axios({
             method : 'post',
-            url : 'http://localhost:8080/send-email',
+            url : '/send-email',
             data : qs.stringify({
                 'verify' : verifyCode,
                 'user_email' : user_email,

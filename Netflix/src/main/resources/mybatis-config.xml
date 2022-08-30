@@ -10,6 +10,7 @@
 		<typeAlias type="user.bean.UserProfileDTO" alias="userProfile"/>
 		<typeAlias type="pick.bean.PickDTO" alias="pick"/>
 		<typeAlias type="classification.bean.ClassificationDTO" alias="classification"/>
+		<typeAlias type="likes.bean.LikesDTO" alias="likes"/>
 	</typeAliases>
 	
 	<mappers>

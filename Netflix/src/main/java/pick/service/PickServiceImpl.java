@@ -10,7 +10,7 @@ import pick.dao.PickDAO;
 public class PickServiceImpl implements PickService {
 	
 	@Autowired
-	PickDAO pickDAO = null;
+	private PickDAO pickDAO = null;
 
 	@Override
 	public void addPickUp(PickDTO pickDTO) {
@@ -34,8 +34,7 @@ public class PickServiceImpl implements PickService {
 	@Override
 	public String getPickUp(PickDTO pickDTO) {
 		int isExist = pickDAO.getPickUp(pickDTO);
-		System.out.println(pickDTO);
-		System.out.println("number of pickUp | " + isExist);
-		return "true";
+		if(isExist == 0) 	{	return "false";		}
+		else 				{	return "true";		}
 	}
 }

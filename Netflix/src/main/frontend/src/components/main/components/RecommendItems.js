@@ -130,16 +130,16 @@ const RecommendItems = ({ item, videoType }) => {
                                     <div className="detailMetadata_info my-[0.8em] mx-4 block text-[#fff] text-[6px] leading-[1.4]">
                                         <div className="block text-[#fff] text-[6px] leading-[1.4]">
                                             <div className="videoMetadata_container items-center text-[#fff] flex flex-wrap justify-start text-[6px] leading-[1.4]">
-                                                <div className="videoMetadata_first_line mt-[0.25em] mr-[0.5em] mb-[0.25em] ml-0 max-w-[100%] block text-[#fff] text-[6px] leading-[1.4]">
+                                                <div className="videoMetadata_first_line mt-[0.25em] mr-[1em] mb-[0.25em] ml-0 max-w-[100%] block text-[#fff] text-[6px] leading-[1.4]">
                                                     <span className="match_score_wrapper text-[#fff] text-[6px] leading-[1.4]">
                                                         <div className="show_match_score flex text-[#fff] text-[6px] leading-[1.4]">
-                                                            <span className="match_score text-[#46d369] whitespace-[unset] max-w-[300px] opacity-[1] inline-block font-bold text-[6px] leading-[1.4]">98%일치</span>
+                                                            <span className="match_score text-[#46d369] whitespace-[unset] max-w-[300px] opacity-[1] inline-block font-bold text-[6px] leading-[1.4]">평점: { item.vote_average }</span>
                                                         </div>
                                                     </span>
                                                 </div>
                                                 <div className="videoMetadata_second_line items-center flex flex-wrap text-[#fff] text-[6px] leading-[1.4]">
                                                     <span className="maturity_rating inline-block text-[#fff] text-[6px] leading-[1.4] cursor-pointer">
-                                                        <span className="maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[6px] leading-[1.4] cursor-pointer">15+</span>
+                                                        <span className="maturity_number border-[1px] border-solid border-[hsla(0,0%,100%,.4)] font-sans overflow-hidden py-0 px-[0.4em] text-ellipsis uppercase whitespace-nowrap text-[#fff] text-[6px] leading-[1.4] cursor-pointer">KO</span>
                                                     </span>
                                                     <span className="duration whitespace-nowrap mr-[0.5em] text-[#fff] ml-2 text-[6px] leading-[1.4]">에피소드 12개</span>
                                                 </div>

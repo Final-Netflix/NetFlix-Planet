@@ -15,7 +15,7 @@ const UserChatRoomList = ({ setChatRoomId,changeChattionView }) => {
     useEffect(()=> {
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getListChatRoom',
+            url : '/getListChatRoom',
             data : qs.stringify(userData)
         })
         .then(res => {
