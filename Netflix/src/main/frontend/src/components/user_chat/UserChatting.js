@@ -6,9 +6,11 @@ const UserChatting = ({chatRoomId,changeChattionView,id}) => {
     const [data, setData]=useState([]);
     const [chatInput, setChatInput]=useState('');
     const [chatCheck,setChatCheck] = useState(1);
+    
     setTimeout(function() {
         setChatCheck(chatCheck+1);
     }, 1000);
+
     const scrollDown=()=>{
         const findScroll = document.getElementsByClassName('chatW_userChattingList');
         findScroll[0].scrollTo(0,findScroll[0].scrollHeight);
@@ -57,9 +59,8 @@ const UserChatting = ({chatRoomId,changeChattionView,id}) => {
             }
         })
         .catch(error => console.log(error));
-    
-       
     },[]);
+
     useEffect(()=> {
         axios({
             method : 'post',
@@ -71,6 +72,7 @@ const UserChatting = ({chatRoomId,changeChattionView,id}) => {
             })
           .catch(error => console.log(error));
     },[chatCheck]);
+
     const chattingInput=(e)=>{
         setChatInput(e.target.value);
     }
