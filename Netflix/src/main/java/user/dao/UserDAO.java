@@ -3,6 +3,7 @@ package user.dao;
 import java.util.List;
 import java.util.Map;
 
+import likes.bean.LikesDTO;
 import user.bean.UserDTO;
 import user.bean.UserProfileDTO;
 
@@ -68,7 +69,19 @@ public interface UserDAO {
 	public void myPageUpdatePwd(Map<String, String> map);
 
 
-	public List<UserDTO> findPassWord(Map<String, String> map);
+	public UserDTO findPassWord(Map<String, String> map);
+
+
+	public List<LikesDTO> getContent(String profile_id);
+
+
+	public int checkLike(LikesDTO likesDTO);
+
+
+	public void changeLike(LikesDTO likesDTO);
+
+
+	public void deleteLike(LikesDTO likesDTO);
 
 
 

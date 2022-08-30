@@ -19,9 +19,20 @@ const MypageContainer = () => {
     const [isShow2, setIsShow2] = useState(false)
     const [isShow3, setIsShow3] = useState(false)
     const [isShow4, setIsShow4] = useState(false)
+    const [isShow5, setIsShow5] = useState(false)
 
-    const onToggle1 = () => {
-        setIsShow1(!isShow1)
+    const onToggle1 = (index) => {
+        if(index == 0){
+            setIsShow1(!isShow1)
+        }else if(index==1) {
+            setIsShow2(!isShow2)
+        }else if(index==2) {
+            setIsShow3(!isShow3)
+        }else if(index==3) {
+            setIsShow4(!isShow4)
+        }else if(index==4) {
+            setIsShow5(!isShow5)
+        }
     }
     const onToggle2 = () => {
         setIsShow2(!isShow2)
@@ -51,7 +62,7 @@ const MypageContainer = () => {
             setUserPhone(userDTO.phone);
             setUsermembership(res.data.membership);
             setProfiles(res.data.list);
-            
+                        
 
         })
     } ,[])
@@ -135,9 +146,10 @@ const MypageContainer = () => {
                                 <div className=" text-zinc-500 text-xl pb-5 w-[270px]">프로필 & 자녀 보호 설정</div>
                                     <div className = "w-[80%] m2_user">
                                         {profiles && profiles.map((item,index)=>{
+                                            sessionStorage.setItem('profile_id', item.profile_id)
                                             return (
                                             <>
-                                                <div className="flex flex-wrap ml-[50px]  w-[880px]" key={index}>
+                                                <div className="flex flex-wrap ml-[50px] w-[880px]" key={index}>
                                                     <img
                                                         className="w-14 rounded-md"
                                                         src={item.img_path}
@@ -146,12 +158,16 @@ const MypageContainer = () => {
                                                         <h3 className="font-bold pb-2">{item.profile_name}</h3>
                                                         <div className="text-gray-600 text-xs">모든 관람등급</div>
                                                     </div>
-                                                    <button className="ml-[68%] flex justify-end" onClick = { onToggle1 }>
-                                                        {isShow1 ? <img src={slideUpButton} className=" w-8 h-7"/> : <img src={slideDownButton} className="w-8 h-7" />}
+                                                    <button className="ml-[68%] flex justify-end" onClick = { () => onToggle1(index)  }>
+                                                        {index===0 && isShow1 ? <img src={slideUpButton} className=" w-8 h-7"/> : <img src={slideDownButton} className="w-8 h-7" />}
                                                     </button>
                                                 </div>
                                                 <div className="border-solid ml-[65px] mt-6 border-t-[1px] h-9 border-neutral-300"></div>
-                                                { isShow1? <MyPageSlide_Sub/>: ''}                                            
+                                                {index===0 &&  isShow1 ? <MyPageSlide_Sub profile_id={sessionStorage.getItem('profile_id')} />: ''}
+                                                {index===1 &&  isShow2 ? <MyPageSlide_Sub profile_id={sessionStorage.getItem('profile_id')} />: ''}
+                                                {index===2 &&  isShow3 ? <MyPageSlide_Sub profile_id={sessionStorage.getItem('profile_id')} />: ''}
+                                                {index===3 &&  isShow4 ? <MyPageSlide_Sub profile_id={sessionStorage.getItem('profile_id')} />: ''}
+                                                {index===4 &&  isShow5 ? <MyPageSlide_Sub profile_id={sessionStorage.getItem('profile_id')} />: ''}
                                             </>
                                         )})}
                                     </div>

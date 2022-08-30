@@ -3,6 +3,7 @@ package user.service;
 import java.util.List;
 import java.util.Map;
 
+import likes.bean.LikesDTO;
 import user.bean.UserDTO;
 import user.bean.UserProfileDTO;
 
@@ -47,6 +48,10 @@ public interface UserService {
 
 	public void myPageUpdatePwd(Map<String, String> map);
 
-	public List<UserDTO> findPassWord(Map<String, String> map);
+	public UserDTO findPassWord(Map<String, String> map);
+
+	public List<LikesDTO> getContent(String profile_id);
+
+	public void changeLike(LikesDTO likesDTO);
 
 }

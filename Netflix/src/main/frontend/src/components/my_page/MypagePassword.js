@@ -37,10 +37,10 @@ const MypagePassword = () => {
         //비밀번호 대조는 나중에 추가해야함
         if(id1.value.length <6) {
             id1.focus()
-        }else if(id1.value !== pwdInput ) {
-            console.log(id1.value);
-            document.getElementsByClassName('m1_inputError')[0].innerText ='비밀번호를 잘못 입력하셨습니다.'
-            pwdInput(pwdInput);
+        // }else if(id1.value !== pwdInput ) {
+        //     console.log(id1.value);
+        //     document.getElementsByClassName('m1_inputError')[0].innerText ='비밀번호를 잘못 입력하셨습니다.'
+        //     pwdInput(pwdInput);
         }else if(id2.value.length <6) {
             document.getElementsByClassName('m1_inputError')[1].innerText ='비밀번호는 6~60자 사이여야 합니다.'
         }else if(id2.value !==id3.value) {
@@ -58,23 +58,16 @@ const MypagePassword = () => {
             })
             .then(function(res) {
                 console.log(res.data);
-                if (res.data !== null && res.data != "") {
-                    console.log("성공");
-                } else {
-                    // alert("실패 zz 현재 비밀번호를 확인하세요.");
+                if(res.data ===1) {
+                    document.getElementsByClassName('m1_inputError')[0].innerText ='비밀번호가 일치하지 않습니다.'
+                }else {
+                    navigate('/my/successPwd');
                     
-                    setPwdInput("");
                 }
+
             })
             .catch(error => console.log(error));
-            if(id1.value !== pwdInput ) {
-                console.log(id1.value);
-                document.getElementsByClassName('m1_inputError')[0].innerText ='비밀번호를 잘못 입력하셨습니다.'
-                // pwdInput(pwdInput);
-
-            navigate('/my')
-            localStorage.removeItem();
-            }
+           
         }
     
     }
@@ -136,7 +129,7 @@ const MypagePassword = () => {
                           
                             <li data-uia="field-requireAllDevicesSignIn+wrapper" className="nfFormSpace">
                                 <div className="ui-binary-input">
-                                    <input type="checkbox" name="requireAllDevicesSignIn" id="cb_requireAllDevicesSignIn"  onChange={pwdInput} />
+                                    <input type="checkbox" name="requireAllDevicesSignIn" id="cb_requireAllDevicesSignIn" />
                                     <label className="realCheck" htmlFor="cb_requireAllDevicesSignIn" data-uia="field-requireAllDevicesSignIn+label">모든 디바이스에서 새로운 비밀번호로 다시 로그인하셔야 합니다.</label>
                                     
                                 </div>
