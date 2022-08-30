@@ -42,7 +42,7 @@ const SubHeader = ({ scroll }) => {
                 <div className="c1-aro-gallery-header w-full">
                     <div className="c1-aro-genre-details">
                         <span className="c1-genreTitle text-white font-bold">{ tab === 'movie' ? '영화' : '시리즈'}</span>
-                        <div className="c1-subgenres">
+                        {/* <div className="c1-subgenres">
                             <div className="c1-ptrack-container">
                                 <div className="c1-ptrack-content" data-ui-tracking-context="%7B%22appView%22:%22categorySelector%22,%22usePresentedEvent%22:true%7D" data-tracking-uuid="35645cd8-1a7e-4d2d-b762-367a57531ef2">
                                     <div label="장르" cols="3" className="c1-nfDropDown c1-theme-lakira">
@@ -76,7 +76,7 @@ const SubHeader = ({ scroll }) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
