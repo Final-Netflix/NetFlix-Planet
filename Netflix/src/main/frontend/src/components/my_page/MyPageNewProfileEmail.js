@@ -32,8 +32,7 @@ const MyPageNewProfileEmail = () => {
 
     return (
         <div>
-            <MyPageHeader/>
-                <div className = "m-[20px] p-0 block">
+                <div className = "m1_bd m-[20px] p-0 block">
                     <div className = "px-[20%] min-h-[400px] min-w-[300px] m-auto block relative w-[90%]">
                         <form className='w-[200%] text-2xl' method = "post">
                             <div className = "text-[#333] w-[90%] text-5xl mb-10">프로필 이메일 추가</div>
@@ -61,7 +60,6 @@ const MyPageNewProfileEmail = () => {
                         </form>
                     </div>
                 </div>
-            <MypageFooter/>
         </div>
     );
 };
