@@ -8,7 +8,6 @@ const SearchResultHeaderItem = ({ content, setSearch, search }) => {
     const goSearchPage = (e) => {
         setSearch(e.target.textContent) // e.target.value = 
     }
-
     useEffect (()=> {
         if(search != ''){
             navigate('/search' , { state : { type : search }}); // state : e.target.value
