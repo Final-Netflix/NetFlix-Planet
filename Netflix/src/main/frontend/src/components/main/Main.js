@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import SearchResult from './components/SearchResult';
@@ -29,7 +29,6 @@ const Main = () => {
         }
     }
 
-<<<<<<< HEAD
     const navigate = useNavigate();
 
     const key = 'bc61587b22cd0e5226a33d30e467d867';
@@ -44,8 +43,6 @@ const Main = () => {
         navigate(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${key}&language=ko-KR`)
     }
 
-=======
->>>>>>> b9cef09520b583ce022be454aea1bce6a02ab937
     return (
         <div className={ tab === 'search' ? 'bg-[#141414] absolute w-full' : 'bg-[#141414]'}>
             <div className={ scroll ? 'bg-[#141414] z-[1]' : 'z-[1]'}>
