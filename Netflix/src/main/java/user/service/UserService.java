@@ -40,4 +40,8 @@ public interface UserService {
 
 	public List<UserDTO> findEmail(Map<String, String> map);
 
+	public void myPageUpdatePwd(Map<String, String> map);
+
+	public List<UserDTO> findPassWord(Map<String, String> map);
+
 }

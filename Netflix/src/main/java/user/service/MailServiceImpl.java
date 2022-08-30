@@ -16,7 +16,8 @@ import lombok.AllArgsConstructor;
 public class MailServiceImpl implements MailService{
 	
 
-	 private JavaMailSender emailSender;
+	private JavaMailSender emailSender;
+    
 	 
     public int sendSimpleMessage(Map<String,String> map) {
     	int checkNum = this.makeRandomNumber();

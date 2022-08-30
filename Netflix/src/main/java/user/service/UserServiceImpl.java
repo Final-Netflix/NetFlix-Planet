@@ -116,4 +116,15 @@ public class UserServiceImpl implements UserService {
 		return userDAO.findEmail(map);
 	}
 
+	@Override
+	public void myPageUpdatePwd(Map<String, String> map) {
+		userDAO.myPageUpdatePwd(map);
+		
+	}
+
+	@Override
+	public List<UserDTO> findPassWord(Map<String, String> map) {
+		return userDAO.findPassWord(map);
+	}
+
 }

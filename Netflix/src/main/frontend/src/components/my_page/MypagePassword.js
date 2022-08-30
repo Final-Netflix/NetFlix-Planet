@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import 'css/myPage/MypageContainer.css'
+import { useNavigate } from 'react-router-dom';
+
+
 const MypagePassword = () => {
+    const navigate = useNavigate();
+    const qs = require('qs');
     const [checked , setChecked] = useState(true)
+    const [pwdInput, setPwdInput]=useState();
     
+    // const pwdChangeInput=(e)=>{
+    //     setPwdInput(e.target.value);
+    //     if(setPwdInput(e.target.value) != checked)
+    //     document.getElementById('id_currentPassword').innerHTML=''; 
+    // }
+
     
     //파란색 체크
     const changeCheck = (e)=> {
@@ -19,16 +32,49 @@ const MypagePassword = () => {
         const id1 = document.getElementById('id_currentPassword')
         const id2 = document.getElementById('id_newPassword')
         const id3 = document.getElementById('id_confirmNewPassword')
+        
+
         //비밀번호 대조는 나중에 추가해야함
         if(id1.value.length <6) {
             id1.focus()
-        }
-        else if(id2.value.length <6) {
+        }else if(id1.value !== pwdInput ) {
+            console.log(id1.value);
+            document.getElementsByClassName('m1_inputError')[0].innerText ='비밀번호를 잘못 입력하셨습니다.'
+            pwdInput(pwdInput);
+        }else if(id2.value.length <6) {
             document.getElementsByClassName('m1_inputError')[1].innerText ='비밀번호는 6~60자 사이여야 합니다.'
         }else if(id2.value !==id3.value) {
             document.getElementsByClassName('m1_inputError')[2].innerText ='새 비밀번호와 일치해야 합니다.'
         }else {
-            window.location.href = '/my'
+            axios({
+                method : 'post',
+                url : 'http://localhost:8080/myPageUpdatePwd',
+                data : qs.stringify({
+                    'user_email' : localStorage.getItem('user_email'),
+                    'user_pwd' : id1.value,
+                    'change_pwd' : id2.value,
+                })
+                
+            })
+            .then(function(res) {
+                console.log(res.data);
+                if (res.data !== null && res.data != "") {
+                    console.log("성공");
+                } else {
+                    // alert("실패 zz 현재 비밀번호를 확인하세요.");
+                    
+                    setPwdInput("");
+                }
+            })
+            .catch(error => console.log(error));
+            if(id1.value !== pwdInput ) {
+                console.log(id1.value);
+                document.getElementsByClassName('m1_inputError')[0].innerText ='비밀번호를 잘못 입력하셨습니다.'
+                // pwdInput(pwdInput);
+
+            navigate('/my')
+            localStorage.removeItem();
+            }
         }
     
     }
@@ -84,13 +130,13 @@ const MypagePassword = () => {
                     <form className="change-password-form" data-uia="change-password-form" method="post" noValidate="">
                         <h1>비밀번호 변경</h1>
                         <ul className="simpleForm structural ui-grid">
-                            <PwdInput id='currentPassword' content='기존 비밀번호' />
+                            <PwdInput id='currentPassword' content='기존 비밀번호' onChange={pwdInput}/>
                             <PwdInput id='newPassword' content='새 비밀번호(6~60자)' />
                             <PwdInput id='confirmNewPassword' content='새 비밀번호 재입력' />
                           
                             <li data-uia="field-requireAllDevicesSignIn+wrapper" className="nfFormSpace">
                                 <div className="ui-binary-input">
-                                    <input type="checkbox" name="requireAllDevicesSignIn" id="cb_requireAllDevicesSignIn"  onChange={changeCheck} />
+                                    <input type="checkbox" name="requireAllDevicesSignIn" id="cb_requireAllDevicesSignIn"  onChange={pwdInput} />
                                     <label className="realCheck" htmlFor="cb_requireAllDevicesSignIn" data-uia="field-requireAllDevicesSignIn+label">모든 디바이스에서 새로운 비밀번호로 다시 로그인하셔야 합니다.</label>
                                     
                                 </div>

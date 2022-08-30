@@ -116,4 +116,15 @@ public class UserDAOMybatis implements UserDAO {
 		return sqlSession.selectList("userSQL.findEmail",map);
 	}
 
+	@Override
+	public void myPageUpdatePwd(Map<String, String> map) {
+		sqlSession.update("userSQL.myPageUpdatePwd", map);
+		
+	}
+
+	@Override
+	public List<UserDTO> findPassWord(Map<String, String> map) {
+		return sqlSession.selectOne("userSQL.findPassWord",map);
+	}
+
 }

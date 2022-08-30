@@ -68,9 +68,14 @@
   	<update id="updatePwd" parameterType="java.util.Map">
   		update USER set user_pwd = #{user_pwd} where user_email = #{user_email}
   	</update>
+  	<update id="myPageUpdatePwd" parameterType="java.util.Map">
+  		update USER set user_pwd = #{change_pwd} where user_email = #{user_email}
+  	</update>
   	<select id="findEmail" parameterType="java.util.Map" resultType="user">
   		select * from USER where phone='010-5032-3368'
   	</select>
-
+	<select id="findPassWord" parameterType="java.util.Map" resultType="user">
+  		select user_pwd from USER where user_email = #{user_email}
+  	</select>
   </mapper>
  

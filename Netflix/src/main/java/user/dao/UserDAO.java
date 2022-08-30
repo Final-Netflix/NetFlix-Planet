@@ -53,4 +53,10 @@ public interface UserDAO {
 	public int getMembership(String user_email);
 
 
+	public void myPageUpdatePwd(Map<String, String> map);
+
+
+	public List<UserDTO> findPassWord(Map<String, String> map);
+
+
 }
