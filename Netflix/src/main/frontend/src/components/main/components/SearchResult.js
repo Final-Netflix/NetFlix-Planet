@@ -5,14 +5,15 @@ import SearchResultHeaderList from './SearchResultHeaderList';
 
 const SearchResult = ({ search, setSearch }) => { // search = 아이언맨
     
-    const [searchMovieList, setSearchMovieList] = useState([]);
+    const [searchMovieList, setSearchMovieList] = useState([{}]);
     const [searchTvList, setSearchTvList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [id, setId] = useState();
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
-    
+
     const getSearchMovieList = async () => {
+        setSearchMovieList([]);
         const apiResult = `https://api.themoviedb.org/3/search/movie?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`
         //console.log('apiResult = ' + apiResult)
         const json = await(
@@ -23,20 +24,17 @@ const SearchResult = ({ search, setSearch }) => { // search = 아이언맨
     }
 
     const getSearchTvList = async () => {
+        setSearchTvList([]);
         const json = await(
             await fetch(`https://api.themoviedb.org/3/search/tv?api_key=bc61587b22cd0e5226a33d30e467d867&query=${search}&language=kr-KO`)
         ).json();
-        setSearchTvList(json.results);
+        setSearchTvList((prev) => json.results);
         setLoading(false);
     }
 
      useEffect(() => {
         getSearchMovieList();
         getSearchTvList();
-      /*  return () => {
-        getSearchMovieList();
-        getSearchTvList();
-       } */
     }, [search]);
 
     return (

@@ -9,7 +9,6 @@ const SearchResultMovieItem = ({ searchItem, search }) => {
     const getImage = async () => {
         let backdrop = '';
         let logo = '';
-
         const json = await(
             await fetch(
                 `https://api.themoviedb.org/3/movie/${ searchItem.id }/images?api_key=${ KEY }`)
@@ -19,42 +18,16 @@ const SearchResultMovieItem = ({ searchItem, search }) => {
             backdrop = json.backdrops[0].file_path;
             setBackdrop(backdrop);
         }
-        console.log(searchItem.id + " | " + backdrop);
-        
         let temp = json.logos.find((logo) => logo.iso_639_1 === 'ko');
-        
         if(!temp)       { temp = json.logos.find((logo) => logo.iso_639_1 === 'en');    }
         if(temp)        { logo = temp;                                            }
         
         setLogo(logo);
-        console.log(document.getElementsByClassName('searchId')[0].value) // 10138
     };
      useEffect(() => {
         getImage();
-        return () => {
-            getImage()
-            console.log('clean up')
-        }
-   }, [search]);  
+   }, [search]);
 
-  /*  function image() {
-       const [search, setSearch] = useState('')
-       const latestSearch  = useRef(search)
-       getImage();
-       useEffect (() => {
-         latestCount.current = count;
-         setTimeout(() => {
-           console.log(`You clicked ${latestCount.current} times`);
-         }, 3000)
-       })
-     }  */
-    /* const [show, setShow] = useState(false);
-    useEffect(() => {
-        let timer = setTimeout(() => setShow(true), 1000);
-        return () => {
-            clearTimeout(timer);
-          };
-        }, []); */
     if(backdrop === ''){
         return;
     }
@@ -76,7 +49,7 @@ const SearchResultMovieItem = ({ searchItem, search }) => {
                                     {
                                         logo === '' ?
                                         <div className='text-white font-extrabold w-full text-2xl absolute bottom-[10%] w-[80%] text-center mx-[10%]'>{ searchItem.title }</div> :
-                                        <img className='w-full rounded absolute max-h-[100px] bottom-[10%] w-[70%] mx-[18%]' src = {"https://image.tmdb.org/t/p/w500" + logo.file_path } /> 
+                                        <img className='w-full rounded absolute max-h-[100px] bottom-[10%] w-[70%] mx-[18%]' src = { "https://image.tmdb.org/t/p/w500" + logo.file_path } /> 
                                     }
                                 </div>
                                 <div className="c1-ptrack-content"></div>
