@@ -89,7 +89,8 @@ const Recommend = ({ order, classification }) => {
     };
 
     useEffect(() => {
-        if(classificationArr.length != 0){
+        if(!(classificationArr.length == 0 || classificationArr === undefined)){
+            console.log(classification);
             setClassificationName(classificationArr[classification].classification_name);
             search_url = classificationArr[classification].search_url;
             getData();

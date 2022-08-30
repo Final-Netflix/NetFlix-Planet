@@ -23,7 +23,7 @@ const View = () => {
         let arr = [];
         let i = 0;
 
-        while (i < 4) {    
+        while (i < 9) {    
             let n = Math.floor(Math.random() * classificationNum);
             if (!sameNum(n)) {      
                 arr.push(n);
