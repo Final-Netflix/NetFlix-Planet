@@ -50,17 +50,25 @@ const MoreLikeThis = ({ type, id }) => {
     getEx2();
   }, [])
 
-
   const[moreContentList, setMoreContentList] = useState(false)
   const [playIconHover, setPlayIconHover] = useState(false);
+  const [playIconHover2, setPlayIconHover2] = useState(false);
   const [wishHover, setWishHover] = useState(false);
 
   /* 재생버튼 */
   const playIconHoverEnter = () => {
     setPlayIconHover(true);
+    setPlayIconHover2(true)
   }
   const playIconHoverLeave = () => {
     setPlayIconHover(false);
+    setPlayIconHover2(false)
+  }
+  const playIconHoverEnter2 = () => {
+    setPlayIconHover2(true)
+  }
+  const playIconHoverLeave2 = () => {
+    setPlayIconHover2(false)
   }
   
   /* 더보기 */
@@ -173,7 +181,7 @@ const MoreLikeThis = ({ type, id }) => {
 
                   {/* play icon */}
                   <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                  { playIconHover &&   
+                  { playIconHover2 &&   
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                       <path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path>
                     </svg>
@@ -241,8 +249,8 @@ const MoreLikeThis = ({ type, id }) => {
                   </div>
 
                   {/* play icon */}
-                  <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                  { playIconHover &&   
+                  <div onMouseEnter={playIconHoverEnter2} onMouseLeave={playIconHoverLeave2} className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
+                  { playIconHover2 &&   
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                       <path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path>
                     </svg>
@@ -379,8 +387,8 @@ const MoreLikeThis = ({ type, id }) => {
                   </div>
 
                   {/* play icon */}
-                  <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                  { playIconHover &&   
+                  <div onMouseEnter={playIconHoverEnter2} onMouseLeave={playIconHoverLeave2} className='titleCard_playIcon items-center bottom-0 flex justify-center left-0 opacity-100 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
+                  { playIconHover2 &&   
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                       <path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path>
                     </svg>

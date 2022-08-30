@@ -34,7 +34,8 @@ const Main = () => {
 
     const key = 'bc61587b22cd0e5226a33d30e467d867';
     const tvId = '197067';
-    const movieId = '682110';
+    /* const movieId = '682110'; */
+    const movieId = '619803';
 
     const goTv = () => {
         navigate(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${key}&language=ko-KR`)

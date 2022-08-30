@@ -71,9 +71,7 @@ function App() {
 
           {/* hee */}
           <Route path="/detailMain" element={ <DetailMain /> }></Route>
-          {/* <Route path="/detailM" element={ <DetailForMovie /> }></Route> */}
           <Route path="/detailMain/:detail" element={ <Linked /> }></Route>
-          {/* <Route path="/detailM/:detail" element={ <Linked /> }></Route> */}
           {/* hee */}
           
           
