@@ -22,7 +22,8 @@ const Like = () => {
     }, []);
 
     return (
-        <div className="c1-mainView">
+        <>
+        <div className="c1-mainView h-[100%]">
             <div className="c1-gallery c1-row-with-x-columns c1-search relative top-[5vw]">
                 <div className="c1-galleryContent mt-3">
                     <div className="c1-galleryLockups">
@@ -57,7 +58,8 @@ const Like = () => {
                 </div>
             </div>
         </div>
-        
+        <div className='w-[2000px] h-[2000px]'></div>
+        </>
     );
 };
 
