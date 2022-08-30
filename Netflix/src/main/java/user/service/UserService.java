@@ -40,4 +40,11 @@ public interface UserService {
 
 	public List<UserDTO> findEmail(Map<String, String> map);
 
+	public int changeEmail(Map<String, String> map);
+
+	public int changePhone(UserDTO userDTO);
+
+
+
+
 }

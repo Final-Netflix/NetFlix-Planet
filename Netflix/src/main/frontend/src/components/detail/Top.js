@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from "prop-types";
 
 import 'css/detail/top.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Top ({ type, value }) { //type='tv/movie' value='id'
-  console.log('top = ' + type, value);
-
+function Top ({ type, id }) { //type='tv/movie' value='id'
   /* API */
   const KEY = "bc61587b22cd0e5226a33d30e467d867";
 
@@ -17,38 +14,141 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   const [tvTitle, setTvTitle] = useState(true);
   const [tvBack_path, setTvBack_path] = useState(true);
   const [tvPoster_path, setTvPoster_path] = useState(true);
-
   
   const getMovies = async () => {
     if(type==='movie') {
       const json = await(
         await fetch(
-          `https://api.themoviedb.org/3/movie/${value}?api_key=${ KEY }&language=ko-KR`)
+          `https://api.themoviedb.org/3/movie/${ id }?api_key=${ KEY }&language=ko-KR`)
           ).json();
           setMovieTitle(json.title);
           setMovieBack_path(json.backdrop_path);
           setMoviePoster_path(json.poster_path);
     }
   }
-  console.log(movieTitle, movieBack_path, moviePoster_path);
       
   const getTvs = async () => {
     if (type==='tv') {
       const json = await(
           await fetch(
-              `https://api.themoviedb.org/3/tv/${value}?api_key=${ KEY }&language=ko-KR`)
+              `https://api.themoviedb.org/3/tv/${ id }?api_key=${ KEY }&language=ko-KR`)
           ).json();
           setTvTitle(json.name);
           setTvBack_path(json.backdrop_path);
           setTvPoster_path(json.poster_path);
     }
   }
-  console.log(tvTitle, tvBack_path, tvPoster_path)
 
   useEffect(() => {
     getMovies();
     getTvs();
-  }, [])
+    getPicks();
+    getLikes();
+  }, []);
+  
+  const getPicks = () => {
+    axios({
+      url: '/getPickUp',
+      method: 'post',
+      data: qs.stringify({
+        'video_id' : id,
+        'video_type': type,
+        'profile_id': localStorage.getItem('profile_id')
+      })
+    }).then((res)=>{
+      let isPickUp = res.data;
+      if(isPickUp){
+        setWishDelete(!wishDelete);
+      }
+    })
+  };
+
+  const getLikes = () => {
+    axios({
+      url: '/getLike',
+      method: 'post',
+      data: qs.stringify({
+        'video_id' : id,
+        'video_type': type,
+        'profile_id': localStorage.getItem('profile_id')
+      })
+    }).then((res)=>{
+      let likeNum = res.data;
+      if(likeNum != 0){
+        setIsLiked(true);
+        if(likeNum == 1){
+          setDislikeClick(true);
+        }
+        else if(likeNum == 2){
+          setLikeClick(true);
+        }
+        else if(likeNum == 3) {
+          setBestClick(true);
+        }
+      }
+    })
+  }
+
+  const pickUp = () => {
+    if(!wishDelete) {
+      axios({
+        url: '/addPickUp',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        // alert('찜한 목록에 추가되었습니다.')
+      })
+    }
+    else{
+      axios({
+        url: '/delPickUp',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id')
+        })
+      }).then(()=>{
+        // alert('찜한 목록에서 삭제하였습니다.')
+      })
+    }
+    setWishDelete(!wishDelete);
+  }
+
+  const like = (likeNum) => {
+    if(isLiked){ // 평가 취소
+      axios({
+        url: '/delLike',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id'),
+          'like_type': likeNum
+        })
+      }).then(()=>{
+        // alert('취소 완료!');
+      })
+    }
+    else { // 평가!
+      axios({
+        url: '/addLike',
+        method: 'post',
+        data: qs.stringify({
+          'video_id' : id,
+          'video_type': type,
+          'profile_id': localStorage.getItem('profile_id'),
+          'like_type': likeNum
+        })
+      }).then(()=>{
+        // alert('평가 완료!');
+      })
+    }
+  }
   
   /* 기능 */
   const [wishHover, setWishHover] = useState(false);
@@ -62,6 +162,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   const [likeClick, setLikeClick] = useState(false);
   const [dislikeClick, setDislikeClick] = useState(false);
   const [bestClick, setBestClick] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const [rated, setRated] = useState(false);
 
   /* 찜 */
@@ -75,6 +176,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   //찜한 콘텐츠 삭제
   const wishDeleteHandler = () => {
     setWishDelete(!wishDelete);
+    pickUp();
   }
   const wishDeleteEnter = () => {
     setWishDeleteHover(true);
@@ -113,17 +215,42 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
   const bestDetailHoverLeave = () => {
     setBestDetailHover(false);
   }
+
   //좋아요 활성화
   const likeActive=()=>{
-    setLikeClick(!likeClick);
+    if(isLiked && likeClick){
+      setLikeClick(!likeClick);
+      setIsLiked(false);
+    }
+    else if(!isLiked && !likeClick){
+      setLikeClick(!likeClick);
+      setIsLiked(true);
+    }
+    like(2);
   }
   //싫어요 활성화
   const dislikeActive=()=>{
-    setDislikeClick(!dislikeClick);
+    if(isLiked && dislikeClick){
+      setDislikeClick(!dislikeClick);
+      setIsLiked(false);
+    }
+    else if(!isLiked && !dislikeClick){
+      setDislikeClick(!dislikeClick);
+      setIsLiked(true);
+    }
+    like(1);
   }
   //최고예요 활성화
   const bestActive=()=>{
-    setBestClick(!bestClick);
+    if(isLiked && bestClick){
+      setBestClick(!bestClick);
+      setIsLiked(false);
+    }
+    else if(!isLiked && !bestClick){
+      setBestClick(!bestClick);
+      setIsLiked(true);
+    }
+    like(3);
   }
 
   //평가함
@@ -141,25 +268,6 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
 
   /* DB */
   const qs = require('qs');
-
-  const pickUp = () => {
-    const video = document.getElementById('movie.id').value
-
-
-    if(!wishDelete) {
-      console.log('눌러졋나')
-      axios({
-        url: 'http://localhost:8080/pickUp',
-        data: qs.stringify({
-          'video_id' : video,
-
-        })
-      }).then(()=>{
-        alert('추가되었다!')
-      })
-    }
-    setWishDelete(!wishDelete);
-  }
 
   return (
 
@@ -182,7 +290,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
         </div>
       </div>
       }
-      { likeDetailHover &&
+      { (!isLiked && likeDetailHover) &&
       <div className='block break-words text-[1vw]'>
         <div className="css-1ef3g7z show left-[233px] top-[322px]">
           <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
@@ -191,44 +299,38 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
         </div>
       </div>
       } 
-      { dislikeDetailHover &&
+      { (!isLiked && dislikeDetailHover) &&
       <div className="css-1ef3g7z show left-[156px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">맘에 안 들어요</div>
         </div>
       </div>
       }
-      { bestDetailHover &&
+      { (!isLiked && bestDetailHover) &&
       <div className="css-1ef3g7z show left-[276px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">최고예요</div>
           </div>
       </div>
       }
-      { likeClick && rated &&
+      { (isLiked && likeHover) &&
       <div className="css-1ef3g7z show left-[233px] top-[322px]">
         <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
           <div className="css-1th9py block">평가함</div>
         </div>
       </div>
       }
-      {/* { dislikeClick && rated &&
-      <div className="css-1ef3g7z show left-[180px] top-[322px]">
-        <div className="css-m6m86k relative overflow-hidden block pointer-events-auto visible text-[0.8rem]">
-          <div className="css-1th9py block">평가함</div>
-        </div>
-      </div>
-      } */}
 
       <div className='c2_previewModal rounded-t-md overflow-hidden bg-[#000] cursor-pointer relative text-[#fff] text-[16px]'>
         <div className='absolute w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
           <div id='81593318' className='relative w-[100%] h-[100%] overflow-hidden cursor-pointer text-[#fff] text-[16px]'>
-            {/* <video src='blob:https://www.netflix.com/f882d0a2-b791-4023-842a-059fea5d8ab6' className='absolute w-[100%] h-[100%] object-cover inline-block align-baseline'></video> {/* video 실행 안됨  */}
+            <video autoPlay muted src={`https://firebasestorage.googleapis.com/v0/b/planet-e9df3.appspot.com/o/${type}%2F${type}-${id}.mp4?alt=media`} className='absolute w-[100%] h-[100%] object-cover inline-block align-baseline'></video>
             <div className='c2_player_timedtext absolute inset-0 hidden mt-0 mr-[88.2px] mb-0 ml-[235.2px]'></div>
           </div>
         </div>
+        
 
-        <div id={ value } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
+        {/* <div id={ id } className='c2_videoMerchPlayer_boxart_wrapper absolute h-[100%] pt-[56.3925%] w-[100%]'>
           {type === 'movie' && 
           <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
           src={ "https://image.tmdb.org/t/p/w200" + moviePoster_path } alt={ movieTitle }></img>}
@@ -236,20 +338,19 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
           {type === 'tv' && 
           <img aria-hidden="true" className='c2_previewModal_boxart opacity-0 bg-cover h-[100%] left-0 absolute top-0 w-[100%] border-0' 
           src={ "https://image.tmdb.org/t/p/w200" + tvPoster_path } alt={ tvTitle }></img>}
-        </div>
+        </div> */}
         
         { type === 'movie' && 
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          {/* <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + movieBack_path } alt={ movieTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img> */}
         </div>}
 
         { type === 'tv' && 
         <div className='c2_storyArt overflow-hidden pt-[56.3925%] w-[100%]'>
-          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
-          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          {/* <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } className='opacity-[1] block left-0 max-w-[100%] absolute top-0 transition-height duration-[.2s] ease-in-out border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img>
+          <img src={ "https://image.tmdb.org/t/p/w500" + tvBack_path } alt={ tvTitle } aria-hidden="true" className='hidden border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'></img> */}
         </div>}
-        
         <div className='opacity-[1]'>
           <div className='previewModal_player_titleTreatmentWrapper opacity-[1] from-[#181818] to-[transparent 50%] bg-gradient-to-t h-[100%] absolute top-0 w-[100%]'>
             <div className='previewModal_player_titleTreatment_left bottom-[5%] left-[3em] absolute w-[40%]'>
@@ -275,6 +376,7 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
               {/* <img className='hidden border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img>
               <img className='previewModal_player_titleTreatment_logo w-[100%] mb-[1.5em] border-0' alt='spy family logo' src='https://occ-0-993-395.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABfckc9vjUDZDDb51BIkxA4HvHTnlLBfgluBzpzNdE5bEGKWmpnVi0tt7i1emKTiSBEs9GnzbYQ6lHxhkhCefhR62xBj-GCQiF8FS36aS4PM.webp?r=50e'></img> */}
               <div className='buttonControls_container items-center flex mb-[1em] min-h-[2em]'>
+              <Link to='video' state={{ id:id, type:type }}>
                 <a href='#' className='m-[0.25em] text-[#fff] cursor-pointer no-underline bg-transparent'>
                   <button className='playButton hover:bg-[#e5e7eb] max-h-[42px] min-h-[32px] pl-[2rem] pr-[2.4rem] bg-white text-black items-center appearance-none border-0 rounded-[4px] cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap overflow-visible'>
                     <div className='ltr_iconWrap leading-[0] block'>
@@ -288,11 +390,13 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
                     <span className='ltr_textCss font-sans block text-[1.6rem] font-bold leading-[2.4rem] text-black cursor-pointer select-none break-words whitespace-nowrap'>재생</span>
                   </button>
                 </a>
+              </Link>
+
                 <div className='ltr_toolTipWrapper m-[0.25em] relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                     {/* 추가버튼 */}
                     <button className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] border-solid text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible' 
-                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={pickUp}>
+                            aria-label='내가 찜한 콘텐츠에 추가' onMouseEnter={wishHoverEnter} onMouseLeave={wishHoverLeave} onClick={wishDeleteHandler}>
                       <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap' onMouseLeave={wishDeleteLeave}>
                         <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
@@ -328,16 +432,33 @@ function Top ({ type, value }) { //type='tv/movie' value='id'
                 {/* <div className='css'> */}
                   <div>
                     <div className='ltr_componentStyles m-[0.25em] relative z-[1] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                      <button onMouseOver={likeHoverEnter} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
-                      {/* <button onMouseOver={likeHoverEnter} onMouseLeave={likeHoverLeave} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'> */}
-                        <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
-                          <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
-                              <path fillRule="evenodd" clipRule="evenodd" d="M10.696 8.7732C10.8947 8.45534 11 8.08804 11 7.7132V4H11.8377C12.7152 4 13.4285 4.55292 13.6073 5.31126C13.8233 6.22758 14 7.22716 14 8C14 8.58478 13.8976 9.1919 13.7536 9.75039L13.4315 11H14.7219H17.5C18.3284 11 19 11.6716 19 12.5C19 12.5929 18.9917 12.6831 18.976 12.7699L18.8955 13.2149L19.1764 13.5692C19.3794 13.8252 19.5 14.1471 19.5 14.5C19.5 14.8529 19.3794 15.1748 19.1764 15.4308L18.8955 15.7851L18.976 16.2301C18.9917 16.317 19 16.4071 19 16.5C19 16.9901 18.766 17.4253 18.3994 17.7006L18 18.0006L18 18.5001C17.9999 19.3285 17.3284 20 16.5 20H14H13H12.6228C11.6554 20 10.6944 19.844 9.77673 19.5382L8.28366 19.0405C7.22457 18.6874 6.11617 18.5051 5 18.5001V13.7543L7.03558 13.1727C7.74927 12.9688 8.36203 12.5076 8.75542 11.8781L10.696 8.7732ZM10.5 2C9.67157 2 9 2.67157 9 3.5V7.7132L7.05942 10.8181C6.92829 11.0279 6.72404 11.1817 6.48614 11.2497L4.45056 11.8313C3.59195 12.0766 3 12.8613 3 13.7543V18.5468C3 19.6255 3.87447 20.5 4.95319 20.5C5.87021 20.5 6.78124 20.6478 7.65121 20.9378L9.14427 21.4355C10.2659 21.8094 11.4405 22 12.6228 22H13H14H16.5C18.2692 22 19.7319 20.6873 19.967 18.9827C20.6039 18.3496 21 17.4709 21 16.5C21 16.4369 20.9983 16.3742 20.995 16.3118C21.3153 15.783 21.5 15.1622 21.5 14.5C21.5 13.8378 21.3153 13.217 20.995 12.6883C20.9983 12.6258 21 12.5631 21 12.5C21 10.567 19.433 9 17.5 9H15.9338C15.9752 8.6755 16 8.33974 16 8C16 6.98865 15.7788 5.80611 15.5539 4.85235C15.1401 3.09702 13.5428 2 11.8377 2H10.5Z" fill="currentColor"></path>
-                            </svg>
+                      {
+                        !isLiked ? 
+                        <button onMouseOver={likeHoverEnter} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[rgba(42,42,42,.6)] border-[hsla(0,0%,100%,.5)] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
+                          <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                            <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='Hawkins_Icon_Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap' xmlns='http://www.w3.org/2000/svg'>
+                                <path fillRule="evenodd" clipRule="evenodd" d="M10.696 8.7732C10.8947 8.45534 11 8.08804 11 7.7132V4H11.8377C12.7152 4 13.4285 4.55292 13.6073 5.31126C13.8233 6.22758 14 7.22716 14 8C14 8.58478 13.8976 9.1919 13.7536 9.75039L13.4315 11H14.7219H17.5C18.3284 11 19 11.6716 19 12.5C19 12.5929 18.9917 12.6831 18.976 12.7699L18.8955 13.2149L19.1764 13.5692C19.3794 13.8252 19.5 14.1471 19.5 14.5C19.5 14.8529 19.3794 15.1748 19.1764 15.4308L18.8955 15.7851L18.976 16.2301C18.9917 16.317 19 16.4071 19 16.5C19 16.9901 18.766 17.4253 18.3994 17.7006L18 18.0006L18 18.5001C17.9999 19.3285 17.3284 20 16.5 20H14H13H12.6228C11.6554 20 10.6944 19.844 9.77673 19.5382L8.28366 19.0405C7.22457 18.6874 6.11617 18.5051 5 18.5001V13.7543L7.03558 13.1727C7.74927 12.9688 8.36203 12.5076 8.75542 11.8781L10.696 8.7732ZM10.5 2C9.67157 2 9 2.67157 9 3.5V7.7132L7.05942 10.8181C6.92829 11.0279 6.72404 11.1817 6.48614 11.2497L4.45056 11.8313C3.59195 12.0766 3 12.8613 3 13.7543V18.5468C3 19.6255 3.87447 20.5 4.95319 20.5C5.87021 20.5 6.78124 20.6478 7.65121 20.9378L9.14427 21.4355C10.2659 21.8094 11.4405 22 12.6228 22H13H14H16.5C18.2692 22 19.7319 20.6873 19.967 18.9827C20.6039 18.3496 21 17.4709 21 16.5C21 16.4369 20.9983 16.3742 20.995 16.3118C21.3153 15.783 21.5 15.1622 21.5 14.5C21.5 13.8378 21.3153 13.217 20.995 12.6883C20.9983 12.6258 21 12.5631 21 12.5C21 10.567 19.433 9 17.5 9H15.9338C15.9752 8.6755 16 8.33974 16 8C16 6.98865 15.7788 5.80611 15.5539 4.85235C15.1401 3.09702 13.5428 2 11.8377 2H10.5Z" fill="currentColor"></path>
+                              </svg>
+                            </div>
                           </div>
-                        </div>
-                      </button>
+                        </button> :
+                        <button onMouseOver={likeHoverEnter} className='color_supplementary max-h-[42px] max-w-[42px] min-h-[32px] min-w-[32px] bg-[#000] border-[#fff] border-[2px] text-white pl-[0.8rem] pr-[0.8rem] items-center appearance-none cursor-pointer flex justify-center opacity-[1] p-[0.8rem] relative select-none will-change-[background-color,_color] break-words whitespace-nowrap rounded-[50%] overflow-visible'>
+                          <div className='ltr_iconWrap_iconWrapOverride_Button leading-0 block text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                            <div className='small_ltr_baseCss h-[1.8rem] w-[1.8rem] flex items-center justify-center leading-0 text-white cursor-pointer select-none break-words whitespace-nowrap'>
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="Hawkins-Icon Hawkins-Icon-Standard w-auto h-[100%] overflow-hidden text-white cursor-pointer select-none break-words whitespace-nowrap">
+                                <path
+                                  fillRule="evenodd"
+                                  clipRule="evenodd"
+                                  d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+                                  fill="currentColor"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </button>
+                        
+                      }
                       {/* 평가하기 */}
                       { likeHover &&
                       <div onMouseLeave={likeHoverLeave} className='thumbs_selection_overlay_container opacity-[1] translate-x-[-50%] translate-y-[-50%] translate-z-[0px] scale-[1] ml-[0.1rem] mt-[-0.1rem] absolute top-[50%] left-[50%] transition-opacity-[0.1s] cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>

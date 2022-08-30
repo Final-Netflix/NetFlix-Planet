@@ -5,29 +5,42 @@ import useStore from 'store';
 
 const MypageContainer2 = ({setCount, count}) => {
     const qs = require('qs');
-    const {user_email , user_phone , verify, setVerify} = useStore();
+    const {user_email , user_phone ,setVerify ,setIsVerify} = useStore();
     const phone = (num)=>{
         return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
     }
     const onPhone = () => {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        
+        axios({
+            method : 'post',
+            url : '/send-sms',
+            data : qs.stringify({
+                'recipientPhoneNumber' : localStorage.getItem('phone'),
+                'title' : 'test',
+                'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
+            })
+        }).then((res) => {
+            setIsVerify('phone')
             setCount(count+1)
-            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-            setVerify(verifyCode);
+        });
+    }
+    const onEmail = ()=> {
+        var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+        setVerify(verifyCode);
+        axios({
+            method : 'post',
+            url : '/send-email',
+            data : qs.stringify({
+                'verify' : verifyCode,
+                'user_email' : localStorage.getItem('user_email')
+            })
+        }).then(()=>{
+            setIsVerify('email');    
+            setCount(count+1)
                 
-            axios({
-                method : 'post',
-                url : 'http://localhost:8080/send-sms',
-                data : qs.stringify({
-                    'recipientPhoneNumber' : user_phone,
-                    'title' : 'test',
-                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
-                })
-            }).then((res) => {
-                console.log(res)
-            });
-        }
-        const onEmail = ()=> {
-            setCount(count+1)
+            })
         }
     
     
@@ -87,8 +100,8 @@ const MypageContainer2 = ({setCount, count}) => {
                             <span>정보를 변경하기 전에 본인 확인 절차가 필요합니다.</span>
                         </p>
                         <form className='m1_select-factor-form border-2 border-solid border-[#e6e6e6] rounded-[10px] shadow-[0_0_5px_2px_#e6e6e6] my-5 mx-auto max-w-[600px] overflow-hidden' method='post'>
-                            <Button what={phone(user_phone)} name='문자로 코드 받기' method={onPhone}/>
-                            <Button what={user_email} name='이메일로 코드 받기' method={onEmail}/>
+                            <Button what={phone(localStorage.getItem('phone'))} name='문자로 코드 받기' method={onPhone}/>
+                            <Button what={localStorage.getItem('user_email')} name='이메일로 코드 받기' method={onEmail}/>
                        </form>
                     </div>
                     <div className='m1_customer-service-text-container text-[14px] mt-[40px] box-border'>

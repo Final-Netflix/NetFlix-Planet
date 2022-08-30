@@ -50,7 +50,7 @@ const SignUpComponets = () => {
         if(checkEmail && checkPwd && checkNumber && checked) {
             axios({
                 method: 'post',
-                url : 'http://localhost:8080/signUp',
+                url : '/signUp',
                 data : qs.stringify({
                     'user_email' : email ,
                     'user_pwd' : pwd ,
@@ -59,8 +59,8 @@ const SignUpComponets = () => {
             }).then((res)=>{
                 if(res.data===0) {
                     //자동으로 로그인 처리를 하게 값을 담는다.
-                    sessionStorage.setItem("user_email", email)
-                    sessionStorage.setItem("phone", phone)
+                    localStorage.setItem("user_email", email)
+                    localStorage.setItem("phone", phone)
                     window.location.href = "/signup/planform"
                 }else {
                     alert('이미 가입한 회원입니다. 로그인해주세요.')
@@ -85,7 +85,7 @@ const SignUpComponets = () => {
                 if(regEmail.test(e.target.value)===true) {
                     axios({
                         method: 'post',
-                        url : 'http://localhost:8080/emailCheck',
+                        url : '/emailCheck',
                         data : qs.stringify({
                             'user_email' : e.target.value ,
                         })
@@ -124,7 +124,7 @@ const SignUpComponets = () => {
                  
                 axios({
                     method : 'post',
-                    url : 'http://localhost:8080/send-sms',
+                    url : '/send-sms',
                     data : qs.stringify({
                         'recipientPhoneNumber' : document.getElementById('id_phone').value ,
                         'title' : 'test',

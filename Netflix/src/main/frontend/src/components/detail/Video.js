@@ -1,15 +1,67 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'css/detail/video.css';
 import chat from '../../image/detail/chat2.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import UserChatRoom from 'components/user_chat/UserChatRoom';
 
 const Video = () => {
+  const location = useLocation();
+  const id = location.state.id;
+  /* const topId = location.state.topId; */
+  const type = location.state.type;
+  /* const topType = location.state.topType; */
+
+  console.log('아이디 = ' + id);
+  /* console.log(topId); */
+  console.log('타입 = ' + type)
+
+  const KEY = "bc61587b22cd0e5226a33d30e467d867";
+  const [title, setTitle] = useState(true);
+  const [tvETitle, setTvETitle] = useState([]);
+  const [tvTitle, setTvTitle] = useState(true);
+
+
+  const getTitle = async () => {
+    if (type === 'movie'){
+    const json = await(
+      await fetch(
+          `https://api.themoviedb.org/3/movie/${ id }?api_key=${ KEY }&language=ko-KR`)
+      ).json();
+      setTitle(json.title);
+      /* console.log('json.name = ' + json.name) */
+    }
+  }
+  /* const getTvTitle = async () => {
+    if (type === 'tv'){ 
+    const json = await(
+      await fetch(
+        `https://api.themoviedb.org/3/tv/${ id }/season/1?api_key=${ KEY }&language=ko-KR`)
+      ).json();
+      setTvETitle(json.episodes);
+    } 
+  } */
+  const getTvs = async () => {
+    if (type==='tv') {
+      const json = await(
+          await fetch(
+              `https://api.themoviedb.org/3/tv/${ id }?api_key=${ KEY }&language=ko-KR`)
+          ).json();
+        setTvTitle(json.name);
+    }
+  }
+
+  useEffect(() => {
+    getTitle();
+    /* getTvTitle(); */
+    getTvs();
+  }, [])
+console.log(title);
 
   const [isChat, setIsChat] = useState(false);
   const openChatting=()=>{
     setIsChat(!isChat);
   }
+
   return (
     <div>
       <div className="watch-video flex" data-uia="watch-video">
@@ -18,7 +70,7 @@ const Video = () => {
             <div className="ltr-op8orf" data-uia="video-canvas">
               <div className='relative w-[100%] h-[100%] overflow-hidden'>
                 <div className='relative w-[100%] h-[100%] overflow-hidden' id="81566007">
-                  <video src="blob:https://www.netflix.com/e5669d38-4bf8-404c-8a6d-9ae2ee9ac43f" tabIndex="-1" className='h-[100%] w-[1200px]'></video>
+                  {/* <video src="blob:https://www.netflix.com/e5669d38-4bf8-404c-8a6d-9ae2ee9ac43f" tabIndex="-1" className='h-[100%] w-[1200px]'></video> */}
                   <div className="player-timedtext hidden [direction: ltr]"></div>
                 </div>
               </div>
@@ -167,9 +219,16 @@ const Video = () => {
                                   <div className="ltr-1fkysoc items-[normal] flex-grow-[1] justify-[normal]">
                                     <div className="c2-ltr-1i33xgl min-w-[3rem]"></div>
                                     <div className="medium ltr-qnht66" data-uia="video-title">
-                                      <h4 className='text-white'>SPYxFAMILY 스파이 패밀리</h4>
-                                      <span className='text-white'>1화</span>
-                                      <span className='text-white'>오퍼레이션 올빼미</span>
+                                      { type === 'movie' &&
+                                        <h4 className='text-white'>{ title }</h4>}
+                                      
+                                      {/* { type === 'tv' && tvETitle.map (episode => 
+                                        <h4 className='text-white'>{ episode.name }</h4>)} */}
+
+                                      { type === 'tv' &&  
+                                        <h4 className='text-white'>{ tvTitle }</h4>}
+                                      {/* <span className='text-white'>1화</span>
+                                      <span className='text-white'>오퍼레이션 올빼미</span> */}
                                     </div>
                                   </div>
                                   <div className="ltr-hpbgml items-[normal] justify-end">
@@ -280,7 +339,7 @@ const Video = () => {
         </div>
         {/* 채팅창 */}
         <div className='bg-white absolute right-0 h-[100%]' style={ isChat ? {width: '18%'} : {width: '0%'}}>
-          <UserChatRoom/>
+          <UserChatRoom id={id}/>
         </div>
 
       </div>

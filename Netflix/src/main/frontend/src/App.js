@@ -39,9 +39,10 @@ function App() {
             <Route index element={<SignUp/>}/>
             <Route path=":detail" element={<SignUp/>}/>
           </Route>
+          <Route path="/admin_chat" element={<AdminChat />}></Route>
 
           {/* <Route path="/*" element={<WarningPage/>}/> */}
-		  <Route path="/changePwd" element={<ChangePwd/>}/>
+		      <Route path="/changePwd" element={<ChangePwd/>}/>
 
           </>
         :
@@ -64,12 +65,13 @@ function App() {
             <Route index element={<Payment/>}/>
             <Route path=":detail" element={<Payment/>}/>
           </Route>
+          <Route path='/signUp'>
+            <Route path=":detail" element={<SignUp/>}/>
+          </Route>
 
           {/* hee */}
           <Route path="/detailMain" element={ <DetailMain /> }></Route>
-          {/* <Route path="/detailM" element={ <DetailForMovie /> }></Route> */}
           <Route path="/detailMain/:detail" element={ <Linked /> }></Route>
-          {/* <Route path="/detailM/:detail" element={ <Linked /> }></Route> */}
           {/* hee */}
           
           

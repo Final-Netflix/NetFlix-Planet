@@ -12,6 +12,7 @@ const Login = () => {
     const [isLogin, setIsLogin]=useState(localStorage.getItem('user_email')==='undefined'|| localStorage.getItem('user_email')===null? false : true);
     const [profileList, setProfileList]=useState([])
     const [refresh,setRefresh]=useState(0);
+    
     const idInput=(e)=>{
         setIdInputVal(e.target.value);
     }
@@ -26,7 +27,7 @@ const Login = () => {
         
         axios({
             method : 'post',
-            url : 'http://localhost:8080/login',
+            url : '/login',
             data : qs.stringify({
                 'user_id' : idInputVal,
                 'user_pwd' : pwdInputVal
@@ -53,7 +54,7 @@ const Login = () => {
         // console.log(authStore.logged)
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getProfileList',
+            url : '/getProfileList',
             data : qs.stringify({
                 'user_email' : localStorage.getItem('user_email')
             })
@@ -76,7 +77,7 @@ const Login = () => {
         findProfileId = target.closest('.profileForm').childNodes[0].value;
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getProfile',
+            url : '/getProfile',
             data : qs.stringify({
                 'profile_id' : findProfileId
             })
@@ -90,6 +91,11 @@ const Login = () => {
             window.location.href='/';
         })
         .catch(error => console.log(error));
+    }
+    const chatKeyDown=(e)=>{
+        if(e.keyCode === 13 && idInput !== '' && pwdInput !==''){
+            login();
+        }
     }
     return (
         <div className='bg-[#141414] h-[100%]'>
@@ -140,14 +146,14 @@ const Login = () => {
                     <div className="wh-idpwd-inputForm bg-[#333] mb-[24px]">
                         <label placeholder>
                             <label for="wh-id-box" className="wh-placeLabel">이메일 주소</label>
-                            <input id="wh-id-box"className='wh-nfTextField h-[50px] bg-[transparent] w-[100%] boarder-[0]' type="text" onChange={idInput} value={idInputVal}/>
+                            <input id="wh-id-box"className='wh-nfTextField h-[50px] bg-[transparent] w-[100%] boarder-[0]' type="text" onChange={idInput} onKeyDown={chatKeyDown} value={idInputVal}/>
                         </label>
                     </div>
                     <div className='wh-idpwd-inputForm bg-[#333]'>
                         <label placeholder>
                             <label for="wh-pwd-box" className="wh-placeLabel">비밀번호</label>
     
-                        <input  id="wh-pwd-box" className='wh-nfTextField h-[50px] bg-[transparent] w-[100%] boarder-[0]' type="password" onChange={pwdInput} value={pwdInputVal}/>
+                        <input  id="wh-pwd-box" className='wh-nfTextField h-[50px] bg-[transparent] w-[100%] boarder-[0]' type="password" onChange={pwdInput} onKeyDown={chatKeyDown} value={pwdInputVal}/>
                         </label>
                     </div>
 

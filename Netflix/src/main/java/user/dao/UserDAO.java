@@ -53,4 +53,18 @@ public interface UserDAO {
 	public int getMembership(String user_email);
 
 
+	public int getPaySeq();
+
+
+	public void changeEmail(Map<String, String> map);
+
+
+	public int checkPhone(UserDTO userDTO);
+
+
+	public void changePhone(UserDTO userDTO);
+
+
+
+
 }

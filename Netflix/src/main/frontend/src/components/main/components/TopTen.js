@@ -3,20 +3,65 @@ import 'css/main/topTen.css';
 import TopTenList from './TopTenList';
 import { useParams } from 'react-router-dom';
 
+const movieGenres = [
+    {"id": 28, "name": "액션"},
+    {"id": 12, "name": "모험"},
+    {"id": 16, "name": "애니메이션"},
+    {"id": 35, "name": "코미디"},
+    {"id": 80, "name": "범죄"},
+    {"id": 99, "name": "다큐멘터리"},
+    {"id": 18, "name": "드라마"},
+    {"id": 10751, "name": "가족"},
+    {"id": 14, "name": "판타지"},
+    {"id": 36, "name": "역사"},
+    {"id": 27, "name": "공포"},
+    {"id": 10402, "name": "음악"},
+    {"id": 9648, "name": "미스터리"},
+    {"id": 10749, "name": "로맨스"},
+    {"id": 878, "name": "SF"},
+    {"id": 10770, "name": "TV 영화"},
+    {"id": 53, "name": "스릴러"},
+    {"id": 10752, "name": "전쟁"},
+    {"id": 37, "name": "서부"}
+  ];
+
+const tvGenres = [
+    { "id": 10759, "name": "Action & Adventure" },
+    { "id": 16, "name": "애니메이션"},
+    { "id": 35, "name": "코미디"},
+    { "id": 80, "name": "범죄"},
+    { "id": 99, "name": "다큐멘터리"},
+    { "id": 18, "name": "드라마"},
+    { "id": 10751, "name": "가족"},
+    { "id": 10762, "name": "Kids"},
+    { "id": 9648, "name": "미스터리"},
+    { "id": 10763, "name": "News"},
+    { "id": 10764, "name": "Reality"},
+    { "id": 10765, "name": "Sci-Fi & Fantasy"},
+    { "id": 10766, "name": "Soap"},
+    { "id": 10767, "name": "Talk"},
+    { "id": 10768, "name": "War & Politics" },
+    { "id": 37, "name": "서부"  }
+]
+
 const TopTen = ({ type }) => {
     
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     let URL;
+    let GenreURL;
 
     const { tab } = useParams();
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-
+    const [genres, setGenres] = useState([]);
+    
     if(tab === 'movie') {
         URL = "https://api.themoviedb.org/3/movie/";
+        // setGenres(movieGenres);
     } else {
         URL = "https://api.themoviedb.org/3/tv/";
+        // setGenres(tvGenres);
     }
 
     const getData = async () => {
@@ -25,32 +70,38 @@ const TopTen = ({ type }) => {
                 `${ URL }popular?api_key=${ KEY }&language=ko-KR&page=1`)
             ).json();
         setData(json.results.slice(0, 10));
-        setLoading(false);
+    }
+
+    const getGenres = async () => {
+        if(tab === 'movie') {
+            setGenres(movieGenres);
+        } else {
+            setGenres(tvGenres);
+        }
     }
 
     useEffect(() => {
         getData();
+        getGenres();
+        setLoading(false);
     }, []);
 
-    // const [data, setData] = useState([
-    //     {index: 1, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZ3X4h02lWYNAQdGJP_GQQurfKG7nktUwK3uDDrRW5BSuYIv5tjYJNtKN6Ljy08lpVMPXgoA9CebHyEr8Xz__r_MUsPnfqXKy10u-rWEgQ-CbbtFUe8_gdhDcquzXBIQpxJASYCViJXoV9pM2SvC8Q.webp?r=15c', title: '이상한 변호사 우영우'},
-    //     {index: 2, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABR4-SKX3hJWAD_F67B8ghjm3bvZ5nOpcmT9QNYokQ_yK9pfePaFbxQkSmjd0B08nWqPjY2rmc0Vojo6lpj7uJqftS-4GTM7XyiKL.webp?r=d83', title: '인사이더'},
-    //     {index: 3, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABY7nKzXAPEyadyT4U07OR0uduJUSWZWD_FfH0I-dnFAGOyVyYUTSb5Wk5rA0wtf5nDLx7sUP_-P57csneTA2MLYxmjr8Le5w-ol6GLLD5UDCIUusxBW1jvuHwmGq1VobglrhZZrTpWkM7u_beSjDUg.webp?r=cf3', title: '환혼'},
-    //     {index: 4, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABXDFQO9iWjYO4g1leMhq0t51vqlj3BJVwZi5OVNMDtg-1BsNKUrcJQxcUtD8fdK1fwv57LSBriGfCYWkGC6XNSYe6BBKo9MHTMuz.webp?r=f83',  title: '모범형사'},
-    //     {index: 5, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZR-O9X7rV3zgtT7twcmx6bEP35VVz9JhzJhixKZAFxhn9zsXfZ0EzjUiAVYuJMqTec6LJ73BFDUOwqVsBoguCG91cY_GJRP6YBX.webp?r=a62', title: '클리닝 업'},
-    //     {index: 6, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABR17KCvW5vqQv5HKM-B8eWB_WC0qa7HRJ1GaGwzWsxa2PquX8Th2J9pjWMRWD5VIXABNkdOvQQeRwXcZD8beryN9Vw7JUYJEIGi-zBnjbk-bz8WA_RzlRVjI8fel_yAsxXQJ6_EjF9fCRRRq661M6Q.webp?r=795', title: '체인지데이즈'},
-    //     {index: 7, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZyCpQm9DbkugfzbZY7o6bqmFHklgrcj30mhoEAiTH-icClQXv93khRFyJzNssw5QrvXOB-7uxKgkaq94gqaE47wz5qybrSjLYm0AIaS_hOfT5ai8yRuc-W7NDvjuZ8dmyF5WuB2B3PhYYj50wSemw.webp?r=548', title: '미남당'},
-    //     {index: 8, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABfUyK9AgmYPgjUbSyj2AV05xr8pDBRmOfAUrio7Cdu6QM1a3S0HE_6ydC_m98jOIcaF_X_M_I9NM5dm06FiIMUo20GL5FeRZCUpaQoHNmb_7wRnmC92ZDOB1Z--SgdI-zJ5N6BDLGfaCvX7zoZvGgA.webp?r=8c0', title: '나는 솔로'},
-    //     {index: 9, src: 'https://occ-0-993-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABZam2k5pnetFLpOgUM4sYNGgR3Occs_FnoXL6lmTv2NyaHxjdBaYdcl0omeoyG8ptYNWAdy56Z18VrNS3tOpsg8zd-3YvWVzMJBl.webp?r=cd7', title: '차시천하'},
-    //     {index: 10, src: 'https://occ-0-2219-993.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABc1nAdcdKPWjdTUAcxoIi_t118oIu5PU0S4nXS8XwoD2_C8UlYNABDcLc67hEecq2ZBRjkIG_fwTBVLv7d41xrQ6H7iJ8M0WNCjlV04rsX13UuIRkBZLQ0nZ7jX1MwzTgwlHIb_8Q8n2nQK9fWSNVA.webp?r=f66', title: '도시어부'}
-    // ]);
-
     const goNextSlide = () => {
-        document.getElementsByClassName("slick-next")[0].click();
+        if(tab === 'new' && type === 'movie'){
+            document.getElementsByClassName("slick-next")[3].click();
+        }
+        else {
+            document.getElementsByClassName("slick-next")[0].click();
+        }
     }
 
     const goPrevSlide = () => {
-        document.getElementsByClassName("slick-prev")[0].click();
+        if(tab === 'new' && type === 'movie'){
+            document.getElementsByClassName("slick-prev")[3].click();
+        }
+        else {
+            document.getElementsByClassName("slick-prev")[0].click();
+        }
     }
 
     return (
@@ -66,7 +117,7 @@ const TopTen = ({ type }) => {
                             <div className="rowContent slider-hover-trigger-layer">
                                 <div className="slider" style={{ overflow: 'visible', padding: '0 3.2%' }}>
                                     <span onClick={ goPrevSlide } className="handle handlePrev active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-leftCaret"></b></span>
-                                    <TopTenList data={ data } setData={ setData }/>
+                                    <TopTenList data={ data } setData={ setData } genres={ genres }/>
                                     <span onClick={ goNextSlide } className="handle handleNext active" tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>
                                 </div>
                             </div>

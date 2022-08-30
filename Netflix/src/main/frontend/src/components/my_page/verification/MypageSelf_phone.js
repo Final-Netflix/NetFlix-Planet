@@ -1,54 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import qs from 'qs';
+import useStore from 'store';
 
 const MypageSelf_phone = ({onAddd, count}) => {
-    const [ verify, setVerify ] = useState()
+    const {verify, isVerify,user_email , user_phone} =useStore();
 
-    let checkNumber =false;
-
-    useEffect(() => {
-        onNumber();
-    }, [])
-    
-    const onNumber = () => {
-        const recipientPhoneNumber = localStorage.getItem('phone');
-        console.log(recipientPhoneNumber);
-
-        const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-        {
-            var verifyCode = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-            setVerify(verifyCode);
-                
-            axios({
-                method : 'post',
-                url : 'http://localhost:8080/send-sms',
-                data : qs.stringify({
-                    'recipientPhoneNumber' : recipientPhoneNumber,
-                    'title' : 'test',
-                    'content' : '[PLANET] \n 인증번호  ['+ verifyCode+']'
-                })
-            }).then((res) => {
-                console.log(res)
-            });
-        }
+    const phone = (num)=>{
+        return num.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]*)([0-9]{4})/,"$1-$2-$3");
     }
+    useEffect(()=> {
+        if(isVerify==='email') {
+            document.getElementsByClassName('m1_explanation-bold')[0].innerText= user_email;
+            document.getElementById('m1_sendMethod').innerText= '등록된 이메일로 메일을 보내드렸습니다.'
+        }else if(isVerify==='phone'){
+            document.getElementsByClassName('m1_explanation-bold')[0].innerText= phone(user_phone);
+            document.getElementById('m1_sendMethod').innerText= '등록된 전화번호로 문자를 보내드렸습니다.'
 
-    //인증번호 비교하기
-    const onBlur=(e)=> {
-        if(e.target.id ==='id_number') {
-            console.log("2 | " + verify);
-            if(verify === parseInt(e.target.value)) {
-                alert('인증완료')
-                checkNumber= true;
-                document.getElementById(e.target.id).disabled =true;
-            }else{
-                console.log(verify)
-                console.log(e.target.value)
-                alert('인증번호가 일치하지 않습니다.')
-            }
         }
-    }
+    },[])
+
 
     
     const Tel = ({ Ref }) => {
@@ -77,11 +48,14 @@ const MypageSelf_phone = ({onAddd, count}) => {
             }
             //6개 다 입력시 버튼 활성화  
             if((input[0].value.length ===1) && (input[1].value.length ===1) && (input[2].value.length ===1) && (input[3].value.length ===1) && (input[4].value.length ===1) && (input[5].value.length ===1))  {
-                const con = document.querySelector('#btn-continue');
-                con.style.backgroundColor = 'red';
-                con.style.cursor = 'pointer';
-                con.innerText = '다음';
-                con.disabled = false;
+                const val = input[0].value + input[1].value + input[2].value + input[3].value + input[4].value + input[5].value
+                if(verify==val) {
+                    const con = document.querySelector('#btn-continue');
+                    con.style.backgroundColor = 'red';
+                    con.style.cursor = 'pointer';
+                    con.innerText = '다음';
+                    con.disabled = false;
+                }
             }else {
                 const con = document.querySelector('#btn-continue');
                 con.style.backgroundColor = '#737373';
@@ -115,9 +89,9 @@ const MypageSelf_phone = ({onAddd, count}) => {
                 <div className='m1_responsive-account-container mid:text-[1em] mid:max-w-[1024px] mid:w-[95%] block my-0 mx-auto min-h-[400px] min-w-[300px] relative' style={{overflowWrap:'anywhere'}}>
                     <div className='m1_mfa-challenge-container mt-[50px] mx-auto mb-0 max-w-[684px] box-border text-center' >
                         <h5 className="m1_security-check-header text-[red] text-[14px] font-black my-[.75em] mx-[.25em] box-border tracking-normal"><span id="" >보안 확인</span></h5>
-                        <h1 className="m1_action-headline text-[#000] text-[36px] font-extrabold mt-[5px] mx-auto mb-[10px] mid:text-[2.15em] mid:mt-0 mid:mx-0 mid:mb-[.55em] " ><span id="">등록된 전화번호로 문자를 보내드렸습니다</span></h1>
+                        <h1 className="m1_action-headline text-[#000] text-[36px] font-extrabold mt-[5px] mx-auto mb-[10px] mid:text-[2.15em] mid:mt-0 mid:mx-0 mid:mb-[.55em] " ><span id="m1_sendMethod">등록된 전화번호로 문자를 보내드렸습니다</span></h1>
                         <p className="m1_explanation-text text-[#4d4d4d] text-[20px] mb-[8px] mt-[10px]" >
-                            <span id="" ><span className="m1_explanation-bold font-extrabold">{localStorage.getItem('phone')}</span>번으로 보내드린 코드를 입력해 주세요. 계정 보호를 위해 협조해 주셔서 감사합니다.</span>
+                            <span id="" ><span className="m1_explanation-bold font-extrabold"></span>으로 보내드린 코드를 입력해 주세요. 계정 보호를 위해 협조해 주셔서 감사합니다.</span>
                         </p>
                         <form className="m1_mfa-challenge-otp-form"  method="POST">
                             <div className="m1_pin-input-container border-[none] mt-0 mx-0 mb-[40px] align-middle inline-block whitespace-nowrap  ">

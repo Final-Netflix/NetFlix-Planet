@@ -4,6 +4,47 @@ import RecommendList from './RecommendList';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
+const movieGenres = [
+    {"id": 28, "name": "액션"},
+    {"id": 12, "name": "모험"},
+    {"id": 16, "name": "애니메이션"},
+    {"id": 35, "name": "코미디"},
+    {"id": 80, "name": "범죄"},
+    {"id": 99, "name": "다큐멘터리"},
+    {"id": 18, "name": "드라마"},
+    {"id": 10751, "name": "가족"},
+    {"id": 14, "name": "판타지"},
+    {"id": 36, "name": "역사"},
+    {"id": 27, "name": "공포"},
+    {"id": 10402, "name": "음악"},
+    {"id": 9648, "name": "미스터리"},
+    {"id": 10749, "name": "로맨스"},
+    {"id": 878, "name": "SF"},
+    {"id": 10770, "name": "TV 영화"},
+    {"id": 53, "name": "스릴러"},
+    {"id": 10752, "name": "전쟁"},
+    {"id": 37, "name": "서부"}
+  ];
+
+const tvGenres = [
+    { "id": 10759, "name": "Action & Adventure" },
+    { "id": 16, "name": "애니메이션"},
+    { "id": 35, "name": "코미디"},
+    { "id": 80, "name": "범죄"},
+    { "id": 99, "name": "다큐멘터리"},
+    { "id": 18, "name": "드라마"},
+    { "id": 10751, "name": "가족"},
+    { "id": 10762, "name": "Kids"},
+    { "id": 9648, "name": "미스터리"},
+    { "id": 10763, "name": "News"},
+    { "id": 10764, "name": "Reality"},
+    { "id": 10765, "name": "Sci-Fi & Fantasy"},
+    { "id": 10766, "name": "Soap"},
+    { "id": 10767, "name": "Talk"},
+    { "id": 10768, "name": "War & Politics" },
+    { "id": 37, "name": "서부"  }
+]
+
 const Recommend = ({ order, classification }) => {
 
     const {tab} = useParams();
@@ -52,11 +93,11 @@ const Recommend = ({ order, classification }) => {
     ]);
     const [classificationName, setClassificationName] = useState('');
     const [videoType, setVideoType] = useState('movie');
+    const [genres, setGenres] = useState(movieGenres);
     
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
-    
+
     let search_url;
-    let videoData;
 
     const goNextSlide = () => {
         document.getElementsByClassName("slick-next")[order].click();
@@ -78,17 +119,12 @@ const Recommend = ({ order, classification }) => {
 
     const getClassifications = () => {
         axios({
-            url: 'http://localhost:8080/getClassifications',
+            url: '/getClassifications',
         }).then(res => {
-            console.log(res.data);
             tab === undefined && setClassificationArr(res.data);
             tab === 'series'  && setClassificationArr(res.data.filter(data => data.classification_type === 'tv'));
             tab === 'new'     && setClassificationArr(res.data.filter(data => data.classification_type === 'new'));
             tab === 'movie'   && setClassificationArr(res.data.filter(data => data.classification_type === 'movie'));
-            // tab === undefined && (classificationArr = res.data);
-            // tab === 'series'  && (classificationArr = res.data.filter(data => data.classification_type === 'tv'));
-            // tab === 'new'     && (classificationArr = res.data.filter(data => data.classification_type === 'new'));
-            // tab === 'movie'   && (classificationArr = res.data.filter(data => data.classification_type === 'movie'));
         });
     };
 
@@ -96,8 +132,9 @@ const Recommend = ({ order, classification }) => {
         if(classificationArr.length != 0){
             setClassificationName(classificationArr[classification].classification_name);
             search_url = classificationArr[classification].search_url;
-            if(search_url != null){
-                if(search_url.includes('tv')) {  setVideoType('tv') }
+            if(search_url.includes('tv')) {  
+                setVideoType('tv') 
+                setGenres(tvGenres);
             }
             getData();
         }
@@ -123,7 +160,7 @@ const Recommend = ({ order, classification }) => {
                     <div className="rowContent slider-hover-trigger-layer">
                         <div className="slider" style={{ padding: '0 3.2%'}}>
                             <span className="handle handlePrev active" onClick={ goPrevSlide } tabIndex="0" role="button" aria-label="이전 콘텐츠 보기"><b className="indicator-icon icon-leftCaret"></b></span>
-                            <RecommendList data={ data } setData={ setData } videoType={ videoType }/>
+                            <RecommendList data={ data } setData={ setData } videoType={ videoType } genres={ genres }/>
                             <span className="handle handleNext active" onClick={ goNextSlide } tabIndex="0" role="button" aria-label="콘텐츠 더 보기"><b className="indicator-icon icon-rightCaret"></b></span>
                         </div>
                     </div>

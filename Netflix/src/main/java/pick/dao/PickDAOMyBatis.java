@@ -15,8 +15,23 @@ public class PickDAOMyBatis implements PickDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public void pickUp(PickDTO pickDTO) {
-		sqlSession.insert("pickSQL.pickUp", pickDTO);
+	public void addPickUp(PickDTO pickDTO) {
+		sqlSession.insert("pickSQL.addPickUp", pickDTO);
+	}
+
+	@Override
+	public String getPicksID() {
+		return sqlSession.selectOne("pickSQL.getPicksID");
+	}
+
+	@Override
+	public void delPickUp(PickDTO pickDTO) {
+		sqlSession.delete("pickSQL.delPickUp", pickDTO);
+	}
+
+	@Override
+	public int getPickUp(PickDTO pickDTO) {
+		return sqlSession.selectOne("pickSQL.getPickUp", pickDTO);
 	}
 
 }

@@ -4,7 +4,7 @@ import TopTenItems from './TopTenItems';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const TopTenList = ({ data }) => {
+const TopTenList = ({ data, genres }) => {
     let settings = {
         dots: true,
         infinite: true,
@@ -41,7 +41,7 @@ const TopTenList = ({ data }) => {
             <div className="sliderContent row-with-x-columns">
                 <Slider {...settings}>
                 {
-                    data.map((item, index) => <TopTenItems key={ index } item={ item } index={ index }/>)
+                    data.map((item, index) => <TopTenItems key={ index } item={ item } index={ index } genres={ genres }/>)
                 }
                 </Slider>
             </div>

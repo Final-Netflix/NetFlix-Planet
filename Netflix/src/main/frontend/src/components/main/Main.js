@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import APITest from './APITest';
+import { useNavigate, useParams } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import SearchResult from './components/SearchResult';
@@ -34,7 +33,8 @@ const Main = () => {
 
     const key = 'bc61587b22cd0e5226a33d30e467d867';
     const tvId = '197067';
-    const movieId = '682110';
+    /* const movieId = '682110'; */
+    const movieId = '619803';
 
     const goTv = () => {
         navigate(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${key}&language=ko-KR`)
@@ -57,45 +57,6 @@ const Main = () => {
             {tab === 'search' && <SearchResult search={ search } setSearch={ setSearch }/>}
 
             <Footer/>
-
-            {/* <APITest/> */}
-
-            <Link to="/detailMain">
-    	        <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-        	        Detail
-	            </button>
-            </Link>
-            <Link to="/detailMain" state={{tvId:tvId}}>
-                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]" onClick={goTv}>
-        	        tv
-	            </button>
-            </Link>
-            <Link to="/detailMain" state={{movieId:movieId}}>
-                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]" onClick={goMovie} value={movieId}>
-        	        movie
-	            </button>
-            </Link>
-
-            <Link to="/my">
-            	<button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-					마이페이지
-            	</button>
-            </Link>
-            <Link to="/service">
-	            <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-    	            go객센터
-    	        </button>
-            </Link>
-            <Link to="/container">
-                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-                    마이페이지안쪽
-                </button>
-            </Link>
-            {/* <Link to="/">
-                <button className="border-[1px] p-5 m-4 bg-white text-[#141414]">
-                    로그인
-                </button>
-            </Link> */}
         </div>
     );
 };

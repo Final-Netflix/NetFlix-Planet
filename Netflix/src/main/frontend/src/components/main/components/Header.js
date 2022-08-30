@@ -5,8 +5,6 @@ import service from 'image/main/service.png';
 import user from 'image/main/user.png';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import TopTenItems from './TopTenItems';
-
 
 const Header = ({ scroll, search, setSearch }) => {
 
@@ -79,7 +77,7 @@ const Header = ({ scroll, search, setSearch }) => {
     useEffect(()=>{
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getProfileList',
+            url : '/getProfileList',
             data : qs.stringify({
                 'user_email' : localStorage.getItem('user_email')
             })
@@ -103,7 +101,7 @@ const Header = ({ scroll, search, setSearch }) => {
         findProfileId = target.closest('.profileForm').childNodes[0].value;
         axios({
             method : 'post',
-            url : 'http://localhost:8080/getProfile',
+            url : '/getProfile',
             data : qs.stringify({
                 'profile_id' : findProfileId
             })
@@ -262,7 +260,7 @@ const Header = ({ scroll, search, setSearch }) => {
                                     </ul>
                                     <ul className='c1-sub-menu-list py-[10px] border-[#333333] border-[1px] border-t-0 border-solid w-[180px] bg-[#000000]/90'>
                                         <li className='c1-sub-menu-item py-[5px] px-[10px]'>
-                                            <div className='text-center hover:underline' onClick={logoutBtn}>
+                                            <div className='text-center hover:underline cursor-pointer' onClick={ logoutBtn }>
                                                 <span className='c1-profile-name my-[10px] text-[13px]'>넷플릭스에서 로그아웃</span>
                                             </div>
                                         </li>
