@@ -3,53 +3,65 @@ import UserChatRoomList from './UserChatRoomList';
 import '../../css/userChat/userChat.css';
 import axios from 'axios';
 import UserChatting from './UserChatting';
+import { set } from 'mobx';
 
 const UserChatRoom = ({id}) => {
     const[chattingView, setChattingView] = useState(true);
     const[createVisible,setCreateVisible] = useState(true);
     const[joinVisible,setJoinVisible] = useState(true);
     const[menuVisible,setMenuVisible] = useState(true);
-    const changeChattionView=()=>{
-        setChattingView(!chattingView)
-    }
-    const openCreate=()=>{
-        
-        setCreateVisible(!createVisible);
-        setMenuVisible(!menuVisible);
-    }
-    const openJoin=()=>{
-        
-        setJoinVisible(!joinVisible);
-        setMenuVisible(!menuVisible);
-    }
     const [code, setCode] = useState('')
     const [subject, setSubject] = useState('')
     const [joinCode, setJoinCode] = useState('')
     const qs = require('qs');
+    
+    const changeChattionView=()=>{
+        setChattingView(!chattingView)
+    }
+    const openCreate=()=>{
+        setCode('');
+        setSubject('');
+        setCreateVisible(!createVisible);
+        setMenuVisible(!menuVisible);
+    }
+    const openJoin=()=>{
+        setJoinCode('');
+        setJoinVisible(!joinVisible);
+        setMenuVisible(!menuVisible);
+    }
+    
     const createData = {
         'chat_code': code,
         'room_title': subject,
         'profile_id' : localStorage.getItem('profile_id')
     }
     const createChat=()=>{
-        axios({
-            method : 'post',
-            url : '/createChatRoom',
-            data : qs.stringify(createData),
-        }).then(function(response){
-            console.log(response);
-        });
-        document.getElementById('creSubjectInput').value='';
-        
-        document.getElementById('creCodeInput').value='';
+
+        if(code.length<6){
+            document.getElementById('codeCheckDiv').innerHTML='6자 이상 입력하세요';
+        }else if(subject.length == 0){
+            document.getElementById('subjectCheckDiv').innerHTML='제목을 입력하세요'
+        }else{
+            axios({
+                method : 'post',
+                url : '/createChatRoom',
+                data : qs.stringify(createData),
+            }).then(function(response){
+                console.log(response);
+            });
+            openCreate();
+        }
+
 
     }
         
     const createCodeInput=(e)=>{
+        document.getElementById('codeCheckDiv').innerHTML='';
         console.log(e.target.value);
         setCode(e.target.value);
     }
     const createSubjectInput=(e)=>{
+        document.getElementById('subjectCheckDiv').innerHTML='';
         setSubject(e.target.value);
     }
     const joinCodeInput=(e)=>{
@@ -68,6 +80,7 @@ const UserChatRoom = ({id}) => {
           })
           .then()
           .catch(error => console.log(error));
+        setJoinCode('');
     }
     const [chatRoomId, setChatRoomId] = useState('');
     const isLogin = localStorage.getItem('isLogin');
@@ -104,11 +117,13 @@ const UserChatRoom = ({id}) => {
                                 <div className='chatW_inputFormSide'>
                                     <div className='chatW_inputForm'>
                                         <span>코드입력</span>
-                                        <input type="text" id="creCodeInput"onChange={createCodeInput}/>
+                                        <input type="text" id="creCodeInput" value={code} onChange={createCodeInput}/>
+                                        <div className='text-red-600' id='codeCheckDiv'></div>
                                     </div>
                                     <div className='chatW_inputForm'>
                                         <span>제목입력</span>
-                                        <input type="text" id="creSubjectInput" onChange={createSubjectInput}/>
+                                        <input type="text" id="creSubjectInput" value={subject} onChange={createSubjectInput}/>
+                                        <div className='text-red-600' id='subjectCheckDiv'></div>
                                     </div>
                                 </div>
                                 <div className='chatW_miniBtnForm'>
@@ -145,7 +160,7 @@ const UserChatRoom = ({id}) => {
                             <>
                                 <div className='chatW_inputForm'>
                                     <span>코드입력</span>
-                                    <input type="text" id="joinCodeInput" onChange={joinCodeInput}></input>
+                                    <input type="text" id="joinCodeInput" value={joinCode}onChange={joinCodeInput}></input>
                                 </div>
                                 <div className='chatW_miniBtnForm'>
                                 

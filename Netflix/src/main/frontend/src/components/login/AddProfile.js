@@ -7,33 +7,37 @@ import '../../css/user/login.css';
 const AddProfile = () => {
     
     const qs = require('qs');
-    const [profileName , setProfileName] = useState();
+    const [profileName , setProfileName] = useState('');
     const [imgList, setImgList] = useState(true);
     const [selectImg , setSelectImg] = useState(imgSrc[0].imgSrc);
     const [isGetProfile,setIsGetProfile] = useState(localStorage.getItem('profile_id')===null);
     const nameInput=(e)=>{
+        document.getElementById('profileNameCheckDiv').innerHTML=''
         setProfileName(e.target.value);
     }
     const cancle=()=>{
         window.location.href='/'
     }
     const addProfileBtn= ()=>{
-        axios({
-            method : 'post',
-            url : '/addProfile',
-            data : qs.stringify({
-                'img_path' : selectImg,
-                'user_email' : localStorage.getItem('user_email'),
-                'profile_name' : profileName
-            })
-          })
-          .then(res=>{
-            localStorage.setItem('profile_id',res.data.profile_id);
-            localStorage.setItem('profile_name',res.data.profile_name);
-            localStorage.setItem('img_path',res.data.img_path);
-            window.location.href='/';
-        })
-          .catch(error => console.log(error));
+
+        if(profileName.length==0){
+            document.getElementById('profileNameCheckDiv').innerHTML='프로필에 사용할 이름을 확인해주세요';
+        }else{
+            axios({
+                method : 'post',
+                url : '/addProfile',
+                data : qs.stringify({
+                    'img_path' : selectImg,
+                    'user_email' : localStorage.getItem('user_email'),
+                    'profile_name' : profileName
+                })
+            }).then(res=>{
+                localStorage.setItem('profile_id',res.data.profile_id);
+                localStorage.setItem('profile_name',res.data.profile_name);
+                localStorage.setItem('img_path',res.data.img_path);
+                window.location.href='/';
+            }).catch(error => console.log(error));
+        }
     }
     const mainImgselect=(e)=>{
         setSelectImg(e.target.getAttribute('src'));
@@ -59,6 +63,7 @@ const AddProfile = () => {
 
                     <div className='mt-[30px]'>
                         <input type="text" placeholder="이름" className='bg-[#666] h-[36px] w-[326px]' onChange={nameInput} value={profileName}></input>
+                        <div className='text-red-600' id="profileNameCheckDiv"></div>
                         <div className="display: flex justify-center">
                             <button className='w-[70px] h-[50px] border m-[20px] bg-white' onClick={addProfileBtn}>다음</button>
                             <button className='w-[70px] h-[50px] border m-[20px] bg-white' onClick={cancle}>취소</button>
