@@ -4,14 +4,24 @@ import '../../css/serviceCenter/serviceCenter.css';
 import Recommendations from './serviceCenterComponents/Recommendations';
 import logo from '../../image/main/logo.png';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceCenterHeader = () => {
     
-    
+    const navigate = useNavigate();
     const[visible,setVisible] = useState(false)
 
     const openTab = () =>  {
         setVisible(!visible)
+    }
+
+    const logoutBtn=()=>{
+        localStorage.clear();
+        window.location.href='/';
+    }
+
+    const MPBtn = () => {
+        navigate('/my');
     }
 
 
@@ -40,7 +50,7 @@ const ServiceCenterHeader = () => {
                                     <li className="k2-dropdown k2-open">
                                         <div className="k2-btn  k2-btn-med k2-hc-profile-name k2-dropdown-toggle">
                                             <Link className='k2-btn text-[#f5f5f1] -mr-[25px]' to='' onClick={()=>openTab()}>
-                                            옥지
+                                            {localStorage.getItem('profile_name')}
                                             </Link>
                                         </div>
                                         <img className="k2-arrow" src="https://help.nflxext.com/helpcenter/d8b50ece09e6271eb5688c85a1d7eab5.svg"></img>
@@ -49,10 +59,10 @@ const ServiceCenterHeader = () => {
 
                                             <ul className="k2-dropdown-menu">
                                                 <li>
-                                                    <a className="k2-your-account-link">계정</a>
+                                                    <a className="k2-your-account-link" onClick={ MPBtn }>계정</a>
                                                 </li>
                                                 <li> 
-                                                    <a className="k2-signout-link">플래닛에서 로그아웃</a>
+                                                    <a className="k2-signout-link" onClick={ logoutBtn }>플래닛에서 로그아웃</a>
                                                 </li>
                                             </ul>
 

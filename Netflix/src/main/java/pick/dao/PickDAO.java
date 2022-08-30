@@ -1,5 +1,7 @@
 package pick.dao;
 
+import java.util.List;
+
 import pick.bean.PickDTO;
 
 public interface PickDAO {
@@ -11,5 +13,7 @@ public interface PickDAO {
 	public void delPickUp(PickDTO pickDTO);
 
 	public int getPickUp(PickDTO pickDTO);
+
+	public List<PickDTO> getMyPickList(String profile_id);
 
 }

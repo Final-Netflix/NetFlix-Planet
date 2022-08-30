@@ -62,6 +62,7 @@ const UserChatting = ({chatRoomId,changeChattionView,id}) => {
     },[]);
 
     useEffect(()=> {
+        scrollDown();
         axios({
             method : 'post',
             url : '/getUserChatList',

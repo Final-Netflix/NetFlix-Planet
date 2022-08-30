@@ -98,39 +98,40 @@ const Login = () => {
         }
     }
     return (
-        <div className='bg-[#141414] h-[100%]'>
+        <div className='bg-[#141414] h-[100%] w-[100%] ml-auto mr-auto items-center text-center justify-center'>
             <LoginHeader/>
             {
                 isLogin? 
                 <div>
-                    <div><h1 className='text-[#cccccc] m-0'>프로필 선택</h1></div>
+                    <div><h1 className='text-[#cccccc] m-[40px]'>프로필 선택</h1></div>
                     
-                    <ul className="display: flex">
+                    <ul className="display: flex text-center justify-center ">
                         {
                             profileList.map(item=>
                                 <Link to='/' className='text-[#cccccc]'>
-                                    <li className='profileForm m-[30px]'>
+                                    <li className='profileForm m-[30px] border-2 hover:underline'>
                                         <input type="hidden" value={item.profile_id}></input>
                                         <div onClick={selectProfile} className="text-center">
                                             <img src={item.img_path} className="w-[200px] h-auto"></img>
                                             <div className="m-[20px]">
-                                                <span >{item.profile_name}</span>
+                                                <span className='text-[14px] font-bold'>{item.profile_name}</span>
 
                                             </div>
                                         </div>
                                     </li>
                                 </Link>
+                                
                             )
                         }
                         {
                             profileList.length <= 4
                             && 
                             <Link to='addProfile'>
-                                <li className='profileForm m-[30px]'>
+                                <li className='profileForm m-[30px] hover:underline'>
                                     <div className='text-white text-center'>
-                                        <img className="w-[200px] h-[200px]"/>
+                                        <img className="w-[200px] h-[200px] "/>
                                         <div className="m-[20px]">
-                                            <span>프로필 추가</span>
+                                            <span className='text-[14px] font-bold'>프로필 추가</span>
 
                                         </div>
                                     </div>
@@ -138,18 +139,18 @@ const Login = () => {
                             </Link>
                         }
                     </ul>
-                    <button onClick={logoutBtn} className="m-[30px] text-[#cccccc]">로그아웃</button>
+                    <button onClick={logoutBtn} className="m-[30px] text-[#cccccc] text-[16px] font-bold hover:underline">로그아웃</button>
                 </div>
                 :
                 <div className="wh1-login-content max-w-[450px] mx-auto">
                     <h1 className='text-white'>로그인</h1>
-                    <div className="wh-idpwd-inputForm bg-[#333] mb-[24px]">
+                    <div className="wh-idpwd-inputForm bg-[#333] mb-[24px] text-start justify-start">
                         <label placeholder>
-                            <label for="wh-id-box" className="wh-placeLabel">이메일 주소</label>
+                            <label for="wh-id-box" className="wh-placeLabel ">이메일 주소</label>
                             <input id="wh-id-box"className='wh-nfTextField h-[50px] bg-[transparent] w-[100%] boarder-[0]' type="text" onChange={idInput} onKeyDown={chatKeyDown} value={idInputVal}/>
                         </label>
                     </div>
-                    <div className='wh-idpwd-inputForm bg-[#333]'>
+                    <div className='wh-idpwd-inputForm bg-[#333] text-start justify-start'>
                         <label placeholder>
                             <label for="wh-pwd-box" className="wh-placeLabel">비밀번호</label>
     
@@ -160,9 +161,9 @@ const Login = () => {
                     
                     <div>
 
-                        <button type="button" onClick={login} className='text-[#cccccc] m-[20px]'>로그인</button>
-                        <Link to ='/signup' className='text-[#cccccc] m-[20px]'><span>회원가입</span></Link>
-                        <Link to ='/findUser' className='text-[#cccccc]'><span>아이디/비밀번호 찾기</span></Link>
+                        <button type="button" onClick={login} className='text-[#cccccc] m-[20px] text-[13px]'>로그인</button>
+                        <Link to ='/signup' className='text-[#cccccc] m-[20px] text-[13px]'><span>회원가입</span></Link>
+                        <Link to ='/findUser' className='text-[#cccccc] text-[13px]'><span>아이디/비밀번호 찾기</span></Link>
 
                     </div>
                 </div>

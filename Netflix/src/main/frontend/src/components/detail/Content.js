@@ -40,9 +40,9 @@ const Content = ({ type, id }) => {
   const qs = require('qs');
 
   const addWatches = () => {
-    console.log('제바르ㅡ')
+    console.log('ㅠㅠ')
     axios({
-      url: 'http://localhost:8080/addWatches',
+      url: '/addWatches',
       method: 'post',
       data: qs.stringify({
         'video_id' : id,
@@ -60,11 +60,17 @@ const Content = ({ type, id }) => {
   const [playIconHover2, setPlayIconHover2] = useState(false);
 
   /* 재생버튼 */
-  const playIconHoverEnter = () => {
-    setPlayIconHover(true);
+  const playIconHoverEnter = (e) => {
+    if(e.target.id!=null){
+      document.getElementById("test"+e.target.id).style.visibility = 'visible';
+      setPlayIconHover(true);
+    }
   }
-  const playIconHoverLeave = () => {
-    setPlayIconHover(false);
+  const playIconHoverLeave = (e) => {
+    if(e.target.id!=null){
+      document.getElementById("test"+e.target.id).style.visibility = 'hidden';
+      setPlayIconHover(false);
+    }
   }
   const playIconHoverEnter2 = () => {
     setPlayIconHover2(true);
@@ -92,24 +98,33 @@ const Content = ({ type, id }) => {
           </div>
           <div className='episodeSelector_container flex flex-col flex-wrap justify-start text-[#fff] text-[16px] leading-[1.4]'>
             
-            { episodes.map (episode => 
+            { episodes.map ((episode,index) => 
             <Link to='video' state={{ id:episode.id, type:type }} onClick={ addWatches }>
             <div onMouseEnter={playIconHoverEnter} onMouseLeave={playIconHoverLeave} >
-            <div className='titleCardList border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]' aria-label='오퍼레이션 올빼미' role="button">
+            <div className='titleCardList border-t-[1px] border-solid border-t-[#404040] min-h-[10em] items-center border-b-[1px] border-b-[#404040] rounded-[0.25em] cursor-pointer flex overflow-hidden p-[1em] relative text-[#fff] text-[16px] leading-[1.4]'id={index} aria-label='오퍼레이션 올빼미' role="button">
               <div className='titleCard_title_index text-[#d2d2d2] flex flex-[0_0_7%] text-[1.5em] justify-center cursor-pointer leading-[1.4]'>{ episode.episode_number }</div>
               <div className='titleCard_imageWrapper rounded-[4px] flex-[0_0_18%] overflow-hidden relative block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                 <div className='ptrack_content block cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                  <img className='block max-w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
-                  src={ "https://image.tmdb.org/t/p/w200" + episode.still_path} alt={episode.name}></img>
+                  {episode.still_path === null?
+                    <img className='block max-w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
+                    src={"https://image.tmdb.org/t/p/w200"+episodes[0].still_path} alt={episode.name}></img>
+                  :
+                    <img className='block max-w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
+                    src={"https://image.tmdb.org/t/p/w200"+episode.still_path} alt={episode.name}></img>}
+                  {/* <img className='block max-w-[100%] border-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'
+                  src={"https://image.tmdb.org/t/p/w200"+{episode.still_path === null? episode.still_path : episode.still_path}} alt={episode.name}></img> */}
                 </div>
                 {/* play icon */}
                 
-                <div className='titleCard_playIcon items-center from-[hsla(0,0%,9%,.7)] to-[transparent 25%] bg-gradient-to-b bottom-0 flex justify-center left-0 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
-                { playIconHover && 
+                <div id={"test"+index} style={{visibility : 'hidden'}} className='titleCard_playIcon items-center from-[hsla(0,0%,9%,.7)] to-[transparent 25%] bg-gradient-to-b bottom-0 flex justify-center left-0 absolute right-0 top-0 cursor-pointer text-[#fff] text-[16px] leading-[1.4]'>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] opacity-100 p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]' xmlns='http://www.w3.org/2000/svg'>
                     <path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path>
                   </svg>
-                }
+                {/* { playIconHover && 
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className='titleCard_playSVG bg-[rgba(30,30,20,.5)] border-[1px] border-solid border-[#fff] rounded-[2em] h-[3em] opacity-100 p-[0.5em] w-[3em] cursor-pointer text-[#fff] text-[16px] leading-[1.4]' xmlns='http://www.w3.org/2000/svg'>
+                    <path d="M4 2.69127C4 1.93067 4.81547 1.44851 5.48192 1.81506L22.4069 11.1238C23.0977 11.5037 23.0977 12.4963 22.4069 12.8762L5.48192 22.1849C4.81546 22.5515 4 22.0693 4 21.3087V2.69127Z" fill="currentColor"></path>
+                  </svg>
+                } */}
                 </div>
                 
                 <progress className='titleCard_progress bg-[grey] bottom-0 text-[#e50914] h-[0.25em] m-0 p-0 absolute w-[100%] appearance-auto cursor-pointer text-[16px] leading-[1.4]'></progress>

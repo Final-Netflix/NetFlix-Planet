@@ -21,6 +21,5 @@ public class WatchDAOMyBatis implements WatchDAO {
 	@Override
 	public void addWatches(WatchDTO watchDTO) {
 		sqlSession.insert("watchSQL.addWatches", watchDTO);
-		
 	}
 }
