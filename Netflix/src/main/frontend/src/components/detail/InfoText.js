@@ -109,7 +109,7 @@ const InfoText = ({type, id}) => {
                     </a>
                     { episodeCounts.map (episodeCount =>
                     <span className='duration whitespace-nowrap mr-[0.5em] text-[#fff] text-[16px] leading-[1.4]'>
-                      에피소드 { episodeCount.episode_count }개
+                     { episodeCount.name } 에피소드 { episodeCount.episode_count }개 /
                     </span>
                     )}
                     <span className='player_feature_badge mr-[0.5em] border-[1px] border-solid border-[hsla(0,0%,100%,.4)] rounded-[3px] text-[hsla(0,0%,100%,.9)] text-[.7em] py-0 px-[0.5em] whitespace-nowrap leading-[1.4]'>HD</span>

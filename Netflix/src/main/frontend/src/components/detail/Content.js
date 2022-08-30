@@ -40,9 +40,9 @@ const Content = ({ type, id }) => {
   const qs = require('qs');
 
   const addWatches = () => {
-    console.log('제바르ㅡ')
+    console.log('ㅠㅠ')
     axios({
-      url: 'http://localhost:8080/addWatches',
+      url: '/addWatches',
       method: 'post',
       data: qs.stringify({
         'video_id' : id,
