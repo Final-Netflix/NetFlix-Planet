@@ -45,6 +45,8 @@ public interface UserService {
 	public int changePhone(UserDTO userDTO);
 
 
+	public void myPageUpdatePwd(Map<String, String> map);
 
+	public List<UserDTO> findPassWord(Map<String, String> map);
 
 }

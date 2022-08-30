@@ -145,5 +145,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	
+	public void myPageUpdatePwd(Map<String, String> map) {
+		userDAO.myPageUpdatePwd(map);
+		
+	}
+
+	@Override
+	public List<UserDTO> findPassWord(Map<String, String> map) {
+		return userDAO.findPassWord(map);
+	}
 
 }
