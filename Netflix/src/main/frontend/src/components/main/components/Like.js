@@ -1,9 +1,14 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import LikeItem from './LikeItem';
 
 const Like = () => {
 
     const qs = require('qs');
+    const KEY = "bc61587b22cd0e5226a33d30e467d867";
+    const [likeArr, setLikeArr] = useState([]);
+    let backdropArr = [];
+    let logoArr = [];
 
     const getLikes = () => {
         axios({
@@ -13,13 +18,18 @@ const Like = () => {
                 'profile_id': localStorage.getItem('profile_id'),
             })
         }).then((res) => {
-            console.log(res.data);
+            setLikeArr(res.data);
+           
         });
     }
 
     useEffect(() => {
         getLikes();
     }, []);
+
+    useEffect(() => {
+        
+    }, [likeArr]);
 
     return (
         <div className="c1-mainView">
@@ -32,21 +42,11 @@ const Like = () => {
                                     <div className="c1-slider">
                                         <div className="c1-sliderMask c1-showPeek">
                                             <div className="c1-sliderContent c1-row-with-x-columns">
-                                                <div className="c1-slider-item">
-                                                    <div className="c1-title-card-container css-0">
-                                                        <div id="title-card-0-1" className="c1-title-card">
-                                                            <div className="c1-ptrack-content">
-                                                                <a role="link" aria-label="{state.title}" tabIndex="0" aria-hidden="false" className="c1-slider-refocus">
-                                                                    <div className="c1-boxart-size-16x9 c1-boxart-container c1-boxart-rounded">
-                                                                        <img className='w-full rounded relative' src = {"https://image.tmdb.org/t/p/w500/udhU4oOPxAiNltoMVddSRq3lLAk.jpg" } />
-                                                                        <img className='w-full rounded absolute max-h-[100px] bottom-[10%] w-[70%] mx-[18%]' src = {"https://image.tmdb.org/t/p/w500/2OaNZR8fEMAysxjgrVV59rHIQ7n.png"} /> 
-                                                                    </div>
-                                                                    <div className="c1-ptrack-content"></div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {likeArr.map((item,index)=>{
+                                                    console.log(item.video_id);
+                                                    return <LikeItem item={item.video_id} type={item.video_type} />
+                                                })}
+                                               
                                             </div>
                                         </div>
                                     </div>
