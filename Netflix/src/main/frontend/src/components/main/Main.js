@@ -30,7 +30,7 @@ const Main = () => {
     }
 
     return (
-        <div className={ tab === 'search' ? 'bg-[#141414] absolute w-full' : 'bg-[#141414]'}>
+        <div className={ tab === 'search' ? 'bg-[#141414] absolute w-full' : 'bg-[#141414] h-[100%] w-[100%]'}>
             <div className={ scroll ? 'bg-[#141414] z-[1]' : 'z-[1]'}>
                 <Header scroll={ scroll } search={ search } setSearch={ setSearch }/>
                 {tab === 'series' || tab === 'movie' ? <SubHeader scroll={ scroll }/> : ''}
