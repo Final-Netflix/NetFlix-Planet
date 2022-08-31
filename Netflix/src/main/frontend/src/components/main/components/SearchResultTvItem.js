@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SearchResultTvItem = ({ searchItem, search }) => {
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     const [backdrop, setBackdrop] = useState('');
     const [logo, setLogo] = useState({});
+
+    const navigate = useNavigate();
 
     const getImage = async () => {
         
@@ -33,12 +36,16 @@ const SearchResultTvItem = ({ searchItem, search }) => {
         getImage();
     }, [search]);
 
+    const tvClick = () => {
+        navigate('/detailMain' , { state : { tvId :  searchItem.id }})
+       }
+
     if(backdrop === ''){
         return;
     }
     else {
         return (
-            <div className="c1-slider-item">
+            <div className="c1-slider-item" onClick={ tvClick }>
                 <div className="c1-title-card-container css-0">
                     <div id="title-card-0-1" className="c1-title-card">
                         <div className="c1-ptrack-content">

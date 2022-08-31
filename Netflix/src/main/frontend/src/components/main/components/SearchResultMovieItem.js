@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SearchResultMovieItem = ({ searchItem, search }) => {
 
     const KEY = "bc61587b22cd0e5226a33d30e467d867";
     const [backdrop, setBackdrop] = useState('');
     const [logo, setLogo] = useState({});
+    
+    const navigate = useNavigate();
 
     const getImage = async () => {
         let backdrop = '';
@@ -28,12 +31,16 @@ const SearchResultMovieItem = ({ searchItem, search }) => {
         getImage();
    }, [search]);
 
+   const movieClick = () => {
+        navigate('/detailMain' , { state : { movieId :  searchItem.id }})
+   }
+
     if(backdrop === ''){
         return;
     }
     else {
         return (
-            <div className="c1-slider-item">
+            <div className="c1-slider-item" onClick={ movieClick }>
                 <input type='hidden' className='searchId' value={ searchItem.id } />
                 <div className="c1-title-card-container css-0">
                     <div id="title-card-0-1" className="c1-title-card">
